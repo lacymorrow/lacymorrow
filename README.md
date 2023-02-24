@@ -6,7 +6,7 @@
 
 👨‍💻 I enjoy contributing to **Open Source Projects** and have been a contributor to **Material UI** and **Bootstrap**. I also maintain a collection of **open source projects:**
 
-|  |
+| | |
 | ----------- | --------- | 
 | [CrossOver ![crossover](https://img.shields.io/github/stars/lacymorrow/crossover)](https://github.com)   |   [Casper ![casper](https://img.shields.io/github/stars/lacymorrow/casper)](https://github.com) |
 | [Album Art ![album-art](https://img.shields.io/github/stars/lacymorrow/album-art)](https://github.com)  |   [Album Info ![album-info](https://img.shields.io/github/stars/lacymorrow/album-info)](https://github.com) |
