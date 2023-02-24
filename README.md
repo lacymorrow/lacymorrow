@@ -9,9 +9,8 @@
 | | |
 | ----------- | --------- | 
 | [CrossOver ![crossover](https://img.shields.io/github/stars/lacymorrow/crossover)](https://github.com)   |   [Casper ![casper](https://img.shields.io/github/stars/lacymorrow/casper)](https://github.com) |
-| [Album Art ![album-art](https://img.shields.io/github/stars/lacymorrow/album-art)](https://github.com)  |   [Album Info ![album-info](https://img.shields.io/github/stars/lacymorrow/album-info)](https://github.com) |
-| [Movie Art ![movie-art](https://img.shields.io/github/stars/lacymorrow/movie-art)](https://github.com)  |   [Movie Info ![movie-info](https://img.shields.io/github/stars/lacymorrow/movie-info)](https://github.com) |
-| [Movie Trailer ![movie-trailer](https://img.shields.io/github/stars/lacymorrow/movie-trailer)](https://github.com) |   [Movie Search ![movie-search](https://img.shields.io/github/stars/lacymorrow/movie-search)](https://github.com) |
+| [Album Art ![album-art](https://img.shields.io/github/stars/lacymorrow/album-art)](https://github.com) | [Movie Art ![movie-art](https://img.shields.io/github/stars/lacymorrow/movie-art)](https://github.com)  |
+| [Movie Info ![movie-info](https://img.shields.io/github/stars/lacymorrow/movie-info)](https://github.com) | [Movie Trailer ![movie-trailer](https://img.shields.io/github/stars/lacymorrow/movie-trailer)](https://github.com) |
 
 I am constantly learning new technologies to stay up to date with the latest trends and am constantly building or prototyping something new.
 
