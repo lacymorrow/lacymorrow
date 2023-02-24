@@ -6,13 +6,12 @@
 
 👨‍💻 I enjoy contributing to **Open Source Projects** and have been a contributor to **Material UI** and **Bootstrap**. I also maintain a collection of **open source projects:**
 
-##### CrossOver ![crossover](https://img.shields.io/github/stars/lacymorrow/crossover?style=for-the-badge)
-##### Album Art ![album-art](https://img.shields.io/github/stars/lacymorrow/album-art?style=for-the-badge)
-##### Movie Art ![movie-art](https://img.shields.io/github/stars/lacymorrow/movie-art?style=for-the-badge)
-##### Movie Info ![movie-info](https://img.shields.io/github/stars/lacymorrow/movie-info?style=for-the-badge)
-##### Movie Trailer ![movie-trailer](https://img.shields.io/github/stars/lacymorrow/movie-trailer?style=for-the-badge)
-##### Casper Wordpress ![casper-wp](https://img.shields.io/github/stars/lacymorrow/casper?style=for-the-badge)
-- 
+[CrossOver ![crossover](https://img.shields.io/github/stars/lacymorrow/crossover?style=for-the-badge)](https://github.com)
+[Album Art ![album-art](https://img.shields.io/github/stars/lacymorrow/album-art?style=for-the-badge)](https://github.com)
+[Movie Art ![movie-art](https://img.shields.io/github/stars/lacymorrow/movie-art?style=for-the-badge)](https://github.com)
+[Movie Info ![movie-info](https://img.shields.io/github/stars/lacymorrow/movie-info?style=for-the-badge)](https://github.com)
+[Movie Trailer ![movie-trailer](https://img.shields.io/github/stars/lacymorrow/movie-trailer?style=for-the-badge)](https://github.com)
+[Casper Wordpress ![casper-wp](https://img.shields.io/github/stars/lacymorrow/casper?style=for-the-badge)](https://github.com)
 
 I am constantly learning new technologies to stay up to date with the latest trends and am constantly building or prototyping something new.
 
