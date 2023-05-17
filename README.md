@@ -40,6 +40,7 @@ I am constantly learning new technologies to stay up to date with the latest tre
 ![figma](https://img.shields.io/badge/Figma-F24E1E?style=for-the-badge&logo=figma&logoColor=white)
 ![adobe-creative-suite](https://img.shields.io/badge/Adobe_Creative_Suite-FF2BC2?style=for-the-badge&logo=adobe-creative-suite&logoColor=white)
 ![sketch](https://img.shields.io/badge/Sketch-F7B500?style=for-the-badge&logo=sketch&logoColor=white)
+![jira](https://img.shields.io/badge/Jira-F7B500?style=for-the-badge&logo=jira&logoColor=white)
 
 
 <!--
