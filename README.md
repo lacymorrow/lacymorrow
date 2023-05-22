@@ -16,11 +16,11 @@ I am constantly learning new technologies to stay up to date with the latest tre
 
 ![figma](https://img.shields.io/badge/Figma-F24E1E?style=for-the-badge&logo=figma&logoColor=white)
 ![sketch](https://img.shields.io/badge/Sketch-F7B500?style=for-the-badge&logo=sketch&logoColor=white)
-![jira](https://img.shields.io/badge/Jira-F7B5%0?style=for-the-badge&logo=jira&logoColor=white)
+![jira](https://img.shields.io/badge/jira-FF2BC2?style=for-the-badge&logo=jira&logoColor=white)
 ![adobe-indesign](https://img.shields.io/badge/Adobe_InDesign-FF2BC2?style=for-the-badge&logo=indesign&logoColor=white)
 ![adobe-illustrator](https://img.shields.io/badge/Illustrator-FF2BC2?style=for-the-badge&logo=illustrator&logoColor=white)
 ![adobe-premiere](https://img.shields.io/badge/Premiere-FF2BC2?style=for-the-badge&logo=premiere&logoColor=white)
-![photoshop](https://img.shemiereields.io/badge/photoshop-FF2BC2?style=for-the-badge&logo=photoshop&logoColor=white)
+![photoshop](https://img.shields.io/badge/photoshop-FF2BC2?style=for-the-badge&logo=photoshop&logoColor=white)
 
 <!-- 
 ### Languages and Tools
