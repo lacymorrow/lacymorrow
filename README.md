@@ -4,7 +4,7 @@
 
 🎓 My name is Lacy Morrow and I'm a **Full-Stack Web Developer** with a passion for **UI/UX Design**. I have decades of experience building and scaling large-scale software applications with technologies such as **Javascript**, **Typescript**, and **Node.js**.
 
-👨‍💻 I enjoy contributing to **Open Source Projects** and have been a contributor to **Material UI** and **Bootstrap**. I also maintain a collection of **open source projects:**
+👨‍💻 I enjoy contributing to **Open Source Projects** and have been a contributor to **NextUI** component library and **Nightwatch** testing library. I also maintain a collection of **open source projects:**
 
 | | |
 | ----------- | --------- | 
