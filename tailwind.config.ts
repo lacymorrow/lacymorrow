@@ -48,6 +48,10 @@ module.exports = {
 					DEFAULT: "hsl(var(--card))",
 					foreground: "hsl(var(--card-foreground))",
 				},
+				splash: {
+					DEFAULT: "hsl(var(--splash))",
+					muted: "hsl(var(--splash-muted))",
+				},
 			},
 			borderRadius: {
 				lg: "var(--radius)",
@@ -70,5 +74,10 @@ module.exports = {
 			},
 		},
 	},
-	plugins: [require("tailwindcss-animate")],
+	plugins: [
+		function ({ addVariant }: { addVariant: Function }) {
+			addVariant('child', '& > *');
+			addVariant('child-hover', '& > *:hover');
+		},
+		require("tailwindcss-animate")],
 }

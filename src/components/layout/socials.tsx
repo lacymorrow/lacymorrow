@@ -6,34 +6,55 @@ import {
 } from "@radix-ui/react-icons";
 import { FacebookIcon, SpeakerIcon } from "lucide-react";
 import Link from "next/link";
-import React from "react";
-import LastFmIcon from "../images/lastfm-icon";
+import LastFmIcon from "@/components/images/lastfm-icon";
+import { cn } from "@/lib/utils";
 
 type Props = {};
 
+const socials = [
+  {
+    name: "Last.fm",
+    href: "https://www.last.fm/user/gojukebox00",
+    icon: <LastFmIcon />,
+  },
+  {
+    name: "Twitter",
+    href: "https://twitter.com/lacybuilds",
+    icon: <TwitterLogoIcon />,
+  },
+  {
+    name: "Instagram",
+    href: "https://instagram.com/goseethings",
+    icon: <InstagramLogoIcon />,
+  },
+  {
+    name: "LinkedIn",
+    href: "https://www.linkedin.com/in/lacymorrow/",
+    icon: <LinkedInLogoIcon />,
+  },
+  {
+    name: "Facebook",
+    href: "https://www.facebook.com/lacy.morrow",
+    icon: <FacebookIcon className="h-3.5 w-3.5" />,
+  },
+];
+
 export const Socials = (props: Props) => {
   return (
-    <div className="flex items-center justify-start">
-      <Link className="p-2" href="https://www.last.fm/user/gojukebox00">
-        <SpeakerLoudIcon />
-        <span className="sr-only">Last.fm</span>
-      </Link>
-      <Link className="p-2" href="https://twitter.com/lacybuilds">
-        <TwitterLogoIcon />
-        <span className="sr-only">Twitter</span>
-      </Link>
-      <Link className="p-2" href="https://instagram.com/goseethings">
-        <InstagramLogoIcon />
-        <span className="sr-only">Instagram</span>
-      </Link>
-      <Link className="p-2" href="https://www.linkedin.com/in/lacymorrow/">
-        <LinkedInLogoIcon />
-        <span className="sr-only">LinkedIn</span>
-      </Link>
-      <Link className="p-2" href="https://www.facebook.com/lacy.morrow">
-        <FacebookIcon className="h-4 w-4" />
-        <span className="sr-only">Facebook</span>
-      </Link>
+    <div className="text-muted-foreground child:fill-muted-foreground flex items-center justify-start gap-2">
+      {socials.map((item) => (
+        <Link
+          key={crypto.randomUUID()}
+          href={item.href}
+          className={cn(
+            "hover:text-splash duration-400 transition-colors",
+            item.name.toLowerCase() === "last.fm" && "hover:child:fill-splash"
+          )}
+        >
+          {item.icon}
+          <span className="sr-only">{item.name}</span>
+        </Link>
+      ))}
     </div>
   );
 };

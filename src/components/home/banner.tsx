@@ -1,5 +1,6 @@
 import "@/styles/home.css";
 import { UpdateIcon } from "@radix-ui/react-icons";
+import Image from "next/image";
 import { useState } from "react";
 const Banner = () => {
   const [index, setIndex] = useState(2);
@@ -11,61 +12,61 @@ const Banner = () => {
   };
 
   return (
-    <div className="card-holder mx-auto p-8 text-center text-xl antialiased">
-      <div className={`card bg-${index}`}>
-        <a
-          href="https://github.com/lacymorrow"
-          className="animated header-img tada mx-auto my-4 inline-block"
-        >
-          <img
-            src="https://s.gravatar.com/avatar/736b40590816c014f11aefb0072ce82c?s=300"
-            width="150"
-            height="150"
-            alt="Lacy Morrow"
-          />
-        </a>
+    <>
+      <div className="card-holder w-lg mx-auto w-2/3 max-w-3xl p-8 text-center text-xl antialiased">
+        <div className={`card bg-${index}`}>
+          <a
+            href="https://github.com/lacymorrow"
+            className="animated header-img tada mx-auto my-4 inline-block"
+          >
+            <span className="sr-only">Enter lacymorrow.com</span>
+            <Image
+              src="https://s.gravatar.com/avatar/736b40590816c014f11aefb0072ce82c?s=300"
+              width="150"
+              height="150"
+              alt="Lacy Morrow's Gravatar image"
+            />
+          </a>
 
-        <div className="p-6 leading-relaxed">
-          <div className="content text-4xl font-bold">
+          <div className="content p-6 text-4xl font-bold leading-relaxed">
             <p>
-              I&apos;m{" "}
-              <span className="color-transition text-7xl font-bold">
+              <span className="text-7xl font-extrabold transition-colors duration-500">
                 Lacy Morrow
               </span>
-              &nbsp;👋 &nbsp;
             </p>
-
-            <p className="text-4xl font-bold">
-              Maker of{" "}
-              <a className="color-transition" href="/work/clients">
-                software
-              </a>
-              ,{" "}
-              <a className="color-transition" href="/work">
-                drones
-              </a>
-              , and{" "}
-              <a className="color-transition" href="/work">
-                IoT devices
-              </a>
-            </p>
-          </div>
-
-          <div className="mx-auto mt-8 flex w-1/2 items-center justify-evenly text-8xl">
-            <a href="/work/clients" className="slide-in animated hinge">
-              Work
-            </a>
-            <button type="button" onClick={handleChange} className="random">
-              <span className="sr-only">Change Background</span>
-              <UpdateIcon />
-            </button>
-            <a href="/play/crossover" className="slide-in animated hinge">
-              Play
-            </a>
           </div>
         </div>
       </div>
-    </div>
+      <div className="content mb-12 p-2 font-bold">
+        <p className="text-center text-4xl">
+          🪄 &nbsp;Maker of{" "}
+          <a className="color-transition" href="/play">
+            software
+          </a>
+          ,{" "}
+          <a className="color-transition" href="/work/drones">
+            drones
+          </a>
+          , and{" "}
+          <a className="color-transition" href="/work/companies/twilio">
+            IoT devices
+          </a>
+        </p>
+
+        <div className="mx-auto mt-8 flex w-1/2 items-center justify-evenly text-8xl">
+          <a href="/work" className="slide-in animated hinge">
+            Work
+          </a>
+          <button type="button" onClick={handleChange} className="random">
+            <span className="sr-only">Change Background</span>
+            <UpdateIcon />
+          </button>
+          <a href="/play" className="slide-in animated hinge">
+            Play
+          </a>
+        </div>
+      </div>
+    </>
   );
 };
 

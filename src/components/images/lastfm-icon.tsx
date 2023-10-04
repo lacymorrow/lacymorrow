@@ -1,10 +1,13 @@
 import React from "react";
 
-type Props = {};
+type Props = {
+  className?: string;
+};
 
 export const LastFmIcon = (props: Props) => {
   return (
     <svg
+      className={props?.className}
       baseProfile="tiny"
       height="24px"
       id="Layer_1"

@@ -1,14 +1,16 @@
 .markdown-body,
 .markdown-body img {
 	background-color: transparent !important;
+	display: inline-block;
 }
 
 .markdown-body ul {
 	list-style: disc;
 }
 
+.markdown-body h1 img,
+.markdown-body p img,
 .markdown-body p a,
-.markdown-body p img
 {
 	display: inline-block;
 }

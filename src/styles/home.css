@@ -7,20 +7,21 @@
 \*-----------------------------------*/
 
 .random * {
-	transition: all 0.2s ease-in-out;
+	transition: color 0.2s ease-out,
+							transform 0.2s ease-in-out;
 }
 
 .random:hover > svg {
 	transform: rotate(90deg);
-  color: #e600c0;
+  color: #ff0099;
 }
 
 .color-transition {
-  color: #e600c0;
-  background-image: linear-gradient(92deg, #e600c0, #f590e4);
+  color: #ff0099;
+  background-image: linear-gradient(92deg, #ff0099, #ff7dcb);
   background-clip: text;
   text-fill-color: transparent;
-  animation: hue 42s infinite linear;
+  animation: hue 30s infinite linear;
 }
 
 .slide-in {
@@ -59,7 +60,7 @@
 	animation: pulse 5s infinite ease-in-out,  hue 42s infinite linear;
 }
 
-.content a {
+.content p a {
 	text-underline-position: under;
 	text-decoration-line: underline;
 	text-decoration-thickness: from-font;

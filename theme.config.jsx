@@ -1,10 +1,11 @@
 import Logo from '@/components/images/logo'
 import Socials from '@/components/layout/socials'
+import Footer from '@/components/layout/footer'
 import { EnvelopeClosedIcon, PaperPlaneIcon } from '@radix-ui/react-icons';
 import { Mail } from 'lucide-react';
 import { useRouter } from 'next/router';
 const themeConfig = {
-	docsRepositoryBase: 'https://github.com/lacymorrow/lacy-nextra/tree/main/src/pages',
+	docsRepositoryBase: 'https://github.com/lacymorrow/lacymorrow/tree/main',
 	logo: Logo,
 	logoLink: '/',
 	primaryHue: 310,
@@ -26,7 +27,7 @@ const themeConfig = {
 		}
 	},
 	project: {
-		link: 'https://github.com/lacymorrow'
+		link: 'https://github.com/lacymorrow/'
 	},
 	chat: {
 		link: 'https://lacymorrow.com/contact',
@@ -108,17 +109,7 @@ const themeConfig = {
 	// 	)
 	// },
 	footer: {
-		text: (
-			<div className='flex gap-4 text-xs'>
-				<div className='flex items-center'>
-					MIT {new Date().getFullYear()} ©{' '}
-					<a href="https://lacymorrow.com" target="_blank">
-						Lacy Morrow
-					</a>
-				</div>
-				<Socials />
-			</div>
-		)
+		text: (<Footer />),
 	}
 }
 

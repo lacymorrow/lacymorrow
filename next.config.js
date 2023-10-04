@@ -20,6 +20,23 @@ const nextConfig = {
       },
     ],
   },
+	redirects: async () => [
+		{
+			source: '/about/contact',
+			destination: '/contact',
+			permanent: true,
+		},
+		{
+			source: '/work',
+			destination: '/work/companies/twilio',
+			permanent: true,
+		},
+		{
+			source: '/play',
+			destination: '/play/crossover',
+			permanent: true,
+		},
+	]
 }
 
 const withNextra = require('nextra')({

@@ -1,7 +1,10 @@
 {
-  "index": "About Lacy",
+  "index": "About Me",
+  "mentions": "Mentions",
   "contact": {
     "title": "Contact Me",
+    "href": "/contact",
+    "newWindow": false,
     "theme": {
       "breadcrumb": true,
       "footer": true,
@@ -10,6 +13,5 @@
       "pagination": false
     }
   },
-  "mentions": "Mentions",
   "archive": "Archive"
 }

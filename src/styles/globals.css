@@ -5,10 +5,10 @@
 
 @layer base {
   :root {
-		/* NextJS */
-		--foreground-rgb: 0, 0, 0;
-		--background-start-rgb: 214, 219, 220;
-		--background-end-rgb: 255, 255, 255;
+
+
+		--splash: 324 100% 50%;
+		--splash-muted: 283 100% 67%;
 
 		/* ShadCN */
     --background: 0 0% 100%;
@@ -27,7 +27,7 @@
     --secondary-foreground: 222.2 47.4% 11.2%;
 
     --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted-foreground: 215 14% 34%;
 
     --accent: 210 40% 96.1%;
     --accent-foreground: 222.2 47.4% 11.2%;
@@ -41,14 +41,6 @@
 
     --radius: 0.5rem;
   }
-
-	@media (prefers-color-scheme: dark) {
-		:root {
-			--foreground-rgb: 255, 255, 255;
-			--background-start-rgb: 0, 0, 0;
-			--background-end-rgb: 0, 0, 0;
-		}
-	}
 
   .dark {
 		--primary-hue: 278;

@@ -3,9 +3,12 @@ import { Children } from "react";
 
 const GithubLink = ({ href }: { href: string }) => {
   return (
-    <a href={href} className="m-1 inline-flex">
-      <GitHubLogoIcon className="h-6 w-6" />
-    </a>
+    <span className="mx-1 inline-flex">
+      <a href={href} className="">
+        <span className="sr-only">Github Repository</span>
+        <GitHubLogoIcon className="h-6 w-6" />
+      </a>
+    </span>
   );
 };
 

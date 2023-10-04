@@ -1,7 +1,7 @@
 import { cn } from "@/lib/utils";
 import { Children } from "react";
 
-const ThickText = ({
+const Thick = ({
   children,
   className,
 }: {
@@ -11,4 +11,4 @@ const ThickText = ({
   return <p className={cn("text-xl font-bold", className)}>{children}</p>;
 };
 
-export default ThickText;
+export default Thick;

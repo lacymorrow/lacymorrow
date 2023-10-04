@@ -30,23 +30,20 @@ import { Callout, Card, Cards, FileTree, Steps, Tabs } from 'nextra/components'
 import Readme from '@/components/github/readme'
 import Flash from '@/components/flash/flash'
 import FlashArt from '@/components/flash/art'
-import Ruffle from '@/components/flash/ruffle'
 import { Button } from '@/components/ui/button'
-import Image from "@/components/mdx/image";
-import ThickText from "@/components/mdx/thick-text";
+import Thick from "@/components/mdx/thick";
+import Center from "@/components/mdx/center";
 import GithubLink from "./github-link";
 
 
 export const componentMap = {
-	// NextJS
 	// custom
 	Readme,
 	Flash,
 	FlashArt,
-	Ruffle,
-	ThickText,
-	Image,
 	GithubLink,
+	Thick,
+	Center,
 
 	// ShadCN
 	Button,
