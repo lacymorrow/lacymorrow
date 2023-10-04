@@ -1,4 +1,4 @@
-/* .markdown-body,
+.markdown-body,
 .markdown-body img {
 	background-color: transparent !important;
 	display: inline-block;
@@ -13,4 +13,4 @@
 .markdown-body p a,
 {
 	display: inline-block;
-} */
+}

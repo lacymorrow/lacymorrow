@@ -1,11 +1,9 @@
-import React, { useState, useEffect } from "react";
-import { parse } from "marked";
+import React from "react";
 import { Callout } from "nextra/components";
 import { GitHubReadme } from "react-github-readme-md";
-
-import "@/styles/github.css";
 import Link from "next/link";
 import { InfoCircledIcon } from "@radix-ui/react-icons";
+import "@/styles/github.css";
 
 const Readme: React.FC<{ username: string; repo: string }> = ({
   username,
