@@ -1,15 +1,18 @@
-# 🚀 Hi there! <img src="https://media.giphy.com/media/hvRJCLFzcasrR4ia7z/giphy.gif" width="29px" height="29px">
+# <span style="display: flex; align-items: center"> 🚀 Hi there! <img src="https://media.giphy.com/media/hvRJCLFzcasrR4ia7z/giphy.gif" width="29px" height="29px">  </span>
 
 🎓 My name is Lacy Morrow and I'm a **Full-Stack Web Developer** with a passion for **UI/UX Design**. I have decades of experience building and scaling large-scale software applications with technologies such as **Javascript**, **Typescript**, and **Node.js**.
 
 👨‍💻 I enjoy contributing to **Open Source Projects** and have been a contributor to many **Open-source** libraries such as **Electron**, **NW.js**, **NextUI**, and the **Nightwatch** testing library. I also maintain a collection of **personal open source projects:**
 
+<div align="center" style="display: grid; place-content: center; ">
+ 
 | 🎮 | 🍿 |
 | ----------- | --------- | 
 | [CrossOver ![crossover](https://img.shields.io/github/stars/lacymorrow/crossover)](https://github.com/lacymorrow/crossover) | [Movie Trailer ![movie-trailer](https://img.shields.io/github/stars/lacymorrow/movie-trailer)](https://github.com/lacymorrow/movie-trailer) |
 | [Casper ![casper](https://img.shields.io/github/stars/lacymorrow/casper)](https://github.com/lacymorrow/casper)  | [Movie Art ![movie-art](https://img.shields.io/github/stars/lacymorrow/movie-art)](https://github.com/lacymorrow/movie-art)  |
 | [Album Art ![album-art](https://img.shields.io/github/stars/lacymorrow/album-art)](https://github.com/lacymorrow/album-art) | [Movie Info ![movie-info](https://img.shields.io/github/stars/lacymorrow/movie-info)](https://github.com/lacymorrow/movie-info)  |
 
+</div>
 I am constantly learning new technologies to stay up to date with the latest trends and am constantly building or prototyping something new.
 
 🎨 In addition to web and app development, I'm also passionate about **videography** and **design**. I have experience creating **brand identities**, **logos**, and **user interfaces**. I believe that accessible design is essential to creating great user experiences. I also build and pilot **FPV drones for action media**.
