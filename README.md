@@ -4,12 +4,15 @@
 
 👨‍💻 I enjoy contributing to **Open Source Projects** and have been a contributor to many **Open-source** libraries such as **Electron**, **NW.js**, **NextUI**, and the **Nightwatch** testing library. I also maintain a collection of **personal open source projects:**
 
+<div align="center" style="display: grid; place-content: center; ">
+ 
 | 🎮 | 🍿 |
 | ----------- | --------- | 
 | [CrossOver ![crossover](https://img.shields.io/github/stars/lacymorrow/crossover)](https://github.com/lacymorrow/crossover) | [Movie Trailer ![movie-trailer](https://img.shields.io/github/stars/lacymorrow/movie-trailer)](https://github.com/lacymorrow/movie-trailer) |
 | [Casper ![casper](https://img.shields.io/github/stars/lacymorrow/casper)](https://github.com/lacymorrow/casper)  | [Movie Art ![movie-art](https://img.shields.io/github/stars/lacymorrow/movie-art)](https://github.com/lacymorrow/movie-art)  |
 | [Album Art ![album-art](https://img.shields.io/github/stars/lacymorrow/album-art)](https://github.com/lacymorrow/album-art) | [Movie Info ![movie-info](https://img.shields.io/github/stars/lacymorrow/movie-info)](https://github.com/lacymorrow/movie-info)  |
 
+</span>
 I am constantly learning new technologies to stay up to date with the latest trends and am constantly building or prototyping something new.
 
 🎨 In addition to web and app development, I'm also passionate about **videography** and **design**. I have experience creating **brand identities**, **logos**, and **user interfaces**. I believe that accessible design is essential to creating great user experiences. I also build and pilot **FPV drones for action media**.
