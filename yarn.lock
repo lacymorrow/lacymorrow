@@ -671,9 +671,9 @@
     "@babel/runtime" "^7.13.10"
 
 "@ruffle-rs/ruffle@^0.1.0-nightly.2023.9.23":
-  version "0.1.0-nightly.2023.10.3"
-  resolved "https://registry.yarnpkg.com/@ruffle-rs/ruffle/-/ruffle-0.1.0-nightly.2023.10.3.tgz#f4d7d573426398637af31a87614206ce1fb9175f"
-  integrity sha512-lZZqKExlABO9xf0QQm0NSyi2o3Zp0YdednVn/e+9sUKpIzWsFlXnZmCyWjwwVCxH/rzCT+SOUWqhXn+I0vEk9w==
+  version "0.1.0-nightly.2023.10.4"
+  resolved "https://registry.yarnpkg.com/@ruffle-rs/ruffle/-/ruffle-0.1.0-nightly.2023.10.4.tgz#c3b855b5b7f4576bd1969fbeb9a951d1cef0985e"
+  integrity sha512-bwAy2gCDVCGwjckDfghBOmEyAvcMoBbHbQKsqlXLnTGluO/2nt7aNESCEJOvqUy3dv1IxZXbhh/NV2sy0+8Abg==
 
 "@rushstack/eslint-patch@^1.3.3":
   version "1.5.1"

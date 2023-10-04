@@ -13,12 +13,12 @@
 
 .random:hover > svg {
 	transform: rotate(90deg);
-  color: #ff0099;
+  color: hsl(var(--splash));
 }
 
 .color-transition {
-  color: #ff0099;
-  background-image: linear-gradient(92deg, #ff0099, #ff7dcb);
+  color: hsl(var(--splash));
+  background-image: linear-gradient(92deg, hsl(var(--splash)), hsl(var(--splash-muted)));
   background-clip: text;
   text-fill-color: transparent;
   animation: hue 30s infinite linear;
@@ -37,7 +37,7 @@
   height: 6px;
   bottom: 0;
   left: 0;
-  background-image: linear-gradient(92deg, #e600c0, #f590e4);
+  background-image: linear-gradient(92deg, hsl(var(--splash)), hsl(var(--splash-muted)));
   transform-origin: bottom right;
   transition: transform 0.25s ease-out;
 }

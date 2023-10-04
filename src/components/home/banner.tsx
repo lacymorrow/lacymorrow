@@ -16,7 +16,7 @@ const Banner = () => {
       <div className="card-holder w-lg mx-auto w-2/3 max-w-3xl p-8 text-center text-xl antialiased">
         <div className={`card bg-${index}`}>
           <a
-            href="https://github.com/lacymorrow"
+            href="/about"
             className="animated header-img tada mx-auto my-4 inline-block"
           >
             <span className="sr-only">Enter lacymorrow.com</span>
