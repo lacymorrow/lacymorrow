@@ -1,16 +1,14 @@
-# Hi there! <img src="https://media.giphy.com/media/hvRJCLFzcasrR4ia7z/giphy.gif" width="29px" height="29px">
-
-## 🚀 About Me
+# 🚀 Hi there! <img src="https://media.giphy.com/media/hvRJCLFzcasrR4ia7z/giphy.gif" width="29px" height="29px">
 
 🎓 My name is Lacy Morrow and I'm a **Full-Stack Web Developer** with a passion for **UI/UX Design**. I have decades of experience building and scaling large-scale software applications with technologies such as **Javascript**, **Typescript**, and **Node.js**.
 
 👨‍💻 I enjoy contributing to **Open Source Projects** and have been a contributor to many **Open-source** libraries such as **Electron**, **NW.js**, **NextUI**, and the **Nightwatch** testing library. I also maintain a collection of **personal open source projects:**
 
-| | |
+| 🎮 | 🍿 |
 | ----------- | --------- | 
-| [CrossOver ![crossover](https://img.shields.io/github/stars/lacymorrow/crossover)](https://github.com)   |   [Casper ![casper](https://img.shields.io/github/stars/lacymorrow/casper)](https://github.com) |
+| [CrossOver ![crossover](https://img.shields.io/github/stars/lacymorrow/crossover)](https://github.com) | [Movie Info ![movie-info](https://img.shields.io/github/stars/lacymorrow/movie-info)](https://github.com) |
 | [Album Art ![album-art](https://img.shields.io/github/stars/lacymorrow/album-art)](https://github.com) | [Movie Art ![movie-art](https://img.shields.io/github/stars/lacymorrow/movie-art)](https://github.com)  |
-| [Movie Info ![movie-info](https://img.shields.io/github/stars/lacymorrow/movie-info)](https://github.com) | [Movie Trailer ![movie-trailer](https://img.shields.io/github/stars/lacymorrow/movie-trailer)](https://github.com) |
+| [Casper ![casper](https://img.shields.io/github/stars/lacymorrow/casper)](https://github.com)          | [Movie Trailer ![movie-trailer](https://img.shields.io/github/stars/lacymorrow/movie-trailer)](https://github.com) |
 
 I am constantly learning new technologies to stay up to date with the latest trends and am constantly building or prototyping something new.
 
