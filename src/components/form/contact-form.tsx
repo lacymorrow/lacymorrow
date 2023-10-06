@@ -17,6 +17,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
+import { useToast } from "@/components/ui/use-toast";
 import { GitHubLogoIcon, ResetIcon, RocketIcon } from "@radix-ui/react-icons";
 import { Loader2 } from "lucide-react";
 import { Reducer, useReducer, useState } from "react";
@@ -39,6 +40,8 @@ const defaults: StateType = {
 };
 
 const ContactForm = () => {
+  const { toast } = useToast();
+
   const [isLoading, setIsLoading] = useState(false);
   const [state, setState] = useReducer<Reducer<StateType, Partial<StateType>>>(
     (currentState, newState) => ({ ...currentState, ...newState }),
@@ -55,7 +58,8 @@ const ContactForm = () => {
 
     // Do the action in the Form HTML element
     // @ts-ignore
-    const action = e?.target?.action;
+    // const action = e?.target?.action;
+    const action = "api/sendmail";
 
     if (!action) {
       return;
@@ -73,23 +77,60 @@ const ContactForm = () => {
         "Content-Type": "application/json",
       },
     })
-      .then((res) => {
-        if (res.ok) {
-          return res.json();
-        } else {
-          throw new Error("Not ok");
+      .then(async (res) => {
+        const data = await res.json();
+        if (res.status !== 200) {
+          throw new Error(data.message);
         }
+        return data;
       })
       .then((data) => {
         if (data?.error) {
-          throw new Error(data.error);
+          throw new Error(data.error?.message || data.error);
         }
 
         console.log(data);
         return data;
       })
+      .then((data) => {
+        toast({
+          title: "Message sent!",
+          description: "I'll be in touch soon.",
+          status: "success",
+        });
+
+        handleReset();
+
+        return data;
+      })
       .catch((error) => {
         console.error(error);
+        toast({
+          title: "There was an error sending your message.",
+          description: (
+            <>
+              <div className="flex flex-col space-y-2">
+                <p>
+                  Please reach out at{" "}
+                  <a
+                    href="mailto:me@lacymorrow.com"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="text-splash underline"
+                  >
+                    me@lacymorrow.com ↗
+                  </a>
+                  .
+                </p>
+                <p className="text-xs">
+                  Error: {error.message || "Message not sent."}
+                </p>
+              </div>
+            </>
+          ),
+          status: "error",
+          duration: 5000,
+        });
       })
       .finally(() => {
         setIsLoading(false);

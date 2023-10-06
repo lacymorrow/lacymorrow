@@ -1,14 +1,18 @@
-import { componentMap } from "@/components/mdx/mdxComponents";
+import { useRouter } from 'next/router';
 
-import { useRouter } from 'next/router'
+import { componentMap } from "@/components/mdx/mdxComponents";
+import { Toaster } from "@/components/ui/toaster";
+
 import "@/styles/globals.css";
 
 export default function App({ Component, pageProps }) {
 	const { asPath } = useRouter();
-  return (
-		// <div {...(asPath !== '/' && { className: "background-pattern" })}>
-		<div className="background-pattern">
-			<Component {...pageProps} components={componentMap} />
-		</div>
+  	return (
+		<>
+			<div>
+				<Component {...pageProps} components={componentMap} />
+			</div>
+			<Toaster />
+		</>
 	);
 }
