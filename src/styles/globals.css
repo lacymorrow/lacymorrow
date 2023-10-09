@@ -86,8 +86,21 @@
   * {
     @apply border-border;
   }
+
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground print:bg-transparent;
   }
+
+
+	/* Stick footer to bottom of page */
+	div[dir] {
+		min-height: 100vh;
+		display: flex;
+		flex-direction: column;
+	}
+
+	footer {
+		margin-top: auto;
+	}
 
 }

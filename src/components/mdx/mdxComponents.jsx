@@ -26,6 +26,7 @@ import { Wistia } from "mdx-embed/dist/components/wistia";
 import { YouTube } from "mdx-embed/dist/components/youtube";
 
 import { Callout, Card, Cards, FileTree, Steps, Tabs } from 'nextra/components'
+import { Bleed } from 'nextra-theme-docs'
 
 import {
 	Accordion,
@@ -61,6 +62,7 @@ export const componentMap = {
 	Button,
 
 	// nextra
+	Bleed,
 	Callout,
 	Card,
 	Cards,

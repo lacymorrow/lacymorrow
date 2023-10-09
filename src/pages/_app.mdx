@@ -9,7 +9,7 @@ export default function App({ Component, pageProps }) {
 	const { asPath } = useRouter();
   	return (
 		<>
-			<div>
+			<div className="wrapper">
 				<Component {...pageProps} components={componentMap} />
 			</div>
 			<Toaster />

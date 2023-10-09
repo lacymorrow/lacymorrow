@@ -41,7 +41,7 @@
     "react": "18.2.0",
     "react-calendly": "^4.2.0",
     "react-dom": "18.2.0",
-    "react-github-readme-md": "^1.0.8",
+    "react-github-readme-md": "^1.1.0",
     "react-masonry-component": "^6.3.0",
     "sass": "^1.68.0",
     "tailwind-merge": "^1.14.0",
