@@ -1,4 +1,5 @@
 import {
+  GitHubLogoIcon,
   InstagramLogoIcon,
   LinkedInLogoIcon,
   SpeakerLoudIcon,
@@ -23,6 +24,11 @@ const socials = [
     icon: <TwitterLogoIcon />,
   },
   {
+    name: "Facebook",
+    href: "https://www.facebook.com/lacy.morrow",
+    icon: <FacebookIcon className="h-3.5 w-3.5" />,
+  },
+  {
     name: "Instagram",
     href: "https://instagram.com/goseethings",
     icon: <InstagramLogoIcon />,
@@ -33,9 +39,9 @@ const socials = [
     icon: <LinkedInLogoIcon />,
   },
   {
-    name: "Facebook",
-    href: "https://www.facebook.com/lacy.morrow",
-    icon: <FacebookIcon className="h-3.5 w-3.5" />,
+    name: "Github",
+    href: "https://www.github.com/lacymorrow",
+    icon: <GitHubLogoIcon className="h-3.5 w-3.5" />,
   },
 ];
 

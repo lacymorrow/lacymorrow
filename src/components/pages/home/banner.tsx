@@ -2,6 +2,7 @@ import { cn } from "@/lib/utils";
 import "@/styles/home.css";
 import { UpdateIcon } from "@radix-ui/react-icons";
 import Image from "next/image";
+import Link from "next/link";
 import { useState } from "react";
 const Banner = () => {
   const [index, setIndex] = useState(2);
@@ -17,7 +18,7 @@ const Banner = () => {
       <div className="card-holder w-full p-2 text-center text-xl antialiased md:mx-auto md:w-2/3 md:py-8">
         <div className={cn("card", `bg-${index}`)} style={{ padding: "0" }}>
           <div className="p-2 md:p-8">
-            <a
+            <Link
               href="/about"
               className="animated header-img tada mx-auto my-4 inline-block"
             >
@@ -28,45 +29,48 @@ const Banner = () => {
                 height="150"
                 alt="Lacy Morrow's Gravatar image"
               />
-            </a>
+            </Link>
 
-            <div className="content pt-2 font-bold leading-relaxed md:pt-6">
+            <div className="content pt-2 md:pt-6">
               <p>
-                <span className="text-3xl font-extrabold transition-colors duration-500 md:text-7xl">
+                <span className="text-3xl font-extrabold leading-relaxed duration-500 md:text-7xl ">
                   Lacy Morrow
                 </span>
               </p>
             </div>
           </div>
+          <p className="hover:text-splash mb-8 text-xl font-bold tracking-normal transition-colors 	">
+            <Link href="/about">Enter Site</Link>
+          </p>
         </div>
       </div>
       <div className="content mb-12 p-2 font-bold md:py-8">
         <p className="text-center text-4xl">
           🪄 &nbsp;Maker of{" "}
-          <a className="color-transition" href="/play">
+          <Link className="color-transition" href="/play">
             software
-          </a>
+          </Link>
           ,{" "}
-          <a className="color-transition" href="/work/drones">
+          <Link className="color-transition" href="/work/drones">
             drones
-          </a>
+          </Link>
           , and{" "}
-          <a className="color-transition" href="/work/companies/twilio">
+          <Link className="color-transition" href="/work/companies/twilio">
             IoT devices
-          </a>
+          </Link>
         </p>
 
         <div className="mx-auto mt-8 flex w-1/2 items-center justify-evenly gap-2 text-5xl md:text-8xl">
-          <a href="/work" className="slide-in animated hinge">
+          <Link href="/work" className="slide-in animated hinge">
             Work
-          </a>
+          </Link>
           <button type="button" onClick={handleChange} className="random">
             <span className="sr-only">Change Background</span>
             <UpdateIcon />
           </button>
-          <a href="/play" className="slide-in animated hinge">
+          <Link href="/play" className="slide-in animated hinge">
             Play
-          </a>
+          </Link>
         </div>
       </div>
     </>
