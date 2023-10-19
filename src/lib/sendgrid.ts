@@ -40,11 +40,11 @@ const sendgrid = async (props: {
 				type: 'text/html',
 				value: `
 					<p>Via <b>${name}</b>:</p>
-					${tel && `<p>${tel}</p>`}
-					${email && `<p>${email}</p>`}
-					${subject && `<p>${subject}</p>`}
+					${tel ? `<p>${tel}</p>` : ''}
+					${email ? `<p>${email}</p>` : ''}
+					${subject ? `<p>${subject}</p>` : ''}
 					<p>${message}</p>
-					${rest && `<p>${JSON.stringify(rest)}</p>`}
+					${Object.keys(rest).length === 0 ? `<p>${JSON.stringify(rest)}</p>` : ''}
 				`,
 			},
 		],
