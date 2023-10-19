@@ -1,4 +1,3 @@
-// @ts-nocheck
 /* eslint-disable @next/next/no-img-element */
 
 import Masonry from "react-masonry-component";
@@ -11,6 +10,7 @@ const masonryOptions = {
 const Freelance = () => {
   return (
     <div className="my-8">
+      {/* @ts-ignore */}
       <Masonry masonryOptions={masonryOptions} enableResizableChildren={true}>
         <div>
           <img

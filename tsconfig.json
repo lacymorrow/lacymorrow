@@ -2,6 +2,10 @@
   "compilerOptions": {
     "target": "es5",
     "lib": ["dom", "dom.iterable", "esnext"],
+
+    "removeComments": true,
+    "preserveConstEnums": true,
+
     "allowJs": true,
     "forceConsistentCasingInFileNames": true,
     "skipLibCheck": true,
@@ -31,5 +35,17 @@
     "src/components/mdx/mdxComponents.jsx",
     "src/pages/_app.mdx"
   ],
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules"],
+
+  "alwaysStrict": true,
+  "strictNullChecks": true,
+  "noUncheckedIndexedAccess": true,
+
+  "noImplicitAny": true,
+  "noImplicitReturns": true,
+  "noImplicitThis": true,
+  "noUnusedLocals": true,
+  "noUnusedParameters": true,
+  "allowUnreachableCode": false,
+  "noFallthroughCasesInSwitch": true
 }
