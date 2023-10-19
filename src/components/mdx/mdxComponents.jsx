@@ -41,9 +41,13 @@ import FlashArt from '@/components/flash/art'
 import Thick from "@/components/mdx/thick";
 import Center from "@/components/mdx/center";
 import GithubLink from "@/components/mdx/github-link";
+import Link from "next/link";
 
 
 export const componentMap = {
+	// Next
+	Link,
+
 	// custom
 	Readme,
 	Flash,

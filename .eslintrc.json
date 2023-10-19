@@ -1,19 +1,42 @@
 {
   "$schema": "https://json.schemastore.org/eslintrc",
+  "plugins": ["tailwindcss", "unused-imports", "jsx-a11y"],
   "extends": [
+    "plugin:@typescript-eslint/recommended",
+    "plugin:tailwindcss/recommended",
     "next/core-web-vitals",
-    "next",
-    "prettier",
-    "plugin:@next/next/recommended",
-    "plugin:tailwindcss/recommended"
+    "prettier"
   ],
-  "plugins": ["tailwindcss"],
   "rules": {
+    // TS
+    "@typescript-eslint/no-explicit-any": "off",
+    "@typescript-eslint/ban-ts-comment": "off",
+    "@typescript-eslint/ban-types": "off",
+
+    // Next
     "@next/next/no-html-link-for-pages": "off",
+
+    // Tailwind
     "tailwindcss/no-custom-classname": "off",
-    "tailwindcss/classnames-order": "warn"
+    "tailwindcss/classnames-order": "warn",
+
+    // Unused imports
+    "@typescript-eslint/no-unused-vars": "off",
+    "no-unused-vars": "off",
+    "unused-imports/no-unused-imports": "error",
+    "unused-imports/no-unused-vars": [
+      "warn",
+      {
+        "vars": "all",
+        "varsIgnorePattern": "^_", // Allow unused vars that start with _
+        "args": "after-used",
+        "argsIgnorePattern": "^_" // Allow unused args that start with _
+      }
+    ]
   },
   "settings": {
+    "mdx/code-blocks": true,
+
     "tailwindcss": {
       "callees": ["cn", "cva"],
       "config": "tailwind.config.js"
@@ -25,8 +48,9 @@
   "root": true,
   "overrides": [
     {
-      "files": ["*.js", "*.jsx", "*.ts", "*.tsx", "*.mdx"],
-      "parser": "@typescript-eslint/parser"
+      "files": ["*.ts", "*.tsx", "*.mdx"],
+      "parser": "@typescript-eslint/parser",
+      "extends": ["plugin:mdx/recommended"]
     }
   ]
 }

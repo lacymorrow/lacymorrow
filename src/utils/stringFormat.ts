@@ -1,8 +1,14 @@
-function stringFormat(str: string, ..._rest: any[] ): string {
-    var args = [].slice.call(arguments, 1),
-        i = 0;
+/* eslint prefer-const: "off" */
+// Turn a string into a template string and replace %s with the arguments passed in
 
-    return str.replace(/%s/g, () => args[i++]);
+// Example:
+// stringFormat('Hello %s, welcome to %s', 'John Doe', 'the party')
+
+function stringFormat(str: string, ...rest: any[]): string {
+	let args = [].slice.call(rest, 0),
+		i = 0;
+
+	return str.replace(/%s/g, () => args[i++]);
 }
 
 export default stringFormat;

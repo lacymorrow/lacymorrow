@@ -1,0 +1,5 @@
+node_modules
+.env.local
+
+# ShadCN
+src/components/ui

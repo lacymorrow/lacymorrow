@@ -1,5 +1,4 @@
 import Ruffle from "@/components/flash/ruffle";
-import capitalize from "@/utils/capitalize";
 
 type Props = {
   name: string;

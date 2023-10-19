@@ -1,13 +1,4 @@
-import {
-  InstagramLogoIcon,
-  LinkedInLogoIcon,
-  SpeakerLoudIcon,
-  TwitterLogoIcon,
-} from "@radix-ui/react-icons";
-import { FacebookIcon, SpeakerIcon } from "lucide-react";
 import Link from "next/link";
-
-type Props = {};
 
 const navigation = [
   { name: "Work", href: "/work" },
@@ -17,7 +8,7 @@ const navigation = [
   { name: "Fly5 ↗", href: "https://fly5.live" },
 ];
 
-export const Nav = (props: Props) => {
+export const Nav = () => {
   return (
     <div className="nav flex items-center gap-4">
       {navigation.map((item) => (

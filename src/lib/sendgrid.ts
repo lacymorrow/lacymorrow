@@ -4,8 +4,17 @@ import { receivingEmail, sendgridApiKey } from "@/config/config";
 
 const SENDGRID_API = 'https://api.sendgrid.com/v3/mail/send';
 
-const sendgrid = async (props) => {
+const sendgrid = async (props: {
+	name: string;
+	email: string;
+	tel?: string;
+	subject?: string;
+	message: string;
+	[key: string]: any;
+}) => {
 	const { name, email, tel, subject, message, ...rest } = props;
+
+	console.log('sendgrid email to:', receivingEmail)
 
 	const body = {
 		personalizations: [
@@ -31,11 +40,11 @@ const sendgrid = async (props) => {
 				type: 'text/html',
 				value: `
 					<p>Via <b>${name}</b>:</p>
-					${tel && `<p>${tel}</p>`}
-					${email && `<p>${email}</p>`}
-					${subject && `<p>${subject}</p>`}
+					${tel ? `<p>${tel}</p>` : ''}
+					${email ? `<p>${email}</p>` : ''}
+					${subject ? `<p>${subject}</p>` : ''}
 					<p>${message}</p>
-					${rest && `<p>${JSON.stringify(rest)}</p>`}
+					${Object.keys(rest).length === 0 ? `<p>${JSON.stringify(rest)}</p>` : ''}
 				`,
 			},
 		],

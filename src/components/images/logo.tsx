@@ -1,9 +1,7 @@
 import { MixIcon } from "@radix-ui/react-icons";
 import React from "react";
 
-type Props = {};
-
-export const Logo = (props: Props) => {
+export const Logo = () => {
   return (
     <div className="flex items-center gap-2">
       <MixIcon className="h-5 w-5" />

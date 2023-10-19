@@ -4,6 +4,7 @@ import Footer from '@/components/layout/footer'
 import { EnvelopeClosedIcon, PaperPlaneIcon } from '@radix-ui/react-icons';
 import { Mail } from 'lucide-react';
 import { useRouter } from 'next/router';
+import Link from 'next/link';
 const themeConfig = {
 	docsRepositoryBase: 'https://github.com/lacymorrow/lacymorrow/tree/main',
 	logo: Logo,
@@ -43,9 +44,9 @@ const themeConfig = {
 	},
 	banner: {
 		text: (
-			<a href="https://lacymorrow.github.io/crossover" target="_blank">
+			<Link href="https://lacymorrow.github.io/crossover" target="_blank">
 				🎉 CrossOver v3.1.5 has been released. Read more →
-			</a>
+			</Link>
 		)
 	},
 	sidebar: {

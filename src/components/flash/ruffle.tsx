@@ -1,5 +1,6 @@
 import Script from "next/script";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
+import Link from "next/link";
 
 type Props = {
   src: string;
@@ -21,7 +22,7 @@ export const Ruffle = ({ src, ...rest }: Props) => {
           <param name="movie" value={src} />
           <p>
             Your browser does not support WASM,{" "}
-            <a href="https://ruffle.rs/">see Ruffle documentation</a>.
+            <Link href="https://ruffle.rs/">see Ruffle documentation</Link>.
           </p>
         </object>
       </AspectRatio>

@@ -9,17 +9,14 @@ import {
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
+
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/components/ui/use-toast";
-import { GitHubLogoIcon, ResetIcon, RocketIcon } from "@radix-ui/react-icons";
+import { receivingEmail } from "@/config/config";
+import { $contact } from "@/config/strings";
+import { ResetIcon, RocketIcon } from "@radix-ui/react-icons";
 import { Loader2 } from "lucide-react";
+import Link from "next/link";
 import { Reducer, useReducer, useState } from "react";
 // import { experimental_useFormStatus as useFormStatus } from "react-dom";
 
@@ -58,19 +55,22 @@ const ContactForm = () => {
 
     // Do the action in the Form HTML element
     // @ts-ignore
-    // const action = e?.target?.action;
-    const action = "api/sendmail";
+    const action = e?.target?.action;
 
     if (!action) {
       return;
     }
 
     if (!state.tel || !state.email) {
-      console.error("Please provide a phone number or email address.");
+      console.error($contact.error.validation_phone_email);
+      toast({
+        title: "Message sent!",
+        description: $contact.error.validation_phone_email,
+      });
     }
 
     setIsLoading(true);
-    const res = await fetch(action, {
+    const _res = await fetch(action, {
       method: "POST",
       body: JSON.stringify(state),
       headers: {
@@ -94,9 +94,8 @@ const ContactForm = () => {
       })
       .then((data) => {
         toast({
-          title: "Message sent!",
-          description: "I'll be in touch soon.",
-          status: "success",
+          title: $contact.success.title,
+          description: $contact.success.message,
         });
 
         handleReset();
@@ -106,29 +105,28 @@ const ContactForm = () => {
       .catch((error) => {
         console.error(error);
         toast({
-          title: "There was an error sending your message.",
+          title: $contact.error.title,
           description: (
             <>
               <div className="flex flex-col space-y-2">
                 <p>
-                  Please reach out at{" "}
-                  <a
-                    href="mailto:me@lacymorrow.com"
+                  {$contact.error.cta}{" "}
+                  <Link
+                    href={`mailto:${receivingEmail}`}
                     target="_blank"
                     rel="noreferrer"
                     className="text-splash underline"
                   >
-                    me@lacymorrow.com ↗
-                  </a>
+                    {receivingEmail} ↗
+                  </Link>
                   .
                 </p>
                 <p className="text-xs">
-                  Error: {error.message || "Message not sent."}
+                  Error: {error.message || $contact.error.message}
                 </p>
               </div>
             </>
           ),
-          status: "error",
           duration: 5000,
         });
       })
@@ -145,16 +143,14 @@ const ContactForm = () => {
     <div className="my-6">
       <form
         onSubmit={handleSubmit}
-        action="https://phpstack-1011481-3573429.cloudwaysapps.com/io.php"
+        action="api/sendmail"
+        // action="https://phpstack-1011481-3573429.cloudwaysapps.com/io.php"
       >
         <Card>
           <CardHeader>
-            <CardTitle className="text-2xl">Contact Me</CardTitle>
+            <CardTitle className="text-2xl">{$contact.title}</CardTitle>
 
-            <CardDescription>
-              I&apos;m available to lead your next project, build your next
-              product, or help you with your next idea.
-            </CardDescription>
+            <CardDescription>{$contact.description}</CardDescription>
           </CardHeader>
           <CardContent className="grid gap-6">
             <div className="grid gap-2">
@@ -250,7 +246,7 @@ const SubmitButton = ({ pending }: { pending?: boolean }) => {
   //   const { pending } = useFormStatus();
   return (
     <Button type="submit" {...(pending ? { disabled: true } : {})}>
-      Submit{" "}
+      {$contact.submit}{" "}
       {pending ? (
         <Loader2 className="ml-2 h-4 w-4 animate-spin" />
       ) : (
