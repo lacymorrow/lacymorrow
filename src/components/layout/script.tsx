@@ -13,7 +13,7 @@ const ScriptComponent = ({ src }: { src: string }) => {
     return () => {
       document.body.removeChild(script);
     };
-  }, []);
+  }, [src]);
 
   return <></>;
 };

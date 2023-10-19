@@ -4,8 +4,17 @@ import { receivingEmail, sendgridApiKey } from "@/config/config";
 
 const SENDGRID_API = 'https://api.sendgrid.com/v3/mail/send';
 
-const sendgrid = async (props) => {
+const sendgrid = async (props: {
+	name: string;
+	email: string;
+	tel?: string;
+	subject?: string;
+	message: string;
+	[key: string]: any;
+}) => {
 	const { name, email, tel, subject, message, ...rest } = props;
+
+	console.log('sendgrid email to:', receivingEmail)
 
 	const body = {
 		personalizations: [

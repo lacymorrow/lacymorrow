@@ -7,11 +7,27 @@
     "plugin:@next/next/recommended",
     "plugin:tailwindcss/recommended"
   ],
-  "plugins": ["tailwindcss"],
+  "plugins": ["tailwindcss", "unused-imports"],
   "rules": {
+    // Next
     "@next/next/no-html-link-for-pages": "off",
+
+    // Tailwind
     "tailwindcss/no-custom-classname": "off",
-    "tailwindcss/classnames-order": "warn"
+    "tailwindcss/classnames-order": "warn",
+
+    // Unused imports
+    "no-unused-vars": "off", // or "@typescript-eslint/no-unused-vars": "off",
+    "unused-imports/no-unused-imports": "error",
+    "unused-imports/no-unused-vars": [
+      "warn",
+      {
+        "vars": "all",
+        "varsIgnorePattern": "^_", // Allow unused vars that start with _
+        "args": "after-used",
+        "argsIgnorePattern": "^_" // Allow unused args that start with _
+      }
+    ]
   },
   "settings": {
     "tailwindcss": {

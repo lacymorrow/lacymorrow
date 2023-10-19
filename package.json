@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "lint:fix": "next lint --fix"
   },
   "dependencies": {
     "@radix-ui/react-accordion": "^1.1.2",
@@ -29,6 +30,7 @@
     "eslint-config-next": "^13.5.4",
     "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-tailwindcss": "^3.13.0",
+    "eslint-plugin-unused-imports": "^3.0.0",
     "lucide-react": "^0.284.0",
     "marked": "^9.0.3",
     "mdx-embed": "^1.1.2",

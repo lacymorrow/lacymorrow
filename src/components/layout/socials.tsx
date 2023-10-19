@@ -2,15 +2,12 @@ import {
   GitHubLogoIcon,
   InstagramLogoIcon,
   LinkedInLogoIcon,
-  SpeakerLoudIcon,
   TwitterLogoIcon,
 } from "@radix-ui/react-icons";
-import { FacebookIcon, SpeakerIcon } from "lucide-react";
+import { FacebookIcon } from "lucide-react";
 import Link from "next/link";
 import LastFmIcon from "@/components/images/lastfm-icon";
 import { cn } from "@/lib/utils";
-
-type Props = {};
 
 const socials = [
   {
@@ -45,7 +42,7 @@ const socials = [
   },
 ];
 
-export const Socials = (props: Props) => {
+export const Socials = () => {
   return (
     <div className="text-muted-foreground child:fill-muted-foreground flex items-center justify-start gap-2">
       {socials.map((item) => (
