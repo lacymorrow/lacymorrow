@@ -4554,10 +4554,10 @@ react-dom@18.2.0:
     loose-envify "^1.1.0"
     scheduler "^0.23.0"
 
-react-github-readme-md@^1.1.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/react-github-readme-md/-/react-github-readme-md-1.1.0.tgz#025dcf9ab95b63ea034e35338d88bf154ec0259e"
-  integrity sha512-CdJSUl71FaWYr+lAOmT/HTnH2GsL9oPxNgq+HbAf59fQgfOsrVNTk7VQPSqQDfe3LDDMkIUdB3QDB15IScKO0A==
+react-github-readme-md@^1.1.2:
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/react-github-readme-md/-/react-github-readme-md-1.1.2.tgz#74c611a58d2bf53c4614a2d1c360ca1927bcc004"
+  integrity sha512-49XzARLQkgrNy7GgYIZMOMWK6uOhVW/5NTtIH08iDAPK6QAG2h8eDsbzpln5DkP7ZANhHlTraK5A5vXGcgLpNg==
   dependencies:
     marked "9"
     marked-gfm-heading-id "^3.1.0"
