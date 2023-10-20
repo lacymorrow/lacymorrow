@@ -1,4 +1,12 @@
 {
+  "play": {
+    "title": "Play",
+    "href": "/play"
+  },
+  "work": {
+    "title": "Work",
+    "href": "/work"
+  },
   "index": "About Me",
   "mentions": "Mentions",
   "contact": {
@@ -13,5 +21,7 @@
       "pagination": false
     }
   },
-  "archive": "Archive"
+  "archive": {
+    "title": "Archive"
+  }
 }
