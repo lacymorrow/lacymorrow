@@ -13,12 +13,7 @@ export const FlashArt = ({ name, clickToPlay }: Props) => {
         Flash Art: {capitalize(name)}
       </h1>
       <div className="my-8 flex flex-col items-center">
-        <Ruffle
-          src={`/flash/art/${name}.swf`}
-          style={{ width: "300", height: "300" }}
-          width="300"
-          height="300"
-        />
+        <Ruffle src={`/flash/art/${name}.swf`} width="533" height="400" />
       </div>
       {clickToPlay && <p>Click to play</p>}
     </>

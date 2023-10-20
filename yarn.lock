@@ -5296,10 +5296,10 @@ react-remove-scroll@2.5.5:
     use-callback-ref "^1.3.0"
     use-sidecar "^1.1.2"
 
-react-ruffle@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/react-ruffle/-/react-ruffle-1.0.1.tgz#03011223d4da9e843fa28808e34ad59c93ebb142"
-  integrity sha512-Ya1XcdCBsPEu0nkGOd3agRLIlEup3QdJS8VsL+SqSqUGJIOlLKkzagl7cQrwBUpOrt/gn+vURBTh5vfP2nVh5g==
+react-ruffle@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/react-ruffle/-/react-ruffle-1.0.2.tgz#0f83a9af973a3e9afe236dc15fd6fc25f2671cc1"
+  integrity sha512-ZuDfh8qMZgqh1t8Enf0qWXTdEHUboWNUvE854BawpLOD6k6J/AdciBqvpZsvF9vCnS5/96XcfM/zroHA9WcyAw==
 
 react-style-singleton@^2.2.1:
   version "2.2.1"
