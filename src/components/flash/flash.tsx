@@ -1,4 +1,5 @@
-import Ruffle from "@/components/flash/ruffle";
+import { Ruffle } from "react-ruffle";
+import { AspectRatio } from "../ui/aspect-ratio";
 
 type Props = {
   name: string;
@@ -8,14 +9,18 @@ type Props = {
 };
 
 export const Flash = ({ name, width, height, params }: Props) => {
-  const w = width && `${String(width)}px`;
-  const h = height && `${String(height)}px`;
+  const w = width ? `${String(width)}px` : "auto";
+  const h = height ? `${String(height)}px` : "auto";
   return (
     <div className="mt-8">
-      <Ruffle
-        src={`/flash/${name}.swf?${params}`}
+      {/*  */}
+      <AspectRatio
+        ratio={16 / 9}
+        className="flex justify-center"
         style={{ width: w, height: h }}
-      />
+      >
+        <Ruffle src={`/flash/${name}.swf?${params}`} />
+      </AspectRatio>
     </div>
   );
 };
