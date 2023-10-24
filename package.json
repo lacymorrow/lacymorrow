@@ -29,8 +29,9 @@
     "react": "18.2.0",
     "react-calendly": "^4.2.0",
     "react-dom": "18.2.0",
-    "react-github-readme-md": "^1.1.3",
-    "react-masonry-component": "^6.3.0"
+    "react-github-readme-md": "^1.1.5",
+    "react-masonry-component": "^6.3.0",
+    "react-ruffle": "^1.0.2"
   },
   "devDependencies": {
     "@types/node": "20.8.2",

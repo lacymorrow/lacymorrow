@@ -62,7 +62,6 @@ const Banner = () => {
             IoT devices
           </Link>
         </p>
-
         <div className="mx-auto mt-8 flex w-1/2 items-center justify-evenly gap-2 text-5xl md:text-8xl">
           <Link href="/work" className="slide-in animated hinge">
             Work

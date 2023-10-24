@@ -1,18 +1,24 @@
-import { useRouter } from 'next/router';
+import { useRouter } from "next/router";
 
 import { componentMap } from "@/components/mdx/mdxComponents";
 import { Toaster } from "@/components/ui/toaster";
 
 import "@/styles/globals.css";
+import { useEffect } from "react";
+import consoleBanner from "@/lib/consoleBanner";
 
 export default function App({ Component, pageProps }) {
-	const { asPath } = useRouter();
-  	return (
-		<>
-			<div className="wrapper">
-				<Component {...pageProps} components={componentMap} />
-			</div>
-			<Toaster />
-		</>
-	);
+  const { asPath } = useRouter();
+  useEffect(() => {
+    consoleBanner();
+  }, []);
+
+  return (
+    <>
+      <div className="wrapper">
+        <Component {...pageProps} components={componentMap} />
+      </div>
+      <Toaster />
+    </>
+  );
 }

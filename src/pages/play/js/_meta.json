@@ -3,8 +3,8 @@
   "movie-art": "movie-art",
   "movie-info": "movie-info",
   "movie-trailer": "movie-trailer",
-  "eslint-standard": "eslint-standard",
   "hyper2-border": "hyper2-border",
+  "eslint-standard": "eslint-standard",
   "xspf-playlist": "xspf-playlist",
-  "xplayjs": "XPlay.js"
+  "xplayjs": "xplay.js"
 }

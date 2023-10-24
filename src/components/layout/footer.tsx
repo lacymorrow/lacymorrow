@@ -9,9 +9,13 @@ export const Footer = () => {
       <div className="flex w-full justify-between text-xs">
         <div className="hidden justify-start gap-4 md:flex">
           <div className="flex items-center">
-            MIT {new Date().getFullYear()} ©{" "}
-            <Link href="https://lacymorrow.com" target="_blank" rel="noopener">
-              {$app.full_name}
+            <Link
+              className="hover:text-splash"
+              href="https://lacymorrow.com"
+              target="_blank"
+              rel="noopener"
+            >
+              {$app.signature}
             </Link>
           </div>
           <div className="hidden md:block">

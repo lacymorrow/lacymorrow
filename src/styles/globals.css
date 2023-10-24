@@ -91,9 +91,13 @@
     @apply bg-background text-foreground print:bg-transparent;
   }
 
+	/* Force page to be full width (Flash pages are smaller than the screen) */
+	.wrapper > div[dir] > div[class~="nx-max-w-[90rem]"] {
+		width: 100%;
+	}
 
 	/* Stick footer to bottom of page */
-	div[dir] {
+	.wrapper > div[dir] {
 		min-height: 100vh;
 		display: flex;
 		flex-direction: column;
