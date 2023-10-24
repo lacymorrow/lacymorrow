@@ -1,9 +1,12 @@
+"use client";
+
 import { cn } from "@/lib/utils";
 import "@/styles/home.css";
 import { UpdateIcon } from "@radix-ui/react-icons";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
+
 const Banner = () => {
   const [index, setIndex] = useState(2);
   const handleChange = () => {
