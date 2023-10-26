@@ -2,16 +2,11 @@
 
 import Masonry from "react-masonry-component";
 
-const masonryOptions = {
-  transitionDuration: 0.2,
-  columnWidth: 100,
-};
-
 const Freelance = () => {
   return (
     <div className="my-8">
       {/* @ts-ignore */}
-      <Masonry masonryOptions={masonryOptions} enableResizableChildren={true}>
+      <Masonry enableResizableChildren={true}>
         <div>
           <img
             src="/static/clients/th-american.jpg"

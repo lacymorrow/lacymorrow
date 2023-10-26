@@ -33,7 +33,7 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     "src/components/mdx/mdxComponents.jsx",
-    "src/pages/_app.mdx"
+    "src/pages/_app.tsx"
   ],
   "exclude": ["node_modules"],
 
