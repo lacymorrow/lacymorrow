@@ -1,6 +1,6 @@
 export const $app = {
 	full_name: "Lacy Morrow",
-	signature: "Coded with ♥️ by Lacy Morrow",
+	signature: "Made with ♥️ by Lacy Morrow",
 }
 
 export const $contact = {

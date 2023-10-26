@@ -1,8 +1,6 @@
 import Logo from '@/components/images/logo'
-import Socials from '@/components/layout/socials'
 import Footer from '@/components/layout/footer'
-import { EnvelopeClosedIcon, PaperPlaneIcon } from '@radix-ui/react-icons';
-import { Mail } from 'lucide-react';
+import { EnvelopeClosedIcon } from '@radix-ui/react-icons';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 const themeConfig = {

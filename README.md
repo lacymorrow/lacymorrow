@@ -15,6 +15,7 @@
 </div>
 I am constantly learning new technologies to stay up to date with the latest trends and am constantly building or prototyping something new.
 
+
 🎨 In addition to web and app development, I'm also passionate about **videography** and **design**. I have experience creating **brand identities**, **logos**, and **user interfaces**. I believe that accessible design is essential to creating great user experiences. I also build and pilot **FPV drones for action media**.
 
 📚 In my free time, I enjoy building electronic hardware and reading. I've helped create hardware devices such as the [hackpack](https://hackpack.cc/). One of my favorite books is **The Hitchhikers Guide to the Galaxy** by _Douglas Adams_.

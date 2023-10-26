@@ -22,6 +22,7 @@
     "clsx": "^2.0.0",
     "lucide-react": "^0.284.0",
     "marked": "^9.0.3",
+    "masonic": "^3.7.0",
     "mdx-embed": "^1.1.2",
     "next": "13.5.4",
     "nextra": "^2.13.1",
