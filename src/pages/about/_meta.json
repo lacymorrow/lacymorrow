@@ -7,8 +7,22 @@
     "title": "Work",
     "href": "/work"
   },
-  "index": "About Me",
-  "mentions": "Mentions",
+  "index": {
+    "title": "About Me",
+    "theme": {
+      "pagination": false
+    }
+  },
+  "mentions": {
+    "theme": {
+      "pagination": false
+    }
+  },
+  "donate": {
+    "theme": {
+      "pagination": false
+    }
+  },
   "contact": {
     "title": "Contact Me",
     "href": "/contact",
