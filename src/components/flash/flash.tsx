@@ -13,7 +13,6 @@ export const Flash = ({ name, width, height, params }: Props) => {
   const h = height ? `${String(height)}px` : "auto";
   return (
     <div className="mt-8">
-      {/*  */}
       <AspectRatio
         ratio={16 / 9}
         className="flex justify-center"

@@ -94,6 +94,18 @@ body {
   @apply bg-background text-foreground print:bg-transparent;
 }
 
+a {
+  & > svg {
+    display: inline-block;
+  }
+}
+
+/* Vertically center the emoji in callouts */
+.nextra-callout .nx-select-none {
+  display: flex;
+  align-items: center;
+}
+
 .wrapper {
   /* Force page to be full width (Flash pages are smaller than the screen) */
   & > div[dir] > div[class~="nx-max-w-[90rem]"] {

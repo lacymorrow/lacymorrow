@@ -9,6 +9,7 @@
     "lint:fix": "next lint --fix"
   },
   "dependencies": {
+    "@egjs/react-view3d": "^2.3.1",
     "@radix-ui/react-accordion": "^1.1.2",
     "@radix-ui/react-aspect-ratio": "^1.0.3",
     "@radix-ui/react-dropdown-menu": "^2.0.6",
@@ -30,9 +31,11 @@
     "react": "18.2.0",
     "react-calendly": "^4.2.0",
     "react-dom": "18.2.0",
+    "react-error-boundary": "^4.0.11",
     "react-github-readme-md": "^1.1.5",
     "react-masonry-component": "^6.3.0",
-    "react-ruffle": "^1.0.2"
+    "react-ruffle": "^1.0.2",
+    "react-stl-viewer": "^2.3.2"
   },
   "devDependencies": {
     "@types/node": "20.8.2",

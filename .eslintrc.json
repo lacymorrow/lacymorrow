@@ -48,9 +48,16 @@
   "root": true,
   "overrides": [
     {
-      "files": ["*.ts", "*.tsx", "*.mdx"],
+      "files": ["*.ts", "*.tsx"],
       "parser": "@typescript-eslint/parser",
       "extends": ["plugin:mdx/recommended"]
+    },
+    {
+      "files": ["*.mdx"],
+      "extends": ["plugin:mdx/recommended"],
+      "rules": {
+        "react/jsx-no-undef": "off"
+      }
     }
   ]
 }
