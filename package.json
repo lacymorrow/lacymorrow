@@ -32,7 +32,7 @@
     "react-calendly": "^4.2.0",
     "react-dom": "18.2.0",
     "react-error-boundary": "^4.0.11",
-    "react-github-readme-md": "^1.1.5",
+    "react-github-readme-md": "^1.2.2",
     "react-masonry-component": "^6.3.0",
     "react-ruffle": "^1.0.2",
     "react-stl-viewer": "^2.3.2"

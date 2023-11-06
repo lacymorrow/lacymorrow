@@ -5538,10 +5538,10 @@ react-error-boundary@^4.0.11:
   dependencies:
     "@babel/runtime" "^7.12.5"
 
-react-github-readme-md@^1.1.5:
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/react-github-readme-md/-/react-github-readme-md-1.2.0.tgz#955a57d28baf2b1369586412066d08bfe44d3e5b"
-  integrity sha512-vGanU1J8sG4mD8DKtgz3QJ6cRCOdzKYCdgCloMRS/tAdZuPPRQU/zNfDgS+wg4YfWnQdIknrPHA2Rqm1APoEKg==
+react-github-readme-md@^1.2.2:
+  version "1.2.2"
+  resolved "https://registry.yarnpkg.com/react-github-readme-md/-/react-github-readme-md-1.2.2.tgz#f6be65674fd82f1c2043a44ce5153e9fa33ae723"
+  integrity sha512-0FVYaw0dJDml3DQok2XcdR32WnkCCorHe2ln/t1y9J2vjZpf/odLFrGXiK3QBLr/hahDHqmGKMoPkB0T6sKPqw==
   dependencies:
     marked "9"
     marked-alert "^1.1.1"
