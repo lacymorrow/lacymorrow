@@ -27,6 +27,9 @@
       "@/*": ["./src/*"]
     }
   },
+  "mdx": {
+    "plugins": ["remark-gfm"]
+  },
   "include": [
     "next-env.d.ts",
     "**/*.ts",

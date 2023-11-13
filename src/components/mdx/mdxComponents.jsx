@@ -38,13 +38,20 @@ import { Button } from '@/components/ui/button'
 import Readme from '@/components/github/readme'
 import Flash from '@/components/flash/flash'
 import FlashArt from '@/components/flash/art'
+import { View3d } from "@/components/mdx/view-3d";
 import Thick from "@/components/mdx/thick";
 import Center from "@/components/mdx/center";
+import DownloadLink from "@/components/mdx/download-link";
 import GithubLink from "@/components/mdx/github-link";
 import Link from "next/link";
 
+import { GitHubLogoIcon } from "@radix-ui/react-icons";
+
 
 export const componentMap = {
+	// Icons
+	GitHubLogoIcon,
+
 	// Next
 	Link,
 
@@ -52,10 +59,12 @@ export const componentMap = {
 	Readme,
 	Flash,
 	FlashArt,
+	DownloadLink,
 	GithubLink,
 	Thick,
 	Button,
 	Center,
+	View3d,
 
 	// ShadCN
 	Accordion,

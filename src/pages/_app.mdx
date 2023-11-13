@@ -9,6 +9,7 @@ import consoleBanner from "@/lib/consoleBanner";
 
 export default function App({ Component, pageProps }) {
   const { asPath } = useRouter();
+
   useEffect(() => {
     consoleBanner();
   }, []);
