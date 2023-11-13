@@ -54,9 +54,11 @@ I am constantly learning new technologies to stay up to date with the latest tre
   <img height=200 align="center" src="https://github-readme-stats.vercel.app/api/top-langs/?username=lacymorrow&layout=compact&langs_count=8&card_width=320" />
 </a>
 
-![Anurag's GitHub stats](https://github-profile-trophy.vercel.app/?username=lacymorrow&margin-w=12&rank=-C,-?)
+---
 
-[!Lacy's wakatime stats](https://github-readme-stats.vercel.app/api/wakatime?username=lacymorrow&layout=compact&theme=transparent)](
+<a href="https://github.com/lacymorrow/">
+![Anurag's GitHub stats](https://github-profile-trophy.vercel.app/?username=lacymorrow&margin-w=12&rank=-C,-?)
+</a>
 <!--
 **lacymorrow/lacymorrow** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
 
