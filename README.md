@@ -45,6 +45,15 @@ I am constantly learning new technologies to stay up to date with the latest tre
 ![jira](https://img.shields.io/badge/Jira-F7B500?style=for-the-badge&logo=jira&logoColor=white)
 
 
+### Developer Stats
+
+<a href="https://github.com/lacymorrow/">
+  <img height=200 align="center" src="https://github-readme-stats.vercel.app/api?username=lacymorrow&show_icons=true&theme=transparent" />
+</a>
+<a href="https://github.com/lacymorrow/">
+  <img height=200 align="center" src="https://github-readme-stats.vercel.app/api/top-langs/?username=lacymorrow&layout=compact&langs_count=8&card_width=320" />
+</a>
+
 <!--
 **lacymorrow/lacymorrow** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
 
