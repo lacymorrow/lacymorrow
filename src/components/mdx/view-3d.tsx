@@ -7,18 +7,20 @@ type Props = {
   src: string;
 };
 
-export const View3d = ({ src }: Props) => {
+export const View3d = ({ src, ...props }: Props) => {
   return (
     <View3D
       className="mx-auto h-full max-w-sm"
       tag="div"
       src={src}
+      zoom={false}
       onReady={(e) => {
         console.log(`Loaded ${src}`, e);
       }}
       onLoad={(e) => {
         console.log(`Loaded ${src}`, e);
       }}
+      {...props}
     />
   );
 };
