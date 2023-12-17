@@ -41,6 +41,11 @@ const nextConfig = {
 			destination: '/about/donate',
 			permanent: true,
 		},
+		{
+			source: '/projects/:path*',
+			destination: '/play/:path*',
+			permanent: true,
+		},
 	]
 }
 
