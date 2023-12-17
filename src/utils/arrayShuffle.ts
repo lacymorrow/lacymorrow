@@ -6,7 +6,7 @@
  * @param {Array} array items An array containing the items.
  * @returns {Array} The shuffled array.
  */
-export const shuffleArray = (array: any[]) => {
+export const arrayShuffle = (array: any[]) => {
 	let currentIndex = array.length;
 	let randomIndex;
 

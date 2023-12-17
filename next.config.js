@@ -37,6 +37,11 @@ const nextConfig = {
 			permanent: true,
 		},
 		{
+			source: '/drones',
+			destination: '/work/drones/flymore',
+			permanent: false,
+		},
+		{
 			source: '/donate',
 			destination: '/about/donate',
 			permanent: true,

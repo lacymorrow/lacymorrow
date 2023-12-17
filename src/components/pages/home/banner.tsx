@@ -54,7 +54,7 @@ const Banner = () => {
             software
           </Link>
           ,{" "}
-          <Link className="color-transition" href="/work/drones">
+          <Link className="color-transition" href="/drones">
             drones
           </Link>
           , and{" "}
