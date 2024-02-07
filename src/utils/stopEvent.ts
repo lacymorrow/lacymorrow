@@ -1,9 +1,10 @@
-export const stopEvent = (e: Event) => {
-	console.warn('Blocked event', e);
-	if (typeof e.preventDefault === 'function') {
-		e.preventDefault();
+export const stopEvent = (event: Event) => {
+	if (typeof event.preventDefault === 'function') {
+		console.warn('Event prevented:', event);
+		event.preventDefault();
 	}
-	if (typeof e.stopPropagation === 'function') {
-		e.stopPropagation();
+	if (typeof event.stopPropagation === 'function') {
+		console.warn('Event stopped:', event);
+		event.stopPropagation();
 	}
 };
