@@ -1,4 +1,5 @@
-// import fetch from 'node-fetch';
+// todo: block spam
+// - robertres lucido.leinteract@gmail.com
 
 import { receivingEmail, sendgridApiKey } from "@/config/config";
 
