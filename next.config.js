@@ -37,6 +37,11 @@ const nextConfig = {
 			permanent: true,
 		},
 		{
+			source: '/casper',
+			destination: '/play/casper',
+			permanent: false,
+		},
+		{
 			source: '/drones',
 			destination: '/work/drones/flymore',
 			permanent: false,
