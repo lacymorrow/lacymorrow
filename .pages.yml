@@ -6,6 +6,7 @@ content:
     path: 'src/pages'
     view:
       fields: [ title, published, date ]
+      primary: title
     fields:
       - name: published
         label: Published
