@@ -20,6 +20,7 @@ const DownloadLink = ({
       <Link href={href} className={`${nxLink}`}>
         <div className="inline">{children || "Download"}</div>
       </Link>
+      {after}
     </div>
   );
 };

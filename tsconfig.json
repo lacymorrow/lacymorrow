@@ -36,7 +36,10 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     "src/components/mdx/mdxComponents.jsx",
-    "src/pages/_app.tsx"
+    "src/pages/_app.tsx",
+    "next.config.js",
+    "postcss.config.js",
+    "next.config.mjs"
   ],
   "exclude": ["node_modules"],
 

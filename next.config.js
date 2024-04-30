@@ -4,22 +4,20 @@ const nextConfig = {
 	// output: 'export',
 
 	// cors: {
-  //   origin: "*",
-  // },
+	//   origin: "*",
+	// },
 	// experimental: { serverActions:true },
 
 	images: {
 		// For Static Site Generation
 		// unoptimized: true,
-    remotePatterns: [
-      {
-        protocol: 'https',
-        hostname: 's.gravatar.com',
-        port: '',
-        pathname: '/avatar/**',
-      },
-    ],
-  },
+		remotePatterns: [{
+			protocol: 'https',
+			hostname: 's.gravatar.com',
+			port: '',
+			pathname: '/avatar/**',
+		}],
+	},
 	redirects: async () => [
 		{
 			source: '/about/contact',
@@ -66,8 +64,8 @@ const nextConfig = {
 
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const withNextra = require('nextra')({
-  theme: 'nextra-theme-docs',
-  themeConfig: './theme.config.jsx',
+	theme: 'nextra-theme-docs',
+	themeConfig: './theme.config.jsx',
 	defaultShowCopyCode: true
 })
 

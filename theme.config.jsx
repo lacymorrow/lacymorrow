@@ -1,8 +1,8 @@
-import Logo from '@/components/images/logo'
-import Footer from '@/components/layout/footer'
+import Logo from '@/components/images/logo';
+import Footer from '@/components/layout/footer';
 import { EnvelopeClosedIcon } from '@radix-ui/react-icons';
-import { useRouter } from 'next/router';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 const themeConfig = {
 	docsRepositoryBase: 'https://github.com/lacymorrow/lacymorrow/tree/main',
 	logo: Logo,

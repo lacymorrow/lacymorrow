@@ -62,6 +62,7 @@ export function debounce<T extends any[], R>(
 	};
 
 	const debounced = restArguments(function (this: any, _args: T) {
+		// eslint-disable-next-line @typescript-eslint/no-this-alias
 		context = this;
 		args = _args;
 		previous = now();

@@ -75,6 +75,7 @@ export const ImageGrid: React.FC<ImageGridProps> = ({
       <div
         className="grid"
         data-isotope='{ "itemSelector": ".grid-item", "masonry": { "columnWidth": 200 } }'
+        {...rest}
       >
         {items.map((item, index) => (
           <div className="grid-item" key={index}>
