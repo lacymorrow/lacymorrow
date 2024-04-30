@@ -37,9 +37,10 @@
     "**/*.tsx",
     "**/*.mdx",
     "**/*.js",
-    "**/*.jsx"
+    "**/*.jsx",
+    "**/*.mdx"
   ],
-  "exclude": ["node_modules"],
+  "exclude": ["node_modules", ".next", "out", "public"],
 
   "alwaysStrict": true,
   "strictNullChecks": true,
