@@ -248,7 +248,7 @@ const SubmitButton = ({ pending }: { pending?: boolean }) => {
     <Button type="submit" {...(pending ? { disabled: true } : {})}>
       {$contact.submit}{" "}
       {pending ? (
-        <Loader2 className="ml-2 h-4 w-4 animate-spin" />
+        <Loader2 className="ml-2 size-4 animate-spin" />
       ) : (
         <RocketIcon className="ml-2" />
       )}

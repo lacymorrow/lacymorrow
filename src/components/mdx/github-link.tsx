@@ -12,7 +12,7 @@ const GithubLink = ({
     <span className="mx-1 inline-flex">
       <Link href={href} className="">
         <span className="sr-only">Github Repository</span>
-        <GitHubLogoIcon className="h-6 w-6" />
+        <GitHubLogoIcon className="size-6" />
         {children}
       </Link>
     </span>

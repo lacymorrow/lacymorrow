@@ -1,3 +1,5 @@
+import LastFmIcon from "@/components/images/lastfm-icon";
+import { cn } from "@/lib/utils";
 import {
   GitHubLogoIcon,
   InstagramLogoIcon,
@@ -6,8 +8,6 @@ import {
 } from "@radix-ui/react-icons";
 import { FacebookIcon } from "lucide-react";
 import Link from "next/link";
-import LastFmIcon from "@/components/images/lastfm-icon";
-import { cn } from "@/lib/utils";
 
 const socials = [
   {
@@ -23,7 +23,7 @@ const socials = [
   {
     name: "Facebook",
     href: "https://www.facebook.com/lacy.morrow",
-    icon: <FacebookIcon className="h-3.5 w-3.5" />,
+    icon: <FacebookIcon className="size-3.5" />,
   },
   {
     name: "Instagram",
