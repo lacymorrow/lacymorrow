@@ -26,7 +26,7 @@ const nextConfig = {
 			destination: '/contact',
 			permanent: true,
 		},
-				{
+		{
 			source: '/casper',
 			destination: '/play/casper',
 			permanent: false,
