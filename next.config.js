@@ -26,7 +26,7 @@ const nextConfig = {
 		},
 		{
 			source: '/casper',
-			destination: '/play/casper',
+			destination: 'https://casper.lacymorrow.com',
 			permanent: false,
 		},
 		{
