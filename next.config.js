@@ -32,14 +32,9 @@ const nextConfig = {
 			permanent: false,
 		},
 		{
-			source: '/work',
-			destination: '/work/companies/twilio',
-			permanent: true,
-		},
-		{
-			source: '/play',
-			destination: '/play/crossover',
-			permanent: true,
+			source: '/caspe',
+			destination: '/play/casper',
+			permanent: false,
 		},
 		{
 			source: '/drones',
@@ -49,6 +44,16 @@ const nextConfig = {
 		{
 			source: '/donate',
 			destination: '/about/donate',
+			permanent: true,
+		},
+		{
+			source: '/work',
+			destination: '/work/companies/twilio',
+			permanent: true,
+		},
+		{
+			source: '/play',
+			destination: '/play/crossover',
 			permanent: true,
 		},
 		{
