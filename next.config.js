@@ -26,6 +26,11 @@ const nextConfig = {
 			destination: '/contact',
 			permanent: true,
 		},
+				{
+			source: '/casper',
+			destination: '/play/casper',
+			permanent: false,
+		},
 		{
 			source: '/work',
 			destination: '/work/companies/twilio',
@@ -35,11 +40,6 @@ const nextConfig = {
 			source: '/play',
 			destination: '/play/crossover',
 			permanent: true,
-		},
-		{
-			source: '/casper',
-			destination: '/play/casper',
-			permanent: false,
 		},
 		{
 			source: '/drones',
