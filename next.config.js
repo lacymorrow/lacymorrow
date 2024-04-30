@@ -30,11 +30,6 @@ const nextConfig = {
 			permanent: false,
 		},
 		{
-			source: '/caspe',
-			destination: '/play/casper',
-			permanent: false,
-		},
-		{
 			source: '/drones',
 			destination: '/work/drones/flymore',
 			permanent: false,
