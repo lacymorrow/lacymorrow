@@ -41,7 +41,7 @@ const nextConfig = {
 		},
 		{
 			source: '/work',
-			destination: '/work/companies/twilio',
+			destination: '/work/companies/swell-energy',
 			permanent: true,
 		},
 		{
