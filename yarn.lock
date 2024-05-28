@@ -5680,6 +5680,7 @@ __metadata:
     react-error-boundary: "npm:^4.0.13"
     react-github-readme-md: "npm:^1.2.2"
     react-masonry-component: "npm:^6.3.0"
+    react-medium-image-zoom: "npm:^5.2.4"
     react-ruffle: "npm:^1.0.4"
     react-stl-viewer: "npm:^2.5.0"
     sass: "npm:^1.77.2"
@@ -8345,6 +8346,16 @@ __metadata:
   peerDependencies:
     react: ^0.14.0 || ^15.0.0-0 || ^16.0.0-0 || ^17.0.0
   checksum: cf1b3bab73a84fd14162c563862b297da11c677f76e0cd22055033b2d85aaa3c9978ea481fea33ead3c43199d0039f7245dfe5a97e31f7fa1c1e826b37f828eb
+  languageName: node
+  linkType: hard
+
+"react-medium-image-zoom@npm:^5.2.4":
+  version: 5.2.4
+  resolution: "react-medium-image-zoom@npm:5.2.4"
+  peerDependencies:
+    react: ^16.8.0 || ^17.0.0 || ^18.0.0
+    react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
+  checksum: 8a9788da1c96805482f227dcd25dc77e42554d92d5550c017faeab269d110f5a70e51113931aa5b8d80f4ed97b0023147945a055fb2783dfbd1e4bd3ab35fdc5
   languageName: node
   linkType: hard
 
