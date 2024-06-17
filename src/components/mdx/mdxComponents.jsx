@@ -28,6 +28,8 @@ import { YouTube } from "mdx-embed/dist/components/youtube";
 import { Bleed } from 'nextra-theme-docs';
 import { Callout, Card, Cards, FileTree, Steps, Tabs } from 'nextra/components';
 
+import Zoom from 'react-medium-image-zoom';
+
 import FlashArt from '@/components/flash/art';
 import Flash from '@/components/flash/flash';
 import Readme from '@/components/github/readme';
@@ -49,6 +51,9 @@ import { GitHubLogoIcon } from "@radix-ui/react-icons";
 
 
 export const componentMap = {
+	// Image Zoom
+	Zoom,
+
 	// Icons
 	GitHubLogoIcon,
 
