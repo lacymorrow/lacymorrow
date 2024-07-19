@@ -44,13 +44,13 @@ const socials = [
 
 export const Socials = () => {
   return (
-    <div className="text-muted-foreground child:fill-muted-foreground flex items-center justify-start gap-2">
+    <div className="text-muted-foreground child:fill-muted-foreground flex items-center justify-start">
       {socials.map((item) => (
         <Link
           key={crypto.randomUUID()}
           href={item.href}
           className={cn(
-            "hover:text-splash duration-400 transition-colors",
+            "size-6 grid place-items-center hover:text-splash duration-400 transition-colors",
             item.name.toLowerCase() === "last.fm" && "hover:child:fill-splash"
           )}
         >

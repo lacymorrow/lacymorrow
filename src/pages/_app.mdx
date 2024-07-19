@@ -18,9 +18,9 @@ export default function App({ Component, pageProps }) {
 
   return (
     <>
-      <div className="wrapper">
+      <main className="wrapper">
         <Component {...pageProps} components={componentMap} />
-      </div>
+      </main>
       <Toaster />
     </>
   );
