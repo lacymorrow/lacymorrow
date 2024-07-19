@@ -8,7 +8,7 @@ import Link from "next/link";
 import { useState } from "react";
 
 const Banner = () => {
-  const [index, setIndex] = useState(2);
+  const [index, setIndex] = useState(0);
   const handleChange = () => {
     setIndex(index + 1);
     if (index === 3) {
