@@ -23,7 +23,7 @@
     "@radix-ui/react-toast": "^1.2.1",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
-    "lucide-react": "^0.411.0",
+    "lucide-react": "^0.412.0",
     "marked": "^13.0.2",
     "masonic": "^4.0.0",
     "mdx-embed": "^1.1.2",
