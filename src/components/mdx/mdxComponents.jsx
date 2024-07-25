@@ -28,6 +28,8 @@ import { YouTube } from "mdx-embed/dist/components/youtube";
 import { Bleed } from 'nextra-theme-docs';
 import { Callout, Card, Cards, FileTree, Steps, Tabs } from 'nextra/components';
 
+import { Sandpack } from "@codesandbox/sandpack-react";
+
 import Zoom from 'react-medium-image-zoom';
 
 import FlashArt from '@/components/flash/art';
@@ -51,6 +53,10 @@ import { GitHubLogoIcon } from "@radix-ui/react-icons";
 
 
 export const componentMap = {
+	// React Sandpack live environment
+	// https://sandpack.codesandbox.io/
+	Sandpack,
+
 	// Image Zoom
 	Zoom,
 
