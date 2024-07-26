@@ -37,17 +37,23 @@ const nextConfig = {
 		{
 			source: '/donate',
 			destination: '/about/donate',
-			permanent: true,
+			permanent: false,
 		},
 		{
 			source: '/work',
 			destination: '/work/companies/swell-energy',
-			permanent: true,
+			permanent: false,
+		},
+		// Redirects for play
+		{
+			source: '/3d',
+			destination: '/play/3d',
+			permanent: false,
 		},
 		{
 			source: '/play',
 			destination: '/play/crossover',
-			permanent: true,
+			permanent: false,
 		},
 		{
 			source: '/projects/xspf',
@@ -57,7 +63,7 @@ const nextConfig = {
 		{
 			source: '/projects/:path*',
 			destination: '/play/:path*',
-			permanent: true,
+			permanent: false,
 		},
 	]
 }

@@ -10,7 +10,7 @@ const themeConfig = {
 	logoLink: '/',
 	primaryHue: 310,
 
-	faviconGlyph: '🧬',
+	// faviconGlyph: '🧬',
 	feedback: {
 		content: 'Questions? Leave feedback →',
 		labels: 'feedback'
@@ -64,7 +64,7 @@ const themeConfig = {
 		const { route } = useRouter()
 		const socialCard =
 			route === '/' || !title
-				? 'https://lacy.is/og-image'
+				? 'https://lacy.is/api/og'
 				: `https://lacy.is/api/og?title=${title}`
 
 		return (
@@ -93,7 +93,7 @@ const themeConfig = {
 				<meta name="apple-mobile-web-app-title" content="Lacy Morrow" />
 				<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
 				<link rel="icon" href="/favicon.png" type="image/png" />
-				<link
+				{/* <link
 					rel="icon"
 					href="/favicon-dark.svg"
 					type="image/svg+xml"
@@ -104,7 +104,7 @@ const themeConfig = {
 					href="/favicon-dark.png"
 					type="image/png"
 					media="(prefers-color-scheme: dark)"
-				/>
+				/> */}
 			</>
 		)
 	},
