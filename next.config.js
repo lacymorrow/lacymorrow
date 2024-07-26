@@ -50,6 +50,11 @@ const nextConfig = {
 			permanent: true,
 		},
 		{
+			source: '/projects/xspf',
+			destination: '/play/flash/xspf',
+			permanent: true,
+		},
+		{
 			source: '/projects/:path*',
 			destination: '/play/:path*',
 			permanent: true,
