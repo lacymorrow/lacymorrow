@@ -5,7 +5,7 @@ export const $app = {
 
 export const $contact = {
 	title: "Contact Me",
-	description: "I&apos;m available to lead your next project, build your next product, or help you with your next idea.",
+	description: "I'm available to lead your next project, build your next product, or help you with your next idea.",
 	submit: "Send Message",
 	success: {
 		title: "Message sent!",

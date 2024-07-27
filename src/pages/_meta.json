@@ -11,6 +11,21 @@
       "layout": "raw"
     }
   },
+  "company": {
+    "title": "Lacy",
+    "type": "menu",
+    "display": "hidden",
+    "items": {
+      "about": {
+        "title": "About",
+        "href": "/about"
+      },
+      "contact": {
+        "title": "Contact",
+        "href": "/contact"
+      }
+    }
+  },
   "work": {
     "title": "Work",
     "type": "page"
@@ -21,7 +36,13 @@
   },
   "about": {
     "title": "About",
-    "type": "page"
+    "type": "page",
+    "theme": {
+      "typesetting": "article"
+    }
+  },
+  "---": {
+    "type": "separator"
   },
   "fly5": {
     "title": "Fly5 ↗",

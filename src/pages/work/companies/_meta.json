@@ -1,6 +1,9 @@
 {
   "swell-energy": {
-    "title": "Swell Energy"
+    "title": "Swell Energy",
+    "theme": {
+      "typesetting": "article"
+    }
   },
   "twilio": "Twilio",
   "long-game": "Long Game",

@@ -10,12 +10,12 @@ const navigation = [
 
 export const Nav = () => {
   return (
-    <div className="nav flex items-center gap-4">
+    <div className="nav flex items-center">
       {navigation.map((item) => (
         <Link
           key={crypto.randomUUID()}
           href={item.href}
-          className="hover:text-splash duration-400 transition-colors"
+          className="h-full hover:text-splash duration-400 transition-colors p-1 px-2"
           {...(item.href.startsWith("http") ? { target: "_blank" } : {})}
         >
           <span>{item.name}</span>

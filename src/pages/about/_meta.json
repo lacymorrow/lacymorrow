@@ -8,9 +8,10 @@
     "href": "/work"
   },
   "index": {
-    "title": "About Me",
+    "title": "About Lacy",
     "theme": {
-      "pagination": false
+      "pagination": false,
+      "typesetting": "article"
     }
   },
   "mentions": {
@@ -24,7 +25,7 @@
     }
   },
   "contact": {
-    "title": "Contact Me",
+    "title": "Contact Lacy",
     "href": "/contact",
     "newWindow": false,
     "theme": {

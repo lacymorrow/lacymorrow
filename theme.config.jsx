@@ -93,7 +93,7 @@ const themeConfig = {
 				<meta name="apple-mobile-web-app-title" content="Lacy Morrow" />
 				<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
 				<link rel="icon" href="/favicon.png" type="image/png" />
-				{/* <link
+				<link
 					rel="icon"
 					href="/favicon-dark.svg"
 					type="image/svg+xml"
@@ -104,7 +104,7 @@ const themeConfig = {
 					href="/favicon-dark.png"
 					type="image/png"
 					media="(prefers-color-scheme: dark)"
-				/> */}
+				/>
 			</>
 		)
 	},
