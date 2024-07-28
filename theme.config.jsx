@@ -4,13 +4,19 @@ import { EnvelopeClosedIcon } from '@radix-ui/react-icons';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useConfig } from 'nextra-theme-docs';
+
+const title = "Lacy Morrow";
+const description = "Lacy Morrow is a leading web and software engineer, UAV operator, and the creator of Crossover and other open-source projects.";
+const ogImage = "https://lacy.is/api/og";
+const ogUrl = "https://lacymorrow.com";
+const githubUrl = 'https://github.com/lacymorrow/';
+
 const themeConfig = {
-	docsRepositoryBase: 'https://github.com/lacymorrow/lacymorrow/tree/main',
+	docsRepositoryBase: `${githubUrl}lacymorrow/tree/main`,
 	logo: Logo,
 	logoLink: '/',
 	primaryHue: 310,
-
-	// faviconGlyph: '🧬',
+	faviconGlyph: '🧬',
 	feedback: {
 		content: 'Questions? Leave feedback →',
 		labels: 'feedback'
@@ -20,27 +26,15 @@ const themeConfig = {
 	},
 	useNextSeoProps() {
 		const { asPath } = useRouter()
-		if (asPath !== '/') {
-			return {
-				titleTemplate: '%s – Lacy Morrow',
-			}
-		}
+		return asPath !== '/' ? { titleTemplate: '%s – Lacy' } : {}
 	},
-	project: {
-		link: 'https://github.com/lacymorrow/'
-	},
+	project: { link: githubUrl },
 	chat: {
-		link: 'https://lacymorrow.com/contact',
+		link: `${ogUrl}/contact`,
 		icon: (<EnvelopeClosedIcon className='h-6 w-6' />),
 	},
-	navigation: {
-		prev: true,
-		next: true
-	},
-	toc: {
-		backToTop: true,
-		float: true
-	},
+	navigation: { prev: true, next: true },
+	toc: { backToTop: true, float: true },
 	banner: {
 		text: (
 			<Link href="https://lacymorrow.github.io/crossover" target="_blank">
@@ -53,19 +47,13 @@ const themeConfig = {
 		defaultMenuCollapseLevel: 1,
 		autoCollapse: true,
 		titleComponent({ title, type }) {
-			if (type === 'separator') {
-				return <span className="cursor-default">{title}</span>
-			}
-			return <>{title}</>
+			return type === 'separator' ? <span className="cursor-default">{title}</span> : <>{title}</>
 		},
 	},
 	head: function useHead() {
-		const { title } = useConfig()
+		const { title: pageTitle } = useConfig()
 		const { route } = useRouter()
-		const socialCard =
-			route === '/' || !title
-				? 'https://lacy.is/api/og'
-				: `https://lacy.is/api/og?title=${title}`
+		const socialCard = route === '/' || !pageTitle ? ogImage : `${ogImage}?title=${pageTitle}`
 
 		return (
 			<>
@@ -73,44 +61,23 @@ const themeConfig = {
 				<meta name="theme-color" content="#fff" />
 				<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 				<meta httpEquiv="Content-Language" content="en" />
-				<meta
-					name="description"
-					content="Engineering Leader, Designer, and Developer"
-				/>
-				<meta
-					name="og:description"
-					content="Engineering Leader, Designer, and Developer"
-				/>
+				<meta name="description" content={description} />
+				<meta name="og:description" content={description} />
 				<meta name="twitter:card" content="summary_large_image" />
 				<meta name="twitter:image" content={socialCard} />
-				<meta name="twitter:site:domain" content="lacymorrow.com" />
-				<meta name="twitter:url" content="https://lacymorrow.com" />
-				<meta
-					name="og:title"
-					content={title ? title + ' – Lacy Morrow' : 'Lacy Morrow'}
-				/>
+				<meta name="twitter:site:domain" content={ogUrl.replace('https://', '')} />
+				<meta name="twitter:url" content={ogUrl} />
+				<meta name="og:title" content={pageTitle ? `${pageTitle} – ${title}` : title} />
 				<meta name="og:image" content={socialCard} />
-				<meta name="apple-mobile-web-app-title" content="Lacy Morrow" />
+				<meta name="apple-mobile-web-app-title" content={title} />
 				<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
 				<link rel="icon" href="/favicon.png" type="image/png" />
-				<link
-					rel="icon"
-					href="/favicon-dark.svg"
-					type="image/svg+xml"
-					media="(prefers-color-scheme: dark)"
-				/>
-				<link
-					rel="icon"
-					href="/favicon-dark.png"
-					type="image/png"
-					media="(prefers-color-scheme: dark)"
-				/>
+				<link rel="icon" href="/favicon-dark.svg" type="image/svg+xml" media="(prefers-color-scheme: dark)" />
+				<link rel="icon" href="/favicon-dark.png" type="image/png" media="(prefers-color-scheme: dark)" />
 			</>
 		)
 	},
-	footer: {
-		text: (<Footer />),
-	}
+	footer: { text: (<Footer />) }
 }
 
 export default themeConfig;
