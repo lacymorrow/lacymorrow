@@ -25,6 +25,11 @@ const nextConfig = {
 			permanent: true,
 		},
 		{
+			source: '/vcard',
+			destination: '/contact',
+			permanent: true,
+		},
+		{
 			source: '/casper',
 			destination: 'https://casper.lacymorrow.com',
 			permanent: false,
@@ -58,7 +63,12 @@ const nextConfig = {
 		{
 			source: '/projects/xspf',
 			destination: '/play/flash/xspf',
-			permanent: true,
+			permanent: false,
+		},
+		{
+			source: '/xspf',
+			destination: '/play/flash/xspf',
+			permanent: false,
 		},
 		{
 			source: '/projects/:path*',

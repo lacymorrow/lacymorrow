@@ -8,8 +8,7 @@ export const consoleBanner = () => {
 		"line-height: 35px",
 	].join(";");
 	console.log("%cYou're clever. That makes two of us.", style);
-	console.log("%cI'm available for hire.", style);
-	console.log("%c Email me at: me@lacymorrow.com.", style);
+	console.log("%cI'm available for hire. Email me at: me@lacymorrow.com.", style);
 
 	style = [
 		"background: #000",
