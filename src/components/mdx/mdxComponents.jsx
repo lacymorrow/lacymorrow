@@ -49,6 +49,7 @@ import {
 import { Button } from '@/components/ui/button';
 import Link from "next/link";
 
+import Lead from "@/components/mdx/lead";
 import { GitHubLogoIcon } from "@radix-ui/react-icons";
 
 
@@ -73,6 +74,7 @@ export const componentMap = {
 	DownloadLink,
 	GithubLink,
 	Thick,
+	Lead,
 	Button,
 	Center,
 	View3d,

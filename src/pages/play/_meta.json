@@ -1,17 +1,17 @@
 {
-  "index": {
-    "title": "Play",
-    "display": "hidden"
-  },
-  "crossover": "CrossOver",
-  "casper": "Casper WP Theme",
-  "cinematic": "Cinematic",
-  "js": "JavaScript Libraries",
-  "react": "React Libraries",
-  "php": "PHP Libraries",
-  "python": "Python Libraries",
-  "flash": "Flash Applications",
-  "art": "Flash Art",
-  "3d": "3D Models",
-  "calculator": "TI Calculator Games"
+	"index": {
+		"title": "Play",
+		"display": "hidden"
+	},
+	"crossover": "CrossOver",
+	"cinematic": "Cinematic",
+	"casper": "Casper WordPress theme",
+	"js": "JavaScript libraries",
+	"react": "React libraries",
+	"php": "PHP libraries",
+	"python": "Python libraries",
+	"flash": "Flash applications",
+	"art": "Flash art",
+	"experiments": "Experiments",
+	"3d": "3D models"
 }
