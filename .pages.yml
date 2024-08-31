@@ -4,6 +4,7 @@ content:
     label: Posts
     type: collection
     path: 'src/pages'
+    filename: '{title}.mdx'
     view:
       fields: [ title, published, date ]
       primary: title
@@ -20,4 +21,5 @@ content:
         type: string
       - name: body
         label: Body
-        type: rich-text
+        type: code
+        language: markdown

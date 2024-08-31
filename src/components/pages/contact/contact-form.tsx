@@ -89,7 +89,6 @@ const ContactForm = () => {
           throw new Error(data.error?.message || data.error);
         }
 
-        console.log(data);
         return data;
       })
       .then((data) => {
