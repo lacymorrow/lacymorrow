@@ -21,4 +21,4 @@ content:
         type: string
       - name: body
         label: Body
-        type: react
+        type: code
