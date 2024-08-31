@@ -4,7 +4,7 @@ content:
     label: Posts
     type: collection
     path: 'src/pages'
-    filename: '{title}.mdx'
+    filename: '{year}-{month}-{day}-{title}.mdx'
     view:
       fields: [ title, published, date ]
       primary: title
