@@ -9,6 +9,10 @@ content:
       fields: [ title, published, date ]
       primary: title
     fields:
+      - name: published
+        label: Published
+        type: boolean
+        default: true
       - name: body
         label: Body
         type: code
