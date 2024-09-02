@@ -4,7 +4,7 @@ content:
     label: Posts
     type: collection
     path: 'src/pages'
-    filename: '{year}-{month}-{day}-{title}.mdx'
+    filename: '{title}.mdx'
     view:
       fields: [ title, published, date ]
       primary: title
@@ -19,6 +19,11 @@ content:
       - name: title
         label: Title
         type: string
+      - name: slug
+        label: Slug
+        type: string
       - name: body
         label: Body
         type: code
+        options:
+          language: react
