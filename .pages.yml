@@ -22,6 +22,18 @@ content:
       - name: slug
         label: Slug
         type: string
+      - name: seoTitle
+        label: SEO Title
+        type: string
+      - name: description
+        label: Description
+        type: string
+      - name: publishedOn
+        label: Published On
+        type: date
+      - name: layout
+        label: Layout
+        type: string
       - name: body
         label: Body
         type: code
