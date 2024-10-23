@@ -1,4 +1,4 @@
-# <span style="display: flex; align-items: center"> 🚀 Hi there! <img src="https://media.giphy.com/media/hvRJCLFzcasrR4ia7z/giphy.gif" width="29px" height="29px">  </span>
+<h2 align="center">🚀 Hi, I'm Lacy <img src="https://media.giphy.com/media/hvRJCLFzcasrR4ia7z/giphy.gif" width="29px" height="29px"></h2>
 
 🎓 My name is Lacy Morrow and I'm a **Full-Stack Web Developer** with a passion for **UI/UX Design**. I have decades of experience building and scaling large-scale software applications with technologies such as **Javascript**, **Typescript**, and **Node.js**.
 
