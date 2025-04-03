@@ -1,6 +1,10 @@
 <h2 align="center">🚀 Hi, I'm Lacy <img src="https://media.giphy.com/media/hvRJCLFzcasrR4ia7z/giphy.gif" width="29px" height="29px"></h2>
 
-🎓 My name is Lacy Morrow and I'm a **Full-Stack Web Developer** with a passion for **UI/UX Design**. I have decades of experience building and scaling large-scale software applications with technologies such as **Javascript**, **Typescript**, and **Node.js**.
+🎓 My name is Lacy Morrow and I'm a **Full-Stack Web Developer** with a passion for **UI/UX Design**. I have decades of experience building and scaling large-scale software applications with technologies such as **Javascript**, **Typescript**, and **Node.js**. I run:
+
+- [illi](https://illi.sh), a web design agency.
+- [uibrary](https://uibrary.com), a collection of UI components
+- [shipkit](https://shipkit.io), the best starter kit for building MVPs
 
 👨‍💻 I enjoy contributing to **Open Source Projects** and have been a contributor to many **Open-source** libraries such as **Electron**, **NW.js**, **NextUI**, and the **Nightwatch** testing library. I also maintain a collection of **personal open source projects:**
 
@@ -16,7 +20,7 @@
 I am constantly learning new technologies to stay up to date with the latest trends and am constantly building or prototyping something new.
 
 
-🎨 In addition to web and app development, I'm also passionate about **videography** and **design**. I have experience creating **brand identities**, **logos**, and **user interfaces**. I believe that accessible design is essential to creating great user experiences. I also build and pilot **FPV drones for action media**.
+🎨 In addition to web and app development, I'm also passionate about **videography** and **design**. I create **brand identities**, **logos**, and **user interfaces**. I believe that accessible design is essential to creating great user experiences. I also build and pilot **FPV drones for action media**.
 
 📚 In my free time, I enjoy building electronic hardware and reading. I've helped create hardware devices such as the [hackpack](https://hackpack.cc/). One of my favorite books is **The Hitchhikers Guide to the Galaxy** by _Douglas Adams_, I made the _real_ Hitchhiker's Guide at [hitchhikersgalaxy.guide](https://hitchhikersgalaxy.guide).
 
