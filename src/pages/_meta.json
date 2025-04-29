@@ -3,8 +3,10 @@
     "title": "Home",
     "display": "hidden",
     "theme": {
+      "navbar": false,
+      "banner": false,
       "breadcrumb": false,
-      "footer": true,
+      "footer": false,
       "sidebar": false,
       "toc": false,
       "pagination": false,

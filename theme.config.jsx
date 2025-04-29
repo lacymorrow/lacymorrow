@@ -37,8 +37,8 @@ const themeConfig = {
 	toc: { backToTop: true, float: true },
 	banner: {
 		text: (
-			<Link href="https://lacymorrow.github.io/crossover" target="_blank">
-				🎉 CrossOver v3.1.5 has been released. Read more →
+			<Link href="https://shipkit.io" target="_blank">
+				🚀  Launch your app today with Shipkit →
 			</Link>
 		)
 	},
