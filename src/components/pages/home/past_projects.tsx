@@ -14,7 +14,7 @@ interface ProjectCardProps {
   href: string;
 }
 
-// Reusable Project Card component
+// Reusable Project Card component (copied from CurrentlyWorking for now)
 const ProjectCard: React.FC<ProjectCardProps> = ({
   title,
   description,
@@ -36,22 +36,22 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   </Link>
 );
 
-const CurrentlyWorking = () => {
+const PastProjects = () => {
   const projects: ProjectCardProps[] = [
     {
-      title: "Shipkit",
-      description: "Next-gen AI-powered Next.js boilerplate and tooling.",
-      href: "https://shipkit.io",
+      title: "Hitchhiker's Galaxy.guide",
+      description: "A comprehensive guide to the galaxy.", // Placeholder
+      href: "https://hitchhikersgalaxy.guide", // Placeholder
     },
     {
-      title: "Uibrary",
-      description: "UI components for modern web interfaces.",
-      href: "https://uibrary.com",
+      title: "crossover",
+      description: "Platform for cross-media experiences.", // Placeholder
+      href: "https://lacymorrow.com/crossover/", // Placeholder
     },
     {
-      title: "Cloud0",
-      description: "100% private, offline AI.",
-      href: "https://cloud0.dev",
+      title: "xspf jukebox",
+      description: "A web-based XSPF playlist player.", // Placeholder
+      href: "https://lacymorrow.com/xspf/", // Placeholder
     },
   ];
 
@@ -61,7 +61,7 @@ const CurrentlyWorking = () => {
       className="my-12 w-[80vw] max-w-[1200px] rounded-2xl border border-zinc-200/70 p-8 dark:border-zinc-800/70"
     >
       <h2 className="mb-8 text-xl font-semibold text-zinc-900 dark:text-white">
-        Currently Working On
+        Past Projects
       </h2>
       <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
         {projects.map((project) => (
@@ -72,4 +72,4 @@ const CurrentlyWorking = () => {
   );
 };
 
-export default CurrentlyWorking;
+export default PastProjects;
