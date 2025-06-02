@@ -14,7 +14,7 @@
 | ----------- | --------- | 
 | [CrossOver ![crossover](https://img.shields.io/github/stars/lacymorrow/crossover)](https://github.com/lacymorrow/crossover) | [Movie Trailer ![movie-trailer](https://img.shields.io/github/stars/lacymorrow/movie-trailer)](https://github.com/lacymorrow/movie-trailer) |
 | [Casper ![casper](https://img.shields.io/github/stars/lacymorrow/casper)](https://github.com/lacymorrow/casper)  | [Movie Art ![movie-art](https://img.shields.io/github/stars/lacymorrow/movie-art)](https://github.com/lacymorrow/movie-art)  |
-| [Album Art ![album-art](https://img.shields.io/github/stars/lacymorrow/album-art)](https://github.com/lacymorrow/album-art) | [Movie Info ![movie-info](https://img.shields.io/github/stars/lacymorrow/movie-info)](https://github.com/lacymorrow/movie-info)  | [Shipkit Bones ![shipkit-bones](https://img.shields.io/github/stars/shipkit-io)](https://github.com/shipkit-io/bones) |
+| [Album Art ![album-art](https://img.shields.io/github/stars/lacymorrow/album-art)](https://github.com/lacymorrow/album-art) | [Movie Info ![movie-info](https://img.shields.io/github/stars/lacymorrow/movie-info)](https://github.com/lacymorrow/movie-info)  | [Movie Trailer ![movie-trailer](https://img.shields.io/github/stars/shipkit-io/bones)](https://github.com/shipkit-io/bones) |
 
 </div>
 I am constantly learning new technologies to stay up to date with the latest trends and am constantly building or prototyping something new.
