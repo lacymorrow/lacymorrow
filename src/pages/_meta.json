@@ -4,7 +4,6 @@
     "display": "hidden",
     "theme": {
       "navbar": false,
-      "banner": false,
       "breadcrumb": false,
       "footer": false,
       "sidebar": false,
