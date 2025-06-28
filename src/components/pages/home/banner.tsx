@@ -17,7 +17,7 @@ const Banner = () => {
       <a
         href="/play"
         style={poppins.style}
-        className="relative flex my-12 w-[80vw] max-w-[1200px] min-h-[30vh] lg:h-[calc(100vh-10rem)] items-center justify-center overflow-hidden rounded-3xl p-4 md:h-[calc(100vh-15rem)]"
+        className="relative flex my-12 w-[80vw] max-w-[1200px] min-h-40 lg:h-[calc(100vh-10rem)] max-h-96 items-center justify-center overflow-hidden rounded-3xl p-4 md:h-[calc(100vh-15rem)]"
       >
         {/* Using an img tag for the animated PNG to allow for object-cover and positioning */}
         <img

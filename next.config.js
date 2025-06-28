@@ -43,6 +43,11 @@ const nextConfig = {
       permanent: false,
     },
     {
+      source: "/crossover",
+      destination: "/play/crossover",
+      permanent: false,
+    },
+    {
       source: "/drones",
       destination: "/work/drones/flymore",
       permanent: false,
