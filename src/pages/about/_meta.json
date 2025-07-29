@@ -1,11 +1,11 @@
 {
-  "play": {
-    "title": "Play",
-    "href": "/play"
-  },
   "work": {
     "title": "Work",
     "href": "/work"
+  },
+  "play": {
+    "title": "Play",
+    "href": "/play"
   },
   "index": {
     "title": "About Lacy",

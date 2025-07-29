@@ -1,3 +1,4 @@
+import { ImageCarousel } from "@/components/blocks/image-carousel";
 import Zoom from 'react-medium-image-zoom'
 import 'react-medium-image-zoom/dist/styles.css'
 
@@ -5,26 +6,18 @@ import 'react-medium-image-zoom/dist/styles.css'
 
 <Thick>[creditkarma.com ↗](https://creditkarma.com/)</Thick>
 
-> Full-stack Lead Engineer (2023) - Contract
+> Full-stack Lead Engineer (2024) - Contract
 
 Credit Karma is a company that provides credit monitoring and credit repair services to consumers. I was brought on to build a __dashboard and control panel__ to manage the credit utilities of their customers.
 
-{/* Todo: Clicking opens image in modal */}
-
 <Center className="mx-auto my-8">
-	<Zoom>
-	![Program dashboard showing accumulated energy data for all swell energy customers with a search bar and a dropdown to select the time period for the graph](/static/work/credit-karma/credit-karma-program.jpeg)
-	</Zoom>
+    <Zoom>
+    ![Users dashboard showing metrics and charts](/static/work/credit-karma/credit-karma-1.png)
+    </Zoom>
 </Center>
 
 The dashboard was built to be both functional and attractive and was shown to investors to help secure funding for the company.
 
 This project was built using __React__, __TypeScript__, and __ShadCN/UI__ for the frontend and __NextJS__ for the backend.
 
-<Center className="mx-auto my-8">
-	![Data table showing an overview of all swell energy customer energy data](/static/work/credit-karma/credit-karma-datatable.jpeg)
-</Center>
-
-<Center className="mx-auto my-8">
-	![User dashboard showing the energy data for a specific customer with charts and graphs](/static/work/credit-karma/credit-karma-user.jpeg)
-</Center>
+<ImageCarousel />

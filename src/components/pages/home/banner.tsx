@@ -39,7 +39,7 @@ const Banner = () => {
           </h1>
         </div>
       </a>
-      <div className="text-xl">
+      <div className="text-xl break-words max-w-[calc(100vw-4rem)] md:max-w-none">
         See my{" "}
         <a
           href="/work"

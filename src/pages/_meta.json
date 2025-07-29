@@ -17,6 +17,10 @@
     "type": "menu",
     "display": "hidden",
     "items": {
+      "home": {
+        "title": "Home",
+        "href": "/"
+      },
       "about": {
         "title": "About",
         "href": "/about"
