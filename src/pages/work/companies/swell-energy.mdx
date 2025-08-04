@@ -1,3 +1,17 @@
+import { ImageCarousel } from "@/components/blocks/image-carousel";
+import {
+  VideoPlayer,
+  VideoPlayerContent,
+  VideoPlayerControlBar,
+  VideoPlayerMuteButton,
+  VideoPlayerPlayButton,
+  VideoPlayerSeekBackwardButton,
+  VideoPlayerSeekForwardButton,
+  VideoPlayerTimeDisplay,
+  VideoPlayerTimeRange,
+  VideoPlayerVolumeRange,
+} from '@/components/ui/kibo-ui/video-player';
+
 import Zoom from 'react-medium-image-zoom'
 import 'react-medium-image-zoom/dist/styles.css'
 
@@ -19,14 +33,32 @@ The dashboard was built to be both functional and attractive and was shown to in
 
 This project was built using __React__, __TypeScript__, and __ShadCN/UI__ for the frontend and __NextJS__ for the backend.
 
-<Center className="mx-auto my-8">
-    <Zoom>
-    	![Data table showing an overview of all swell energy customer energy data](/static/work/swell/swell-datatable.jpeg)
-    </Zoom>
-</Center>
+<ImageCarousel
+  images={[
+    "/static/work/swell/swell-user.jpeg",
+    "/static/work/swell/swell-program.jpeg",
+    "/static/work/swell/swell-datatable.jpeg"
+  ]}
+  altPrefix="Swell Energy dashboard"
+/>
 
-<Center className="mx-auto my-8">
-    <Zoom>
-    	![User dashboard showing the energy data for a specific customer with charts and graphs](/static/work/swell/swell-user.jpeg)
-    </Zoom>
+<Center className="mx-auto my-8 hidden">
+<VideoPlayer className="overflow-hidden rounded-lg border">
+    <VideoPlayerContent
+      crossOrigin=""
+      muted
+      preload="auto"
+      slot="media"
+      src="/static/work/swell/demo.mov"
+    />
+    <VideoPlayerControlBar>
+      <VideoPlayerPlayButton />
+      <VideoPlayerSeekBackwardButton />
+      <VideoPlayerSeekForwardButton />
+      <VideoPlayerTimeRange />
+      <VideoPlayerTimeDisplay showDuration />
+      <VideoPlayerMuteButton />
+      <VideoPlayerVolumeRange />
+    </VideoPlayerControlBar>
+  </VideoPlayer>
 </Center>

@@ -11,27 +11,23 @@ import Zoom from 'react-medium-image-zoom'
 
 import 'react-medium-image-zoom/dist/styles.css'
 
-export function ImageCarousel() {
-  const images = [
-    "/static/work/credit-karma/credit-karma-2.png",
-    "/static/work/credit-karma/credit-karma-1.png",
-    "/static/work/credit-karma/credit-karma-3.png",
-    "/static/work/credit-karma/credit-karma-4.png",
-    "/static/work/credit-karma/credit-karma-5.png",
-    "/static/work/credit-karma/credit-karma-6.png",
-    "/static/work/credit-karma/credit-karma-7.png",
-    "/static/work/credit-karma/credit-karma-8.png",
-    "/static/work/credit-karma/credit-karma-9.png",
-    "/static/work/credit-karma/credit-karma-10.png",
-    "/static/work/credit-karma/credit-karma-11.png",
-    "/static/work/credit-karma/credit-karma-12.png",
-    "/static/work/credit-karma/credit-karma-13.png",
-    "/static/work/credit-karma/credit-karma-14.png",
-    "/static/work/credit-karma/credit-karma-15.png",
-  ];
+interface ImageCarouselProps {
+  images: string[];
+  altPrefix?: string;
+  className?: string;
+  imageWidth?: number;
+  imageHeight?: number;
+}
 
+export function ImageCarousel({ 
+  images, 
+  altPrefix = "Image",
+  className = "w-full max-w-4xl mx-auto my-8",
+  imageWidth = 1200,
+  imageHeight = 800
+}: ImageCarouselProps) {
   return (
-    <Carousel className="w-full max-w-4xl mx-auto my-8">
+    <Carousel className={className}>
       <CarouselContent>
         {images.map((src, index) => (
           <CarouselItem key={index}>
@@ -39,9 +35,9 @@ export function ImageCarousel() {
               <Zoom>
               <Image
                 src={src}
-                alt={`Credit Karma screenshot ${index + 1}`}
-                width={1200}
-                height={800}
+                alt={`${altPrefix} ${index + 1}`}
+                width={imageWidth}
+                height={imageHeight}
                 className="rounded-lg"
               />
               </Zoom>
