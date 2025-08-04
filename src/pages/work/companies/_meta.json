@@ -1,13 +1,13 @@
 {
-  "swell-energy": {
-    "title": "Swell Energy",
-    "theme": {
-      "typesetting": "article"
-    }
-  },
+  "10up": "10up",
+  "credit-karma": "Credit Karma",
+  "swell-energy": "Swell Energy",
   "twilio": "Twilio",
-  "long-game": "Long Game",
   "invitae": "Invitae",
+  "long-game": "Long Game",
+  "novant-health": "Novant Health",
+  "viasat": "Viasat",
   "yahoo": "Yahoo!",
+  "appalachian-state-university": "Appalachian State University",
   "red-ventures": "Red Ventures"
 }

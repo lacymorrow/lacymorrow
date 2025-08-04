@@ -1,6 +1,9 @@
 {
   "companies": {
-    "title": "Professional Highlights"
+    "title": "Professional Highlights",
+    "theme": {
+      "typesetting": "article"
+    }
   },
   "drones": "Drone Racing & Media",
   "clients": "Web Development"

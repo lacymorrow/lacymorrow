@@ -7,6 +7,9 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
+import Zoom from 'react-medium-image-zoom'
+
+import 'react-medium-image-zoom/dist/styles.css'
 
 export function ImageCarousel() {
   const images = [
@@ -33,6 +36,7 @@ export function ImageCarousel() {
         {images.map((src, index) => (
           <CarouselItem key={index}>
             <div className="p-1">
+              <Zoom>
               <Image
                 src={src}
                 alt={`Credit Karma screenshot ${index + 1}`}
@@ -40,6 +44,7 @@ export function ImageCarousel() {
                 height={800}
                 className="rounded-lg"
               />
+              </Zoom>
             </div>
           </CarouselItem>
         ))}
@@ -48,4 +53,4 @@ export function ImageCarousel() {
       <CarouselNext />
     </Carousel>
   );
-} 
+}
