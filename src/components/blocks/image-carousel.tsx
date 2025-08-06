@@ -33,13 +33,14 @@ export function ImageCarousel({
           <CarouselItem key={index}>
             <div className="p-1">
               <Zoom>
-              <Image
-                src={src}
-                alt={`${altPrefix} ${index + 1}`}
-                width={imageWidth}
-                height={imageHeight}
-                className="rounded-lg"
-              />
+              <div className="relative w-full" style={{ aspectRatio: `${imageWidth}/${imageHeight}` }}>
+                <Image
+                  src={src}
+                  alt={`${altPrefix} ${index + 1}`}
+                  fill
+                  className="rounded-lg object-contain"
+                />
+              </div>
               </Zoom>
             </div>
           </CarouselItem>
