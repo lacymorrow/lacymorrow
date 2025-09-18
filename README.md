@@ -2,7 +2,7 @@
 
 🎓 My name is Lacy Morrow and I'm a **Full-Stack Web Developer** with a passion for **UI/UX Design**. I have decades of experience building and scaling large-scale software applications with technologies such as **Javascript**, **Typescript**, and **Node.js**. I run:
 
-- [illi](https://illi.sh), a web design agency.
+- [Build And Serve](https://buildandserve.com), a digital development agency.
 - [uibrary](https://uibrary.com), a collection of UI components
 - [shipkit](https://shipkit.io), the best starter kit for building MVPs
 
