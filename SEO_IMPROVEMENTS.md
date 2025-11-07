@@ -8,7 +8,7 @@ This analysis identifies opportunities to improve SEO through strategic backlink
 
 ## 🔗 Cross-Site Linking Opportunities
 
-### Sites That Need Backlinks FROM Portfolio Site
+### Sites to Link TO from Portfolio Site
 
 #### 1. **Build And Serve** (buildandserve.com)
 - **Current**: Linked in `currently_working.tsx`, mentioned in README
