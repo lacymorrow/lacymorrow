@@ -13,7 +13,7 @@ Use this checklist to track which sites have been updated with backlinks to lacy
   - [ ] Footer link added
   - [ ] About page link added
   - [ ] Contact page link added (if applicable)
-  - [ ] Deployed ✅
+  - [ ] Deployed
   - **Notes**: 
 
 - [ ] **shipkit.io**
