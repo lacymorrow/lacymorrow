@@ -111,7 +111,7 @@ Use this checklist to track which sites have been updated with backlinks to lacy
 - [ ] **lacymorrow/crossover**
   - [ ] README.md updated
   - [ ] package.json author field updated
-  - [ ] Committed ✅
+  - [ ] Committed
   - **Notes**: 
 
 - [ ] **lacymorrow/casper**
