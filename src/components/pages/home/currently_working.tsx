@@ -13,14 +13,14 @@ const poppins = Poppins({
 const CurrentlyWorking = () => {
   const projects: ProjectCardProps[] = [
     {
-      title: "Junebug",
+      title: "Juno",
       description: "AI that controls your computer",
       href: "https://junebug.ai",
     },
     {
-      title: "Code Collective Devs",
+      title: "Build and Serve",
       description: "10x developer resources for your business.",
-      href: "https://codecollectivedevs.com",
+      href: "https://buildandserve.com",
     },
     {
       title: "Vibe Rehab",

@@ -19,8 +19,8 @@ const PastProjects = () => {
     },
     {
       title: "Hitchhiker's Galaxy.guide",
-      description: "A comprehensive guide to the galaxy.", // Placeholder
-      href: "https://hitchhikersgalaxy.guide", // Placeholder
+      description: "A comprehensive guide to the galaxy.",
+      href: "https://hitchhikersgalaxy.guide",
     },
     {
       title: "Uibrary",
@@ -33,14 +33,14 @@ const PastProjects = () => {
       href: "https://cloud0.dev",
     },
     {
-      title: "crossover",
-      description: "Platform for cross-media experiences.", // Placeholder
-      href: "https://lacymorrow.com/crossover/", // Placeholder
+      title: "CrossOver",
+      description: "Crosshair overlay app for Windows, Mac, and Linux.",
+      href: "/play/crossover",
     },
     {
-      title: "xspf jukebox",
-      description: "A web-based XSPF playlist player.", // Placeholder
-      href: "https://lacymorrow.com/xspf/", // Placeholder
+      title: "XSPF Jukebox",
+      description: "A web-based XSPF playlist player.",
+      href: "/play/flash/xspf",
     },
   ];
 

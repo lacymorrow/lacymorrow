@@ -1,6 +1,10 @@
 <h2 align="center">🚀 Hi, I'm Lacy <img src="https://media.giphy.com/media/hvRJCLFzcasrR4ia7z/giphy.gif" width="29px" height="29px"></h2>
 
-🎓 My name is Lacy Morrow and I'm a **Full-Stack Web Developer** with a passion for **UI/UX Design**. I have decades of experience building and scaling large-scale software applications with technologies such as **Javascript**, **Typescript**, and **Node.js**. I run:
+🎓 My name is Lacy Morrow and I'm a **Full-Stack Web Developer** with a passion for **UI/UX Design**. I have decades of experience building and scaling large-scale software applications with technologies such as **Javascript**, **Typescript**, and **Node.js**. 
+
+🌐 **[View my portfolio →](https://lacymorrow.com)** | **[View my work →](https://lacymorrow.com/work)** | **[View my projects →](https://lacymorrow.com/play)**
+
+I run:
 
 - [Build And Serve](https://buildandserve.com), a digital development agency.
 - [uibrary](https://uibrary.com), a collection of UI components
@@ -12,12 +16,14 @@
  
 | 🎮 | 🍿 |
 | ----------- | --------- | 
-| [CrossOver ![crossover](https://img.shields.io/github/stars/lacymorrow/crossover)](https://github.com/lacymorrow/crossover) | [Shipkit Bones ![movie-trailer](https://img.shields.io/github/stars/shipkit-io/bones)](https://github.com/shipkit-io/bones) |
-| [Casper ![casper](https://img.shields.io/github/stars/lacymorrow/casper)](https://github.com/lacymorrow/casper)  | [Movie Trailer ![movie-trailer](https://img.shields.io/github/stars/lacymorrow/movie-trailer)](https://github.com/lacymorrow/movie-trailer) |
+| [CrossOver ![crossover](https://img.shields.io/github/stars/lacymorrow/crossover)](https://github.com/lacymorrow/crossover) - [View on portfolio →](https://lacymorrow.com/play/crossover) | [Shipkit Bones ![movie-trailer](https://img.shields.io/github/stars/shipkit-io/bones)](https://github.com/shipkit-io/bones) |
+| [Casper ![casper](https://img.shields.io/github/stars/lacymorrow/casper)](https://github.com/lacymorrow/casper) - [View on portfolio →](https://lacymorrow.com/play/casper)  | [Movie Trailer ![movie-trailer](https://img.shields.io/github/stars/lacymorrow/movie-trailer)](https://github.com/lacymorrow/movie-trailer) |
 | [Album Art ![album-art](https://img.shields.io/github/stars/lacymorrow/album-art)](https://github.com/lacymorrow/album-art) | [Movie Art ![movie-art](https://img.shields.io/github/stars/lacymorrow/movie-art)](https://github.com/lacymorrow/movie-art)  |
 
 </div>
 I am constantly learning new technologies to stay up to date with the latest trends and am constantly building or prototyping something new.
+
+**[View all my projects on my portfolio →](https://lacymorrow.com/play)**
 
 
 🎨 In addition to web and app development, I'm also passionate about **videography** and **design**. I create **brand identities**, **logos**, and **user interfaces**. I believe that accessible design is essential to creating great user experiences. I also build and pilot **FPV drones for action media**.
