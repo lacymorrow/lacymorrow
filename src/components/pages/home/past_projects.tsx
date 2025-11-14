@@ -2,13 +2,6 @@ import {
   ProjectCard,
   ProjectCardProps,
 } from "@/components/blocks/project-card";
-import { Poppins } from "next/font/google";
-
-const poppins = Poppins({
-  weight: ["400", "500", "600", "700"],
-  subsets: ["latin"],
-  display: "swap",
-});
 
 const PastProjects = () => {
   const projects: ProjectCardProps[] = [
@@ -45,16 +38,18 @@ const PastProjects = () => {
   ];
 
   return (
-    <div
-      style={poppins.style}
-      className="my-12 w-[80vw] max-w-[1200px] rounded-2xl border border-zinc-200/70 p-8 dark:border-zinc-800/70"
-    >
-      <h2 className="mb-8 text-xl font-semibold text-zinc-900 dark:text-white">
+    <div className="my-12 w-[80vw] max-w-[1200px]">
+      <h2 className="mb-6 text-lg font-medium text-zinc-900 dark:text-white">
         Past Projects
       </h2>
-      <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+      <div className="grid grid-cols-1 gap-px border-t border-l border-zinc-200 dark:border-zinc-800 md:grid-cols-2 lg:grid-cols-3">
         {projects.map((project) => (
-          <ProjectCard key={project.title} {...project} />
+          <div
+            key={project.title}
+            className="border-b border-r border-zinc-200 dark:border-zinc-800"
+          >
+            <ProjectCard {...project} />
+          </div>
         ))}
       </div>
     </div>
