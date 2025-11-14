@@ -42,6 +42,21 @@ const PastProjects = () => {
       description: "A web-based XSPF playlist player.",
       href: "/play/flash/xspf",
     },
+    {
+      title: "Cait and Lacy",
+      description: "Personal website and portfolio.",
+      href: "https://caitandlacy.com",
+    },
+    {
+      title: "gen.lacy.sh",
+      description: "Generator tools and utilities.",
+      href: "https://gen.lacy.sh",
+    },
+    {
+      title: "globe.lacy.sh",
+      description: "Interactive globe visualization.",
+      href: "https://globe.lacy.sh",
+    },
   ];
 
   return (
