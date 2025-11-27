@@ -24,7 +24,6 @@ interface StateType {
   name: string;
   email: string;
   tel: string;
-  subject: string;
   message: string;
 }
 
@@ -32,7 +31,6 @@ const defaults: StateType = {
   name: "",
   email: "",
   tel: "",
-  subject: "",
   message: "",
 };
 
@@ -190,11 +188,8 @@ const ContactForm = () => {
             </div>
 
             <div className="grid gap-2">
-              <Label htmlFor="name">
-                Name<sup>*</sup>
-              </Label>
+              <Label htmlFor="name">Name</Label>
               <Input
-                required
                 id="name"
                 type="name"
                 name="name"
@@ -205,16 +200,6 @@ const ContactForm = () => {
               />
             </div>
 
-            <div className="grid gap-2">
-              <Label htmlFor="subject">Subject</Label>
-              <Input
-                id="subject"
-                name="subject"
-                placeholder="I need help with..."
-                onChange={handleChange}
-                value={state.subject}
-              />
-            </div>
             <div className="grid gap-2">
               <Label htmlFor="message">
                 Message<sup>*</sup>

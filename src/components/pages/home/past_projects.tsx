@@ -6,48 +6,48 @@ import {
 const PastProjects = () => {
   const projects: ProjectCardProps[] = [
     {
-      title: "Shipkit",
+      title: "Shipkit Next.js Starter",
       description: "Next-gen AI-powered Next.js boilerplate and tooling.",
       href: "https://shipkit.io",
     },
     {
-      title: "Hitchhiker's Galaxy.guide",
+      title: "Hitchhiker's Guide to the Galaxy",
       description: "A comprehensive guide to the galaxy.",
       href: "https://hitchhikersgalaxy.guide",
     },
     {
-      title: "Uibrary",
+      title: "Uibrary UI Components",
       description: "UI components for modern web interfaces.",
       href: "https://uibrary.com",
     },
     {
-      title: "Cloud0",
+      title: "Cloud0 AI Chat",
       description: "100% private, offline AI.",
       href: "https://cloud0.dev",
     },
     {
-      title: "CrossOver",
+      title: "CrossOver Crosshair Overlay",
       description: "Crosshair overlay app for Windows, Mac, and Linux.",
-      href: "/play/crossover",
+      href: "https://gh.lacymorrow.com/crossover",
     },
     {
-      title: "XSPF Jukebox",
+      title: "XSPF Jukebox Web Player",
       description: "A web-based XSPF playlist player.",
-      href: "/play/flash/xspf",
+      href: "https://xspf-jukebox.vercel.app",
     },
     {
-      title: "Cait and Lacy",
-      description: "Personal website and portfolio.",
+      title: "Cait and Lacy's Wedding Website",
+      description: "Website for my wife ❤️",
       href: "https://caitandlacy.com",
     },
     {
-      title: "gen.lacy.sh",
-      description: "Generator tools and utilities.",
+      title: "Generative website.",
+      description: "Generates pages on the fly with AI.",
       href: "https://gen.lacy.sh",
     },
     {
-      title: "globe.lacy.sh",
-      description: "Interactive globe visualization.",
+      title: "Live Interactive Globe Visualization",
+      description: "Interactive globe visualization with real-time data.",
       href: "https://globe.lacy.sh",
     },
   ];
