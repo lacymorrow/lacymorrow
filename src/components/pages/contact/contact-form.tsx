@@ -188,11 +188,8 @@ const ContactForm = () => {
             </div>
 
             <div className="grid gap-2">
-              <Label htmlFor="name">
-                Name<sup>*</sup>
-              </Label>
+              <Label htmlFor="name">Name</Label>
               <Input
-                required
                 id="name"
                 type="name"
                 name="name"
