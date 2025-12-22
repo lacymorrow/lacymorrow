@@ -1,3 +1,4 @@
+import React from "react";
 import { nxLink } from "@/utils/classes";
 import { DownloadIcon } from "@radix-ui/react-icons";
 import Link from "next/link";
@@ -10,8 +11,8 @@ const DownloadLink = ({
 }: {
   href: string;
   text?: string;
-  icon?: JSX.Element;
-  after?: JSX.Element;
+  icon?: React.ReactNode;
+  after?: React.ReactNode;
   children?: React.ReactNode;
 }) => {
   return (

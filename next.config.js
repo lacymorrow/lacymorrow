@@ -91,14 +91,7 @@ const nextConfig = {
   ],
 };
 
-const withNextra = require("nextra")({
-  theme: "nextra-theme-docs",
-  themeConfig: "./theme.config.jsx",
-  defaultShowCopyCode: true,
-  turbopack: {}
-});
-
-module.exports = withNextra(nextConfig);
+module.exports = nextConfig;
 
 
 

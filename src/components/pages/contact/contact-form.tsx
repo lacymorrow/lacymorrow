@@ -38,8 +38,8 @@ const ContactForm = () => {
   const { toast } = useToast();
 
   const [isLoading, setIsLoading] = useState(false);
-  const [state, setState] = useReducer<Reducer<StateType, Partial<StateType>>>(
-    (currentState, newState) => ({ ...currentState, ...newState }),
+  const [state, setState] = useReducer(
+    (currentState: StateType, newState: Partial<StateType>) => ({ ...currentState, ...newState }),
     defaults
   );
 

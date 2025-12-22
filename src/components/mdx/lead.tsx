@@ -1,10 +1,11 @@
+import React from "react";
 import { cn } from "@/lib/utils";
 
 const Lead = ({
 	children,
 	className,
 }: {
-	children: JSX.Element;
+	children: React.ReactNode;
 	className?: string;
 }) => {
 	return (
