@@ -8,6 +8,9 @@ const nextConfig = {
   // },
   // experimental: { serverActions:true },
 
+  // Turbopack is default in Next.js 16+
+  turbopack: {},
+
   images: {
     // For Static Site Generation
     // unoptimized: true,
@@ -91,7 +94,14 @@ const nextConfig = {
   ],
 };
 
-module.exports = nextConfig;
+const withNextra = require("nextra")({
+  theme: "nextra-theme-docs",
+  themeConfig: "./theme.config.jsx",
+  defaultShowCopyCode: true,
+  turbopack: {}
+});
+
+module.exports = withNextra(nextConfig);
 
 
 
