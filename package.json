@@ -51,6 +51,7 @@
     "react-medium-image-zoom": "^5.4.0",
     "react-ruffle": "^1.0.4",
     "react-stl-viewer": "^2.5.0",
+    "resend": "^6.6.0",
     "sharp": "^0.34.5",
     "three": "^0.182.0",
     "tsx": "4.21.0",
