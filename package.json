@@ -93,5 +93,14 @@
     "es5-ext",
     "sharp",
     "unrs-resolver"
-  ]
+  ],
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "@parcel/watcher",
+      "es5-ext",
+      "esbuild",
+      "sharp",
+      "unrs-resolver"
+    ]
+  }
 }
