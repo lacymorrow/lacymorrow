@@ -2,10 +2,10 @@
   "name": "lacymorrow",
   "version": "0.1.0",
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
+    "dev": "next dev --webpack",
+    "build": "next build --webpack",
     "postbuild": "next-sitemap",
-    "start": "next start",
+    "start": "next start --webpack",
     "lint": "next lint",
     "lint:fix": "next lint --fix"
   },
