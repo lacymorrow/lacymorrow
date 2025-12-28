@@ -1,0 +1,39 @@
+import { ImageCarousel } from "@/components/blocks/image-carousel";
+import Zoom from 'react-medium-image-zoom'
+import 'react-medium-image-zoom/dist/styles.css'
+import Image from 'next/image'
+
+# Viasat
+
+<Thick>[viasat.com ↗](https://viasat.com/)</Thick>
+
+> React developer (2023) - Contract
+
+<Center className="mx-auto my-8">
+    <Zoom>
+        <Image 
+            src="/static/work/viasat/viasat.svg" 
+            alt="Viasat logo" 
+            width={500} 
+            height={200} 
+            style={{ width: '100%', height: 'auto', maxWidth: '500px' }}
+        />
+    </Zoom>
+</Center>
+
+Viasat is a global communications company that delivers high-speed satellite broadband services and secure networking systems. I worked on their __in-flight entertainment (IFE) system__ that powers entertainment and connectivity for major airlines including American Airlines and Turkish Airlines.
+
+The IFE platform was built using __React__, __TypeScript__, and __Redux__ to deliver a seamless entertainment experience to millions of passengers worldwide. I focused on developing responsive user interfaces that work across various screen sizes and device types found in aircraft cabins.
+
+<ImageCarousel
+  images={[
+    "/static/work/viasat/ife.jpg",
+    "/static/work/viasat/ife-movies.webp",
+    "/static/work/viasat/aa-mobile.webp",
+    "/static/work/viasat/aa-mobile-signin.webp",
+    "/static/work/viasat/aa-mobile-connect.webp",
+    "/static/work/viasat/aa-ad.webp",
+    "/static/work/viasat/turkish-airlines-wireless-ife.jpg",
+  ]}
+  altPrefix="Viasat IFE screenshot"
+/>

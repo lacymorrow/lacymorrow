@@ -1,0 +1,66 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
+    "removeComments": true,
+    "preserveConstEnums": true,
+    "allowJs": true,
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "Node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "react-jsx",
+    "incremental": true,
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
+    "paths": {
+      "@/*": [
+        "./src/*"
+      ]
+    }
+  },
+  "mdx": {
+    "plugins": [
+      "remark-gfm"
+    ]
+  },
+  "include": [
+    ".next/types/**/*.ts",
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "**/*.mdx",
+    "**/*.js",
+    "**/*.jsx",
+    "**/*.mdx",
+    ".next/dev/types/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    ".next",
+    "out",
+    "public"
+  ],
+  "alwaysStrict": true,
+  "strictNullChecks": true,
+  "noUncheckedIndexedAccess": true,
+  "noImplicitAny": true,
+  "noImplicitReturns": true,
+  "noImplicitThis": true,
+  "noUnusedLocals": true,
+  "noUnusedParameters": true,
+  "allowUnreachableCode": false,
+  "noFallthroughCasesInSwitch": true
+}

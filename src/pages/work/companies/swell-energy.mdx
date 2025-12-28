@@ -1,0 +1,64 @@
+import { ImageCarousel } from "@/components/blocks/image-carousel";
+import {
+  VideoPlayer,
+  VideoPlayerContent,
+  VideoPlayerControlBar,
+  VideoPlayerMuteButton,
+  VideoPlayerPlayButton,
+  VideoPlayerSeekBackwardButton,
+  VideoPlayerSeekForwardButton,
+  VideoPlayerTimeDisplay,
+  VideoPlayerTimeRange,
+  VideoPlayerVolumeRange,
+} from '@/components/ui/kibo-ui/video-player';
+
+import Zoom from 'react-medium-image-zoom'
+import 'react-medium-image-zoom/dist/styles.css'
+
+# Swell Energy
+
+<Thick>[swellenergy.com ↗](https://swellenergy.com/)</Thick>
+
+> Full-stack Lead Engineer (2023) - Contract
+
+Swell Energy is a company that provides solar panels and batteries to homeowners. I was brought on to build a __dashboard and control panel__ to manage the energy utilities of their customers.
+
+<Center className="mx-auto my-8">
+	<Zoom>
+	![Program dashboard showing accumulated energy data for all swell energy customers with a search bar and a dropdown to select the time period for the graph](/static/work/swell-energy/swell-program.jpeg)
+	</Zoom>
+</Center>
+
+The dashboard was built to be both functional and attractive and was shown to investors to help secure funding for the company.
+
+This project was built using __React__, __TypeScript__, and __ShadCN/UI__ for the frontend and __NextJS__ for the backend.
+
+<ImageCarousel
+  images={[
+    "/static/work/swell-energy/swell-user.jpeg",
+    "/static/work/swell-energy/swell-program.jpeg",
+    "/static/work/swell-energy/swell-datatable.jpeg"
+  ]}
+  altPrefix="Swell Energy dashboard"
+/>
+
+<Center className="mx-auto my-8 hidden">
+<VideoPlayer className="overflow-hidden rounded-lg border">
+    <VideoPlayerContent
+      crossOrigin=""
+      muted
+      preload="auto"
+      slot="media"
+      src="/static/work/swell-energy/demo.mov"
+    />
+    <VideoPlayerControlBar>
+      <VideoPlayerPlayButton />
+      <VideoPlayerSeekBackwardButton />
+      <VideoPlayerSeekForwardButton />
+      <VideoPlayerTimeRange />
+      <VideoPlayerTimeDisplay showDuration />
+      <VideoPlayerMuteButton />
+      <VideoPlayerVolumeRange />
+    </VideoPlayerControlBar>
+  </VideoPlayer>
+</Center>

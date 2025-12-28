@@ -1,0 +1,30 @@
+import { useRouter } from "next/router";
+
+import { componentMap } from "@/components/mdx/mdxComponents";
+import { Toaster } from "@/components/ui/toaster";
+
+import { useEffect } from "react";
+import consoleBanner from "@/lib/consoleBanner";
+
+import "@/styles/globals.scss";
+import 'react-medium-image-zoom/dist/styles.css'
+
+
+export default function App({ Component, pageProps }) {
+  const { asPath } = useRouter();
+
+  useEffect(() => {
+    consoleBanner();
+  }, []);
+
+
+
+  return (
+    <>
+      <main className="wrapper">
+        <Component {...pageProps} components={componentMap} />
+      </main>
+      <Toaster />
+    </>
+  );
+}

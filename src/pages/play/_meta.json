@@ -1,0 +1,18 @@
+{
+	"index": {
+		"title": "Play",
+		"display": "hidden"
+	},
+	"crossover": "CrossOver",
+	"cinematic": "Cinematic",
+	"casper": "Casper WordPress theme",
+	"js": "JavaScript libraries",
+	"react": "React libraries",
+	"vscode": "VSCode extensions",
+	"php": "PHP libraries",
+	"python": "Python libraries",
+	"flash": "Flash applications",
+	"art": "Flash art",
+	"experiments": "Experiments",
+	"3d": "3D models"
+}

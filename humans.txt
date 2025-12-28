@@ -1,0 +1,9 @@
+/* humanstxt.org */
+
+/* TEAM */
+
+  Lacy Morrow -- Creator
+
+/* SITE */
+  Standards: TailwindCSS, TS, React, NextJS
+  Components: ShadCN, RadixUI, Nextra, HeroIcons

@@ -1,0 +1,43 @@
+{
+  "work": {
+    "title": "Work",
+    "href": "/work"
+  },
+  "play": {
+    "title": "Play",
+    "href": "/play"
+  },
+  "index": {
+    "title": "About Lacy",
+    "theme": {
+      "pagination": false,
+      "typesetting": "article"
+    }
+  },
+  "mentions": {
+    "theme": {
+      "pagination": false
+    }
+  },
+  "donate": {
+    "theme": {
+      "pagination": false
+    }
+  },
+  "contact": {
+    "title": "Contact Lacy",
+    "href": "/contact",
+    "newWindow": false,
+    "theme": {
+      "breadcrumb": true,
+      "footer": true,
+      "sidebar": true,
+      "toc": false,
+      "pagination": false
+    }
+  },
+  "archive": {
+    "title": "Archive",
+    "display": "hidden"
+  }
+}

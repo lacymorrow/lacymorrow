@@ -1,0 +1,37 @@
+import ContactForm from '@/components/pages/contact/contact-form';
+import '@/styles/contact.css';
+import { InlineWidget } from "react-calendly";
+
+# Contact Lacy Morrow
+
+If you have any questions or comments, please feel free to contact me at [704-315-5876](tel:+17043155876) or by email at [me@lacymorrow.com ↗](mailto:me@lacymorrow.com).
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1" className="border-none">
+    <AccordionTrigger className="text-xl font-bold">📅  Schedule a meeting on Calendly</AccordionTrigger>
+    <AccordionContent>
+		<InlineWidget url="https://calendly.com/lacymorrow" />
+		<Thick className="my-4">Or book on the [Calendly website ↗](https://calendly.com/lacymorrow/30min).</Thick>
+    </AccordionContent>
+  </AccordionItem>
+</Accordion>
+
+--- 
+
+### _or_ get in touch the old-fashioned way:
+
+{/* <PopupButton
+url="https://calendly.com/lacymorrow"
+rootElement={document.getElementById("__next")}
+text="Click here to schedule!"
+/> */}
+
+<ContactForm />
+
+---
+
+## Explore More
+
+- [View my work experience →](/work)
+- [See my projects →](/play)
+- [Learn more about me →](/about)

@@ -1,0 +1,67 @@
+{
+  "index": {
+    "title": "Home",
+    "display": "hidden",
+    "theme": {
+      "navbar": false,
+      "breadcrumb": false,
+      "footer": false,
+      "sidebar": false,
+      "toc": false,
+      "pagination": false,
+      "layout": "raw"
+    }
+  },
+  "company": {
+    "title": "Lacy",
+    "type": "menu",
+    "display": "hidden",
+    "items": {
+      "home": {
+        "title": "Home",
+        "href": "/"
+      },
+      "about": {
+        "title": "About",
+        "href": "/about"
+      },
+      "contact": {
+        "title": "Contact",
+        "href": "/contact"
+      }
+    }
+  },
+  "work": {
+    "title": "Work",
+    "type": "page"
+  },
+  "play": {
+    "title": "Play",
+    "type": "page"
+  },
+  "about": {
+    "title": "About",
+    "type": "page",
+    "theme": {
+      "typesetting": "article"
+    }
+  },
+  "---": {
+    "type": "separator"
+  },
+  "fly5": {
+    "title": "Fly5 ↗",
+    "type": "page",
+    "href": "https://fly5.live",
+    "newWindow": true
+  },
+  "contact": {
+    "title": "Contact ↗",
+    "type": "page",
+    "newWindow": true,
+    "display": "hidden"
+  },
+  "sink": {
+    "display": "hidden"
+  }
+}
