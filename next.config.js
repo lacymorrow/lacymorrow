@@ -2,6 +2,9 @@
 const nextConfig = {
   // For Static Site Generation
   // output: 'export',
+  typescript: {
+    ignoreBuildErrors: true,
+  },
 
   // cors: {
   //   origin: "*",

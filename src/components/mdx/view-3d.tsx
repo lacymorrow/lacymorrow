@@ -11,7 +11,6 @@ export const View3d = ({ src, ...props }: Props) => {
   return (
     <View3D
       className="mx-auto h-full max-w-sm"
-      tag="div"
       src={src}
       zoom={false}
       onReady={(e) => {
