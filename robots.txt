@@ -2,3 +2,13 @@
 # www.google.com/support/webmasters/bin/answer.py?hl=en&answer=156449
 
 User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://lacymorrow.com/sitemap.xml
+
+# Crawl-delay for politeness
+Crawl-delay: 1
+
+# Disallow admin/api routes that shouldn't be indexed
+Disallow: /api/
