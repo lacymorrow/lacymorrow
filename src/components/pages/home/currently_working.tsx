@@ -6,18 +6,33 @@ import {
 const CurrentlyWorking = () => {
   const projects: ProjectCardProps[] = [
     {
+      title: "Lacy Shell",
+      description: "Talk to your terminal. Natural language routes to AI agents automatically.",
+      href: "https://lacy.sh",
+    },
+    {
       title: "Juno",
-      description: "AI that controls your computer",
+      description: "Anthropic Computer Use for your desktop. AI that sees and clicks.",
       href: "https://junebug.ai",
     },
     {
+      title: "Shipkit",
+      description: "Ship Next.js apps in 30 seconds. Auth, payments, AI included.",
+      href: "https://shipkit.io",
+    },
+    {
+      title: "Uibrary",
+      description: "Production-ready UI components. Copy, paste, ship.",
+      href: "https://uibrary.com",
+    },
+    {
       title: "Build and Serve",
-      description: "10x developer resources for your business.",
+      description: "Development agency for teams that need senior engineering fast.",
       href: "https://buildandserve.com",
     },
     {
       title: "Vibe Rehab",
-      description: "We fix vibe code.",
+      description: "Code rescue for AI-generated projects. We fix vibe code.",
       href: "https://vibe.rehab",
     },
   ];

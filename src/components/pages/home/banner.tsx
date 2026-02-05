@@ -35,7 +35,7 @@ const Banner = () => {
         {/* Centered text container */}
         <div className="z-10 relative text-center">
           <h1 className="text-xl font-medium text-white drop-shadow-md md:text-2xl">
-            Lacy is a web developer.
+            I build AI agents that control computers.
           </h1>
         </div>
       </a>

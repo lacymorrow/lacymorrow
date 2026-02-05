@@ -6,49 +6,39 @@ import {
 const PastProjects = () => {
   const projects: ProjectCardProps[] = [
     {
-      title: "Shipkit Next.js Starter",
-      description: "Next-gen AI-powered Next.js boilerplate and tooling.",
-      href: "https://shipkit.io",
-    },
-    {
-      title: "Hitchhiker's Guide to the Galaxy",
-      description: "A comprehensive guide to the galaxy.",
-      href: "https://hitchhikersgalaxy.guide",
-    },
-    {
-      title: "Uibrary UI Components",
-      description: "UI components for modern web interfaces.",
-      href: "https://uibrary.com",
-    },
-    {
-      title: "Cloud0 AI Chat",
-      description: "100% private, offline AI.",
-      href: "https://cloud0.dev",
-    },
-    {
-      title: "CrossOver Crosshair Overlay",
-      description: "Crosshair overlay app for Windows, Mac, and Linux.",
+      title: "CrossOver",
+      description: "Gaming overlay for any screen. Windows, Mac, and Linux.",
       href: "https://gh.lacymorrow.com/crossover",
     },
     {
-      title: "XSPF Jukebox Web Player",
-      description: "A web-based XSPF playlist player.",
-      href: "https://xspf-jukebox.vercel.app",
+      title: "Hitchhiker's Guide to the Galaxy",
+      description: "My favorite book, now an AI. Ask it anything. Probably inaccurately.",
+      href: "https://hitchhikersgalaxy.guide",
     },
     {
-      title: "Cait and Lacy's Wedding Website",
+      title: "Cait and Lacy",
       description: "Website for my wife ❤️",
       href: "https://caitandlacy.com",
     },
     {
-      title: "Generative website.",
-      description: "Generates pages on the fly with AI.",
+      title: "Cloud0 AI Chat",
+      description: "100% private, offline AI. Your data never leaves your machine.",
+      href: "https://cloud0.dev",
+    },
+    {
+      title: "Generative Website",
+      description: "Pages generated on the fly with AI. No templates.",
       href: "https://gen.lacy.sh",
     },
     {
-      title: "Live Interactive Globe Visualization",
-      description: "Interactive globe visualization with real-time data.",
+      title: "Interactive Globe",
+      description: "Real-time data visualization on a 3D globe.",
       href: "https://globe.lacy.sh",
+    },
+    {
+      title: "XSPF Jukebox",
+      description: "Web-based playlist player. One of the original web audio players.",
+      href: "https://xspf-jukebox.vercel.app",
     },
   ];
 
