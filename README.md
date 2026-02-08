@@ -29,6 +29,14 @@ One of my favorite books is *The Hitchhiker's Guide to the Galaxy*, so I made th
 
 Electron · NW.js · Nightwatch · NextUI
 
+### ClawdHub Skills
+
+**AI Agent Skills for Claude Code & OpenClaw**
+- 📈 [alpaca-trading](https://github.com/lacymorrow/alpaca-trading-skill) — Command-line trading for stocks, ETFs, options, and crypto via Alpaca API
+  ```bash
+  clawhub install alpaca-trading
+  ```
+
 ---
 
 ### Projects
