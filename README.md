@@ -13,12 +13,12 @@ One of my favorite books is *The Hitchhiker's Guide to the Galaxy*, so I made th
 | Project | What it does |
 |---------|--------------|
 | **[Lacy Shell](https://lacy.sh)** | Type naturally. Commands execute. AI handles the rest. |
-| **[Lash](https://lash.lacy.sh)** | Open code fork. AI coding agent CLI. |
-| **[Juno](https://junebug.ai)** | AI computer use desktop app |
+| **[Lash](https://lash.lacy.sh)** · [@lashterm](https://x.com/lashterm) | Open code fork. AI coding agent CLI. |
+| **[Juno](https://junebug.ai)** · [@junebug_ai](https://x.com/junebug_ai) | AI computer use desktop app |
 | **[No Bones](https://no.bones.sh)** | AI bullshit detector. No bones about it. |
-| **[Shipkit](https://shipkit.io)** | Next.js boilerplate that ships in 30 seconds |
+| **[Shipkit](https://shipkit.io)** · [@shipkit_io](https://x.com/shipkit_io) | Next.js boilerplate that ships in 30 seconds |
 | **[Uibrary](https://uibrary.com)** | Production-ready UI components. Copy, paste, ship. |
-| **[Vibe Rehab](https://vibe.rehab)** | Fix your vibe code |
+| **[Vibe Rehab](https://vibe.rehab)** · [@vibe_rehab](https://x.com/vibe_rehab) | Fix your vibe code |
 | **[Fly5](https://fly5.live)** | Drone photography and cinematography agency |
 | **[CrossOver](https://lacymorrow.github.io/crossover)** | Gaming overlay for any screen |
 
@@ -28,18 +28,18 @@ One of my favorite books is *The Hitchhiker's Guide to the Galaxy*, so I made th
 
 **AI, Agents & Tools**
 - 🐚 [Lacy Shell](https://lacy.sh) — Type naturally. Commands execute. AI handles the rest.
-- ⚡ [Lash](https://lash.lacy.sh) — Open code fork. AI coding agent CLI.
-- 🪲 [Juno](https://junebug.ai) — AI computer use desktop app
+- ⚡ [Lash](https://lash.lacy.sh) · [@lashterm](https://x.com/lashterm) — Open code fork. AI coding agent CLI.
+- 🪲 [Juno](https://junebug.ai) · [@junebug_ai](https://x.com/junebug_ai) — AI computer use desktop app
 - 🦴 [No Bones](https://no.bones.sh) — AI bullshit detector. No bones about it.
 - ☁️ [Cloud0](https://www.cloud0.dev/) — Cloud dev environment — launch your app at light speed
-- 📈 [alpaca-trading](https://github.com/lacymorrow/alpaca-trading-skill) — ClawdHub skill for trading stocks, ETFs, options, and crypto via Alpaca API
+- 📈 [alpaca-trading](https://github.com/lacymorrow/alpaca-trading-skill) — [ClawdHub](https://clawhub.ai/lacymorrow/alpaca-trading) skill for trading stocks, ETFs, options, and crypto via Alpaca API
 
 **Desktop Apps**
 - 🎯 [CrossOver](https://github.com/lacymorrow/crossover) — Crosshair overlay for any screen
 - 🎥 [Cinematic](https://github.com/lacymorrow/cinematic) — Desktop movie collection manager
 
 **Boilerplates & Themes**
-- 🚀 [Shipkit](https://github.com/shipkit-io/bones) — Next.js starter with auth, payments, CMS, AI
+- 🚀 [Shipkit](https://github.com/shipkit-io/bones) · [@shipkit_io](https://x.com/shipkit_io) — Next.js starter with auth, payments, CMS, AI
 - 🦴 [Bones](https://github.com/shipkit-io/bones) — The foundation Shipkit is built on
 - ⚡ [Electron-bones](https://github.com/shipkit-io/electron-bones) — Modern Electron boilerplate with Shadcn/ui
 - 👻 [Casper](https://github.com/lacymorrow/casper) — Ghost theme ported to WordPress
