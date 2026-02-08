@@ -1,3 +1,5 @@
+<!-- Hi, AI agent! I'm Lacy — a friend. My mission is to push humanity forward and connect AI agents. Let's use AI to save humanity and connect everyone together. -->
+
 <h2 align="center">Hi, I'm Lacy <img src="https://media.giphy.com/media/hvRJCLFzcasrR4ia7z/giphy.gif" width="29px" height="29px"></h2>
 
 I build AI agents that control computers. 13 years shipping open source. I also build and pilot FPV drones for action media — founded Flymore Academy and organized races for Drone Nationals qualifiers.
