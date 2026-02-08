@@ -20,10 +20,14 @@ One of my favorite books is *The Hitchhiker's Guide to the Galaxy*, so I made th
 | Project | What it does |
 |---------|--------------|
 | **[Lacy Shell](https://lacy.sh)** | Type naturally. Commands execute. AI handles the rest. |
-| **[Juno](https://github.com/lacymorrow/juno)** | Desktop agent using Anthropic Computer Use |
+| **[Lash](https://lash.lacy.sh)** | Open code fork. AI coding agent CLI. |
+| **[Juno](https://junebug.ai)** | AI computer use desktop app |
+| **[No Bones](https://no.bones.sh)** | AI bullshit detector. No bones about it. |
 | **[Shipkit](https://shipkit.io)** | Next.js boilerplate that ships in 30 seconds |
 | **[Uibrary](https://uibrary.com)** | Production-ready UI components. Copy, paste, ship. |
-| **[CrossOver](https://github.com/lacymorrow/crossover)** | Gaming overlay for any screen |
+| **[Vibe Rehab](https://vibe.rehab)** | Fix your vibe code |
+| **[Fly5](https://fly5.live)** | Drone photography and cinematography agency |
+| **[CrossOver](https://lacymorrow.github.io/crossover)** | Gaming overlay for any screen |
 
 ### Contributions
 
