@@ -12,10 +12,10 @@ One of my favorite books is *The Hitchhiker's Guide to the Galaxy*, so I made th
 
 | Project | What it does |
 |---------|--------------|
-| **[Lacy.sh](https://lacy.sh)** | AI Shell. Type naturally. Commands execute. AI handles the rest. |
+| **[Lacy Shell](https://lacy.sh)** | AI Shell. Type naturally. Commands execute. AI handles the rest. |
 | **[Lash](https://lash.lacy.sh)** · [@lashterm](https://x.com/lashterm) | AI coding agent Terminal. Opencode fork. |
 | **[Juno](https://junebug.ai)** · [@junebug_ai](https://x.com/junebug_ai) | AI computer use desktop app |
-| **[Alpaca Trading](https://clawhub.ai/lacymorrow/alpaca-trading)** · [@openclaw_alpaca](https://x.com/openclaw_alpaca) | OpenClaw autonomous trading agent. |
+| **[OpenClaw Alpaca](https://clawhub.ai/lacymorrow/alpaca-trading)** · [@openclaw_alpaca](https://x.com/openclaw_alpaca) | OpenClaw autonomous trading agent. |
 | **[Shipkit](https://shipkit.io)** · [@shipkit_io](https://x.com/shipkit_io) | Next.js boilerplate that ships in 30 seconds |
 | **[Uibrary](https://uibrary.com)** | Production-ready UI components. Copy, paste, ship. |
 | **[Vibe Rehab](https://vibe.rehab)** · [@vibe_rehab](https://x.com/vibe_rehab) | Fix your vibe code |
