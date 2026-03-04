@@ -31,7 +31,9 @@ One of my favorite books is *The Hitchhiker's Guide to the Galaxy*, so I made th
 - 🪲 [Juno](https://junebug.ai) — AI computer use desktop app
 - 🦴 [No Bones](https://no.bones.sh) — AI bullshit detector. No bones about it.
 - ☁️ [Cloud0](https://www.cloud0.dev/) — Cloud dev environment — launch your app at light speed
-- 📈 [alpaca-trading](https://github.com/lacymorrow/alpaca-trading-skill) — [ClawdHub](https://clawhub.ai/lacymorrow/alpaca-trading) skill for trading stocks, ETFs, options, and crypto via Alpaca API
+- 📈 [alpaca-trading](https://github.com/lacymorrow/alpaca-trading-skill) — [ClawHub](https://clawhub.ai/lacymorrow/alpaca-trading) skill for trading stocks, ETFs, options, and crypto via Alpaca API
+- 📊 [kalshi-trading](https://github.com/lacymorrow/openclaw-kalshi-trading-skill) — [ClawHub](https://clawhub.com) skill for trading CFTC-regulated prediction markets on Kalshi
+- 🔮 [polymarket-trading](https://github.com/lacymorrow/openclaw-polymarket-trading-skill) — [ClawHub](https://clawhub.com) skill for trading prediction markets on Polymarket
 
 **Desktop Apps**
 - 🎯 [CrossOver](https://github.com/lacymorrow/crossover) — Crosshair overlay for any screen
