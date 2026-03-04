@@ -90,11 +90,12 @@ One of my favorite books is *The Hitchhiker's Guide to the Galaxy*, so I made th
   <img height=200 align="center" src="https://streak-stats.demolab.com/?user=lacymorrow&theme=transparent" alt="GitHub Streak" />
 </a>
 <a href="https://github.com/lacymorrow/">
+  <img height=200 align="center" src="https://raw.githubusercontent.com/lacymorrow/lacymorrow/profile-summary-cards/profile-summary-card-output/default/4-productive-time.svg" alt="Productive Time" />
+</a>
+<a href="https://github.com/lacymorrow/">
   <img height=200 align="center" src="https://github-readme-stats-sigma-five.vercel.app/api?username=lacymorrow&show_icons=true&theme=transparent" alt="Stats" />
 </a>
 <a href="https://github.com/lacymorrow/">
   <img height=200 align="center" src="https://raw.githubusercontent.com/lacymorrow/lacymorrow/profile-summary-cards/profile-summary-card-output/default/2-most-commit-language.svg" alt="Commits per Language" />
 </a>
-<a href="https://github.com/lacymorrow/">
-  <img height=200 align="center" src="https://raw.githubusercontent.com/lacymorrow/lacymorrow/profile-summary-cards/profile-summary-card-output/default/4-productive-time.svg" alt="Productive Time" />
-</a>
+
