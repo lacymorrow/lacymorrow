@@ -5,6 +5,7 @@ const navigation = [
   { name: "Play", href: "/play" },
   { name: "About", href: "/about" },
   { name: "Contact", href: "/contact" },
+  { name: "Colophon", href: "/about/colophon" },
   { name: "Fly5 ↗", href: "https://fly5.live" },
 ];
 

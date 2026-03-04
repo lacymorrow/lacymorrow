@@ -36,6 +36,12 @@
       "pagination": false
     }
   },
+  "colophon": {
+    "theme": {
+      "pagination": false,
+      "typesetting": "article"
+    }
+  },
   "archive": {
     "title": "Archive",
     "display": "hidden"
