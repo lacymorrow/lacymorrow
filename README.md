@@ -86,6 +86,7 @@ One of my favorite books is *The Hitchhiker's Guide to the Galaxy*, so I made th
 
 ### Developer Stats
 
+<!-- Option 1: Self-hosted github-readme-stats (paused upstream — deploy your own fork to re-enable)
 <a href="https://github.com/lacymorrow/">
   <img height=200 align="center" src="https://github-readme-stats.vercel.app/api?username=lacymorrow&show_icons=true&theme=transparent" />
 </a>
@@ -96,3 +97,15 @@ One of my favorite books is *The Hitchhiker's Guide to the Galaxy*, so I made th
 ---
 
 ![Anurag's GitHub stats](https://github-profile-trophy.vercel.app/?username=lacymorrow&margin-w=12&rank=-C,-?&theme=transparent)
+-->
+
+<!-- Option 2: GitHub Profile Summary Cards (generated via GitHub Actions, no external dependency) -->
+<a href="https://github.com/lacymorrow/">
+  <img height=200 align="center" src="https://raw.githubusercontent.com/lacymorrow/lacymorrow/profile-summary-cards/profile-summary-card-output/default/0-profile-details.svg" />
+</a>
+<a href="https://github.com/lacymorrow/">
+  <img height=200 align="center" src="https://raw.githubusercontent.com/lacymorrow/lacymorrow/profile-summary-cards/profile-summary-card-output/default/1-repos-per-language.svg" />
+</a>
+<a href="https://github.com/lacymorrow/">
+  <img height=200 align="center" src="https://raw.githubusercontent.com/lacymorrow/lacymorrow/profile-summary-cards/profile-summary-card-output/default/2-most-commit-language.svg" />
+</a>
