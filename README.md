@@ -89,12 +89,28 @@ One of my favorite books is *The Hitchhiker's Guide to the Galaxy*, so I made th
 <a href="https://github.com/lacymorrow/">
   <img height=200 align="center" src="https://streak-stats.demolab.com/?user=lacymorrow&theme=transparent" alt="GitHub Streak" />
 </a>
+
+**B) github-readme-stats — Top Languages** *(currently paused upstream)*
 <a href="https://github.com/lacymorrow/">
   <img height=200 align="center" src="https://raw.githubusercontent.com/lacymorrow/lacymorrow/profile-summary-cards/profile-summary-card-output/default/4-productive-time.svg" alt="Productive Time" />
 </a>
+
+**E) Streak Stats (herokuapp)**
+<a href="https://github.com/lacymorrow/">
+  <img height=200 align="center" src="https://github-readme-streak-stats.herokuapp.com/?user=lacymorrow&theme=transparent" alt="GitHub Streak" />
+</a>
+
+**F) Profile Summary — Repos per Language**
+<a href="https://github.com/lacymorrow/">
+  <img height=200 align="center" src="https://raw.githubusercontent.com/lacymorrow/lacymorrow/profile-summary-cards/profile-summary-card-output/default/1-repos-per-language.svg" alt="Repos per Language" />
+</a>
+
+**G) Profile Summary — Commits per Language**
 <a href="https://github.com/lacymorrow/">
   <img height=200 align="center" src="https://github-readme-stats-sigma-five.vercel.app/api?username=lacymorrow&show_icons=true&theme=transparent" alt="Stats" />
 </a>
+
+**H) Profile Summary — Productive Time**
 <a href="https://github.com/lacymorrow/">
   <img height=200 align="center" src="https://raw.githubusercontent.com/lacymorrow/lacymorrow/profile-summary-cards/profile-summary-card-output/default/2-most-commit-language.svg" alt="Commits per Language" />
 </a>
