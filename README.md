@@ -99,13 +99,13 @@ One of my favorite books is *The Hitchhiker's Guide to the Galaxy*, so I made th
 ![Anurag's GitHub stats](https://github-profile-trophy.vercel.app/?username=lacymorrow&margin-w=12&rank=-C,-?&theme=transparent)
 -->
 
-<!-- Option 2: GitHub Profile Summary Cards (generated via GitHub Actions, no external dependency) -->
+<!-- Option 2: Streak stats + profile summary cards -->
 <a href="https://github.com/lacymorrow/">
-  <img height=200 align="center" src="https://raw.githubusercontent.com/lacymorrow/lacymorrow/profile-summary-cards/profile-summary-card-output/default/0-profile-details.svg" />
+  <img height=200 align="center" src="https://streak-stats.demolab.com/?user=lacymorrow&theme=transparent" alt="GitHub Streak" />
 </a>
 <a href="https://github.com/lacymorrow/">
-  <img height=200 align="center" src="https://raw.githubusercontent.com/lacymorrow/lacymorrow/profile-summary-cards/profile-summary-card-output/default/1-repos-per-language.svg" />
+  <img height=200 align="center" src="https://raw.githubusercontent.com/lacymorrow/lacymorrow/profile-summary-cards/profile-summary-card-output/default/1-repos-per-language.svg" alt="Top Languages" />
 </a>
 <a href="https://github.com/lacymorrow/">
-  <img height=200 align="center" src="https://raw.githubusercontent.com/lacymorrow/lacymorrow/profile-summary-cards/profile-summary-card-output/default/2-most-commit-language.svg" />
+  <img height=200 align="center" src="https://raw.githubusercontent.com/lacymorrow/lacymorrow/profile-summary-cards/profile-summary-card-output/default/4-productive-time.svg" alt="Productive Time" />
 </a>
