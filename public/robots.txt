@@ -1,9 +1,0 @@
-# *
-User-agent: *
-Allow: /
-
-# Host
-Host: https://lacymorrow.com
-
-# Sitemaps
-Sitemap: https://lacymorrow.com/sitemap.xml
