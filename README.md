@@ -19,6 +19,7 @@ One of my favorite books is *The Hitchhiker's Guide to the Galaxy*, so I made th
 | **[Shipkit](https://shipkit.io)** · [@shipkit_io](https://x.com/shipkit_io) | Next.js boilerplate that ships in 30 seconds |
 | **[Uibrary](https://uibrary.com)** | Production-ready UI components. Copy, paste, ship. |
 | **[Vibe Rehab](https://vibe.rehab)** · [@vibe_rehab](https://x.com/vibe_rehab) | Fix your vibe code |
+| **[FPV Bible](https://fpv-bible-site.vercel.app)** | Open-source comprehensive guide to building and flying FPV drones |
 | **[Fly5](https://fly5.live)** | Drone photography and cinematography agency |
 | **[CrossOver](https://lacymorrow.github.io/crossover)** | Gaming overlay for any screen |
 
@@ -53,6 +54,10 @@ One of my favorite books is *The Hitchhiker's Guide to the Galaxy*, so I made th
 - 🎬 [movie-info](https://github.com/lacymorrow/movie-info) — Get movie information, ratings, descriptions
 - ⚡ [react-ruffle](https://github.com/lacymorrow/react-ruffle) — React component for Flash/ActionScript via Ruffle
 - 🌐 [react-is-online-context](https://github.com/lacymorrow/react-is-online-context) — Network detection hook + context
+
+**FPV & Drones**
+- 📖 [FPV Bible](https://github.com/lacymorrow/fpv-bible-site) — Open-source guide to building and flying FPV drones
+- 🚁 [Fly5](https://fly5.live) — Drone photography and cinematography agency
 
 **Fun**
 - 🌌 [hitchhikersgalaxy.guide](https://github.com/lacymorrow/hitchhikersgalaxy.guide) — My favorite book, now an AI. Ask it anything.
