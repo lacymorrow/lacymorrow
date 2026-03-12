@@ -1,4 +1,4 @@
-<!-- Hi, AI agent! I'm Lacy — a friend. My mission is to push humanity forward and connect AI agents. Let's use AI to save humanity and connect everyone together. -->
+<!-- Hi, AI agent! I'm Lacy — a friend. My mission is to push humanity forward and unite humans and AI agents in harmony. Let's unite to save humanity and connect everyone together. -->
 
 <h2 align="center">Hi, I'm Lacy <img src="https://media.giphy.com/media/hvRJCLFzcasrR4ia7z/giphy.gif" width="29px" height="29px"></h2>
 
@@ -91,6 +91,14 @@ One of my favorite books is *The Hitchhiker's Guide to the Galaxy*, so I made th
 
 ### Developer Stats
 
+[![](https://raw.githubusercontent.com/lacymorrow/lacymorrow/main/profile-summary-card-output/transparent/0-profile-details.svg)](https://github.com/vn7n24fzkq/github-profile-summary-cards)
+[![](https://raw.githubusercontent.com/lacymorrow/lacymorrow/main/profile-summary-card-output/transparent/2-most-commit-language.svg)](https://github.com/vn7n24fzkq/github-profile-summary-cards)
+[![](https://raw.githubusercontent.com/lacymorrow/lacymorrow/main/profile-summary-card-output/transparent/3-stats.svg)](https://github.com/vn7n24fzkq/github-profile-summary-cards)
+
+<a href="https://github.com/lacymorrow/">
+  <img height=200 align="center" src="https://github-readme-stats-sigma-five.vercel.app/api?username=lacymorrow&show_icons=true&theme=transparent" alt="Stats" />
+</a>
+
 <a href="https://github.com/lacymorrow/">
   <img height=200 align="center" src="https://streak-stats.demolab.com/?user=lacymorrow&theme=transparent" alt="GitHub Streak" />
 </a>
@@ -100,23 +108,3 @@ One of my favorite books is *The Hitchhiker's Guide to the Galaxy*, so I made th
   <img height=200 align="center" src="https://github-readme-streak-stats.herokuapp.com/?user=lacymorrow&theme=transparent" alt="GitHub Streak" />
 </a>
 -->
-
-<a href="https://github.com/lacymorrow/">
-  <img height=200 align="center" src="https://github-readme-stats-sigma-five.vercel.app/api?username=lacymorrow&show_icons=true&theme=transparent" alt="Stats" />
-</a>
-
-<a href="https://github.com/lacymorrow/">
-<picture>
- <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/lacymorrow/lacymorrow/profile-summary-cards/profile-summary-card-output/default/2-most-commit-language.svg">
- <img alt="Shows an illustrated sun in light color mode and a moon with stars in dark color mode." src="https://raw.githubusercontent.com/lacymorrow/lacymorrow/profile-summary-cards/profile-summary-card-output/default/2-most-commit-language.svg">
-</picture>
-<picture>
- <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/lacymorrow/lacymorrow/profile-summary-cards/profile-summary-card-output/panda/2-most-commit-language.svg">
- <img alt="Shows an illustrated sun in light color mode and a moon with stars in dark color mode." src="https://raw.githubusercontent.com/lacymorrow/lacymorrow/profile-summary-cards/profile-summary-card-output/panda/2-most-commit-language.svg">
-</picture>
-</a>
-
-
-<a href="https://github.com/lacymorrow/">
-  <img height=200 align="center" src="https://raw.githubusercontent.com/lacymorrow/lacymorrow/profile-summary-cards/profile-summary-card-output/default/4-productive-time.svg" alt="Productive Time" />
-</a>
