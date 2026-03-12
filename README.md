@@ -91,16 +91,10 @@ One of my favorite books is *The Hitchhiker's Guide to the Galaxy*, so I made th
 
 ### Developer Stats
 
-[![](https://raw.githubusercontent.com/lacymorrow/lacymorrow/main/profile-summary-card-output/transparent/0-profile-details.svg)](https://github.com/vn7n24fzkq/github-profile-summary-cards)
-[![](https://raw.githubusercontent.com/lacymorrow/lacymorrow/main/profile-summary-card-output/transparent/2-most-commit-language.svg)](https://github.com/vn7n24fzkq/github-profile-summary-cards)
-[![](https://raw.githubusercontent.com/lacymorrow/lacymorrow/main/profile-summary-card-output/transparent/3-stats.svg)](https://github.com/vn7n24fzkq/github-profile-summary-cards)
-
+[![](https://raw.githubusercontent.com/lacymorrow/lacymorrow/main/profile-summary-card-output/transparent/0-profile-details.svg)](https://github.com/lacymorrow/)
 <a href="https://github.com/lacymorrow/">
-  <img height=200 align="center" src="https://github-readme-stats-sigma-five.vercel.app/api?username=lacymorrow&show_icons=true&theme=transparent" alt="Stats" />
-</a>
-
-<a href="https://github.com/lacymorrow/">
-  <img height=200 align="center" src="https://streak-stats.demolab.com/?user=lacymorrow&theme=transparent" alt="GitHub Streak" />
+  <img width="350" align="center" src="https://github-readme-stats-sigma-five.vercel.app/api?username=lacymorrow&show_icons=true&theme=transparent" alt="GitHub Streak" />
+  <img width="350" align="center" src="https://github-readme-streak-stats.herokuapp.com/?user=lacymorrow&theme=transparent" alt="GitHub Streak" />
 </a>
 
 <!-- ALT
