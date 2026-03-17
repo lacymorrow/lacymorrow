@@ -55,13 +55,6 @@ One of my favorite books is *The Hitchhiker's Guide to the Galaxy*, so I made th
 - [react-ruffle](https://github.com/lacymorrow/react-ruffle) — React component for Flash/ActionScript via Ruffle
 - [react-is-online-context](https://github.com/lacymorrow/react-is-online-context) — Network detection hook + context
 
-**Curated Lists**
-- [terminals-are-sexy](https://github.com/lacymorrow/terminals-are-sexy) · [terminalsare.sexy](https://terminalsare.sexy/) — Terminal frameworks, plugins, and resources
-- [awesome-electron](https://github.com/lacymorrow/awesome-electron) — Electron resources
-- [awesome-fpv](https://github.com/lacymorrow/awesome-fpv) — FPV drone resources
-- [awesome-drones](https://github.com/lacymorrow/awesome-drones) — Drone resources
-- [awesome-ai-tools](https://github.com/lacymorrow/awesome-ai-tools) — AI tools
-
 **FPV & Drones**
 - [FPV Bible](https://github.com/lacymorrow/fpv-bible-site) · [fpvbible.com](https://fpvbible.com) — Open-source guide to building and flying FPV drones
 - [Fly5](https://github.com/lacymorrow/fly5) · [fly5.live](https://fly5.live) — Drone photography and cinematography
