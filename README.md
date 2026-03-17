@@ -32,7 +32,6 @@ One of my favorite books is *The Hitchhiker's Guide to the Galaxy*, so I made th
 - [Lash](https://github.com/lacymorrow/lash) · [lash.lacy.sh](https://lash.lacy.sh) — AI coding agent. OpenCode fork with cd and shell commands.
 - [Juno](https://github.com/lacymorrow/juno) · [junebug.ai](https://junebug.ai) — AI computer use desktop app
 - [Aura](https://github.com/lacymorrow/aura) — Memory augmentation through audio
-- [Paperclip](https://github.com/lacymorrow/paperclip) — Zero-human company orchestration
 - [No Bones](https://github.com/lacymorrow/no-bones) · [no.bones.sh](https://no.bones.sh) — AI bullshit detector
 - [Cloud0](https://github.com/lacymorrow/cloud.dev) · [cloud0.dev](https://www.cloud0.dev/) — Cloud dev environment
 - [alpaca-trading](https://github.com/lacymorrow/alpaca-trading-skill) · [ClawHub](https://clawhub.ai/lacymorrow/alpaca-trading) — Trading stocks, ETFs, options, and crypto via Alpaca
@@ -68,7 +67,6 @@ One of my favorite books is *The Hitchhiker's Guide to the Galaxy*, so I made th
 - [Fly5](https://github.com/lacymorrow/fly5) · [fly5.live](https://fly5.live) — Drone photography and cinematography
 
 **Fun**
-- [cliamp](https://github.com/lacymorrow/cliamp) — Terminal Winamp (with Spotify)
 - [hitchhikersgalaxy.guide](https://github.com/lacymorrow/hitchhikersgalaxy.guide) · [website](https://hitchhikersgalaxy.guide) — My favorite book, now an AI
 - [caitandlacy.com](https://caitandlacy.com) — Website for my wife ❤️
 - [Dazzboard](https://github.com/lacymorrow/dazzboard) — Delightful web dashboard
