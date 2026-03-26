@@ -7,6 +7,11 @@ export default function Document() {
             <body>
                 <Main />
                 <NextScript />
+                <script
+                    defer
+                    src="https://analytics.lacy.sh/script.js"
+                    data-website-id="3596ceb9-e3cc-401a-822e-a1cfeb21e509"
+                />
             </body>
         </Html>
     )
