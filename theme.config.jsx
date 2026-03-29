@@ -26,7 +26,8 @@ const themeConfig = {
 	},
 	useNextSeoProps() {
 		const { asPath } = useRouter()
-		return asPath !== '/' ? { titleTemplate: '%s – Lacy' } : {}
+		if (asPath === '/') return { titleTemplate: title }
+		return { titleTemplate: `%s – ${title}` }
 	},
 	project: { link: githubUrl },
 	chat: {
@@ -62,13 +63,15 @@ const themeConfig = {
 				<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 				<meta httpEquiv="Content-Language" content="en" />
 				<meta name="description" content={description} />
-				<meta name="og:description" content={description} />
+				<meta property="og:description" content={description} />
 				<meta name="twitter:card" content="summary_large_image" />
 				<meta name="twitter:image" content={socialCard} />
 				<meta name="twitter:site:domain" content={ogUrl.replace('https://', '')} />
 				<meta name="twitter:url" content={ogUrl} />
-				<meta name="og:title" content={pageTitle ? `${pageTitle} – ${title}` : title} />
-				<meta name="og:image" content={socialCard} />
+				<meta property="og:title" content={pageTitle ? `${pageTitle} – ${title}` : title} />
+				<meta property="og:image" content={socialCard} />
+				<meta property="og:url" content={ogUrl} />
+				<meta property="og:type" content="website" />
 				<meta name="apple-mobile-web-app-title" content={title} />
 				<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
 				<link rel="icon" href="/favicon.png" type="image/png" />
