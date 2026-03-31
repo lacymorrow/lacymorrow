@@ -2,7 +2,7 @@
 
 <h2 align="center">Hi, I'm Lacy <img src="https://media.giphy.com/media/hvRJCLFzcasrR4ia7z/giphy.gif" width="29px" height="29px"></h2>
 
-I build AI agents that control computers. 13 years shipping open source. I also build and pilot FPV drones for action media. Founded Flymore Academy and organized races for Drone Nationals qualifiers.
+I build AI agents that control computers. 20+ years shipping open source. I also build and pilot FPV drones for action media. Founded Flymore Academy and organized races for Drone Nationals qualifiers.
 
 One of my favorite books is *The Hitchhiker's Guide to the Galaxy*, so I made the real one at [hitchhikersgalaxy.guide](https://hitchhikersgalaxy.guide). I've helped build hardware like the [hackpack](https://hackpack.cc/). I made a [website for my wife](https://caitandlacy.com) ❤️
 
@@ -84,6 +84,8 @@ One of my favorite books is *The Hitchhiker's Guide to the Galaxy*, so I made th
 ![Node.js](https://img.shields.io/badge/-Node.js-339933?style=flat-square&logo=node.js&logoColor=white)
 ![Codex](https://img.shields.io/badge/-Codex-121212?style=flat-square&logo=openai&logoColor=white)
 ![Claude](https://img.shields.io/badge/-Claude-000000?style=flat-square&logo=anthropic&logoColor=white)
+![Rust](https://img.shields.io/badge/-Rust-000000?style=flat-square&logo=rust&logoColor=white)
+![Go](https://img.shields.io/badge/-Go-00ADD8?style=flat-square&logo=go&logoColor=white)
 ![CLI](https://img.shields.io/badge/-CLI-000000?style=flat-square&logo=gnu-bash&logoColor=white)
 ![macOS](https://img.shields.io/badge/-macOS-000000?style=flat-square&logo=apple&logoColor=white)
 ![Web](https://img.shields.io/badge/-Web-4285F4?style=flat-square&logo=google-chrome&logoColor=white)
