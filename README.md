@@ -56,14 +56,14 @@ One of my favorite books is *The Hitchhiker's Guide to the Galaxy*, so I made th
 - [react-is-online-context](https://github.com/lacymorrow/react-is-online-context) — Network detection hook + context
 
 **FPV & Drones**
-- [FPV Bible](https://github.com/lacymorrow/fpv-bible-site) · [fpvbible.com](https://fpvbible.com) — Open-source guide to building and flying FPV drones
-- [Fly5](https://github.com/lacymorrow/fly5) · [fly5.live](https://fly5.live) — Drone photography and cinematography
+- [FPV Bible](https://fpv-bible.lacy.sh) — Open-source guide to building and flying FPV drones
+- [Fly5](https://fly5.live) — Drone photography and cinematography
 
 **Fun**
-- [hitchhikersgalaxy.guide](https://github.com/lacymorrow/hitchhikersgalaxy.guide) · [website](https://hitchhikersgalaxy.guide) — My favorite book, now an AI
+- [hitchhikersgalaxy.guide](https://hitchhikersgalaxy.guide) — My favorite fictional book, now a reality
 - [caitandlacy.com](https://caitandlacy.com) — Website for my wife ❤️
 - [Dazzboard](https://github.com/lacymorrow/dazzboard) — Delightful web dashboard
-- [Generative Website](https://gen.lacy.sh/) — Generative art site
+- [Generative Website](https://gen.lacy.sh/) — Generative  website creates itself as you browse
 - [Live Globe](https://globe.lacy.sh/) — Live globe visualization
 
 **VS Code**
@@ -82,7 +82,6 @@ One of my favorite books is *The Hitchhiker's Guide to the Galaxy*, so I made th
 ![TypeScript](https://img.shields.io/badge/-TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/-JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black)
 ![Node.js](https://img.shields.io/badge/-Node.js-339933?style=flat-square&logo=node.js&logoColor=white)
-![Codex](https://img.shields.io/badge/-Codex-121212?style=flat-square&logo=openai&logoColor=white)
 ![Claude](https://img.shields.io/badge/-Claude-000000?style=flat-square&logo=anthropic&logoColor=white)
 ![Rust](https://img.shields.io/badge/-Rust-000000?style=flat-square&logo=rust&logoColor=white)
 ![Go](https://img.shields.io/badge/-Go-00ADD8?style=flat-square&logo=go&logoColor=white)
