@@ -1,0 +1,266 @@
+{
+  "$schema": "https://raw.githubusercontent.com/jsonresume/resume-schema/v1.0.0/schema.json",
+  "meta": {
+    "theme": "kendall",
+    "version": "v1.0.0",
+    "canonical": "https://github.com/jsonresume/resume-schema/blob/v1.0.0/schema.json"
+  },
+  "basics": {
+    "name": "Lacy Morrow",
+    "label": "Agentic & web engineer + open-source developer + hardware hacker",
+    "image": "https://avatars.githubusercontent.com/u/1311301?v=4",
+    "email": "me@lacymorrow.com",
+    "phone": "(704) 451-6680",
+    "url": "http://lacymorrow.com",
+    "summary": "Over 20 years as a Web Developer building accessible, well-architected sites and apps. Creator of pixel-perfect, mobile-first development with graceful degradation and progressive enhancement.\n\nEXPERTISE: Agentic engineer + Full-stack developer + Hardware Engineer; Agency owner; Tech/Development lead; Product/Project manager; DevOps; IT consultant; Software architect; Hiring manager; SCRUM master\n\nI especially enjoy TypeScript, React, NextJS, and Electron/Tauri\n\nQUALITIES: Tech leader. Passionate about quality. Communicative and accessible; Reliable, confident, and eager to build. A highly motivated problem-solver.",
+    "location": {
+      "countryCode": "US",
+      "city": "Charlotte",
+      "state": "NC",
+      "address": "Charlotte, NC United States"
+    },
+    "profiles": [
+      {
+        "network": "LinkedIn",
+        "username": "lacymorrow",
+        "url": "https://www.linkedin.com/in/lacymorrow/"
+      },
+      {
+        "network": "Twitter",
+        "username": "lacybuilds",
+        "url": "https://twitter.com/lacybuilds"
+      },
+      {
+        "network": "GitHub",
+        "username": "lacymorrow",
+        "url": "https://github.com/lacymorrow"
+      }
+    ]
+  },
+  "work": [
+    {
+      "name": "Duke Energy",
+      "position": "Agentic Engineer + Senior Developer",
+      "startDate": "2025-06-01",
+      "endDate": "2026-04-01",
+      "summary": "Created internal GPT setup for company use. Contract - Refactored a weather-forecasting dashboard to deploy to AWS and migrated authentication to Azure A/D (Active Directory) from user/password. Python, React, Docker, AWS, Azure, Regex, Cron",
+      "location": "Remote"
+    },
+    {
+      "name": "Credit Karma",
+      "position": "Full-Stack Next.js Developer",
+      "startDate": "2025-01-01",
+      "endDate": "2025-01-01",
+      "summary": "Contract - Created the entire User Testing dashboard for Credit Karma for the User Management team. Converted pages router to App router. Built features for creating test/production users across the web and mobile experience. Included search and metrics coordinated across multiple system APIs. TypeScript, NextJS, React, Tachyons, React Native",
+      "location": "Remote"
+    },
+    {
+      "name": "Novant Health / Red Ventures",
+      "position": "Full-Stack Next.js Developer",
+      "startDate": "2024-06-01",
+      "endDate": "2024-12-01",
+      "summary": "Contract - Build and maintained Physician Finder, Matcher, and landing pages sites for Novant to locate doctors. Legacy code was sunsetted and new, modern websites were built using TypeScript, NextJS, and Vue, tooled with Datadog/Netlify.",
+      "location": "Remote"
+    },
+    {
+      "name": "OptumRX Health / Red Ventures",
+      "position": "Senior React Developer + DevOps Engineer",
+      "startDate": "2024-01-01",
+      "endDate": "2024-12-31",
+      "summary": "Contract - Created E-commerce site for RVO Health. Built the market, inventory, authentication, and ordering systems, complete with automation pipelines. TypeScript, NextJS, React, Contentful, Plytix, Stripe, Algolia",
+      "location": "Remote"
+    },
+    {
+      "name": "Swell Energy",
+      "position": "Lead Web Developer - Grid Services",
+      "startDate": "2023-08-01",
+      "endDate": "2024-02-01",
+      "summary": "Contract - Developed charts, dashboards, control panels to manage solar and power utilities in southern California and Hawaii. Authentication, API, UI, CRUD. TypeScript, NextJS, React, Python, Django, Docker, PostgreSQL",
+      "location": "Remote"
+    },
+    {
+      "name": "Lumenai (Startup)",
+      "position": "Senior Web Engineer - Browser Extension",
+      "startDate": "2023-03-01",
+      "endDate": "2023-07-01",
+      "summary": "Contract Full-Stack Web Developer - Helped create foundational internal apps and build process for a browser extension using RPA automation, React, SASS, Docker. Created dynamic robust UI screens React, Typescript, Jest, automated deployments, and self-built CI/CD.",
+      "location": "Remote"
+    },
+    {
+      "name": "TekSystems",
+      "position": "React Developer",
+      "startDate": "2023-01-01",
+      "endDate": "2023-06-01",
+      "summary": "Government contract with the VA. Built health medicine tools + calculators to lessen the amount of information patients had to fill out and help physicians get accurate stats about health issues.",
+      "location": "Remote"
+    },
+    {
+      "name": "Viasat",
+      "position": "Senior React Developer - In-Flight Entertainment",
+      "startDate": "2022-06-01",
+      "endDate": "2023-01-01",
+      "summary": "Contract - Managed in-flight entertainment portals for dozens of airlines. On-call. In charge of workflow management and client-stakeholder relations. Demoed product updates to stakeholders. React, TypeScript, NextJS, Jenkins, AWS, MySQL",
+      "location": "Remote"
+    },
+    {
+      "name": "Twilio Inc.",
+      "position": "Senior Web Engineer",
+      "startDate": "2017-11-30",
+      "endDate": "2021-11-30",
+      "summary": "In charge of twilio.com and all sub-sites. Managed and lead multiple projects, created a React design system, built the SIGNAL HackPack v4 badge. Launched WhatsApp, Studio, Flex, products. Localization/Regionalization. Implemented testing, migrated blog and legal to a CMS. TypeScript, React, Docker, Python, Django, Wagtail, PHP, WordPress, i18n.",
+      "url": "https://twilio.com/",
+      "location": "San Francisco, CA"
+    },
+    {
+      "name": "Flymore (Startup)",
+      "position": "Co-Founder / Director of Engineering",
+      "startDate": "2016-06-01",
+      "endDate": "2017-12-01",
+      "summary": "Hosted a camp for kids to build FPV drones with a focus on teaching kids about basic software & electronics. Hosted first drone race in Charlotte, NC. Developed software to livestream 4 analog FPV feeds. OpenStack, Apache, Linux, ReactJS, GraphQL, WordPress, PHP",
+      "location": "Charlotte, NC"
+    },
+    {
+      "name": "Long Game",
+      "position": "Web/React Native Developer",
+      "startDate": "2016-03-31",
+      "endDate": "2016-11-30",
+      "summary": "Contract - Helped create a startup's initial mobile app: React web-app and second-iteration React Native app for IOS and Android; Saw first launch to 100+ beta users. AWS, NodeJS, Docker, SequelizeJS, React Native",
+      "url": "https://www.truist.com/long-game",
+      "location": "San Francisco, CA"
+    },
+    {
+      "name": "Yahoo",
+      "position": "React A11y Engineer - Accessibility Team",
+      "startDate": "2016-01-31",
+      "endDate": "2016-03-31",
+      "summary": "Contract - Built several React components on a Yahoo stack for the Search and Branded Marketing teams using Tumblr as a data serve API. OpenStack, Apache, Linux, NodeJS, ReactJS, Electron, NW.js, Selenium.",
+      "url": "https://www.yahoo.com/",
+      "location": "Palo Alto, CA"
+    },
+    {
+      "name": "10up",
+      "position": "Senior Web Engineer - Electron Team",
+      "startDate": "2014-06-01",
+      "endDate": "2015-09-01",
+      "summary": "Took on every role and responsibility of designing, creating, implementing, deploying, and maintaining a plethora of websites for numerous clients including: Microsoft, Uber, AARP, and Beasley Media. Docker, Electron, PHP, WordPress, SASS, Webpack, AWS, Google Analytics",
+      "url": "https://10up.com/",
+      "location": "San Francisco, CA"
+    },
+    {
+      "name": "Invitae",
+      "position": "Software Engineer",
+      "startDate": "2014-06-30",
+      "endDate": "2015-09-30",
+      "summary": "Senior Full-Stack Web Developer - Created and maintained HIPAA-compliant back office software, data science tools, and analytics software as well as the public-facing invitae.com. Python, PHP, MySQL, Django, Flask, Angular, Backbone, React, WordPress, ElasticSearch, NightwatchJS, Docker, Jenkins, AWS",
+      "url": "https://www.invitae.com/",
+      "location": "San Francisco, CA"
+    },
+    {
+      "name": "Appalachian State University",
+      "position": "Full-Stack Web Developer",
+      "startDate": "2010-09-30",
+      "endDate": "2014-05-31",
+      "summary": "Built internal websites and scheduling software. Created custom CMS framework with PHP, Postgres used by all campus web pages. PHP, Python, Postgres, MySQL, PHPWebsite, PHPUnit, Git, Apache, Linux",
+      "url": "https://www.appstate.edu/",
+      "location": "Boone, NC"
+    },
+    {
+      "name": "Red Ventures",
+      "position": "Web Design Intern",
+      "startDate": "2010-03-31",
+      "endDate": "2010-08-31",
+      "summary": "Front-End Web Developer - Created 10+ branded advertising websites and unique user interactions. PHP, MySQL, Linux",
+      "url": "https://www.redventures.com/",
+      "location": "Rock Hill, SC"
+    }
+  ],
+  "education": [
+    {
+      "institution": "Appalachian State University",
+      "area": "Computer Science",
+      "studyType": "Bachelor of Science (BS)",
+      "startDate": "2009-12-31",
+      "endDate": "2014-12-31"
+    }
+  ],
+  "skills": [
+    {
+      "name": "Frontend",
+      "level": "Expert",
+      "keywords": ["TypeScript / JavaScript", "React / NextJS", "Svelte", "Astro", "Vue", "HTML / JSX / MDX", "SCSS / CSS / Tailwind / Styled Components", "React Native / Flutter"]
+    },
+    {
+      "name": "Backend",
+      "level": "Expert",
+      "keywords": ["Node", "Python", "PHP", "Rust", "Swift", "Go", "SQL / PostgreSQL / MongoDB", "Redis", "Serverless"]
+    },
+    {
+      "name": "DevOps",
+      "level": "Senior",
+      "keywords": ["Docker", "AWS", "G Cloud", "Vercel", "Netlify", "CI/CD", "Testing"]
+    },
+    {
+      "name": "Platform",
+      "level": "Expert",
+      "keywords": ["Electron", "Tauri", "React Native", "Flutter"]
+    },
+    {
+      "name": "AI Engineer",
+      "level": "Evolving",
+      "keywords": ["LLMs", "Neural-networks", "Tensorflow", "Vector Databases", "Prompt Engineering"]
+    }
+  ],
+  "projects": [
+    {
+      "name": "Lacy Shell",
+      "startDate": "2024-01-01",
+      "summary": "AI Coding Agent for Your Terminal. Integrate Codex, Claude Code, or your favorite AI coding CLI into your existing shell.",
+      "url": "https://github.com/lacymorrow/lacy-shell"
+    },
+    {
+      "name": "Juno AI",
+      "startDate": "2025-01-01",
+      "summary": "Voice-Operate Your Computer. Rust + Tauri Desktop app built on OpenAI Whisper and Anthropic Computer-use.",
+      "url": "https://github.com/lacymorrow/juno-ai"
+    },
+    {
+      "name": "Shipkit",
+      "startDate": "2024-01-01",
+      "summary": "Next.js Accelerator. Full-featured Next.js Starter and toolkit for building, launching, and monetizing MVPs.",
+      "url": "https://github.com/lacymorrow/shipkit"
+    },
+    {
+      "name": "CrossOver",
+      "startDate": "2015-01-01",
+      "summary": "CrossHair Overlay. Electron cross-platform custom crosshairs for PC video games. Featured in the Windows app store and Snapcraft store.",
+      "url": "https://github.com/lacymorrow/crossover"
+    },
+    {
+      "name": "Twilio Hackpack v4",
+      "startDate": "2018-01-01",
+      "summary": "Twilio's Open Source Hardware Badge, built for SIGNAL Conference 2018. Joystick, lights, 7 buttons, a touchscreen, on a Raspberry Pi Zero.",
+      "url": "https://github.com/twilio/hackpack-v4",
+      "endDate": "2018-12-31"
+    }
+  ],
+  "references": [
+    {
+      "reference": "Lacy is an extremely talented engineer with a very broad range of skills and experience. From being a thought leader in the front-end community via backbonetutorials.com and cdnjs.com, to designing and implementing the API for cdnjs.com, working with Lacy has been fantastic learning experience. Lacy is truly a full stack developer, and his work output is incredible. If there is any opportunity to work with Lacy, I take it. He is the definition of an A player.",
+      "name": "Ryan Kirkram, Senior Software Engineer at Yahoo"
+    }
+  ],
+  "awards": [
+    {
+      "title": "Arctic Code Vault Contributor",
+      "awarder": "GitHub",
+      "date": "2020-01-01"
+    }
+  ],
+  "interests": [
+    { "name": "FPV Drone Racing / Videography" },
+    { "name": "Cross-platform Development" },
+    { "name": "IoT Devices" },
+    { "name": "3D Printing" },
+    { "name": "Hardware Development" }
+  ]
+}
