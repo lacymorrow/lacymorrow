@@ -14,6 +14,13 @@
       "typesetting": "article"
     }
   },
+  "resume": {
+    "title": "Resume",
+    "theme": {
+      "pagination": false,
+      "typesetting": "article"
+    }
+  },
   "mentions": {
     "theme": {
       "pagination": false
