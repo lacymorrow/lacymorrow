@@ -16,11 +16,6 @@ const PastProjects = () => {
       href: "https://hitchhikersgalaxy.guide",
     },
     {
-      title: "Cait and Lacy",
-      description: "Website for my wife ❤️",
-      href: "https://caitandlacy.com",
-    },
-    {
       title: "Cloud0 AI Chat",
       description: "100% private, offline AI. Your data never leaves your machine.",
       href: "https://cloud0.dev",

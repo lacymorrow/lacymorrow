@@ -4,7 +4,7 @@
 
 I build AI agents that control computers. 20+ years shipping open source. I also build and pilot FPV drones for action media. Founded Flymore Academy and organized races for Drone Nationals qualifiers.
 
-One of my favorite books is *The Hitchhiker's Guide to the Galaxy*, so I made the real one at [hitchhikersgalaxy.guide](https://hitchhikersgalaxy.guide). I've helped build hardware like the [hackpack](https://hackpack.cc/). I made a [website for my wife](https://caitandlacy.com) ❤️
+One of my favorite books is *The Hitchhiker's Guide to the Galaxy*, so I made the real one at [hitchhikersgalaxy.guide](https://hitchhikersgalaxy.guide). I've helped build hardware like the [hackpack](https://hackpack.cc/).
 
 🌐 **[Portfolio](https://lacymorrow.com)** · **[Work](https://lacymorrow.com/work)** · **[Projects](https://lacymorrow.com/play)**
 
@@ -61,7 +61,6 @@ One of my favorite books is *The Hitchhiker's Guide to the Galaxy*, so I made th
 
 **Fun**
 - [hitchhikersgalaxy.guide](https://hitchhikersgalaxy.guide) — My favorite fictional book, now a reality
-- [caitandlacy.com](https://caitandlacy.com) — Website for my wife ❤️
 - [Dazzboard](https://github.com/lacymorrow/dazzboard) — Delightful web dashboard
 - [Generative Website](https://gen.lacy.sh/) — Generative  website creates itself as you browse
 - [Live Globe](https://globe.lacy.sh/) — Live globe visualization

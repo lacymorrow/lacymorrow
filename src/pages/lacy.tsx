@@ -96,41 +96,22 @@ export default function Home() {
             Current
           </h2>
           <p>
-            Currently working for{" "}
-            <a href="https://www.rvohealth.com" target="_blank">
-              RVOHealth.com
+            Building{" "}
+            <a href="https://lacy.sh" target="_blank">
+              Lacy Shell
+            </a>
+            ,{" "}
+            <a href="https://junebug.ai" target="_blank">
+              Juno
+            </a>
+            , and{" "}
+            <a href="https://shipkit.io" target="_blank">
+              Shipkit
             </a>
             .
           </p>
         </div>
 
-        <div className="">
-          <h2 className="text-muted-foreground text-sm font-serif italic">
-            Past
-          </h2>
-          <p></p>
-
-          <h2 className="text-muted-foreground text-sm font-serif italic">
-            Future
-          </h2>
-          <p>Looking for a patent attorney.</p>
-        </div>
-
-        <div className="text-sm">
-          My fiance is a{" "}
-          <a
-            className=""
-            href="https://www.caitrussellphotography.com/"
-            target="_blank"
-          >
-            photographer
-          </a>{" "}
-          and{" "}
-          <a href="https://www.cait-russell.com" target="_blank">
-            designer
-          </a>
-          .
-        </div>
         <p className="text-xs">
           <a href="mailto:me@lacymorrow.com">me@lacymorrow.com</a>
         </p>
