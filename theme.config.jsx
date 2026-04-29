@@ -70,7 +70,7 @@ const themeConfig = {
 				<meta name="twitter:url" content={ogUrl} />
 				<meta property="og:title" content={pageTitle ? `${pageTitle} – ${title}` : title} />
 				<meta property="og:image" content={socialCard} />
-				<meta property="og:url" content={ogUrl} />
+				<meta property="og:url" content={`${ogUrl}${route === '/' ? '' : route}`} />
 				<meta property="og:type" content="website" />
 				<meta name="apple-mobile-web-app-title" content={title} />
 				<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
