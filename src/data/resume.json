@@ -224,6 +224,12 @@
       "url": "https://github.com/lacymorrow/juno-ai"
     },
     {
+      "name": "AI Alpaca",
+      "startDate": "2026-01-01",
+      "summary": "Autonomous trading bot powered by Claude Code and the official Alpaca MCP server. Executes trades on stocks, ETFs, options, and crypto based on market data, news, and social signals.",
+      "url": "https://github.com/lacymorrow/ai-alpaca"
+    },
+    {
       "name": "OpenClaw Trading Skills",
       "startDate": "2024-01-01",
       "summary": "AI agent skills for the OpenClaw platform. Built autonomous trading agents in Rust, Go, and Shell for stocks (Alpaca), prediction markets (Polymarket, Kalshi).",

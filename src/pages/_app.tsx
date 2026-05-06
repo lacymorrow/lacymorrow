@@ -1,4 +1,5 @@
 import NextApp from "next/app";
+import type { AppProps } from "next/app";
 import { componentMap } from "@/components/mdx/mdxComponents";
 import { Toaster } from "@/components/ui/toaster";
 
@@ -9,7 +10,7 @@ import "@/styles/globals.scss";
 import 'react-medium-image-zoom/dist/styles.css'
 
 
-function App({ Component, pageProps }) {
+function App({ Component, pageProps }: AppProps) {
   useEffect(() => {
     consoleBanner();
   }, []);

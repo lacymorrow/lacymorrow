@@ -21,6 +21,7 @@ One of my favorite books is *The Hitchhiker's Guide to the Galaxy*, so I made th
 | **[FPV Bible](https://fpvbible.com)** | Open-source guide to building and flying FPV drones | [repo](https://github.com/lacymorrow/fpv-bible-site) |
 | **[Fly5](https://fly5.live)** | Drone photography and cinematography | [repo](https://github.com/lacymorrow/fly5) |
 | **[Uibrary](https://uibrary.com)** | Production-ready UI components. Copy, paste, ship. | [repo](https://github.com/lacymorrow/uibrary.com) |
+| **[AI Alpaca](https://github.com/lacymorrow/ai-alpaca)** | Autonomous MCP trading bot (Claude Code + Alpaca) | [repo](https://github.com/lacymorrow/ai-alpaca) |
 | **[OpenClaw Alpaca](https://clawhub.ai/lacymorrow/alpaca-trading)** · [@Alpaca_yap](https://x.com/Alpaca_yap) | Autonomous AI trading agent | [repo](https://github.com/lacymorrow/alpaca-trading-skill) |
 
 ---
@@ -34,6 +35,7 @@ One of my favorite books is *The Hitchhiker's Guide to the Galaxy*, so I made th
 - [Aura](https://github.com/lacymorrow/aura) — Memory augmentation through audio
 - [No Bones](https://github.com/lacymorrow/no-bones) · [no.bones.sh](https://no.bones.sh) — AI bullshit detector
 - [Cloud0](https://github.com/lacymorrow/cloud.dev) · [cloud0.dev](https://www.cloud0.dev/) — Cloud dev environment
+- [ai-alpaca](https://github.com/lacymorrow/ai-alpaca) — Autonomous MCP trading bot using Claude Code + official Alpaca MCP server
 - [alpaca-trading](https://github.com/lacymorrow/alpaca-trading-skill) · [ClawHub](https://clawhub.ai/lacymorrow/alpaca-trading) — Trading stocks, ETFs, options, and crypto via Alpaca
 - [kalshi-trading](https://github.com/lacymorrow/openclaw-kalshi-trading-skill) · [ClawHub](https://clawhub.com) — Prediction markets on Kalshi
 - [polymarket-trading](https://github.com/lacymorrow/openclaw-polymarket-trading-skill) · [ClawHub](https://clawhub.com) — Prediction markets on Polymarket
