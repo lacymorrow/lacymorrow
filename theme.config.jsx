@@ -53,10 +53,9 @@ const themeConfig = {
 	},
 	head: function useHead() {
 		const { title: pageTitle } = useConfig()
-		const { asPath } = useRouter()
-		const canonicalPath = asPath.split('?')[0]
-		const socialCard = canonicalPath === '/' || !pageTitle ? ogImage : `${ogImage}?title=${pageTitle}`
-		const canonicalUrl = `${ogUrl}${canonicalPath === '/' ? '' : canonicalPath}`
+		const { route } = useRouter()
+		const socialCard = route === '/' || !pageTitle ? ogImage : `${ogImage}?title=${pageTitle}`
+		const canonicalUrl = `${ogUrl}${route === '/' ? '' : route}`
 
 		return (
 			<>
