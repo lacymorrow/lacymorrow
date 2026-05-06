@@ -53,8 +53,10 @@ const themeConfig = {
 	},
 	head: function useHead() {
 		const { title: pageTitle } = useConfig()
-		const { route } = useRouter()
-		const socialCard = route === '/' || !pageTitle ? ogImage : `${ogImage}?title=${pageTitle}`
+		const { asPath } = useRouter()
+		const canonicalPath = asPath.split('?')[0]
+		const socialCard = canonicalPath === '/' || !pageTitle ? ogImage : `${ogImage}?title=${pageTitle}`
+		const canonicalUrl = `${ogUrl}${canonicalPath === '/' ? '' : canonicalPath}`
 
 		return (
 			<>
@@ -67,10 +69,10 @@ const themeConfig = {
 				<meta name="twitter:card" content="summary_large_image" />
 				<meta name="twitter:image" content={socialCard} />
 				<meta name="twitter:site:domain" content={ogUrl.replace('https://', '')} />
-				<meta name="twitter:url" content={ogUrl} />
+				<meta name="twitter:url" content={canonicalUrl} />
 				<meta property="og:title" content={pageTitle ? `${pageTitle} – ${title}` : title} />
 				<meta property="og:image" content={socialCard} />
-				<meta property="og:url" content={`${ogUrl}${route === '/' ? '' : route}`} />
+				<meta property="og:url" content={canonicalUrl} />
 				<meta property="og:type" content="website" />
 				<meta name="apple-mobile-web-app-title" content={title} />
 				<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
