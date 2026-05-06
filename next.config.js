@@ -39,14 +39,14 @@ const nextConfig = {
       permanent: true,
     },
     {
-      source: "/resume",
-      destination: "/about/resume",
-      permanent: true,
-    },
-    {
       source: "/:path*",
       has: [{ type: "host", value: "resume.lacymorrow.com" }],
       destination: "https://lacymorrow.com/about/resume",
+      permanent: true,
+    },
+    {
+      source: "/resume",
+      destination: "/about/resume",
       permanent: true,
     },
     {
