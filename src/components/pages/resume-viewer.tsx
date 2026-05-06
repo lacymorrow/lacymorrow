@@ -36,7 +36,7 @@ export const ResumeViewer = () => {
   const { basics, work, education, skills, projects, references } = resume;
 
   return (
-    <div className="max-w-3xl mx-auto">
+    <div className="max-w-3xl mx-auto px-4 py-8 sm:px-6">
       {/* Header */}
       <header className="mb-6">
         <h1 className="text-3xl font-bold tracking-tight">{basics.name}</h1>
