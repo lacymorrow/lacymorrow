@@ -1,4 +1,3 @@
-import NextApp from "next/app";
 import { componentMap } from "@/components/mdx/mdxComponents";
 import { Toaster } from "@/components/ui/toaster";
 
@@ -9,7 +8,7 @@ import "@/styles/globals.scss";
 import 'react-medium-image-zoom/dist/styles.css'
 
 
-function App({ Component, pageProps }) {
+export default function App({ Component, pageProps }) {
   useEffect(() => {
     consoleBanner();
   }, []);
@@ -23,7 +22,3 @@ function App({ Component, pageProps }) {
     </>
   );
 }
-
-App.getInitialProps = NextApp.getInitialProps;
-
-export default App;
