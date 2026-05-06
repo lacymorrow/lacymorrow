@@ -6,6 +6,16 @@ import {
 const PastProjects = () => {
   const projects: ProjectCardProps[] = [
     {
+      title: "OpenClaw Trading Skills",
+      description: "Autonomous AI trading agents in Rust, Go, and Shell for stocks, crypto, and prediction markets.",
+      href: "https://github.com/lacymorrow/openclaw-alpaca-trading-skill",
+    },
+    {
+      title: "MCP Servers & Tools",
+      description: "Model Context Protocol integrations for AI agent desktop automation and tool use.",
+      href: "https://github.com/lacymorrow",
+    },
+    {
       title: "CrossOver",
       description: "Gaming overlay for any screen. Windows, Mac, and Linux.",
       href: "https://gh.lacymorrow.com/crossover",
