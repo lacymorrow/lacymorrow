@@ -60,8 +60,5 @@
     "type": "page",
     "newWindow": true,
     "display": "hidden"
-  },
-  "sink": {
-    "display": "hidden"
   }
 }
