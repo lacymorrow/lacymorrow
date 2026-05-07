@@ -1,7 +1,0 @@
-import Freelance from '@/components/pages/clients/freelance'
-
-# ⚒️ Freelance Web Development
-
-I've taken on a few freelance projects in the past, and I'm always open to new opportunities. If you're interested in working together, please [reach out](/contact) to me.
-
-<Freelance />
