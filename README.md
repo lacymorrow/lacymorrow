@@ -33,8 +33,8 @@ One of my favorite books is *The Hitchhiker's Guide to the Galaxy*, so I made th
 - [Lash](https://github.com/lacymorrow/lash) · [lash.lacy.sh](https://lash.lacy.sh) — AI coding agent. OpenCode fork with cd and shell commands.
 - [Juno](https://github.com/lacymorrow/juno) · [junebug.ai](https://junebug.ai) — AI computer use desktop app
 - [Aura](https://github.com/lacymorrow/aura) — Memory augmentation through audio
-- [No Bones](https://no.bones.sh) — AI bullshit detector
-- [Cloud0](https://www.cloud0.dev/) — Cloud dev environment
+- [No Bones](https://github.com/lacymorrow/ai-logical-fallacy-detector) · [no.bones.sh](https://no.bones.sh) — AI bullshit detector
+- [Cloud0](https://github.com/lacymorrow/cloud0.dev) · [cloud0.dev](https://www.cloud0.dev/) — Cloud dev environment
 - [ai-alpaca](https://github.com/lacymorrow/ai-alpaca) — Autonomous MCP trading bot using Claude Code + official Alpaca MCP server
 - [alpaca-trading](https://github.com/lacymorrow/alpaca-trading-skill) · [ClawHub](https://clawhub.ai/lacymorrow/alpaca-trading) — Trading stocks, ETFs, options, and crypto via Alpaca
 - [kalshi-trading](https://github.com/lacymorrow/openclaw-kalshi-trading-skill) · [ClawHub](https://clawhub.com) — Prediction markets on Kalshi
