@@ -59,6 +59,9 @@
     "title": "Contact ↗",
     "type": "page",
     "newWindow": true,
-    "display": "hidden"
+    "display": "hidden",
+    "theme": {
+      "pagination": false
+    }
   }
 }
