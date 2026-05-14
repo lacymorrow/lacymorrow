@@ -8,7 +8,7 @@ import { useConfig } from 'nextra-theme-docs';
 const title = "Lacy Morrow";
 const description = "Lacy Morrow is a leading web and software engineer, UAV operator, and the creator of Crossover and other open-source projects.";
 const ogImage = "https://lacy.is/api/og";
-const ogUrl = "https://lacymorrow.com";
+const ogUrl = "https://www.lacymorrow.com";
 const githubUrl = 'https://github.com/lacymorrow/';
 
 const themeConfig = {
@@ -74,6 +74,7 @@ const themeConfig = {
 				<meta property="og:url" content={canonicalUrl} />
 				<meta property="og:type" content="website" />
 				<meta name="apple-mobile-web-app-title" content={title} />
+				<link rel="canonical" href={canonicalUrl} />
 				<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
 				<link rel="icon" href="/favicon.png" type="image/png" />
 				<link rel="icon" href="/favicon-dark.svg" type="image/svg+xml" media="(prefers-color-scheme: dark)" />

@@ -63,5 +63,12 @@
     "theme": {
       "pagination": false
     }
+  },
+  "privacy": {
+    "title": "Privacy Policy",
+    "display": "hidden",
+    "theme": {
+      "pagination": false
+    }
   }
 }
