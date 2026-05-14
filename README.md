@@ -23,6 +23,9 @@ One of my favorite books is *The Hitchhiker's Guide to the Galaxy*, so I made th
 | **[Uibrary](https://uibrary.com)** | Production-ready UI components. Copy, paste, ship. | |
 | **[AI Alpaca](https://github.com/lacymorrow/ai-alpaca)** | Autonomous MCP trading bot (Claude Code + Alpaca) | [repo](https://github.com/lacymorrow/ai-alpaca) |
 | **[OpenClaw Alpaca](https://clawhub.ai/lacymorrow/alpaca-trading)** · [@Alpaca_yap](https://x.com/Alpaca_yap) | Autonomous AI trading agent | [repo](https://github.com/lacymorrow/alpaca-trading-skill) |
+| **[ClipHub](https://cliphub.fyi)** | Plugin hub & marketplace for Paperclip agents | [repo](https://github.com/lacymorrow/paperclip-hub) |
+| **[Resume App](https://resume.lacy.sh)** | Variable resumes on the fly | [repo](https://github.com/lacymorrow/resume-app) |
+| **[ShipX](https://github.com/lacymorrow/shipx)** | Interactive release CLI — bump, tag, publish, ship | [repo](https://github.com/lacymorrow/shipx) |
 
 ---
 
@@ -39,6 +42,15 @@ One of my favorite books is *The Hitchhiker's Guide to the Galaxy*, so I made th
 - [alpaca-trading](https://github.com/lacymorrow/alpaca-trading-skill) · [ClawHub](https://clawhub.ai/lacymorrow/alpaca-trading) — Trading stocks, ETFs, options, and crypto via Alpaca
 - [kalshi-trading](https://github.com/lacymorrow/openclaw-kalshi-trading-skill) · [ClawHub](https://clawhub.com) — Prediction markets on Kalshi
 - [polymarket-trading](https://github.com/lacymorrow/openclaw-polymarket-trading-skill) · [ClawHub](https://clawhub.com) — Prediction markets on Polymarket
+- [ClipHub](https://github.com/lacymorrow/paperclip-hub) · [cliphub.fyi](https://cliphub.fyi) — Plugin hub and marketplace for Paperclip agents
+- [Paperclip Agent Usage Plugin](https://github.com/lacymorrow/paperclip-plugin-agent-usage) — Track AI provider usage (Claude, etc.) and expose quota data to agents
+- [Resume App](https://github.com/lacymorrow/resume-app) · [resume.lacy.sh](https://resume.lacy.sh) — Variable resumes on the fly
+
+**Smart Glasses & Hardware**
+- [Conversate+](https://github.com/lacymorrow/even-realities) — Diarized live captions for Even Realities G2 smart glasses (speaker identification via Deepgram)
+
+**CLIs & Dev Tools**
+- [ShipX](https://github.com/lacymorrow/shipx) — Interactive release CLI — bump, tag, publish, and ship packages with a terminal UI
 
 **Desktop Apps**
 - [CrossOver](https://github.com/lacymorrow/crossover) · [website](https://lacymorrow.github.io/crossover) — Crosshair overlay for any screen (1,100+ ⭐)
