@@ -50,6 +50,7 @@ One of my favorite books is *The Hitchhiker's Guide to the Galaxy*, so I made th
 
 **CLIs & Dev Tools**
 - [ShipX](https://github.com/lacymorrow/shipx) — Interactive release CLI — bump, tag, publish, and ship packages with a terminal UI
+- [Sesame](https://github.com/lacymorrow/sesame) — Agent-readable TOTP authenticator. Desktop app + CLI + local API for 2FA codes
 
 **Desktop Apps**
 - [CrossOver](https://github.com/lacymorrow/crossover) · [website](https://lacymorrow.github.io/crossover) — Crosshair overlay for any screen (1,100+ ⭐)
