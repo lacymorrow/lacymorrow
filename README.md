@@ -6,7 +6,7 @@ I build AI agents that control computers. 20+ years shipping open source. I also
 
 One of my favorite books is *The Hitchhiker's Guide to the Galaxy*, so I made the real one at [hitchhikersgalaxy.guide](https://hitchhikersgalaxy.guide). I've helped build hardware like the [hackpack](https://hackpack.cc/).
 
-🌐 **[Portfolio](https://lacymorrow.com)** · **[Work](https://lacymorrow.com/work)** · **[Projects](https://lacymorrow.com/play)**
+🌐 **[Portfolio](https://lacymorrow.com)** · **[Work](https://lacymorrow.com/work)** · **[Projects](https://lacymorrow.com/play)** · **[Resume](https://resume.lacy.sh)**
 
 ### Now
 
