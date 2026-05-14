@@ -44,7 +44,7 @@ One of my favorite books is *The Hitchhiker's Guide to the Galaxy*, so I made th
 - [polymarket-trading](https://github.com/lacymorrow/openclaw-polymarket-trading-skill) · [ClawHub](https://clawhub.com) — Prediction markets on Polymarket
 - [ClipHub](https://github.com/lacymorrow/paperclip-hub) · [cliphub.fyi](https://cliphub.fyi) — Plugin hub and marketplace for Paperclip agents
 - [Paperclip Agent Usage Plugin](https://github.com/lacymorrow/paperclip-plugin-agent-usage) — Track AI provider usage (Claude, etc.) and expose quota data to agents
-- [Resume App](https://github.com/lacymorrow/resume-app) · [resume.lacy.sh](https://resume.lacy.sh) — Variable resume variations on the fly
+- [Resume App](https://github.com/lacymorrow/resume-app) · [resume.lacy.sh](https://resume.lacy.sh) — Variable resumes on the fly
 
 **Smart Glasses & Hardware**
 - [Conversate+](https://github.com/lacymorrow/even-realities) — Diarized live captions for Even Realities G2 smart glasses (speaker identification via Deepgram)
