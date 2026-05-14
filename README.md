@@ -42,7 +42,7 @@ One of my favorite books is *The Hitchhiker's Guide to the Galaxy*, so I made th
 
 **Desktop Apps**
 - [CrossOver](https://github.com/lacymorrow/crossover) · [website](https://lacymorrow.github.io/crossover) — Crosshair overlay for any screen (1,100+ ⭐)
-- [Cinematic](https://github.com/lacymorrow/cinematic) · [website](http://gh.lacymorrow.com/cinematic/) — Desktop movie collection manager
+- [Cinematic](https://github.com/lacymorrow/cinematic) · [website](https://gh.lacymorrow.com/cinematic/) — Desktop movie collection manager
 
 **Boilerplates & Themes**
 - [Shipkit / Bones](https://github.com/shipkit-io/bones) · [shipkit.io](https://shipkit.io) — Next.js starter with auth, payments, CMS, AI
@@ -58,7 +58,7 @@ One of my favorite books is *The Hitchhiker's Guide to the Galaxy*, so I made th
 - [react-is-online-context](https://github.com/lacymorrow/react-is-online-context) — Network detection hook + context
 
 **FPV & Drones**
-- [FPV Bible](https://fpv-bible.lacy.sh) — Open-source guide to building and flying FPV drones
+- [FPV Bible](https://fpvbible.com) · [repo](https://github.com/lacymorrow/fpv-bible) — Open-source guide to building and flying FPV drones
 - [Fly5](https://fly5.live) — Drone photography and cinematography
 
 **Fun**
