@@ -24,7 +24,7 @@ One of my favorite books is *The Hitchhiker's Guide to the Galaxy*, so I made th
 | **[AI Alpaca](https://github.com/lacymorrow/ai-alpaca)** | Autonomous MCP trading bot (Claude Code + Alpaca) | [repo](https://github.com/lacymorrow/ai-alpaca) |
 | **[OpenClaw Alpaca](https://clawhub.ai/lacymorrow/alpaca-trading)** · [@Alpaca_yap](https://x.com/Alpaca_yap) | Autonomous AI trading agent | [repo](https://github.com/lacymorrow/alpaca-trading-skill) |
 | **[ClipHub](https://cliphub.fyi)** | Plugin hub & marketplace for Paperclip agents | [repo](https://github.com/lacymorrow/paperclip-hub) |
-| **[Resume App](https://resume.lacy.sh)** | Variable resume variations on the fly | [repo](https://github.com/lacymorrow/resume-app) |
+| **[Resume App](https://resume.lacy.sh)** | Variable resumes on the fly | [repo](https://github.com/lacymorrow/resume-app) |
 | **[ShipX](https://github.com/lacymorrow/shipx)** | Interactive release CLI — bump, tag, publish, ship | [repo](https://github.com/lacymorrow/shipx) |
 
 ---
