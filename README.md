@@ -21,7 +21,6 @@ One of my favorite books is *The Hitchhiker's Guide to the Galaxy*, so I made th
 | **[FPV Bible](https://fpvbible.com)** | Open-source guide to building and flying FPV drones | [repo](https://github.com/lacymorrow/fpv-bible) |
 | **[Fly5](https://fly5.live)** | Drone photography and cinematography | [repo](https://github.com/lacymorrow/fly5) |
 | **[Uibrary](https://uibrary.com)** | Production-ready UI components. Copy, paste, ship. | |
-| **[AI Alpaca](https://github.com/lacymorrow/ai-alpaca)** | Autonomous MCP trading bot (Claude Code + Alpaca) | [repo](https://github.com/lacymorrow/ai-alpaca) |
 | **[OpenClaw Alpaca](https://clawhub.ai/lacymorrow/alpaca-trading)** · [@Alpaca_yap](https://x.com/Alpaca_yap) | Autonomous AI trading agent | [repo](https://github.com/lacymorrow/alpaca-trading-skill) |
 | **[ClipHub](https://cliphub.fyi)** | Plugin hub & marketplace for Paperclip agents | [repo](https://github.com/lacymorrow/paperclip-hub) |
 | **[Resume App](https://resume.lacy.sh)** | Variable resumes on the fly | [repo](https://github.com/lacymorrow/resume-app) |
@@ -51,6 +50,7 @@ One of my favorite books is *The Hitchhiker's Guide to the Galaxy*, so I made th
 
 **CLIs & Dev Tools**
 - [ShipX](https://github.com/lacymorrow/shipx) — Interactive release CLI — bump, tag, publish, and ship packages with a terminal UI
+- [Sesame](https://github.com/lacymorrow/sesame) — Agent-readable TOTP authenticator. Desktop app + CLI + local API for 2FA codes
 
 **Desktop Apps**
 - [CrossOver](https://github.com/lacymorrow/crossover) · [website](https://lacymorrow.github.io/crossover) — Crosshair overlay for any screen (1,100+ ⭐)
@@ -59,7 +59,7 @@ One of my favorite books is *The Hitchhiker's Guide to the Galaxy*, so I made th
 **Boilerplates & Themes**
 - [Shipkit / Bones](https://github.com/shipkit-io/bones) · [shipkit.io](https://shipkit.io) — Next.js starter with auth, payments, CMS, AI
 - [Electron Bones](https://github.com/shipkit-io/electron-bones) · [website](https://electron-bones.vercel.app) — Modern Electron boilerplate with Shadcn/ui
-- [Casper](https://github.com/lacymorrow/casper) — Ghost theme ported to WordPress
+- [Casper](https://github.com/lacymorrow/casper) · [casper.lacymorrow.com](https://casper.lacymorrow.com) — Ghost theme ported to WordPress
 
 **npm Libraries**
 - [album-art](https://github.com/lacymorrow/album-art) — Fetch cover art for any artist or album
