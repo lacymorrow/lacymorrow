@@ -11,7 +11,7 @@ export const Footer = () => {
           <div className="flex items-center">
             <Link
               className="hover:text-splash"
-              href="https://lacymorrow.com"
+              href="https://www.lacymorrow.com"
               target="_blank"
               rel="noopener"
             >
