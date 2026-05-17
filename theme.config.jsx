@@ -52,19 +52,21 @@ const themeConfig = {
 		},
 	},
 	head: function useHead() {
-		const { title: pageTitle } = useConfig()
+		const { title: pageTitle, frontMatter } = useConfig()
 		const { route } = useRouter()
 		const socialCard = route === '/' || !pageTitle ? ogImage : `${ogImage}?title=${pageTitle}`
 		const canonicalUrl = `${ogUrl}${route === '/' ? '' : route}`
+		const pageDescription = frontMatter?.description || description
 
 		return (
 			<>
+				<meta charSet="utf-8" />
 				<meta name="msapplication-TileColor" content="#fff" />
 				<meta name="theme-color" content="#fff" />
 				<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 				<meta httpEquiv="Content-Language" content="en" />
-				<meta name="description" content={description} />
-				<meta property="og:description" content={description} />
+				<meta name="description" content={pageDescription} />
+				<meta property="og:description" content={pageDescription} />
 				<meta name="twitter:card" content="summary_large_image" />
 				<meta name="twitter:image" content={socialCard} />
 				<meta name="twitter:site:domain" content={ogUrl.replace('https://', '')} />
