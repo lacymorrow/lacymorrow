@@ -50,10 +50,14 @@ import { Button } from '@/components/ui/button';
 import Link from "next/link";
 
 import Lead from "@/components/mdx/lead";
+import MdxImage from "@/components/mdx/mdx-image";
 import { GitHubLogoIcon } from "@radix-ui/react-icons";
 
 
 export const componentMap = {
+	// Override <img> in markdown with WebP-serving picture element
+	img: MdxImage,
+
 	// React Sandpack live environment
 	// https://sandpack.codesandbox.io/
 	Sandpack,
