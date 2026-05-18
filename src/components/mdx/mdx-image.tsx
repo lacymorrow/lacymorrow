@@ -1,8 +1,14 @@
 import { cn } from "@/lib/utils";
 import React from "react";
 
+interface StaticImport {
+  src: string;
+  width?: number;
+  height?: number;
+}
+
 interface MdxImageProps {
-  src?: string;
+  src?: string | StaticImport;
   alt?: string;
   title?: string;
   className?: string;
@@ -10,11 +16,20 @@ interface MdxImageProps {
   height?: number | string;
 }
 
-const isExternal = (src: string) => src.startsWith("http://") || src.startsWith("https://") || src.startsWith("//");
+// webpack may resolve local images to StaticImport objects; normalize to a string
+const resolveSrc = (src: string | StaticImport | undefined): string => {
+  if (!src) return "";
+  if (typeof src === "string") return src;
+  return src.src ?? "";
+};
+
+const isExternal = (src: string) =>
+  src.startsWith("http://") || src.startsWith("https://") || src.startsWith("//");
 
 const toWebpSrc = (src: string) => src.replace(/\.(jpe?g|png)$/i, ".webp");
 
-export function MdxImage({ src, alt = "", title, className, ...props }: MdxImageProps) {
+export function MdxImage({ src: rawSrc, alt = "", title, className, ...props }: MdxImageProps) {
+  const src = resolveSrc(rawSrc);
   if (!src) return null;
 
   if (isExternal(src)) {
