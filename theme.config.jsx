@@ -36,9 +36,10 @@ const themeConfig = {
 	},
 	navigation: { prev: true, next: true },
 	toc: { backToTop: true, float: true },
+	search: { placeholder: 'Search lacymorrow.com…' },
 	banner: {
 		text: (
-			<Link href="https://shipkit.io" target="_blank">
+			<Link href="https://shipkit.io" target="_blank" rel="noopener noreferrer">
 				🚀  Launch your app today with Shipkit →
 			</Link>
 		)
@@ -57,6 +58,30 @@ const themeConfig = {
 		const socialCard = route === '/' || !pageTitle ? ogImage : `${ogImage}?title=${pageTitle}`
 		const canonicalUrl = `${ogUrl}${route === '/' ? '' : route}`
 		const pageDescription = frontMatter?.description || description
+
+		const personSchema = {
+			'@context': 'https://schema.org',
+			'@type': 'Person',
+			name: 'Lacy Morrow',
+			url: ogUrl,
+			image: 'https://www.lacymorrow.com/images/lacy-morrow.jpg',
+			jobTitle: 'Software Engineer',
+			description: description,
+			sameAs: [
+				'https://github.com/lacymorrow',
+				'https://www.linkedin.com/in/lacymorrow/',
+				'https://twitter.com/lacybuilds',
+			],
+		}
+
+		const webSiteSchema = {
+			'@context': 'https://schema.org',
+			'@type': 'WebSite',
+			name: title,
+			url: ogUrl,
+			description: description,
+			author: { '@type': 'Person', name: 'Lacy Morrow', url: ogUrl },
+		}
 
 		return (
 			<>
@@ -81,6 +106,18 @@ const themeConfig = {
 				<link rel="icon" href="/favicon.png" type="image/png" />
 				<link rel="icon" href="/favicon-dark.svg" type="image/svg+xml" media="(prefers-color-scheme: dark)" />
 				<link rel="icon" href="/favicon-dark.png" type="image/png" media="(prefers-color-scheme: dark)" />
+				{route === '/' && (
+					<>
+						<script
+							type="application/ld+json"
+							dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
+						/>
+						<script
+							type="application/ld+json"
+							dangerouslySetInnerHTML={{ __html: JSON.stringify(webSiteSchema) }}
+						/>
+					</>
+				)}
 			</>
 		)
 	},

@@ -49,6 +49,8 @@ export const Socials = () => {
         <Link
           key={crypto.randomUUID()}
           href={item.href}
+          target="_blank"
+          rel="noopener noreferrer"
           className={cn(
             "size-6 grid place-items-center hover:text-splash duration-400 transition-colors",
             item.name.toLowerCase() === "last.fm" && "hover:child:fill-splash"

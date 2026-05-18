@@ -17,7 +17,7 @@ export const Nav = () => {
           key={crypto.randomUUID()}
           href={item.href}
           className="h-full hover:text-splash duration-400 transition-colors p-1 px-2"
-          {...(item.href.startsWith("http") ? { target: "_blank" } : {})}
+          {...(item.href.startsWith("http") ? { target: "_blank", rel: "noopener noreferrer" } : {})}
         >
           <span>{item.name}</span>
         </Link>
