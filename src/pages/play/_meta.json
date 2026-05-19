@@ -3,9 +3,13 @@
 		"title": "Play",
 		"display": "hidden"
 	},
+	"juno": "Juno — AI Desktop",
+	"lacy": "lacy — AI Shell",
 	"crossover": "CrossOver",
 	"cinematic": "Cinematic",
 	"casper": "Casper WordPress theme",
+	"shipx": "shipx — Release CLI",
+	"hitchhikersgalaxy": "Hitchhiker's Guide",
 	"js": "JavaScript libraries",
 	"react": "React libraries",
 	"vscode": "VSCode extensions",

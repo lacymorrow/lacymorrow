@@ -8,12 +8,12 @@ const CurrentlyWorking = () => {
     {
       title: "Lacy Shell",
       description: "Talk to your terminal. Natural language routes to AI agents automatically.",
-      href: "https://lacy.sh",
+      href: "/play/lacy",
     },
     {
       title: "Juno",
       description: "Anthropic Computer Use for your desktop. AI that sees and clicks.",
-      href: "https://junebug.ai",
+      href: "/play/juno",
     },
     {
       title: "Shipkit",
