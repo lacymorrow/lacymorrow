@@ -26,8 +26,10 @@ const themeConfig = {
 	},
 	useNextSeoProps() {
 		const { asPath } = useRouter()
-		if (asPath === '/') return { titleTemplate: title }
-		return { titleTemplate: `%s – ${title}` }
+		const { frontMatter } = useConfig()
+		const pageDescription = frontMatter?.description || description
+		if (asPath === '/') return { titleTemplate: title, description: pageDescription }
+		return { titleTemplate: `%s – ${title}`, description: pageDescription }
 	},
 	project: { link: githubUrl },
 	chat: {
@@ -90,7 +92,6 @@ const themeConfig = {
 				<meta name="theme-color" content="#fff" />
 				<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 				<meta httpEquiv="Content-Language" content="en" />
-				<meta name="description" content={pageDescription} />
 				<meta property="og:description" content={pageDescription} />
 				<meta name="twitter:card" content="summary_large_image" />
 				<meta name="twitter:image" content={socialCard} />
