@@ -1,0 +1,14 @@
+{
+  "hackpack": {
+    "title": "Hackpack",
+    "display": "hidden"
+  },
+  "hypem": {
+    "title": "Hype Machine",
+    "display": "hidden"
+  },
+  "zsa": {
+    "title": "ZSA",
+    "display": "hidden"
+  }
+}
