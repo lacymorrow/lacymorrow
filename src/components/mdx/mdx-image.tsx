@@ -26,13 +26,16 @@ const resolveSrc = (src: string | StaticImport | undefined): string => {
 const isExternal = (src: string) =>
   src.startsWith("http://") || src.startsWith("https://") || src.startsWith("//");
 
+const isBundled = (src: string) => src.includes("/_next/");
+
 const toWebpSrc = (src: string) => src.replace(/\.(jpe?g|png)$/i, ".webp");
 
 export function MdxImage({ src: rawSrc, alt = "", title, className, ...props }: MdxImageProps) {
   const src = resolveSrc(rawSrc);
   if (!src) return null;
 
-  if (isExternal(src)) {
+  // Webpack-bundled and external images: render as plain <img> — no WebP rewrite
+  if (isExternal(src) || isBundled(src)) {
     return (
       // eslint-disable-next-line @next/next/no-img-element
       <img
