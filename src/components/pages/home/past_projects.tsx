@@ -18,12 +18,12 @@ const PastProjects = () => {
     {
       title: "CrossOver",
       description: "Gaming overlay for any screen. Windows, Mac, and Linux.",
-      href: "/play/crossover",
+      href: "https://gh.lacymorrow.com/crossover",
     },
     {
       title: "Hitchhiker's Guide to the Galaxy",
       description: "My favorite book, now an AI. Ask it anything. Probably inaccurately.",
-      href: "/play/hitchhikersgalaxy",
+      href: "https://hitchhikersgalaxy.guide",
     },
     {
       title: "Cloud0 AI Chat",

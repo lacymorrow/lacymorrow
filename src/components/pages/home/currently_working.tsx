@@ -8,12 +8,12 @@ const CurrentlyWorking = () => {
     {
       title: "Lacy Shell",
       description: "Talk to your terminal. Natural language routes to AI agents automatically.",
-      href: "/play/lacy",
+      href: "https://lacy.sh",
     },
     {
       title: "Juno",
       description: "Anthropic Computer Use for your desktop. AI that sees and clicks.",
-      href: "/play/juno",
+      href: "https://junebug.ai",
     },
     {
       title: "Shipkit",
@@ -38,12 +38,12 @@ const CurrentlyWorking = () => {
     {
       title: "shipx",
       description: "Interactive release CLI — bump, tag, publish, and ship from one command.",
-      href: "/play/shipx",
+      href: "https://github.com/lacymorrow/shipx",
     },
     {
       title: "Paperclip Hub",
       description: "Plugin hub & marketplace for Paperclip AI agents.",
-      href: "/play/paperclip-hub",
+      href: "https://cliphub.fyi",
     },
   ];
 
