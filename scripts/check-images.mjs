@@ -8,9 +8,11 @@
  */
 
 import { readFileSync, existsSync, readdirSync, statSync } from "fs";
-import { resolve, join } from "path";
+import { resolve, join, dirname } from "path";
+import { fileURLToPath } from "url";
 
-const ROOT = resolve(import.meta.dirname, "..");
+const __dirname = dirname(fileURLToPath(import.meta.url));
+const ROOT = resolve(__dirname, "..");
 const PUBLIC = join(ROOT, "public");
 
 const mdxFiles = [];
@@ -26,7 +28,7 @@ function walk(dir) {
 walk(join(ROOT, "src", "pages"));
 
 const IMG_RE = /!\[[^\]]*\]\(([^)\s]+)/g;
-const SRC_RE = /(?:src|srcSet)\s*[=:]\s*["']([^"']+\.(jpe?g|png|webp|gif|svg))/gi;
+const SRC_RE = /(?:src|srcSet)\s*[=:]\s*["']([^\s"']+\.(jpe?g|png|webp|gif|svg))(?=[\s"'])/gi;
 
 let errors = 0;
 
