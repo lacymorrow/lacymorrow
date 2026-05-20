@@ -2,34 +2,25 @@
 module.exports = {
   siteUrl: process.env.SITE_URL || 'https://www.lacymorrow.com',
   generateRobotsTxt: true,
+  // next-sitemap's matcher supports `*` wildcards and `!`-prefix negation only
+  // (not minimatch / extglobs). Use wildcards plus explicit negations so the
+  // curated demos listed in each section's _meta.json stay indexed and any
+  // newly-added experiments get excluded automatically.
   exclude: [
     '/sink',
     '/lacy',
     '/404',
     // Archive pages: kept for permalinks but not part of the active site
+    '/about/archive',
     '/about/archive/*',
-    // Uncurated art experiments (only the ones in play/art/_meta.json are indexed)
-    '/play/art/blank',
-    '/play/art/continual',
-    '/play/art/converge',
-    '/play/art/lines',
-    '/play/art/multi',
-    '/play/art/offset',
-    '/play/art/orbit',
-    '/play/art/scribble',
-    '/play/art/scribe',
-    '/play/art/shine',
-    '/play/art/shinier',
-    '/play/art/shinierier',
-    '/play/art/sprout',
-    '/play/art/stix',
-    '/play/art/theme',
-    '/play/art/weave',
-    // Uncurated flash demos (only xspf is indexed)
-    '/play/flash/flashpress',
-    '/play/flash/gallery',
-    '/play/flash/giga-player',
-    '/play/flash/interactive-ui',
-    '/play/flash/viewr',
+    // Uncurated art experiments — curated entries in play/art/_meta.json stay indexed
+    '/play/art/*',
+    '!/play/art/isometrics',
+    '!/play/art/tree',
+    '!/play/art/rtext',
+    '!/play/art/expand',
+    // Uncurated flash demos — only xspf is curated
+    '/play/flash/*',
+    '!/play/flash/xspf',
   ],
 }
