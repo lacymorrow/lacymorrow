@@ -8,12 +8,12 @@ const CurrentlyWorking = () => {
     {
       title: "Lacy Shell",
       description: "Talk to your terminal. Natural language routes to AI agents automatically.",
-      href: "https://lacy.sh",
+      href: "/play/lacy",
     },
     {
       title: "Juno",
       description: "Anthropic Computer Use for your desktop. AI that sees and clicks.",
-      href: "https://junebug.ai",
+      href: "/play/juno",
     },
     {
       title: "Shipkit",
@@ -34,6 +34,16 @@ const CurrentlyWorking = () => {
       title: "Vibe Rehab",
       description: "Code rescue for AI-generated projects. We fix vibe code.",
       href: "https://vibe.rehab",
+    },
+    {
+      title: "shipx",
+      description: "Interactive release CLI — bump, tag, publish, and ship from one command.",
+      href: "/play/shipx",
+    },
+    {
+      title: "Paperclip Hub",
+      description: "Plugin hub & marketplace for Paperclip AI agents.",
+      href: "/play/paperclip-hub",
     },
   ];
 
