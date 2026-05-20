@@ -35,6 +35,16 @@ const CurrentlyWorking = () => {
       description: "Code rescue for AI-generated projects. We fix vibe code.",
       href: "https://vibe.rehab",
     },
+    {
+      title: "shipx",
+      description: "Interactive release CLI — bump, tag, publish, and ship from one command.",
+      href: "/play/shipx",
+    },
+    {
+      title: "Paperclip Hub",
+      description: "Plugin hub & marketplace for Paperclip AI agents.",
+      href: "/play/paperclip-hub",
+    },
   ];
 
   return (
