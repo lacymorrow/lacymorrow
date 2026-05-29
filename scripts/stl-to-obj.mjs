@@ -14,9 +14,10 @@ if (!inPath || !outPath) {
 const buf = readFileSync(inPath);
 const arrayBuffer = buf.buffer.slice(buf.byteOffset, buf.byteOffset + buf.byteLength);
 
+// No geometry.center(): preserve the original STL origin so the OBJ aligns
+// with the STL download when imported into a slicer or CAD software.
 const geometry = new STLLoader().parse(arrayBuffer);
 geometry.computeVertexNormals();
-geometry.center();
 
 const mesh = new THREE.Mesh(geometry, new THREE.MeshStandardMaterial());
 const obj = new OBJExporter().parse(mesh);
