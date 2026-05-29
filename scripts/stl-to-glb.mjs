@@ -6,17 +6,29 @@ import { readFileSync, writeFileSync } from "node:fs";
 if (typeof globalThis.FileReader === "undefined") {
   globalThis.FileReader = class {
     readAsArrayBuffer(blob) {
-      blob.arrayBuffer().then((ab) => {
-        this.result = ab;
-        this.onloadend?.();
-      });
+      blob
+        .arrayBuffer()
+        .then((ab) => {
+          this.result = ab;
+          this.onload?.();
+          this.onloadend?.();
+        })
+        .catch((err) => {
+          this.onerror?.(err);
+        });
     }
     readAsDataURL(blob) {
-      blob.arrayBuffer().then((ab) => {
-        const b64 = Buffer.from(ab).toString("base64");
-        this.result = `data:${blob.type || "application/octet-stream"};base64,${b64}`;
-        this.onloadend?.();
-      });
+      blob
+        .arrayBuffer()
+        .then((ab) => {
+          const b64 = Buffer.from(ab).toString("base64");
+          this.result = `data:${blob.type || "application/octet-stream"};base64,${b64}`;
+          this.onload?.();
+          this.onloadend?.();
+        })
+        .catch((err) => {
+          this.onerror?.(err);
+        });
     }
   };
 }
