@@ -1,4 +1,8 @@
 {
+	"index": {
+		"title": "Experiments",
+		"display": "hidden"
+	},
 	"dazzboard": "Dazzboard dashboard",
 	"github-browser": "GitHub browser",
 	"calculator": "TI-83 calculator games"

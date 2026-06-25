@@ -1,4 +1,8 @@
 {
+  "index": {
+    "title": "JavaScript Libraries",
+    "display": "hidden"
+  },
   "album-art": "album-art",
   "movie-art": "movie-art",
   "movie-info": "movie-info",

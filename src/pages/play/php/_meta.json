@@ -1,4 +1,8 @@
 {
+  "index": {
+    "title": "PHP Libraries",
+    "display": "hidden"
+  },
   "text-image-gen": "Image Font Generator",
   "xspf-playlister-php": "XSPF Playlister"
 }

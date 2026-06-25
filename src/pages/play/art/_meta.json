@@ -1,4 +1,8 @@
 {
+  "index": {
+    "title": "Flash Art",
+    "display": "hidden"
+  },
   "isometrics": "Isometric",
   "tree": "Tree Generation",
   "rtext": "Random Text",

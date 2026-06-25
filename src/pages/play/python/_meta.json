@@ -1,3 +1,7 @@
 {
+  "index": {
+    "title": "Python Libraries",
+    "display": "hidden"
+  },
   "xspf-playlister-py": "💿 XSPF Playlister"
 }

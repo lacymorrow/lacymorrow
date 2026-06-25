@@ -1,3 +1,7 @@
 {
+	"index": {
+		"title": "VS Code Extensions",
+		"display": "hidden"
+	},
 	"if-end-ghost-text": "if-end-ghost-text"
 }
