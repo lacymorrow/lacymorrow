@@ -1,4 +1,8 @@
 {
+  "index": {
+    "title": "Web Development",
+    "display": "hidden"
+  },
   "invision": "InVision",
   "innovation-works": "Innovation Works",
   "cosmic-cart": "Cosmic Cart",
