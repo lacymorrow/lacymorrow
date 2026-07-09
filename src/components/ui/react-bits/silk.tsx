@@ -1,4 +1,4 @@
-/* eslint-disable react/no-unknown-property */
+ 
 import React, { forwardRef, useMemo, useRef, useLayoutEffect } from "react";
 import { Canvas, useFrame, useThree, RootState } from "@react-three/fiber";
 import { Color, Mesh, ShaderMaterial } from "three";
@@ -155,6 +155,8 @@ export interface SilkProps {
   colorMix?: number;
   noiseIntensity?: number;
   rotation?: number;
+  dpr?: [number, number];
+  frameloop?: "always" | "demand" | "never";
 }
 
 const Silk: React.FC<SilkProps> = ({
@@ -164,6 +166,8 @@ const Silk: React.FC<SilkProps> = ({
   colorMix = 1.0,
   noiseIntensity = 1.5,
   rotation = 0,
+  dpr = [1, 2],
+  frameloop = "always",
 }) => {
   const meshRef = useRef<Mesh>(null);
 
@@ -187,7 +191,7 @@ const Silk: React.FC<SilkProps> = ({
   }, [speed, scale, noiseIntensity, colors, colorMix, rotation]);
 
   return (
-    <Canvas dpr={[1, 2]} frameloop="always">
+    <Canvas dpr={dpr} frameloop={frameloop}>
       <SilkPlane ref={meshRef} uniforms={uniforms} />
     </Canvas>
   );

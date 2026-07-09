@@ -70,5 +70,18 @@
     "theme": {
       "pagination": false
     }
+  },
+  "creed": {
+    "title": "Creed",
+    "display": "hidden",
+    "theme": {
+      "navbar": false,
+      "breadcrumb": false,
+      "footer": false,
+      "sidebar": false,
+      "toc": false,
+      "pagination": false,
+      "layout": "raw"
+    }
   }
 }
