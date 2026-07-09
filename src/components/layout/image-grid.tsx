@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 
 export interface ImageGridProps
   extends React.ObjectHTMLAttributes<HTMLObjectElement> {
-  rest?: Object;
+  rest?: object;
 }
 
 export const ImageGrid: React.FC<ImageGridProps> = ({

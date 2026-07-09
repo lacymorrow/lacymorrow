@@ -18,10 +18,10 @@ const Banner = () => {
       <a
         href="/play"
         style={poppins.style}
-        className="relative flex my-12 w-[80vw] max-w-[1200px] min-h-40 lg:h-[calc(100vh-10rem)] max-h-96 items-center justify-center overflow-hidden rounded-3xl p-4 md:h-[calc(100vh-15rem)]"
+        className="relative my-12 flex max-h-96 min-h-40 w-[80vw] max-w-[1200px] items-center justify-center overflow-hidden rounded-3xl p-4 md:h-[calc(100vh-15rem)] lg:h-[calc(100vh-10rem)]"
       >
         {/* Using an img tag for the animated PNG to allow for object-cover and positioning */}
-        <div className="absolute inset-0 h-full w-full object-cover">
+        <div className="absolute inset-0 size-full object-cover">
           <Silk
             speed={3}
             scale={1}
@@ -33,31 +33,31 @@ const Banner = () => {
         </div>
 
         {/* Centered text container */}
-        <div className="z-10 relative text-center">
+        <div className="relative z-10 text-center">
           <h1 className="text-xl font-medium text-white drop-shadow-md md:text-2xl">
             I build AI agents that control computers.
           </h1>
         </div>
       </a>
-      <div className="text-xl break-words max-w-[calc(100vw-4rem)] md:max-w-none">
+      <div className="max-w-[calc(100vw-4rem)] break-words text-xl md:max-w-none">
         See my{" "}
         <a
           href="/work"
-          className="underline hover:text-blue-500 transition-colors"
+          className="underline transition-colors hover:text-blue-500"
         >
           work
         </a>{" "}
         and{" "}
         <a
           href="/play"
-          className="underline hover:text-blue-500 transition-colors"
+          className="underline transition-colors hover:text-blue-500"
         >
           projects
         </a>
         , or{" "}
         <a
           href="/contact"
-          className="underline hover:text-blue-500 transition-colors"
+          className="underline transition-colors hover:text-blue-500"
         >
           reach out
         </a>

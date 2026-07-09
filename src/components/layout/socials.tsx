@@ -38,7 +38,7 @@ const socials = [
   {
     name: "Github",
     href: "https://www.github.com/lacymorrow",
-    icon: <GitHubLogoIcon className="h-3.5 w-3.5" />,
+    icon: <GitHubLogoIcon className="size-3.5" />,
   },
 ];
 
@@ -52,7 +52,7 @@ export const Socials = () => {
           target="_blank"
           rel="noopener noreferrer"
           className={cn(
-            "size-6 grid place-items-center hover:text-splash duration-400 transition-colors",
+            "hover:text-splash duration-400 grid size-6 place-items-center transition-colors",
             item.name.toLowerCase() === "last.fm" && "hover:child:fill-splash"
           )}
         >

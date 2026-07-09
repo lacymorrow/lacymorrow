@@ -67,12 +67,19 @@ export function StripeBgGuides({
     return [...Array(count)];
   }, [columnCount, responsive, windowWidth, minColumnWidth]);
 
-  const [activeColumns, setActiveColumns] = useState<boolean[]>(
-    columns.map(() => true)
-  );
+  // Random column picks live in state; the effective set is derived so we
+  // never have to sync state when `columns`/`randomize`/`animated` change.
+  const [randomColumns, setRandomColumns] = useState<boolean[] | null>(null);
 
+  // Depend on the column count, not the `columns` array identity — the array
+  // is rebuilt on every resize event, which would otherwise restart the
+  // randomize interval continuously while resizing.
+  const totalColumns = columns.length;
   const getRandomColumns = useCallback(() => {
-    const newActiveColumns = columns.map(() => Math.random() < 0.5);
+    const newActiveColumns = Array.from(
+      { length: totalColumns },
+      () => Math.random() < 0.5
+    );
     const activeCount = newActiveColumns.filter(Boolean).length;
     if (activeCount > maxActiveColumns) {
       const indicesToDeactivate = newActiveColumns
@@ -85,7 +92,7 @@ export function StripeBgGuides({
       });
     }
     return newActiveColumns;
-  }, [columns, maxActiveColumns]);
+  }, [totalColumns, maxActiveColumns]);
 
   useEffect(() => {
     const handleResize = () => setWindowWidth(window.innerWidth);
@@ -96,19 +103,26 @@ export function StripeBgGuides({
   }, []);
 
   useEffect(() => {
-    setActiveColumns(columns.map(() => true));
-  }, [columns]);
-
-  useEffect(() => {
-    if (randomize && animated) {
-      const intervalId = setInterval(() => {
-        setActiveColumns(getRandomColumns());
-      }, randomInterval);
-      return () => clearInterval(intervalId);
-    } else {
-      setActiveColumns(columns.map(() => true));
+    if (!randomize || !animated) {
+      return;
     }
-  }, [randomize, animated, randomInterval, getRandomColumns, columns]);
+    const intervalId = setInterval(() => {
+      setRandomColumns(getRandomColumns());
+    }, randomInterval);
+    return () => clearInterval(intervalId);
+  }, [randomize, animated, randomInterval, getRandomColumns]);
+
+  const activeColumns = useMemo(() => {
+    if (
+      randomize &&
+      animated &&
+      randomColumns &&
+      randomColumns.length === columns.length
+    ) {
+      return randomColumns;
+    }
+    return columns.map(() => true);
+  }, [randomize, animated, randomColumns, columns]);
 
   const getAnimationVariants = useCallback(() => {
     const variants = {
@@ -152,9 +166,9 @@ export function StripeBgGuides({
       aria-hidden="true"
       style={{ zIndex: contained ? 0 : -1 }}
     >
-      <div className="z-0 h-full w-full px-4 sm:px-6 lg:px-24">
+      <div className="z-0 size-full px-4 sm:px-6 lg:px-24">
         <div
-          className="mx-auto h-full w-full"
+          className="mx-auto size-full"
           style={{
             display: "grid",
             gridTemplateColumns: responsive

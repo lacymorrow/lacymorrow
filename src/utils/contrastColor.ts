@@ -1,4 +1,4 @@
-/* eslint-disable no-param-reassign */
+ 
 
 function padZero(str: string, len?: number) {
 	len = len || 2;

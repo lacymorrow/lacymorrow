@@ -197,7 +197,7 @@ export function LacyBlock() {
           ref={checkboxRef}
           type="checkbox"
           id="bar-toggle"
-          className="sr-only peer"
+          className="peer sr-only"
           aria-label="Toggle animation"
         />
 

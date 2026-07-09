@@ -15,7 +15,7 @@ export const Flash = ({ name, width, height, params }: Props) => {
 		<div className="mt-8">
 			<AspectRatio
 				ratio={16 / 9}
-				className="flex justify-center mx-auto"
+				className="mx-auto flex justify-center"
 				style={{ width: w, height: h }}
 			>
 				<Ruffle src={`/flash/${name}.swf?${params}`} width={width} height={height} />

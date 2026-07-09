@@ -12,7 +12,7 @@ const DateRange = ({
   startDate: string;
   endDate?: string;
 }) => (
-  <span className="text-sm text-muted-foreground whitespace-nowrap">
+  <span className="text-muted-foreground whitespace-nowrap text-sm">
     {formatDate(startDate)} &mdash; {endDate ? formatDate(endDate) : "Present"}
   </span>
 );
@@ -25,7 +25,7 @@ const Section = ({
   children: React.ReactNode;
 }) => (
   <section className="mt-8">
-    <h2 className="text-lg font-semibold tracking-tight border-b border-border pb-1 mb-4">
+    <h2 className="border-border mb-4 border-b pb-1 text-lg font-semibold tracking-tight">
       {title}
     </h2>
     {children}
@@ -36,12 +36,12 @@ export const ResumeViewer = () => {
   const { basics, work, education, skills, projects, references } = resume;
 
   return (
-    <div className="max-w-3xl mx-auto px-4 py-8 sm:px-6">
+    <div className="mx-auto max-w-3xl px-4 py-8 sm:px-6">
       {/* Header */}
       <header className="mb-6">
         <h1 className="text-3xl font-bold tracking-tight">{basics.name}</h1>
-        <p className="text-base text-muted-foreground mt-1">{basics.label}</p>
-        <div className="flex flex-wrap gap-x-4 gap-y-1 mt-3 text-sm">
+        <p className="text-muted-foreground mt-1 text-base">{basics.label}</p>
+        <div className="mt-3 flex flex-wrap gap-x-4 gap-y-1 text-sm">
           <span>{basics.location.city}, {basics.location.state}</span>
           <a href={`mailto:${basics.email}`} className="hover:underline">
             {basics.email}
@@ -59,7 +59,7 @@ export const ResumeViewer = () => {
 
       {/* Summary */}
       <Section title="Summary">
-        <p className="text-sm leading-relaxed whitespace-pre-line">
+        <p className="whitespace-pre-line text-sm leading-relaxed">
           {basics.summary}
         </p>
       </Section>
@@ -81,11 +81,11 @@ export const ResumeViewer = () => {
                 </h3>
                 <DateRange startDate={job.startDate} endDate={job.endDate} />
               </div>
-              <p className="text-sm text-muted-foreground">
+              <p className="text-muted-foreground text-sm">
                 {job.position}
                 {job.location && <> &middot; {job.location}</>}
               </p>
-              <p className="text-sm mt-1 leading-relaxed">{job.summary}</p>
+              <p className="mt-1 text-sm leading-relaxed">{job.summary}</p>
             </div>
           ))}
         </div>
@@ -93,16 +93,16 @@ export const ResumeViewer = () => {
 
       {/* Skills */}
       <Section title="Skills">
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
           {skills.map((group) => (
             <div key={group.name}>
-              <h3 className="font-semibold text-sm">
+              <h3 className="text-sm font-semibold">
                 {group.name}{" "}
-                <span className="font-normal text-muted-foreground">
+                <span className="text-muted-foreground font-normal">
                   ({group.level})
                 </span>
               </h3>
-              <p className="text-sm text-muted-foreground mt-0.5">
+              <p className="text-muted-foreground mt-0.5 text-sm">
                 {group.keywords.join(" \u00b7 ")}
               </p>
             </div>
@@ -115,7 +115,7 @@ export const ResumeViewer = () => {
         <div className="space-y-3">
           {projects.map((project, i) => (
             <div key={i}>
-              <h3 className="font-semibold text-sm">
+              <h3 className="text-sm font-semibold">
                 {project.url ? (
                   <a href={project.url} className="hover:underline">
                     {project.name}
@@ -124,7 +124,7 @@ export const ResumeViewer = () => {
                   project.name
                 )}
               </h3>
-              <p className="text-sm text-muted-foreground">{project.summary}</p>
+              <p className="text-muted-foreground text-sm">{project.summary}</p>
             </div>
           ))}
         </div>
@@ -138,7 +138,7 @@ export const ResumeViewer = () => {
               <h3 className="font-semibold">{edu.institution}</h3>
               <DateRange startDate={edu.startDate} endDate={edu.endDate} />
             </div>
-            <p className="text-sm text-muted-foreground">
+            <p className="text-muted-foreground text-sm">
               {edu.studyType}, {edu.area}
             </p>
           </div>
@@ -151,10 +151,10 @@ export const ResumeViewer = () => {
           {references.map((ref, i) => (
             <blockquote
               key={i}
-              className="border-l-2 border-border pl-4 text-sm italic"
+              className="border-border border-l-2 pl-4 text-sm italic"
             >
               <p>{ref.reference}</p>
-              <footer className="mt-1 not-italic text-muted-foreground">
+              <footer className="text-muted-foreground mt-1 not-italic">
                 &mdash; {ref.name}
               </footer>
             </blockquote>
@@ -163,22 +163,22 @@ export const ResumeViewer = () => {
       )}
 
       {/* Download links */}
-      <div className="mt-10 pt-6 border-t border-border flex flex-wrap gap-4 text-sm">
-        <a href="/resume.pdf" className="hover:underline font-medium">
+      <div className="border-border mt-10 flex flex-wrap gap-4 border-t pt-6 text-sm">
+        <a href="/resume.pdf" className="font-medium hover:underline">
           Download PDF
         </a>
-        <a href="/resume.docx" className="hover:underline font-medium">
+        <a href="/resume.docx" className="font-medium hover:underline">
           Download DOCX
         </a>
         <a
           href="https://registry.jsonresume.org/lacymorrow"
-          className="hover:underline font-medium"
+          className="font-medium hover:underline"
         >
           View on JSON Resume
         </a>
         <a
           href="https://github.com/lacymorrow/resume"
-          className="hover:underline font-medium"
+          className="font-medium hover:underline"
         >
           Source on GitHub
         </a>

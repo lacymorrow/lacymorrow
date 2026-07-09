@@ -1,4 +1,4 @@
-/* eslint-disable no-bitwise */
+ 
 // Create a UUID that may?? be RFC4122 version 4 compliant (copilot)
 // ex: 'a47c87c0-aaf2-4e0b-9936-386741b899ab'
 export const getUUID = () => {

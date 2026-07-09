@@ -1,0 +1,112 @@
+/* /creed — ethereal "words to live by" page (Aurora treatment) */
+
+.creed-root {
+	position: relative;
+	min-height: 100vh;
+	background: #0a0a12;
+}
+
+.creed-bg {
+	position: fixed;
+	inset: 0;
+	z-index: 0;
+}
+
+.creed-vignette {
+	position: fixed;
+	inset: 0;
+	z-index: 5;
+	background: radial-gradient(
+		ellipse at center,
+		transparent 40%,
+		rgba(0, 0, 0, 0.6) 100%
+	);
+	pointer-events: none;
+}
+
+.creed-escape {
+	position: fixed;
+	top: 1.25rem;
+	left: 1.25rem;
+	z-index: 20;
+	font-size: 0.75rem;
+	font-weight: 300;
+	letter-spacing: 0.05em;
+	color: #fff;
+	opacity: 0.3;
+	text-decoration: none;
+	transition: opacity 400ms ease;
+}
+
+.creed-escape:hover,
+.creed-escape:focus-visible {
+	opacity: 0.6;
+}
+
+.creed-content {
+	position: relative;
+	z-index: 10;
+	max-width: 640px;
+	margin: 0 auto;
+	padding: 40vh 1.5rem;
+}
+
+.creed-line {
+	margin-bottom: clamp(6rem, 15vh, 12rem);
+	text-align: center;
+	color: rgba(255, 255, 255, 0.85);
+	font-weight: 200;
+	font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+	line-height: 1.6;
+	letter-spacing: 0.02em;
+	text-shadow: 0 0 40px rgba(27, 58, 45, 0.3);
+}
+
+.creed-line:last-child {
+	margin-bottom: 0;
+}
+
+.creed-scroll-hint {
+	position: fixed;
+	bottom: 1.5rem;
+	left: 50%;
+	transform: translateX(-50%);
+	z-index: 20;
+	color: #fff;
+	font-weight: 100;
+	pointer-events: none;
+}
+
+@media (max-width: 1023px) {
+	.creed-content {
+		max-width: 540px;
+	}
+}
+
+@media (max-width: 767px) {
+	.creed-content {
+		max-width: calc(100vw - 3rem);
+		padding-top: 30vh;
+	}
+
+	.creed-line {
+		margin-bottom: clamp(4rem, 10vh, 8rem);
+	}
+}
+
+@media (max-width: 399px) {
+	.creed-content {
+		padding-left: 1.25rem;
+		padding-right: 1.25rem;
+	}
+
+	.creed-line {
+		font-size: 1.125rem;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.creed-line {
+		text-shadow: 0 0 30px rgba(27, 58, 45, 0.2);
+	}
+}
