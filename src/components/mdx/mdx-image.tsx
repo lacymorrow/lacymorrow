@@ -56,7 +56,6 @@ export function MdxImage({ src: rawSrc, alt = "", title, className, ...props }: 
     return (
       <picture>
         <source srcSet={webpSrc} type="image/webp" />
-        { }
         <img
           src={src}
           alt={alt}

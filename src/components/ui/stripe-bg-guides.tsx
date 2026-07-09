@@ -71,8 +71,15 @@ export function StripeBgGuides({
   // never have to sync state when `columns`/`randomize`/`animated` change.
   const [randomColumns, setRandomColumns] = useState<boolean[] | null>(null);
 
+  // Depend on the column count, not the `columns` array identity — the array
+  // is rebuilt on every resize event, which would otherwise restart the
+  // randomize interval continuously while resizing.
+  const totalColumns = columns.length;
   const getRandomColumns = useCallback(() => {
-    const newActiveColumns = columns.map(() => Math.random() < 0.5);
+    const newActiveColumns = Array.from(
+      { length: totalColumns },
+      () => Math.random() < 0.5
+    );
     const activeCount = newActiveColumns.filter(Boolean).length;
     if (activeCount > maxActiveColumns) {
       const indicesToDeactivate = newActiveColumns
@@ -85,7 +92,7 @@ export function StripeBgGuides({
       });
     }
     return newActiveColumns;
-  }, [columns, maxActiveColumns]);
+  }, [totalColumns, maxActiveColumns]);
 
   useEffect(() => {
     const handleResize = () => setWindowWidth(window.innerWidth);

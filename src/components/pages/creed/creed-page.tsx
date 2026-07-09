@@ -1,6 +1,7 @@
 import { motion, useReducedMotion } from 'framer-motion';
 import { Inter } from 'next/font/google';
-import { useEffect, useState } from 'react';
+import Link from 'next/link';
+import { useEffect, useState, useSyncExternalStore } from 'react';
 
 import Silk from '@/components/ui/react-bits/silk';
 import { creed } from '@/data/creed';
@@ -29,8 +30,21 @@ const useIsMobile = () => {
 	return isMobile;
 };
 
+// False during SSR and hydration, true after — so markup that depends on
+// client-only values stays identical between server and client.
+const useMounted = () =>
+	useSyncExternalStore(
+		() => () => {},
+		() => true,
+		() => false,
+	);
+
 export const CreedPage = () => {
-	const reducedMotion = useReducedMotion();
+	// useReducedMotion() is null during SSR but a boolean on the client, so
+	// honor it only after mount to keep server and client markup identical.
+	const mounted = useMounted();
+	const prefersReducedMotion = useReducedMotion();
+	const reducedMotion = mounted && !!prefersReducedMotion;
 	const isMobile = useIsMobile();
 
 	return (
@@ -49,13 +63,13 @@ export const CreedPage = () => {
 			</div>
 			<div className="creed-vignette" aria-hidden="true" />
 
-			<a href="/" className="creed-escape">
+			<Link href="/" className="creed-escape">
 				&larr; lacymorrow.com
-			</a>
+			</Link>
 
 			<main className="creed-content">
 				{creed.map((text) => (
-					<CreedLine key={text} text={text} />
+					<CreedLine key={text} text={text} reducedMotion={reducedMotion} />
 				))}
 			</main>
 
