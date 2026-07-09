@@ -17,7 +17,7 @@ import { $contact } from "@/config/strings";
 import { ResetIcon, RocketIcon } from "@radix-ui/react-icons";
 import { Loader2 } from "lucide-react";
 import Link from "next/link";
-import { Reducer, useReducer, useState } from "react";
+import { useReducer, useState } from "react";
 // import { experimental_useFormStatus as useFormStatus } from "react-dom";
 
 interface StateType {

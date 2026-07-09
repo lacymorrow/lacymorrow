@@ -3,7 +3,7 @@
 
 const now = () => new Date().getTime();
 
-export const throttle = (func: Function, wait: number, options: { leading?: boolean; trailing?: boolean } = {
+export const throttle = (func: (...args: any[]) => any, wait: number, options: { leading?: boolean; trailing?: boolean } = {
 	leading: false,
 	trailing: true,
 }) => {
@@ -49,7 +49,7 @@ export const throttle = (func: Function, wait: number, options: { leading?: bool
 		return result;
 	};
 
-	// eslint-disable-next-line func-names
+	 
 	throttled.cancel = function (): void {
 		if (timeout) {
 			clearTimeout(timeout);

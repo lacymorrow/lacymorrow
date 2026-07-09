@@ -1,6 +1,6 @@
-const debounce = function (func: (Function), wait: number = 100) {
+const debounce = function (func: (...args: any[]) => void, wait: number = 100) {
 	let timeout: NodeJS.Timeout | string | number | undefined;
-	return function (this: Function, ...args: any[]) {
+	return function (this: unknown, ...args: any[]) {
 		clearTimeout(timeout);
 		timeout = setTimeout(() => {
 			func.apply(this, args);

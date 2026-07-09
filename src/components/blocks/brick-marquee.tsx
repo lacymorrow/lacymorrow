@@ -185,7 +185,7 @@ export function BrickMarquee() {
 					ref={checkboxRef}
 					type="checkbox"
 					id="bar-toggle"
-					className="sr-only peer"
+					className="peer sr-only"
 					aria-label="Toggle animation"
 				/>
 
@@ -207,7 +207,7 @@ export function BrickMarquee() {
 									href={link.href}
 									target="_blank"
 									rel="noopener noreferrer"
-									className="inline-block transform transition-transform duration-300 ease-in-out hover:scale-120 text-primary-foreground hover:text-primary-foreground/80 mx-2"
+									className="hover:scale-120 text-primary-foreground hover:text-primary-foreground/80 mx-2 inline-block transition-transform duration-300 ease-in-out"
 									style={{ textShadow: "0 1px 2px rgba(0,0,0,0.2)" }}
 								>
 									<span>{link.name}</span>
