@@ -34,6 +34,26 @@ const nextConfig = {
   },
   redirects: async () => [
     {
+      source: "/v2",
+      destination: "/v2/index.html",
+      permanent: false,
+    },
+    {
+      source: "/v2/",
+      destination: "/v2/index.html",
+      permanent: false,
+    },
+    {
+      source: "/v3",
+      destination: "/v3/index.html",
+      permanent: false,
+    },
+    {
+      source: "/v3/",
+      destination: "/v3/index.html",
+      permanent: false,
+    },
+    {
       source: "/about/contact",
       destination: "/contact",
       permanent: true,
