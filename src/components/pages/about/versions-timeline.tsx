@@ -1,5 +1,6 @@
 import { versions } from "@/data/versions";
 import { cn } from "@/lib/utils";
+import Link from "next/link";
 
 export const VersionsTimeline = () => {
 	return (
@@ -69,20 +70,25 @@ export const VersionsTimeline = () => {
 								))}
 							</div>
 
-							<a
-								href={v.url}
-								target={v.isCurrent ? undefined : "_blank"}
-								rel={v.isCurrent ? undefined : "noopener noreferrer"}
-								className={cn(
-									"inline-flex items-center gap-1 text-sm font-medium transition-colors",
-									v.isCurrent
-										? "text-cyan-300 hover:text-cyan-200"
-										: "text-neutral-300 hover:text-neutral-100",
-								)}
-							>
-								{v.isCurrent ? "You are here" : "Visit this version"}
-								<span aria-hidden="true">→</span>
-							</a>
+							{v.isCurrent ? (
+								<Link
+									href={v.url}
+									className="inline-flex items-center gap-1 text-sm font-medium text-cyan-300 transition-colors hover:text-cyan-200"
+								>
+									You are here
+									<span aria-hidden="true">→</span>
+								</Link>
+							) : (
+								<a
+									href={v.url}
+									target="_blank"
+									rel="noopener noreferrer"
+									className="inline-flex items-center gap-1 text-sm font-medium text-neutral-300 transition-colors hover:text-neutral-100"
+								>
+									Visit this version
+									<span aria-hidden="true">→</span>
+								</a>
+							)}
 						</article>
 					</li>
 				))}
