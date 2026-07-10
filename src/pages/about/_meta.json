@@ -21,6 +21,13 @@
       "typesetting": "article"
     }
   },
+  "versions": {
+    "title": "Time Machine",
+    "theme": {
+      "pagination": false,
+      "typesetting": "article"
+    }
+  },
   "mentions": {
     "theme": {
       "pagination": false
