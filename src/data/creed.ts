@@ -14,4 +14,5 @@ export const creed: string[] = [
 	'Wear a helmet',
 	'Only break one law at a time',
 	'Good drivers occasionally miss their exit. Bad drivers never miss their exit.',
+	'Life is a game but not a competition',
 ];
