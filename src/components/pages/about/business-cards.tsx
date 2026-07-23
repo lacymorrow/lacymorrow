@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
 
@@ -22,6 +22,7 @@ const cards: BusinessCard[] = [
     role: "Founder",
     era: "2020s",
     front: "/static/business-cards/build-and-serve.jpg",
+    back: "/static/business-cards/build-and-serve-back.jpg",
     darkCard: true,
   },
   {
@@ -62,7 +63,21 @@ const cards: BusinessCard[] = [
   },
 ];
 
-function FlipCard({ card }: { card: BusinessCard }) {
+function useCanHover() {
+  const [canHover, setCanHover] = useState(false);
+
+  useEffect(() => {
+    const mq = window.matchMedia("(hover: hover)");
+    setCanHover(mq.matches);
+    const onChange = (e: MediaQueryListEvent) => setCanHover(e.matches);
+    mq.addEventListener("change", onChange);
+    return () => mq.removeEventListener("change", onChange);
+  }, []);
+
+  return canHover;
+}
+
+function FlipCard({ card, canHover }: { card: BusinessCard; canHover: boolean }) {
   const [flipped, setFlipped] = useState(false);
   const canFlip = !!card.back;
 
@@ -71,11 +86,13 @@ function FlipCard({ card }: { card: BusinessCard }) {
       <div
         className={cn(
           "relative w-full",
-          canFlip && "cursor-pointer",
+          canFlip && !canHover && "cursor-pointer",
         )}
         style={{ perspective: "1200px" }}
-        onClick={() => canFlip && setFlipped((f) => !f)}
-        role={canFlip ? "button" : undefined}
+        onMouseEnter={() => canFlip && canHover && setFlipped(true)}
+        onMouseLeave={() => canFlip && canHover && setFlipped(false)}
+        onClick={() => canFlip && !canHover && setFlipped((f) => !f)}
+        role={canFlip && !canHover ? "button" : undefined}
         aria-label={canFlip ? `Flip ${card.company} card` : undefined}
       >
         <div
@@ -120,9 +137,9 @@ function FlipCard({ card }: { card: BusinessCard }) {
           )}
         </div>
 
-        {canFlip && (
-          <div className="absolute bottom-2 right-2 rounded-full bg-black/40 px-2 py-1 text-xs text-white opacity-0 backdrop-blur-sm transition-opacity group-hover:opacity-100">
-            {flipped ? "flip front" : "flip over"}
+        {canFlip && !canHover && (
+          <div className="absolute bottom-2 right-2 rounded-full bg-black/40 px-2 py-1 text-xs text-white backdrop-blur-sm">
+            {flipped ? "tap for front" : "tap to flip"}
           </div>
         )}
       </div>
@@ -142,10 +159,12 @@ function FlipCard({ card }: { card: BusinessCard }) {
 }
 
 export function BusinessCards() {
+  const canHover = useCanHover();
+
   return (
     <div className="mt-8 grid gap-10 sm:grid-cols-2">
       {cards.map((card) => (
-        <FlipCard key={card.id} card={card} />
+        <FlipCard key={card.id} card={card} canHover={canHover} />
       ))}
     </div>
   );
