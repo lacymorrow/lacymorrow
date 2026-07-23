@@ -11,6 +11,7 @@ interface BusinessCard {
   era: string;
   front: string;
   back?: string;
+  note?: string;
   darkCard?: boolean;
 }
 
@@ -24,26 +25,40 @@ const cards: BusinessCard[] = [
     darkCard: true,
   },
   {
-    id: "invitae",
+    id: "invitae-connected",
     company: "Invitae",
     role: "Web Development",
     era: "2015–2019",
     front: "/static/business-cards/invitae-front.jpg",
-    back: "/static/business-cards/invitae-back.jpg",
+    back: "/static/business-cards/invitae-back-connected.jpg",
+    note: "Back №1 — “we are all connected”",
   },
   {
-    id: "computer-consultant",
+    id: "invitae-humanity",
+    company: "Invitae",
+    role: "Web Development",
+    era: "2015–2019",
+    front: "/static/business-cards/invitae-front.jpg",
+    back: "/static/business-cards/invitae-back-humanity.jpg",
+    note: "Back №2 — “genetics unites humanity”",
+  },
+  {
+    id: "invitae-path",
+    company: "Invitae",
+    role: "Web Development",
+    era: "2015–2019",
+    front: "/static/business-cards/invitae-front.jpg",
+    back: "/static/business-cards/invitae-back-path.jpg",
+    note: "Back №3 — “a new path on our genetic journey”",
+  },
+  {
+    id: "freelance",
     company: "Freelance",
-    role: "Computer Consultant",
+    role: "Web Developer / Computer Consultant",
     era: "Early 2010s",
-    front: "/static/business-cards/computer-consultant.jpg",
-  },
-  {
-    id: "web-developer",
-    company: "Freelance",
-    role: "Web Developer",
-    era: "~2013",
     front: "/static/business-cards/web-developer.jpg",
+    back: "/static/business-cards/computer-consultant.jpg",
+    note: "One card, two titles — Web Developer up front, Computer Consultant on the flip side",
   },
 ];
 
@@ -118,6 +133,9 @@ function FlipCard({ card }: { card: BusinessCard }) {
           <span className="text-xs text-gray-400">{card.era}</span>
         </div>
         <div className="text-xs text-gray-500">{card.role}</div>
+        {card.note && (
+          <div className="mt-0.5 text-xs italic text-gray-400">{card.note}</div>
+        )}
       </div>
     </div>
   );
