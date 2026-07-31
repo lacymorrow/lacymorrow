@@ -35,6 +35,13 @@
     "title": "Work",
     "type": "page"
   },
+  "services": {
+    "title": "Services",
+    "type": "page",
+    "theme": {
+      "typesetting": "article"
+    }
+  },
   "play": {
     "title": "Play",
     "type": "page"
@@ -50,13 +57,13 @@
     "type": "separator"
   },
   "fly5": {
-    "title": "Fly5 ↗",
+    "title": "Fly5 \u2197",
     "type": "page",
     "href": "https://fly5.live",
     "newWindow": true
   },
   "contact": {
-    "title": "Contact ↗",
+    "title": "Contact \u2197",
     "type": "page",
     "newWindow": true,
     "display": "hidden",
