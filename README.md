@@ -53,7 +53,7 @@ One of my favorite books is *The Hitchhiker's Guide to the Galaxy*, so I made th
 - [Sesame](https://github.com/lacymorrow/sesame) — Agent-readable TOTP authenticator. Desktop app + CLI + local API for 2FA codes
 
 **Desktop Apps**
-- [CrossOver](https://github.com/lacymorrow/crossover) · [website](https://lacymorrow.github.io/crossover) — Crosshair overlay for any screen (1,100+ ⭐)
+- [CrossOver](https://github.com/lacymorrow/crossover) · [website](https://lacymorrow.github.io/crossover) — Crosshair overlay for any screen (1,200+ ⭐)
 - [Cinematic](https://github.com/lacymorrow/cinematic) · [website](https://gh.lacymorrow.com/cinematic/) — Desktop movie collection manager
 
 **Boilerplates & Themes**
