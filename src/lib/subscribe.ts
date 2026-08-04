@@ -5,6 +5,13 @@ const resend = new Resend(resendApiKey)
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 
+export class SubscribeValidationError extends Error {
+	constructor(message: string) {
+		super(message)
+		this.name = 'SubscribeValidationError'
+	}
+}
+
 export interface SubscribeInput {
 	email: string
 	source?: string
@@ -16,10 +23,29 @@ export interface SubscribeResult {
 	notified: boolean
 }
 
+function escapeHtml(input: string): string {
+	return input.replace(/[&<>"']/g, (c) => {
+		switch (c) {
+			case '&':
+				return '&amp;'
+			case '<':
+				return '&lt;'
+			case '>':
+				return '&gt;'
+			case '"':
+				return '&quot;'
+			case "'":
+				return '&#39;'
+			default:
+				return c
+		}
+	})
+}
+
 export async function subscribe({ email, source }: SubscribeInput): Promise<SubscribeResult> {
 	const trimmed = (email ?? '').trim().toLowerCase()
 	if (!EMAIL_RE.test(trimmed)) {
-		throw new Error('Invalid email address.')
+		throw new SubscribeValidationError('Invalid email address.')
 	}
 
 	let stored = false
@@ -29,12 +55,15 @@ export async function subscribe({ email, source }: SubscribeInput): Promise<Subs
 			audienceId: resendAudienceId,
 			unsubscribed: false,
 		})
-		// Duplicates from Resend are treated as success.
-		if (error && !/already exists|duplicate/i.test(error.message ?? '')) {
+		// Duplicates from Resend surface as a validation-shaped error; treat as success.
+		if (error && error.name !== 'validation_error') {
 			throw new Error(error.message ?? 'Failed to store subscriber.')
 		}
 		stored = true
 	}
+
+	const safeEmail = escapeHtml(trimmed)
+	const safeSource = source ? escapeHtml(source) : ''
 
 	let notified = false
 	try {
@@ -42,11 +71,11 @@ export async function subscribe({ email, source }: SubscribeInput): Promise<Subs
 			from: 'Lacy Morrow <me@lacymorrow.com>',
 			to: [receivingEmail],
 			replyTo: trimmed,
-			subject: `🚀 [lm.com] fleet log subscribe: ${trimmed}`,
+			subject: `[lm.com] fleet log subscribe: ${trimmed}`,
 			html: `
 				<p>New fleet log subscriber:</p>
-				<p><b>${trimmed}</b></p>
-				${source ? `<p>Source: ${source}</p>` : ''}
+				<p><b>${safeEmail}</b></p>
+				${safeSource ? `<p>Source: ${safeSource}</p>` : ''}
 				<p>Stored in Resend audience: ${stored ? 'yes' : 'no (RESEND_AUDIENCE_ID not set)'}</p>
 			`,
 		})

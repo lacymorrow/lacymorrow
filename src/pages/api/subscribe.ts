@@ -1,5 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
-import { subscribe } from '@/lib/subscribe'
+import { SubscribeValidationError, subscribe } from '@/lib/subscribe'
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 	if (req.method !== 'POST') {
@@ -14,7 +14,10 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 		const result = await subscribe({ email, source })
 		return res.status(200).json(result)
 	} catch (error: any) {
-		return res.status(400).json({ message: error?.message ?? 'Subscription failed.' })
+		if (error instanceof SubscribeValidationError) {
+			return res.status(400).json({ message: error.message })
+		}
+		return res.status(500).json({ message: error?.message ?? 'Subscription failed.' })
 	}
 }
 

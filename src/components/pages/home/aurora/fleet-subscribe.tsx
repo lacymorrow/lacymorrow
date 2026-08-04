@@ -51,7 +51,7 @@ export function FleetSubscribe({ source = "home-hero", className }: FleetSubscri
 			className={cn("w-full max-w-[520px]", className)}
 			aria-label="Subscribe to the Fleet Log newsletter"
 		>
-			<div className="flex flex-col gap-2.5 sm:flex-row">
+			<div className="flex flex-col gap-2 sm:flex-row">
 				<label htmlFor="fleet-email" className="sr-only">
 					Email address
 				</label>
@@ -66,8 +66,8 @@ export function FleetSubscribe({ source = "home-hero", className }: FleetSubscri
 					onChange={(e) => setEmail(e.target.value)}
 					disabled={status === "loading"}
 					className={cn(
-						"h-12 flex-1 rounded-full border border-hair bg-card-mood px-5 font-mono text-[14px] text-ink placeholder:text-ink-mute",
-						"outline-none transition-colors focus:border-agent",
+						"h-11 flex-1 border border-border bg-background px-3 font-mono text-[14px] text-foreground placeholder:text-muted-foreground",
+						"outline-none transition-colors focus:border-foreground",
 						"disabled:opacity-60",
 					)}
 				/>
@@ -75,12 +75,12 @@ export function FleetSubscribe({ source = "home-hero", className }: FleetSubscri
 					type="submit"
 					disabled={status === "loading"}
 					className={cn(
-						"h-12 rounded-full bg-ink px-6 text-[14px] font-medium text-ground",
-						"transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_16px_40px_-18px] hover:shadow-agent/45",
-						"disabled:opacity-70 disabled:hover:translate-y-0 disabled:hover:shadow-none",
+						"h-11 border border-foreground bg-foreground px-5 font-mono text-[13px] font-medium text-background",
+						"transition-colors hover:bg-background hover:text-foreground",
+						"disabled:opacity-70",
 					)}
 				>
-					{status === "loading" ? "Sending..." : "Read the fleet log"}
+					{status === "loading" ? "Sending..." : "Get the fleet log"}
 				</button>
 			</div>
 			<p
@@ -88,13 +88,13 @@ export function FleetSubscribe({ source = "home-hero", className }: FleetSubscri
 				aria-live="polite"
 				className={cn(
 					"mt-3 min-h-[1.25rem] font-mono text-[12px]",
-					isSuccess && "text-shell",
-					isError && "text-agent",
-					!isSuccess && !isError && "text-ink-mute",
+					isSuccess && "text-foreground",
+					isError && "text-destructive",
+					!isSuccess && !isError && "text-muted-foreground",
 				)}
 			>
 				{message ||
-					"Dispatches from a year of running my life on 13 AI agents. No spam. Unsubscribe with one click."}
+					"Dispatches from a fleet of AI agents running production ops. No spam. Unsubscribe with one click."}
 			</p>
 		</form>
 	);
