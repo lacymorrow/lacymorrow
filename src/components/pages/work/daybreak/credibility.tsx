@@ -5,7 +5,7 @@ const COMPANIES = ["Twilio", "Credit Karma", "Duke Energy", "Viasat", "Yahoo", "
 
 const CREDS = [
   { label: "Arctic Code Vault", strong: "Contributor" },
-  { strong: "1,100+", label: "GitHub stars" },
+  { strong: "1,200+", label: "GitHub stars" },
   { strong: "~130", label: "repositories, mostly open" },
   { label: "B.S. Computer Science" },
 ];

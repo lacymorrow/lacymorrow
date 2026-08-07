@@ -11,7 +11,7 @@ export interface Project {
   flagship?: boolean
   /** short kind label for the flagship card, e.g. "Agent · macOS" */
   kind?: string
-  /** the flagship card's stat line, e.g. "1,100+ ★ on GitHub" */
+  /** the flagship card's stat line, e.g. "1,200+ ★ on GitHub" */
   stat?: string
   /** signal color for the flagship card */
   tone?: "shell" | "agent"
@@ -94,7 +94,7 @@ export const projects: Project[] = [
     startDate: "2015-01-01",
     flagship: true,
     kind: "Open source · since 2015",
-    stat: "1,100+ ★ on GitHub",
+    stat: "1,200+ ★ on GitHub",
     tone: "shell",
   },
   {
