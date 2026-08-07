@@ -1,5 +1,11 @@
  
-import React, { forwardRef, useMemo, useRef, useLayoutEffect } from "react";
+import React, {
+  forwardRef,
+  useEffect,
+  useLayoutEffect,
+  useRef,
+  useState,
+} from "react";
 import { Canvas, useFrame, useThree, RootState } from "@react-three/fiber";
 import { Color, Mesh, ShaderMaterial } from "three";
 import { IUniform } from "three";
@@ -110,13 +116,32 @@ void main() {
 
 interface SilkPlaneProps {
   uniforms: SilkUniforms;
+  colors: string[];
+  speed: number;
 }
 
 const SilkPlane = forwardRef<Mesh, SilkPlaneProps>(function SilkPlane(
-  { uniforms },
+  { uniforms, colors, speed },
   ref
 ) {
   const { viewport } = useThree();
+
+  // Targets the live uniforms lerp toward. Updating props (e.g. from the mood
+  // dial) retargets these; the useFrame below eases the material to match, so a
+  // palette change reads as weather rolling in rather than a hard cut.
+  const targets = useRef({
+    c1: new Color(),
+    c2: new Color(),
+    c3: new Color(),
+    speed,
+  });
+
+  useEffect(() => {
+    targets.current.c1.set(...hexToNormalizedRGB(colors[0] || "#7B7481"));
+    targets.current.c2.set(...hexToNormalizedRGB(colors[1] || "#9B59B6"));
+    targets.current.c3.set(...hexToNormalizedRGB(colors[2] || "#E74C3C"));
+    targets.current.speed = speed;
+  }, [colors, speed]);
 
   useLayoutEffect(() => {
     const mesh = ref as React.MutableRefObject<Mesh | null>;
@@ -127,12 +152,14 @@ const SilkPlane = forwardRef<Mesh, SilkPlaneProps>(function SilkPlane(
 
   useFrame((_state: RootState, delta: number) => {
     const mesh = ref as React.MutableRefObject<Mesh | null>;
-    if (mesh.current) {
-      const material = mesh.current.material as ShaderMaterial & {
-        uniforms: SilkUniforms;
-      };
-      material.uniforms.uTime.value += 0.1 * delta;
-    }
+    if (!mesh.current) return;
+    const u = (mesh.current.material as ShaderMaterial & { uniforms: SilkUniforms })
+      .uniforms;
+    u.uTime.value += 0.1 * delta;
+    u.uColor1.value.lerp(targets.current.c1, 0.06);
+    u.uColor2.value.lerp(targets.current.c2, 0.06);
+    u.uColor3.value.lerp(targets.current.c3, 0.06);
+    u.uSpeed.value += (targets.current.speed - u.uSpeed.value) * 0.06;
   });
 
   return (
@@ -170,30 +197,50 @@ const Silk: React.FC<SilkProps> = ({
   frameloop = "always",
 }) => {
   const meshRef = useRef<Mesh>(null);
+  const wrapRef = useRef<HTMLDivElement>(null);
+  const [active, setActive] = useState(true);
 
-  const uniforms = useMemo<SilkUniforms>(() => {
-    // Ensure we have at least 3 colors, fill with defaults if needed
-    const color1 = colors[0] || "#7B7481";
-    const color2 = colors[1] || "#9B59B6";
-    const color3 = colors[2] || "#E74C3C";
+  // Build uniforms exactly once (lazy state init) — subsequent color/speed
+  // changes are eased in via SilkPlane's lerp rather than rebuilding the material.
+  const [uniforms] = useState<SilkUniforms>(() => ({
+    uSpeed: { value: speed },
+    uScale: { value: scale },
+    uNoiseIntensity: { value: noiseIntensity },
+    uColor1: { value: new Color(...hexToNormalizedRGB(colors[0] || "#7B7481")) },
+    uColor2: { value: new Color(...hexToNormalizedRGB(colors[1] || "#9B59B6")) },
+    uColor3: { value: new Color(...hexToNormalizedRGB(colors[2] || "#E74C3C")) },
+    uColorMix: { value: colorMix },
+    uRotation: { value: rotation },
+    uTime: { value: 0 },
+  }));
 
-    return {
-      uSpeed: { value: speed },
-      uScale: { value: scale },
-      uNoiseIntensity: { value: noiseIntensity },
-      uColor1: { value: new Color(...hexToNormalizedRGB(color1)) },
-      uColor2: { value: new Color(...hexToNormalizedRGB(color2)) },
-      uColor3: { value: new Color(...hexToNormalizedRGB(color3)) },
-      uColorMix: { value: colorMix },
-      uRotation: { value: rotation },
-      uTime: { value: 0 },
+  // Pause rendering when the tab is hidden or the field scrolls out of view.
+  useEffect(() => {
+    const update = (visible: boolean) =>
+      setActive(document.visibilityState === "visible" && visible);
+    const onVis = () => setActive(document.visibilityState === "visible");
+    document.addEventListener("visibilitychange", onVis);
+
+    let io: IntersectionObserver | undefined;
+    if (wrapRef.current && "IntersectionObserver" in window) {
+      io = new IntersectionObserver(
+        ([entry]) => update(entry.isIntersecting),
+        { threshold: 0 },
+      );
+      io.observe(wrapRef.current);
+    }
+    return () => {
+      document.removeEventListener("visibilitychange", onVis);
+      io?.disconnect();
     };
-  }, [speed, scale, noiseIntensity, colors, colorMix, rotation]);
+  }, []);
 
   return (
-    <Canvas dpr={dpr} frameloop={frameloop}>
-      <SilkPlane ref={meshRef} uniforms={uniforms} />
-    </Canvas>
+    <div ref={wrapRef} className="h-full w-full">
+      <Canvas dpr={dpr} frameloop={active ? frameloop : "never"}>
+        <SilkPlane ref={meshRef} uniforms={uniforms} colors={colors} speed={speed} />
+      </Canvas>
+    </div>
   );
 };
 

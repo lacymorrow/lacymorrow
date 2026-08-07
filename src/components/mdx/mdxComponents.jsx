@@ -49,6 +49,7 @@ import {
 import { Button } from '@/components/ui/button';
 import Link from "next/link";
 
+import { StatusBadge } from "@/components/blocks/status-badge";
 import Lead from "@/components/mdx/lead";
 import MdxImage from "@/components/mdx/mdx-image";
 import { GitHubLogoIcon } from "@radix-ui/react-icons";
@@ -72,6 +73,7 @@ export const componentMap = {
 	Link,
 
 	// custom
+	StatusBadge,
 	Readme,
 	Flash,
 	FlashArt,

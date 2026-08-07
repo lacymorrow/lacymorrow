@@ -1,12 +1,11 @@
 import Logo from '@/components/images/logo';
 import Footer from '@/components/layout/footer';
 import { EnvelopeClosedIcon } from '@radix-ui/react-icons';
-import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useConfig } from 'nextra-theme-docs';
 
 const title = "Lacy Morrow";
-const description = "Lacy Morrow is a leading web and software engineer, UAV operator, and the creator of Crossover and other open-source projects.";
+const description = "Lacy Morrow — agentic & web engineer, open-source maintainer, and UAV operator. Creator of CrossOver and Shipkit, building the AI agents that will work beside us.";
 const ogImage = "https://lacy.is/api/og";
 const ogUrl = "https://www.lacymorrow.com";
 const githubUrl = 'https://github.com/lacymorrow/';
@@ -39,13 +38,6 @@ const themeConfig = {
 	navigation: { prev: true, next: true },
 	toc: { backToTop: true, float: true },
 	search: { placeholder: 'Search lacymorrow.com…' },
-	banner: {
-		text: (
-			<Link href="https://shipkit.io" target="_blank" rel="noopener noreferrer">
-				🚀  Launch your app today with Shipkit →
-			</Link>
-		)
-	},
 	sidebar: {
 		toggleButton: true,
 		defaultMenuCollapseLevel: 1,

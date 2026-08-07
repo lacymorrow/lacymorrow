@@ -51,7 +51,21 @@ module.exports = {
     			},
     			brand: 'hsl(var(--brand))',
     			'brand-foreground': 'hsl(var(--brand-foreground))',
-    			'muted-foreground': 'hsl(var(--muted-foreground))'
+    			'muted-foreground': 'hsl(var(--muted-foreground))',
+    			/* Mood tokens (aurora/daybreak) — used by the bespoke faces only */
+    			ground: 'hsl(var(--ground) / <alpha-value>)',
+    			'ground-2': 'hsl(var(--ground-2) / <alpha-value>)',
+    			ink: 'hsl(var(--ink) / <alpha-value>)',
+    			'ink-soft': 'hsl(var(--ink-soft) / <alpha-value>)',
+    			'ink-mute': 'hsl(var(--ink-mute) / <alpha-value>)',
+    			shell: 'hsl(var(--shell) / <alpha-value>)',
+    			agent: 'hsl(var(--agent) / <alpha-value>)',
+    			'aur-1': 'hsl(var(--aur-1) / <alpha-value>)',
+    			'aur-2': 'hsl(var(--aur-2) / <alpha-value>)',
+    			'aur-3': 'hsl(var(--aur-3) / <alpha-value>)',
+    			hair: 'hsl(var(--hair))',
+    			'hair-strong': 'hsl(var(--hair-strong))',
+    			'card-mood': 'hsl(var(--card-mood))'
     		},
     		borderRadius: {
     			lg: 'var(--radius)',

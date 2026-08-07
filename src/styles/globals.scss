@@ -96,6 +96,52 @@
     --brand-foreground: 270 100% 98%
   }
 
+  /* ============================================================
+     MOOD TOKENS — aurora (night) / daybreak (dawn)
+     A parallel token set consumed ONLY by the bespoke Aurora /
+     Daybreak faces. The shadcn tokens above are left untouched, so
+     every Nextra docs page renders exactly as before.
+     Solid tokens are HSL triples (Tailwind wraps them as
+     `hsl(var(--x) / <alpha-value>)` for opacity-modifier support);
+     hairline/card tokens carry baked alpha (consumed via `hsl(var(--x))`).
+     The --aur-* values mirror the hexes in src/config/mood.ts, which
+     feed the Silk shader — keep the two in sync.
+     :root carries the aurora set so tokens resolve even before the
+     no-flash script sets data-mood (JS-disabled / first paint).
+     ============================================================ */
+  :root,
+  [data-mood="aurora"] {
+    --ground: 248.6 33.3% 4.1%;      /* #08070e */
+    --ground-2: 250.9 33.3% 6.5%;    /* #0d0b16 */
+    --ink: 250 40% 94.1%;            /* #eceaf6 */
+    --ink-soft: 251.1 20.9% 74.7%;   /* #b6b1cc */
+    --ink-mute: 250.7 11.7% 47.1%;   /* #6f6a86 */
+    --shell: 153 74% 62.4%;          /* #58e6a6 — green = shell/human */
+    --agent: 277.1 80.8% 69.4%;      /* #c072f0 — magenta = agent/AI */
+    --aur-1: 277.1 80.8% 69.4%;      /* #c072f0 */
+    --aur-2: 153 74% 62.4%;          /* #58e6a6 */
+    --aur-3: 251.1 40.7% 39%;        /* #4a3b8c */
+    --hair: 250 25% 76% / 0.12;
+    --hair-strong: 250 25% 76% / 0.22;
+    --card-mood: 255 30% 11% / 0.55;
+  }
+
+  [data-mood="daybreak"] {
+    --ground: 250 42.9% 97.3%;       /* #f6f5fb */
+    --ground-2: 260 100% 99.4%;      /* #fdfcff */
+    --ink: 245.5 18.6% 11.6%;        /* #191823 */
+    --ink-soft: 251.5 14% 36.5%;     /* #55506a */
+    --ink-mute: 252 12.3% 60.2%;     /* #928da6 */
+    --shell: 160.9 75.8% 35.7%;      /* #16a074 */
+    --agent: 271 60.7% 53.1%;        /* #8a3fd0 */
+    --aur-1: 31.6 83.3% 64.7%;       /* #f0a95a — dawn amber */
+    --aur-2: 340.2 77.8% 71.8%;      /* #ef7fa4 — dawn rose */
+    --aur-3: 270 64.3% 72.5%;        /* #b98ce6 — dawn lilac */
+    --hair: 260 40% 18% / 0.10;
+    --hair-strong: 260 40% 18% / 0.18;
+    --card-mood: 0 0% 100% / 0.62;
+  }
+
   * {
     @apply border-border;
   }
@@ -117,6 +163,9 @@
   }
 
   .wrapper {
+    /* Clip the ~scrollbar-width overflow from full-bleed (100vw) face layouts */
+    overflow-x: hidden;
+
     /* Force page to be full width (Flash pages are smaller than the screen) */
     & > div[dir] > div[class~="nx-max-w-[90rem]"] {
       width: 100%;
@@ -138,22 +187,32 @@
   }
 }
 
-@layer base {
-  * {
-    @apply border-border;
+/* Sidebar refinements — lighter weight, tighter spacing */
+.nextra-sidebar-container {
+  nav {
+    font-size: 0.875rem;
+    font-weight: 400;
+    letter-spacing: -0.01em;
   }
-  body {
-    @apply bg-background text-foreground;
-  }
-}
 
-@theme inline {
-  @keyframes marquee {
-  from {
-    transform: translateX(0);
-    }
-  to {
-    transform: translateX(calc(-100% - var(--gap)));
-    }
+  li a,
+  li button {
+    font-weight: 400;
+    padding-top: 0.35rem;
+    padding-bottom: 0.35rem;
+  }
+
+  li a.active,
+  li a[data-active="true"] {
+    font-weight: 500;
+  }
+
+  /* Separator items — quieter */
+  li span.cursor-default {
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    opacity: 0.5;
   }
 }

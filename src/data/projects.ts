@@ -7,35 +7,55 @@ export interface Project {
   status: ProjectStatus
   section: "building" | "project"
   startDate?: string
+  /** surface on the Aurora home's flagship work grid */
+  flagship?: boolean
+  /** short kind label for the flagship card, e.g. "Agent · macOS" */
+  kind?: string
+  /** the flagship card's stat line, e.g. "1,100+ ★ on GitHub" */
+  stat?: string
+  /** signal color for the flagship card */
+  tone?: "shell" | "agent"
 }
 
 export const projects: Project[] = [
   {
     name: "Lacy Shell",
     description:
-      "Talk to your terminal. Natural language routes to AI agents automatically.",
+      "Talk to your terminal. Commands still run. Questions go to your AI. No prefix, no mode switch.",
     url: "https://lacy.sh",
     status: "active",
     section: "building",
     startDate: "2024-01-01",
+    flagship: true,
+    kind: "Shell · open source",
+    stat: "lacy.sh",
+    tone: "shell",
   },
   {
     name: "Juno AI",
     description:
-      "Voice-operate your computer. Rust + Tauri + Whisper.",
+      "An AI that sees your screen and acts on it, running native on the Mac. Rust, Tauri, and Whisper.",
     url: "https://junebug.ai",
     status: "active",
     section: "building",
     startDate: "2025-01-01",
+    flagship: true,
+    kind: "Agent · macOS",
+    stat: "junebug.ai",
+    tone: "agent",
   },
   {
     name: "Shipkit",
     description:
-      "Ship Next.js apps fast. Auth, payments, AI included.",
+      "Auth, payments, CMS, and AI, wired up and ready. Everything a Next.js app needs on day one.",
     url: "https://shipkit.io",
     status: "active",
     section: "building",
     startDate: "2024-01-01",
+    flagship: true,
+    kind: "Framework · product",
+    stat: "shipkit.io",
+    tone: "shell",
   },
   {
     name: "AI Alpaca",
@@ -49,7 +69,7 @@ export const projects: Project[] = [
   {
     name: "shipx",
     description:
-      "Interactive release CLI — bump, tag, publish, and ship from one command.",
+      "Interactive release CLI. Bump, tag, publish, and ship from one command.",
     url: "https://github.com/lacymorrow/shipx",
     status: "active",
     section: "building",
@@ -67,11 +87,15 @@ export const projects: Project[] = [
   {
     name: "CrossOver",
     description:
-      "Gaming overlay for any screen. Windows, Mac, and Linux. Featured in Windows Store.",
+      "A crosshair for any screen, on any OS. My oldest open-source project, and still the one that reaches the most people.",
     url: "https://gh.lacymorrow.com/crossover",
     status: "shipped",
     section: "project",
     startDate: "2015-01-01",
+    flagship: true,
+    kind: "Open source · since 2015",
+    stat: "1,100+ ★ on GitHub",
+    tone: "shell",
   },
   {
     name: "OpenClaw Trading",
@@ -122,3 +146,9 @@ export const projects: Project[] = [
 
 export const buildingProjects = projects.filter((p) => p.section === "building")
 export const gridProjects = projects.filter((p) => p.section === "project")
+
+/** The four flagships surfaced on the Aurora home, in a deliberate order. */
+const flagshipOrder = ["Juno AI", "Lacy Shell", "Shipkit", "CrossOver"]
+export const flagshipProjects = projects
+  .filter((p) => p.flagship)
+  .sort((a, b) => flagshipOrder.indexOf(a.name) - flagshipOrder.indexOf(b.name))
