@@ -46,6 +46,13 @@
     "title": "Play",
     "type": "page"
   },
+  "writing": {
+    "title": "Writing",
+    "type": "page",
+    "theme": {
+      "typesetting": "article"
+    }
+  },
   "about": {
     "title": "About",
     "type": "page",
