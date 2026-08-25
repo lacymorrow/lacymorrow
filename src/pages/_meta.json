@@ -3,13 +3,11 @@
     "title": "Home",
     "display": "hidden",
     "theme": {
-      "navbar": false,
       "breadcrumb": false,
-      "footer": false,
       "sidebar": false,
       "toc": false,
       "pagination": false,
-      "layout": "raw"
+      "layout": "full"
     }
   },
   "company": {
