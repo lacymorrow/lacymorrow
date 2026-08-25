@@ -2,5 +2,7 @@
 	"index": {
 		"title": "Writing",
 		"display": "hidden"
-	}
+	},
+	"stripe-redirect-kills-webhooks": "Stripe 307-Redirect Kills Webhooks",
+	"agents-that-refused-to-ship": "The Agents That Refused to Ship"
 }

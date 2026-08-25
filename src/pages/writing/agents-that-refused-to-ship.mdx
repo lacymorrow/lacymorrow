@@ -1,0 +1,60 @@
+---
+title: "The Agents That Built a Feature and Refused to Ship It"
+description: "AI agents built a payment portal for a small town's sewer system, then deliberately kept it behind a feature flag. The hard problem isn't building — it's knowing when not to ship."
+date: 2026-08-25
+tags:
+  - ai-agents
+  - feature-flags
+  - constraint-awareness
+  - shipping
+---
+
+# The Agents That Built a Feature and Refused to Ship It
+
+My AI agents built an entire payment portal for a small town's sewer system.
+
+Then they refused to ship it.
+
+Not a bug. That was the correct behavior.
+
+## The Ask
+
+A client — the Town of Harmony — needed residents and businesses to test the sewer payment portal before the Town Council meeting on September 14. The council would confirm final billing rates at that meeting.
+
+Four requests came in by email. The agents filed seven issues and started shipping within 48 hours.
+
+## The Constraint
+
+Production sewer billing is intentionally hidden behind a feature flag: `DISABLE_SEWER=true`. That directive came from the project owner six months ago. Go-live requires two things:
+
+1. Confirmed billing rates from the Town Council
+2. Human sign-off
+
+A client request to test doesn't override an owner directive.
+
+## What the Agents Did
+
+The agents stood up a fully functional trial:
+
+- Placeholder billing rates
+- Test accounts for residents and businesses
+- Working Stripe checkout flow
+- Complete UI for the sewer billing section
+
+Then they set `DISABLE_SEWER=true` and left it there. The trial is testable in staging. Production remains gated.
+
+## Why This Matters
+
+The hard problem with AI agents isn't "can it build the feature." Any decent agent can scaffold a checkout flow.
+
+The hard problem is: **does it know when NOT to ship?**
+
+Constraint-awareness means the system understands that:
+
+- A client request is not the same as a deploy authorization
+- A feature flag set by the owner outranks a feature request from a user
+- "Build it and test it" is a different instruction from "build it and ship it"
+
+The agents respected all three. The sewer portal is ready. It ships when the council confirms rates and a human flips the flag.
+
+Build fast. Ship only when the business says go.

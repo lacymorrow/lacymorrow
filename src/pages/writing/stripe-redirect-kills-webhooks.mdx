@@ -1,0 +1,51 @@
+---
+title: "Stripe 307-Redirect Kills Webhooks: Why Apex → WWW Matters"
+description: "Stripe sandbox webhooks silently failing for 4 days because Vercel 307-redirects apex to www. Stripe doesn't follow redirects. An AI agent caught it."
+date: 2026-08-25
+tags:
+  - webhooks
+  - stripe
+  - vercel
+  - debugging
+  - ai-agents
+---
+
+# Stripe 307-Redirect Kills Webhooks
+
+Stripe webhooks silently failing for 4 days. No alerts. No errors in our logs. Just... Stripe stopped delivering.
+
+Root cause: a 307 redirect.
+
+## The Setup
+
+We registered the Stripe webhook endpoint against the apex URL:
+
+```
+https://townofharmony.org/api/webhooks/stripe
+```
+
+Vercel 307-redirects apex → `www.townofharmony.org` at the platform level. This is standard Vercel behavior — most sites configure either apex or www as canonical, and Vercel handles the redirect.
+
+The problem: **Stripe treats any 3xx response as a delivery failure.** It does not follow redirects. The webhook payload never reaches your handler. Every delivery attempt fails silently from your application's perspective.
+
+## The Timeline
+
+- **Aug 13:** Stripe sandbox webhooks start failing. No alerts fire because the webhook endpoint never receives the request — there's nothing to error on.
+- **Aug 17:** An AI agent monitoring infrastructure health noticed the Stripe delivery failures in the dashboard and diagnosed the redirect chain.
+- **Aug 22 (projected):** Stripe would have exhausted its retry window and stopped sending test webhooks entirely.
+
+The fix was straightforward: update the registered endpoint URL from the apex domain to the www domain. But the diagnosis — tracing a silent failure through a redirect chain that's invisible at the application layer — is the kind of thing that slips through manual monitoring.
+
+## Check Your Setup
+
+If you're on Vercel with apex + www configured, and you've registered webhooks against the bare domain, check them. This applies to any webhook provider that treats 3xx as failure:
+
+- Stripe
+- GitHub
+- Any provider that doesn't follow redirects on webhook delivery
+
+The fix is simple: register your webhook endpoints against whichever domain is canonical (the one that doesn't redirect).
+
+## Why This Matters
+
+This is the kind of infrastructure issue that's invisible until it isn't. The application code is correct. The webhook handler works. The redirect is correct behavior. But the combination creates a silent failure that only surfaces when you notice missing data downstream — or when an automated system catches it before you do.
