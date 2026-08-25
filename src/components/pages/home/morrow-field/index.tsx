@@ -1,16 +1,5 @@
-import dynamic from "next/dynamic";
-import { StaticLanding } from "./static-landing";
+import { MorrowFieldClient } from "./client";
 
-const MorrowFieldClient = dynamic(
-  () => import("./client").then((m) => m.MorrowFieldClient),
-  { ssr: false },
-);
-
-export const MorrowField = () => (
-  <>
-    <StaticLanding reason="loading" />
-    <MorrowFieldClient />
-  </>
-);
+export const MorrowField = () => <MorrowFieldClient />;
 
 export default MorrowField;

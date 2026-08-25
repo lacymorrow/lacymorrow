@@ -1,17 +1,24 @@
 "use client";
 
 import dynamic from "next/dynamic";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { StaticLanding } from "./static-landing";
 
 const Game = dynamic(() => import("./game").then((m) => m.Game), {
   ssr: false,
 });
 
+type FallbackReason = "reduced-motion" | "no-webgl";
+
 interface GameConfig {
-  canRun: boolean;
   autoStart?: boolean;
   spawn?: { x: number; z: number };
 }
+
+type ResolvedState =
+  | { kind: "loading" }
+  | { kind: "fallback"; reason: FallbackReason }
+  | { kind: "ready"; config: GameConfig };
 
 const detectWebGL = (): boolean => {
   try {
@@ -22,11 +29,12 @@ const detectWebGL = (): boolean => {
   }
 };
 
-const resolveConfig = (): GameConfig => {
+const resolveState = (): ResolvedState => {
   const reduced = window.matchMedia(
     "(prefers-reduced-motion: reduce)",
   ).matches;
-  if (reduced || !detectWebGL()) return { canRun: false };
+  if (reduced) return { kind: "fallback", reason: "reduced-motion" };
+  if (!detectWebGL()) return { kind: "fallback", reason: "no-webgl" };
 
   const params = new URLSearchParams(window.location.search);
   const autoStart = params.has("nointro");
@@ -39,14 +47,26 @@ const resolveConfig = (): GameConfig => {
       spawn = { x: sx, z: sz };
     }
   }
-  return { canRun: true, autoStart, spawn };
+  return { kind: "ready", config: { autoStart, spawn } };
 };
 
 export const MorrowFieldClient = () => {
-  const [config] = useState<GameConfig>(() =>
-    typeof window === "undefined" ? { canRun: false } : resolveConfig(),
-  );
+  const [state, setState] = useState<ResolvedState>({ kind: "loading" });
 
-  if (!config.canRun) return null;
-  return <Game autoStart={config.autoStart} spawn={config.spawn} />;
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setState(resolveState());
+  }, []);
+
+  if (state.kind === "ready") {
+    return (
+      <>
+        <StaticLanding reason="loading" />
+        <Game autoStart={state.config.autoStart} spawn={state.config.spawn} />
+      </>
+    );
+  }
+
+  const reason = state.kind === "loading" ? "loading" : state.reason;
+  return <StaticLanding reason={reason} />;
 };
