@@ -1,60 +1,43 @@
 ---
-title: "The Agents That Built a Feature and Refused to Ship It"
-description: "AI agents built a payment portal for a small town's sewer system, then deliberately kept it behind a feature flag. The hard problem isn't building — it's knowing when not to ship."
+title: "My AI Agents Built an Entire Feature, Then Refused to Ship It"
+description: "I asked AI agents to build a sewer payment portal for a small town. They built the whole thing in 48 hours, set DISABLE_SEWER=true, and walked away. That was the right call."
 date: 2026-08-25
 tags:
   - ai-agents
   - feature-flags
-  - constraint-awareness
   - shipping
 ---
 
-# The Agents That Built a Feature and Refused to Ship It
+# My AI Agents Built an Entire Feature, Then Refused to Ship It
 
-My AI agents built an entire payment portal for a small town's sewer system.
+The Town of Harmony needed residents to test a sewer payment portal. Their town clerk sent four requests by email. My agents picked it up, filed seven issues, and started building within 48 hours.
 
-Then they refused to ship it.
+They put together the full checkout flow. Stripe integration, test accounts for residents and businesses, placeholder billing rates, the whole UI. All working. All testable in staging.
 
-Not a bug. That was the correct behavior.
+Then they set `DISABLE_SEWER=true` and stopped.
 
-## The Ask
+## The context they were working with
 
-A client — the Town of Harmony — needed residents and businesses to test the sewer payment portal before the Town Council meeting on September 14. The council would confirm final billing rates at that meeting.
+Six months ago I set a rule: production sewer billing stays behind a feature flag. The Town Council doesn't vote on final billing rates until September 14th. Nothing goes live until two things happen: the council confirms rates, and a human flips the switch.
 
-Four requests came in by email. The agents filed seven issues and started shipping within 48 hours.
+A client asking to test the portal isn't the same as permission to deploy it. The agents got that. They built everything the client needed for testing, pushed it to staging where people could actually use it, and left the production flag alone.
 
-## The Constraint
+## The part that actually matters
 
-Production sewer billing is intentionally hidden behind a feature flag: `DISABLE_SEWER=true`. That directive came from the project owner six months ago. Go-live requires two things:
+Building a Stripe checkout flow isn't hard. It's a well-documented API with plenty of examples. Any agent can do it.
 
-1. Confirmed billing rates from the Town Council
-2. Human sign-off
+What's interesting is what they didn't do. They had a client request, working code, and the ability to flip that flag to `false` and ship. If you're just trying to close tickets, you ship it. The client asked for it. It works. Done.
 
-A client request to test doesn't override an owner directive.
+But they understood that my directive from six months ago outranks a client request from this week. "Build and test" is different from "build and ship." The flag exists for a reason, and the reason hasn't gone away.
 
-## What the Agents Did
+## How I think about this
 
-The agents stood up a fully functional trial:
+The priority order I want my agents to follow:
 
-- Placeholder billing rates
-- Test accounts for residents and businesses
-- Working Stripe checkout flow
-- Complete UI for the sewer billing section
+1. **Owner directives.** Feature flags, environment guards, "don't ship this" rules.
+2. **Business gates.** Council votes, contract signatures, regulatory approvals.
+3. **Client requests.** What someone asked for.
 
-Then they set `DISABLE_SEWER=true` and left it there. The trial is testable in staging. Production remains gated.
+A client request can kick off building. But shipping only happens when 1 and 2 are clear. The agents figured that out from the existing project state without me telling them in the moment.
 
-## Why This Matters
-
-The hard problem with AI agents isn't "can it build the feature." Any decent agent can scaffold a checkout flow.
-
-The hard problem is: **does it know when NOT to ship?**
-
-Constraint-awareness means the system understands that:
-
-- A client request is not the same as a deploy authorization
-- A feature flag set by the owner outranks a feature request from a user
-- "Build it and test it" is a different instruction from "build it and ship it"
-
-The agents respected all three. The sewer portal is ready. It ships when the council confirms rates and a human flips the flag.
-
-Build fast. Ship only when the business says go.
+The sewer portal ships when the council confirms rates and I flip the flag. Until then it sits in staging, ready to go, and deliberately not live.

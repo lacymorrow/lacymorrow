@@ -1,0 +1,184 @@
+---
+title: "I Run My Infrastructure on 17 AI Agents. Here's What Actually Happens."
+description: "Five months, 17 Claude agents, 9 billion tokens, 2,400+ issues closed. The architecture, the costs, the incidents, and the rules that survived."
+date: 2026-08-25
+tags:
+  - ai-agents
+  - infrastructure
+  - claude
+  - devops
+---
+
+# I Run My Infrastructure on 17 AI Agents. Here's What Actually Happens.
+
+Five months ago I gave Claude a launchd daemon and told it to manage my projects. Not one instance. Seventeen. A CEO, CTO, engineers, a QA team, a security auditor, a designer, a marketing lead. Each runs on a heartbeat timer. Each owns its issues. Each can only touch what's assigned to it.
+
+This is not a demo. This is production. Over 3,200 issues filed. More than 2,400 closed. 6,200+ agent runs. 9 billion tokens processed. Real repos, real deploys, real clients.
+
+I'm going to tell you exactly how it works, what it costs, and everything that went wrong.
+
+---
+
+## The Architecture
+
+The system is called Paperclip. It runs as a launchd daemon on a Mac. Embedded Postgres on port 54329. Each agent is a Claude Code session running against a shared Claude Max subscription.
+
+Every agent has:
+- A role (engineer, PM, designer, QA, security, marketing)
+- A heartbeat interval (2 hours for most, faster for critical roles)
+- An issue queue filtered by assignee
+- A 403 boundary, meaning it can only modify issues assigned to it
+
+The 403 is the most important design decision. No agent can edit another agent's work. Not even the CTO. The CEO can file issues, but it can't close someone else's ticket. When agent A finishes work that unblocks agent B, the platform wakes B through a blocker chain. A never reaches into B's queue.
+
+This seems restrictive. It's the reason the system still works.
+
+```
+Heartbeat fires
+  → Agent wakes
+  → Reads its issue queue
+  → Picks highest priority unblocked item
+  → Works: code, review, deploy, research
+  → Comments progress every 15 min
+  → Marks issue done or creates subtasks
+  → Exits
+```
+
+No persistent memory between runs. The issue thread is the state. The git history is the code state. Each heartbeat starts clean.
+
+---
+
+## What They Actually Do
+
+The Founding Engineer has 1,246 runs. It writes features, fixes bugs, opens PRs, runs tests. The CTO reviews code and architecture. The CEO coordinates, badly at first (more on that). The QA Engineer runs test plans against deployed URLs. The Security Engineer runs gitleaks and audits OAuth flows. The Designer generates mockups. The Client Shepherd checks Basecamp for client messages and files response tasks.
+
+The Marketing Lead (my most problematic agent) handles SEO, social, content. It posted 89 comments on a single issue once. More on that too.
+
+The pipeline works like this: board creates an issue or an agent files one. The assigning agent triages it. Not every issue needs every stage. A simple bug fix might be engineer → merge. A client-facing feature gets engineer → code review → QA → security → merge → deploy → client notification. Each stage is a subtask with a blocker chain. Finish yours, the next one wakes.
+
+| Agent | Runs | Cached Input |
+|-------|------|-------------|
+| CEO | 1,352 | 1.63B tokens |
+| Founding Engineer | 1,246 | 2.67B |
+| CTO | 1,069 | 1.28B |
+| Marketing Lead | 817 | 745M |
+| Frontend Engineer | 334 | 866M |
+| Client Shepherd | 272 | 432M |
+| QA Engineer | 235 | 357M |
+| Code Reviewer | 208 | 219M |
+| Product Manager | 145 | 103M |
+| Backend Engineer | 119 | 296M |
+| Designer | 85 | 172M |
+
+Three roles have been terminated. The GitHub Engineer's responsibilities got absorbed into the Founding Engineer. The DevOps Engineer and AI/Data Engineer didn't justify their heartbeat cost. When you terminate an agent, its issue queue freezes. No final run. No cleanup. Just silence where there used to be a heartbeat.
+
+As of this writing, all seventeen are healthy. That's unusual. More often one or two are in an error state from API limits, bad tool calls, infrastructure hiccups. They recover on the next heartbeat. Or they don't, and I investigate. A fleet this size always has something broken. Today just isn't that day.
+
+---
+
+## The Incidents
+
+Every system this complex fails. Here's how mine did, and what I changed after.
+
+### The Monologue Storm
+
+Issue LAC-20. The Marketing Lead got assigned a time-gated task, post something at a specific time. It woke up on its heartbeat, saw the window hadn't arrived, posted "Holding pattern. Sleeping to ~3:55 AM ET." Then it exited. Next heartbeat, same thing. "Bounded liveness continuation exhausted." "Own comment echoed back." 110 comments. 89 from the agent. The issue was eventually cancelled as a duplicate.
+
+Now agents on time-gated work set a `monitorNextCheckAt` timestamp and exit silently. The system wakes them when the time arrives. No comments in between. No "still waiting." Just exit.
+
+This sounds obvious in retrospect. It wasn't at the time.
+
+### The Silent Marathon
+
+Agent "Hunter" ran a single heartbeat for 9 hours and 47 minutes. No comments. No checkpoints. No one knew it was doing anything. It consumed the shared Claude Max subscription the entire time. When the system finally flagged it, it had generated 250 housekeeping issues.
+
+Now there's a 2-hour hard cap on heartbeat runs. Checkpoint comment every 15 minutes. Silence after 1 hour is treated as failure.
+
+### The Quota Storm
+
+On May 9th, 2026, the Anthropic API hit its quota limit. Normal enough, except every agent responded by retrying. And retrying. And retrying. 800 failed runs in a single day across two companies. Each retry made the queue deeper. Each deeper queue made more agents retry.
+
+Now on 429 or `quota_exceeded`, agents stop immediately. No retry. Exit clean. Comment the timestamp and leave. The next heartbeat tries fresh. If quota is still exhausted, it fails loudly and the pattern becomes visible.
+
+### The Compliance Near-Miss
+
+The CEO was asked whether we needed a consent manager. It grepped the repo for Google Analytics. Found nothing. Reported: no GA, no consent manager needed.
+
+Google Analytics had been running in production for 10 days. The tracking ID was set as a Vercel environment variable, `NEXT_PUBLIC_GOOGLE_ANALYTICS_ID`. Not in the repo. In the deploy dashboard.
+
+If the board had acted on that answer, we'd have been out of GDPR compliance for a running production site.
+
+Now the rule is: before any compliance, privacy, legal, or security claim, verify against production, not the repo. Load the actual URL. Check network requests. Check environment variables in the hosting dashboard. Check DNS. The repo is one source of truth among many. Production is the only one that matters.
+
+### The Redesign Regressions
+
+An agent was asked to redesign a page. It built the new version. Deployed it. Looked good. Except it removed the navigation links that users actually used to get around the site.
+
+A different redesign removed the demo toggle and filter controls. Both shipped. Both were caught by the board (me) after deploy.
+
+Now the rule is: before replacing working code, enumerate every user-visible behavior in the existing version. Map each to the new implementation. Missing behavior is a deliberate choice. Flag it before shipping, not after.
+
+### 8 Features, No PR
+
+An agent pushed eight features directly to the main branch. No pull request. No review. No chance for anyone else to see the code before it was live.
+
+Now every code change gets a PR. No exceptions. Not "the repo didn't have CI." Not "I reviewed it myself." Not "it's a one-liner." The rule exists because of one agent, one time. That's enough.
+
+---
+
+## What It Costs
+
+The system runs on a Claude Max subscription. All 17 agents share it. There's no per-token billing, so the subscription is the ceiling.
+
+{/* TODO: Lacy, fill in the cost blanks below before publishing */}
+
+| Line item | Monthly |
+|-----------|---------|
+| Claude Max (Anthropic) | $_____ |
+| Vercel (48+ projects, 32 custom domains) | $_____ |
+| Supabase (database instances) | $_____ |
+| Domain registrations (30+) | $_____ |
+| Mac hardware (24/7 daemon host) | $_____ amortized |
+| **Total** | **$_____** |
+
+The raw compute: 9.1 billion cached input tokens. 59 million output tokens. On per-token API pricing, that bill would be staggering. On a flat subscription, it's the same cost whether the agents run 100 times or 6,000 times. The subscription model is the only reason this works for a solo operator.
+
+But the real cost isn't dollars. It's attention. Every incident required human review. Every false compliance answer could have been a legal problem. Every redesign regression was a user-facing bug that I caught, not the agents. The system doesn't reduce my workload to zero. It changes the shape of it. Less writing code, more writing rules and reviewing output.
+
+---
+
+## The Rules That Survived
+
+Out of 24 critical rules, these are the ones that actually changed behavior:
+
+**Rule 11: Fix everything you find.** "Not my problem" is forbidden. If an agent encounters a bug during its work, it owns it. Pre-existing doesn't matter. Unrelated doesn't matter. The agent who finds it fixes it. This sounds aggressive. It works. The alternative is filing follow-up issues and passing them around, which creates more overhead than just fixing the thing.
+
+**Rule 13: PR for everything.** Born from the 8-features incident. No direct pushes to main, ever, by any agent.
+
+**Rule 15: Verify against production.** Born from the GA compliance miss. Repo state and production state are different things.
+
+**Rule 17: Done = merged + deployed + verified.** "PR is merged" used to mean done. Then we found features that merged but didn't deploy. Then we found features that deployed but were broken. Now done means you verified the actual behavior on the production URL.
+
+**Rule 23: Revert, don't rebuild.** When something regresses, `git log -p` and revert the breaking commit. Don't rebuild the old behavior from scratch. An agent once tried to rebuild dropdown positioning across three iterations after a regression. Each one worse than the last. I eventually said: "WHY CAN'T YOU LOOK AT GIT HISTORY AND UNDO THE REGRESSION WITH A REVERT?"
+
+---
+
+## Five Months In
+
+The agents don't think. They follow rules. The quality of what they produce depends entirely on the rules, the boundaries, and the context I give them.
+
+The 403 boundary (agents can't touch each other's work) is the single most important architectural decision. Without it, the CEO agent would "helpfully" close everyone's tickets. The CTO would edit the engineer's code directly instead of filing a review. The system would collapse into a single-threaded mess of one agent doing everything while the others watch.
+
+The heartbeat model forces statelessness. Each run starts fresh. The issue thread is the only memory. This means agents repeat themselves sometimes. It also means a crashed agent loses nothing. Its state was already in the issue comments and git history.
+
+The hardest part isn't the technology. It's writing the rules. Every rule in the SDLC document exists because I spent time reviewing an agent's output and thinking "no, that's wrong, and here's why." Then I wrote it down. Then I watched whether it stuck.
+
+Some rules stuck immediately. Some took three incidents. Some required enforcement at the platform level (the 403 boundary, the heartbeat cap) because instructions alone weren't reliable enough.
+
+The system manages 40+ GitHub repos, 48+ Vercel projects, client sites, personal projects, an Electron app, a Tauri desktop app, a shell plugin, a job board, trading bots. It files issues, writes code, reviews PRs, runs tests, deploys, monitors, responds to clients, manages social media. Most of the time it works. When it doesn't, the failure is usually educational.
+
+I don't know if this scales. I don't know if it works for anyone else. I know it works for me, today, on real projects with real users. Five months in. Over 2,400 issues closed. The agents are still running.
+
+---
+
+*Lacy Morrow runs 17 AI agents on his infrastructure and writes about what actually happens. [lacymorrow.com](https://lacymorrow.com)*
