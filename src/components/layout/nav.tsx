@@ -3,9 +3,11 @@ import Link from "next/link";
 const navigation = [
   { name: "Work", href: "/work" },
   { name: "Play", href: "/play" },
+  { name: "Writing", href: "/writing" },
   { name: "About", href: "/about" },
   { name: "Contact", href: "/contact" },
   { name: "Colophon", href: "/about/colophon" },
+  { name: "Privacy", href: "/privacy" },
   { name: "Fly5 ↗", href: "https://fly5.live" },
 ];
 

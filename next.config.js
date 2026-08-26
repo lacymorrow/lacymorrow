@@ -94,20 +94,10 @@ const nextConfig = {
       destination: "/about/donate",
       permanent: false,
     },
-    {
-      source: "/work",
-      destination: "/work/companies/swell-energy",
-      permanent: false,
-    },
     // Redirects for play
     {
       source: "/3d",
       destination: "/play/3d",
-      permanent: false,
-    },
-    {
-      source: "/play",
-      destination: "/play/crossover",
       permanent: false,
     },
     {

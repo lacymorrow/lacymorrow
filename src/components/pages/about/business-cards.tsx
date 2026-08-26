@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState, useSyncExternalStore } from "react";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
 
@@ -64,17 +64,15 @@ const cards: BusinessCard[] = [
 ];
 
 function useCanHover() {
-  const [canHover, setCanHover] = useState(false);
-
-  useEffect(() => {
-    const mq = window.matchMedia("(hover: hover)");
-    setCanHover(mq.matches);
-    const onChange = (e: MediaQueryListEvent) => setCanHover(e.matches);
-    mq.addEventListener("change", onChange);
-    return () => mq.removeEventListener("change", onChange);
-  }, []);
-
-  return canHover;
+  return useSyncExternalStore(
+    (onChange) => {
+      const mq = window.matchMedia("(hover: hover)");
+      mq.addEventListener("change", onChange);
+      return () => mq.removeEventListener("change", onChange);
+    },
+    () => window.matchMedia("(hover: hover)").matches,
+    () => false,
+  );
 }
 
 function FlipCard({ card, canHover }: { card: BusinessCard; canHover: boolean }) {
