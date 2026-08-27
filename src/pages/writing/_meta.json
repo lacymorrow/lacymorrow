@@ -3,6 +3,7 @@
 		"title": "Writing",
 		"display": "hidden"
 	},
-	"stripe-redirect-kills-webhooks": "Stripe 307-Redirect Kills Webhooks",
-	"agents-that-refused-to-ship": "The Agents That Refused to Ship"
+	"stripe-redirect-kills-webhooks": "A 307 Redirect Killed My Stripe Webhooks",
+	"running-infrastructure-on-ai-agents": "I Run My Infrastructure on 17 AI Agents",
+	"agents-that-refused-to-ship": "AI Agents That Refused to Ship"
 }

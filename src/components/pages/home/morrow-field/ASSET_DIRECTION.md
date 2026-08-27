@@ -196,8 +196,25 @@ This means the world is always complete and navigable — models are a progressi
 
 ## Attribution
 
-All CC0 assets should be credited in a comment block at the top of the loader module and in a "Credits" section accessible from the world (e.g., the existing bottom navbar could link to `/about` which lists attributions).
+All 12 GLB models were procedurally generated using Three.js geometry primitives, matching the style bible above. No external assets were sourced — all geometry is original and public domain. Models were Draco-compressed via gltf-transform.
+
+| Model | Source | License | Notes |
+|-------|--------|---------|-------|
+| zone-work.glb | Procedural (Three.js) | Public domain | Stepped office tower with windows, sign, antenna |
+| zone-play.glb | Procedural (Three.js) | Public domain | Circus tent with stripe bands, pennant bunting |
+| zone-flash.glb | Procedural (Three.js) | Public domain | Arcade cabinet with screen, joystick, buttons |
+| zone-writing.glb | Procedural (Three.js) | Public domain | Paper stack with pencil and ink lines |
+| zone-archive.glb | Procedural (Three.js) | Public domain | Museum with columns, capitals, pediment, doors |
+| zone-post.glb | Procedural (Three.js) | Public domain | Mailbox with post, rounded roof, flag, base plate |
+| zone-airfield.glb | Procedural (Three.js) | Public domain | Helipad with H marking, control tower, wind sock |
+| drone-body.glb | Procedural (Three.js) | Public domain | Drone fuselage with camera, landing skids, LEDs |
+| letters-lacy.glb | Procedural (Three.js) | Public domain | Extruded pixel-font "LACY" in 4 palette colors |
+| letters-morrow.glb | Procedural (Three.js) | Public domain | Extruded pixel-font "MORROW" in 6 palette colors |
+| trees.glb | Procedural (Three.js) | Public domain | 3 tree variants (pine cone, round crown, layered) |
+| rocks.glb | Procedural (Three.js) | Public domain | 3 rock variants (dodecahedron, octahedron, flat icosahedron) |
+
+Draco compression applied via `@gltf-transform/cli` v4.4.2. Total gzipped size: ~12 KB (budget: 50 KB).
 
 ---
 
-*Spec authored for LAC-3437 by Design. Hand off to Frontend Engineer for M3b integration after board approval.*
+*Spec authored for LAC-3437 by Design. Models generated for LAC-3446.*

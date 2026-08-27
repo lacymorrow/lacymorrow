@@ -3,6 +3,7 @@
 import { useRouter } from "next/router";
 import { useEffect, useRef, useState } from "react";
 import * as THREE from "three";
+import { swapOnLoad } from "./model-loader";
 import { NAV_LINKS, ZONES, type Zone } from "./zones";
 
 const C = {
@@ -210,81 +211,88 @@ const createEngine = (opts: EngineOptions) => {
   // Work — stepped office tower with mustard sign
   {
     const g = new THREE.Group();
+    const prim = new THREE.Group();
     const z = ZONES[0];
     const a = box(10, 7, 10, C.teal);
     a.position.y = 3.5;
-    g.add(a);
+    prim.add(a);
     const b = box(7.5, 5.5, 7.5, C.pine);
     b.position.y = 9.7;
-    g.add(b);
+    prim.add(b);
     const c2 = box(5, 4.5, 5, C.teal);
     c2.position.y = 14.6;
-    g.add(c2);
+    prim.add(c2);
     const sign = box(6.4, 2.2, 0.5, C.mustard);
     sign.position.set(0, 8.2, 5.2);
-    g.add(sign);
+    prim.add(sign);
     for (let i = 0; i < 3; i++) {
       const win = box(0.9, 0.9, 0.2, C.cream);
       win.position.set(-2.8 + i * 2.8, 4.2, 5.05);
-      g.add(win);
+      prim.add(win);
     }
     g.position.set(z.x, 0, z.z);
     scene.add(g);
+    swapOnLoad({ key: "zone-work", parent: g, primitive: prim });
     solid(z.x, z.z, 8.5);
     addZoneLabel(z, 19.5);
   }
   // Play — striped big top + blocks
   {
     const g = new THREE.Group();
+    const prim = new THREE.Group();
     const z = ZONES[1];
     const base = cyl(6.5, 7, 5.5, C.cream, 12);
     base.position.y = 2.75;
-    g.add(base);
+    prim.add(base);
     const top = cone(7.4, 5.5, C.terracotta, 12);
     top.position.y = 8.2;
-    g.add(top);
+    prim.add(top);
     const flagPole = cyl(0.12, 0.12, 3, C.ink, 6);
     flagPole.position.y = 12;
-    g.add(flagPole);
+    prim.add(flagPole);
     const flag = box(1.8, 1, 0.1, C.mustard);
     flag.position.set(1, 12.8, 0);
-    g.add(flag);
+    prim.add(flag);
     g.position.set(z.x, 0, z.z);
     scene.add(g);
+    swapOnLoad({ key: "zone-play", parent: g, primitive: prim });
     solid(z.x, z.z, 8);
     addZoneLabel(z, 15.5);
   }
   // Flash Arcade — cabinet-shaped building with marquee
   {
     const g = new THREE.Group();
+    const prim = new THREE.Group();
     const z = ZONES[2];
     const body = box(9, 8, 7, C.ink);
     body.position.y = 4;
-    g.add(body);
+    prim.add(body);
     const marquee = box(9.6, 2, 7.4, C.terracotta);
     marquee.position.y = 8.9;
-    g.add(marquee);
+    prim.add(marquee);
     const screen = box(6.5, 4, 0.3, C.mustard);
     screen.position.set(0, 5, 3.6);
-    g.add(screen);
+    prim.add(screen);
     const joy2 = cyl(0.3, 0.3, 1.6, C.cream, 8);
     joy2.position.set(-1.5, 2, 3.8);
     joy2.rotation.x = 0.5;
-    g.add(joy2);
+    prim.add(joy2);
     g.position.set(z.x, 0, z.z);
     scene.add(g);
+    swapOnLoad({ key: "zone-flash", parent: g, primitive: prim });
     solid(z.x, z.z, 7.5);
     addZoneLabel(z, 12.8);
   }
   // Writing — giant pencil + stack of paper
   {
     const g = new THREE.Group();
+    const prim = new THREE.Group();
     const z = ZONES[3];
     for (let i = 0; i < 4; i++) {
       const sheet = box(8 - i * 0.6, 0.8, 6 - i * 0.4, C.cream);
       sheet.position.y = 0.4 + i * 0.8;
       sheet.rotation.y = (i % 2 ? 1 : -1) * 0.12;
-      g.add(sheet);
+      prim.add(sheet);
     }
     const pencil = new THREE.Group();
     const shaft = cyl(0.55, 0.55, 9, C.mustard, 6);
@@ -303,46 +311,50 @@ const createEngine = (opts: EngineOptions) => {
     pencil.add(eraser);
     pencil.position.set(2.4, 3.4, 0);
     pencil.rotation.z = -0.45;
-    g.add(pencil);
+    prim.add(pencil);
     g.position.set(z.x, 0, z.z);
     scene.add(g);
+    swapOnLoad({ key: "zone-writing", parent: g, primitive: prim });
     solid(z.x, z.z, 6.5);
     addZoneLabel(z, 13);
   }
   // Archive — columned museum
   {
     const g = new THREE.Group();
+    const prim = new THREE.Group();
     const z = ZONES[4];
     const steps = box(14, 1, 10, C.cream);
     steps.position.y = 0.5;
-    g.add(steps);
+    prim.add(steps);
     for (let i = 0; i < 5; i++) {
       const col = cyl(0.7, 0.8, 6, C.cream, 10);
       col.position.set(-5.2 + i * 2.6, 4, 3.4);
-      g.add(col);
+      prim.add(col);
     }
     const attic = box(14.5, 1.4, 10.4, C.sand);
     attic.position.y = 7.6;
-    g.add(attic);
+    prim.add(attic);
     const ped = cone(8.2, 3, C.terracotta, 4);
     ped.position.y = 9.6;
     ped.rotation.y = Math.PI / 4;
-    g.add(ped);
+    prim.add(ped);
     g.position.set(z.x, 0, z.z);
     scene.add(g);
+    swapOnLoad({ key: "zone-archive", parent: g, primitive: prim });
     solid(z.x, z.z, 9);
     addZoneLabel(z, 14.5);
   }
   // Post Office — mailbox on a post
   {
     const g = new THREE.Group();
+    const prim = new THREE.Group();
     const z = ZONES[5];
     const post = cyl(0.5, 0.6, 5, C.ink, 8);
     post.position.y = 2.5;
-    g.add(post);
+    prim.add(post);
     const bodyB = box(6, 4, 4.4, C.terracotta);
     bodyB.position.y = 7;
-    g.add(bodyB);
+    prim.add(bodyB);
     const roof = new THREE.Mesh(
       new THREE.CylinderGeometry(2.2, 2.2, 6, 16, 1, false, 0, Math.PI),
       mat(C.terracotta),
@@ -350,46 +362,49 @@ const createEngine = (opts: EngineOptions) => {
     roof.rotation.z = Math.PI / 2;
     roof.position.y = 9;
     roof.castShadow = true;
-    g.add(roof);
+    prim.add(roof);
     const slot = box(3.4, 0.5, 0.3, C.ink);
     slot.position.set(0, 7.4, 2.3);
-    g.add(slot);
+    prim.add(slot);
     const flagM = box(0.4, 2, 0.25, C.mustard);
     flagM.position.set(3.2, 9.4, 0);
-    g.add(flagM);
+    prim.add(flagM);
     g.position.set(z.x, 0, z.z);
     scene.add(g);
+    swapOnLoad({ key: "zone-post", parent: g, primitive: prim });
     solid(z.x, z.z, 5);
     addZoneLabel(z, 13.5);
   }
   // Airfield — tower, helipad, wind sock
   {
     const g = new THREE.Group();
+    const prim = new THREE.Group();
     const z = ZONES[6];
     const pad = cyl(6, 6, 0.4, C.ink, 24);
     pad.position.y = 0.2;
-    g.add(pad);
+    prim.add(pad);
     const hRing = cyl(5.2, 5.2, 0.42, C.mustard, 24);
     hRing.position.y = 0.21;
-    g.add(hRing);
+    prim.add(hRing);
     const hPad = cyl(4.4, 4.4, 0.44, C.ink, 24);
     hPad.position.y = 0.22;
-    g.add(hPad);
+    prim.add(hPad);
     const tower = cyl(1, 1.3, 9, C.cream, 8);
     tower.position.set(-8, 4.5, -4);
-    g.add(tower);
+    prim.add(tower);
     const cab = box(3.4, 2.2, 3.4, C.teal);
     cab.position.set(-8, 10, -4);
-    g.add(cab);
+    prim.add(cab);
     const sockPole = cyl(0.12, 0.12, 5, C.ink, 6);
     sockPole.position.set(7, 2.5, -6);
-    g.add(sockPole);
+    prim.add(sockPole);
     const sock = cone(0.7, 2.4, C.terracotta, 8);
     sock.position.set(8.2, 4.6, -6);
     sock.rotation.z = Math.PI / 2;
-    g.add(sock);
+    prim.add(sock);
     g.position.set(z.x, 0, z.z);
     scene.add(g);
+    swapOnLoad({ key: "zone-airfield", parent: g, primitive: prim });
     solid(z.x - 8, z.z - 4, 2.4);
     addZoneLabel(z, 14);
   }
@@ -408,9 +423,10 @@ const createEngine = (opts: EngineOptions) => {
     if (ZONES.some((zz) => Math.hypot(zz.x - x, zz.z - z) < 14)) continue;
     if (rnd() < 0.7) {
       const t = new THREE.Group();
+      const prim = new THREE.Group();
       const trunk = cyl(0.3, 0.4, 1.6 + rnd(), 0x8a5a3b, 6);
       trunk.position.y = 0.9;
-      t.add(trunk);
+      prim.add(trunk);
       const h = 2.2 + rnd() * 2.4;
       const crown = cone(
         1.4 + rnd() * 0.9,
@@ -419,21 +435,27 @@ const createEngine = (opts: EngineOptions) => {
         7,
       );
       crown.position.y = 1.6 + h / 2;
-      t.add(crown);
+      prim.add(crown);
       t.position.set(x, 0, z);
       t.rotation.y = rnd() * 6.28;
       scene.add(t);
+      swapOnLoad({ key: "trees", parent: t, primitive: prim });
       solid(x, z, 1.1);
     } else {
+      const rGroup = new THREE.Group();
+      const prim = new THREE.Group();
       const r = new THREE.Mesh(
         new THREE.DodecahedronGeometry(0.7 + rnd() * 1.1, 0),
         mat(C.cream),
       );
       r.castShadow = true;
       r.receiveShadow = true;
-      r.position.set(x, 0.4, z);
+      r.position.y = 0.4;
       r.rotation.set(rnd(), rnd(), rnd());
-      scene.add(r);
+      prim.add(r);
+      rGroup.position.set(x, 0, z);
+      scene.add(rGroup);
+      swapOnLoad({ key: "rocks", parent: rGroup, primitive: prim });
       solid(x, z, 1.2);
     }
   }
@@ -477,7 +499,12 @@ const createEngine = (opts: EngineOptions) => {
     }
     return { g, w: wCells * s };
   };
-  const spellRow = (word: string, zPos: number, colors: number[]) => {
+  const spellRow = (
+    word: string,
+    zPos: number,
+    colors: number[],
+    modelKey: string,
+  ) => {
     const parts = word
       .split("")
       .map((ch, i) => letterGroup(ch, colors[i % colors.length]));
@@ -485,20 +512,37 @@ const createEngine = (opts: EngineOptions) => {
     const total =
       parts.reduce((s2, p) => s2 + p.w, 0) + gap * (parts.length - 1);
     let cx = -total / 2;
+    const letterGroups: THREE.Group[] = [];
     for (const p of parts) {
       addProp(p.g, cx + p.w / 2, zPos, 1.65, 1.6);
+      letterGroups.push(p.g);
       cx += p.w + gap;
     }
+    const wordParent = new THREE.Group();
+    wordParent.position.set(0, 1.65, zPos);
+    scene.add(wordParent);
+    const proxy = new THREE.Group();
+    swapOnLoad({
+      key: modelKey,
+      parent: wordParent,
+      primitive: proxy,
+      onLoaded: () => {
+        for (const g of letterGroups) g.visible = false;
+      },
+    });
   };
-  spellRow("LACY", -12, [C.terracotta, C.teal, C.mustard, C.terracotta]);
-  spellRow("MORROW", -18, [
-    C.teal,
-    C.mustard,
-    C.terracotta,
-    C.teal,
-    C.mustard,
-    C.terracotta,
-  ]);
+  spellRow(
+    "LACY",
+    -12,
+    [C.terracotta, C.teal, C.mustard, C.terracotta],
+    "letters-lacy",
+  );
+  spellRow(
+    "MORROW",
+    -18,
+    [C.teal, C.mustard, C.terracotta, C.teal, C.mustard, C.terracotta],
+    "letters-morrow",
+  );
 
   for (let i = 0; i < 8; i++) {
     const k = cone(0.55, 1.5, i % 2 ? C.terracotta : C.mustard, 8);
@@ -567,18 +611,20 @@ const createEngine = (opts: EngineOptions) => {
 
   const drone = new THREE.Group();
   {
+    const bodyPrim = new THREE.Group();
     const body = box(1.5, 0.55, 1.9, C.teal);
-    drone.add(body);
+    bodyPrim.add(body);
     const canopy = box(0.9, 0.4, 0.8, C.pine);
     canopy.position.set(0, 0.45, -0.15);
-    drone.add(canopy);
+    bodyPrim.add(canopy);
     const lens = cyl(0.22, 0.22, 0.3, C.terracotta, 8);
     lens.rotation.x = Math.PI / 2;
     lens.position.set(0, 0.15, -1.05);
-    drone.add(lens);
+    bodyPrim.add(lens);
     const batt = box(0.7, 0.3, 1.1, C.ink);
     batt.position.y = -0.42;
-    drone.add(batt);
+    bodyPrim.add(batt);
+    swapOnLoad({ key: "drone-body", parent: drone, primitive: bodyPrim });
   }
   const rotors: THREE.Mesh[] = [];
   const armPositions: Array<[number, number]> = [

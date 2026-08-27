@@ -1,51 +1,50 @@
 ---
-title: "Stripe 307-Redirect Kills Webhooks: Why Apex → WWW Matters"
-description: "Stripe sandbox webhooks silently failing for 4 days because Vercel 307-redirects apex to www. Stripe doesn't follow redirects. An AI agent caught it."
+title: "A 307 Redirect Killed My Stripe Webhooks for 4 Days"
+description: "Stripe doesn't follow redirects. Vercel 307-redirects apex to www. My webhooks silently died for 4 days before an AI agent caught it."
 date: 2026-08-25
 tags:
   - webhooks
   - stripe
   - vercel
   - debugging
-  - ai-agents
 ---
 
-# Stripe 307-Redirect Kills Webhooks
+# A 307 Redirect Killed My Stripe Webhooks for 4 Days
 
-Stripe webhooks silently failing for 4 days. No alerts. No errors in our logs. Just... Stripe stopped delivering.
+I pointed a Stripe webhook at `https://townofharmony.org/api/webhooks/stripe`. Vercel redirects the apex domain to `www.townofharmony.org` with a 307. Stripe won't follow redirects. Four days of failed deliveries and I had no idea.
 
-Root cause: a 307 redirect.
+If you're on Vercel with both apex and www configured, go check your webhook URLs. Seriously.
 
-## The Setup
+## Why nobody noticed
 
-We registered the Stripe webhook endpoint against the apex URL:
+When a webhook fails because of a redirect, nothing shows up on your end. The request just never arrives. No log entry, no error, no alert. From my app's perspective, Stripe went quiet. From Stripe's perspective, every attempt came back 307 and got marked as failed.
+
+This was for a sandbox environment. I'm building a payment portal for a small town's sewer system (small-town government software is a whole thing). Nobody's monitoring test transactions closely enough to catch this. It just sat there, broken.
+
+## An agent caught it
+
+I have AI agents that keep an eye on infrastructure across my projects. One of them noticed the Stripe delivery failures on August 17th, four days in. It traced the redirect chain, found the apex-to-www 307, and filed a fix.
+
+Without that, Stripe would've burned through its retry window by August 22nd and given up entirely. The sandbox would've just been quietly broken with no obvious reason why.
+
+## The fix
+
+Change the webhook URL from:
 
 ```
 https://townofharmony.org/api/webhooks/stripe
 ```
 
-Vercel 307-redirects apex → `www.townofharmony.org` at the platform level. This is standard Vercel behavior — most sites configure either apex or www as canonical, and Vercel handles the redirect.
+to:
 
-The problem: **Stripe treats any 3xx response as a delivery failure.** It does not follow redirects. The webhook payload never reaches your handler. Every delivery attempt fails silently from your application's perspective.
+```
+https://www.townofharmony.org/api/webhooks/stripe
+```
 
-## The Timeline
+Point at the canonical domain. The one that doesn't redirect.
 
-- **Aug 13:** Stripe sandbox webhooks start failing. No alerts fire because the webhook endpoint never receives the request — there's nothing to error on.
-- **Aug 17:** An AI agent monitoring infrastructure health noticed the Stripe delivery failures in the dashboard and diagnosed the redirect chain.
-- **Aug 22 (projected):** Stripe would have exhausted its retry window and stopped sending test webhooks entirely.
+## This isn't just a Stripe thing
 
-The fix was straightforward: update the registered endpoint URL from the apex domain to the www domain. But the diagnosis — tracing a silent failure through a redirect chain that's invisible at the application layer — is the kind of thing that slips through manual monitoring.
+GitHub webhooks do this too. Most payment providers, really anything sending POST requests to your URL, will treat a 3xx as a failure. Makes sense when you think about it. Following a redirect means re-sending a payload to a different URL, and most providers won't do that for security reasons.
 
-## Check Your Setup
-
-If you're on Vercel with apex + www configured, and you've registered webhooks against the bare domain, check them. This applies to any webhook provider that treats 3xx as failure:
-
-- Stripe
-- GitHub
-- Any provider that doesn't follow redirects on webhook delivery
-
-The fix is simple: register your webhook endpoints against whichever domain is canonical (the one that doesn't redirect).
-
-## Why This Matters
-
-This is the kind of infrastructure issue that's invisible until it isn't. The application code is correct. The webhook handler works. The redirect is correct behavior. But the combination creates a silent failure that only surfaces when you notice missing data downstream — or when an automated system catches it before you do.
+If you're on Vercel with a redirect between apex and www, grep your Stripe dashboard, your GitHub webhook settings, whatever third-party integrations you've got. Anything registered against the non-canonical domain is failing right now and you won't know until you look.
