@@ -72,6 +72,9 @@ const createEngine = (opts: EngineOptions) => {
   renderer.setSize(window.innerWidth, window.innerHeight);
   renderer.shadowMap.enabled = true;
   renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+  renderer.toneMapping = THREE.ACESFilmicToneMapping;
+  renderer.toneMappingExposure = 1.15;
+  renderer.outputColorSpace = THREE.SRGBColorSpace;
 
   const scene = new THREE.Scene();
   scene.background = new THREE.Color(C.sky);
@@ -84,9 +87,11 @@ const createEngine = (opts: EngineOptions) => {
     400,
   );
 
-  const hemi = new THREE.HemisphereLight(0xfff2e0, 0xd8bd92, 0.95);
+  const ambient = new THREE.AmbientLight(0xfff8ee, 0.35);
+  scene.add(ambient);
+  const hemi = new THREE.HemisphereLight(0xfff2e0, 0xd8bd92, 0.85);
   scene.add(hemi);
-  const sun = new THREE.DirectionalLight(0xffe3b0, 1.35);
+  const sun = new THREE.DirectionalLight(0xffe3b0, 1.4);
   sun.position.set(60, 80, 20);
   sun.castShadow = true;
   sun.shadow.mapSize.set(2048, 2048);
@@ -97,12 +102,20 @@ const createEngine = (opts: EngineOptions) => {
   sun.shadow.camera.far = 260;
   sun.shadow.bias = -0.0004;
   scene.add(sun);
+  const fill = new THREE.DirectionalLight(0xc8daf0, 0.3);
+  fill.position.set(-40, 30, -50);
+  scene.add(fill);
 
-  const mats = new Map<number, THREE.MeshLambertMaterial>();
+  const mats = new Map<number, THREE.MeshStandardMaterial>();
   const mat = (color: number) => {
     let m = mats.get(color);
     if (!m) {
-      m = new THREE.MeshLambertMaterial({ color, flatShading: true });
+      m = new THREE.MeshStandardMaterial({
+        color,
+        flatShading: true,
+        roughness: 0.88,
+        metalness: 0,
+      });
       mats.set(color, m);
     }
     return m;
@@ -118,7 +131,7 @@ const createEngine = (opts: EngineOptions) => {
     rB: number,
     h: number,
     color: number,
-    seg = 10,
+    seg = 16,
   ) => {
     const m = new THREE.Mesh(
       new THREE.CylinderGeometry(rT, rB, h, seg),
@@ -128,7 +141,7 @@ const createEngine = (opts: EngineOptions) => {
     m.receiveShadow = true;
     return m;
   };
-  const cone = (r: number, h: number, color: number, seg = 8) => {
+  const cone = (r: number, h: number, color: number, seg = 12) => {
     const m = new THREE.Mesh(new THREE.ConeGeometry(r, h, seg), mat(color));
     m.castShadow = true;
     m.receiveShadow = true;
@@ -139,28 +152,34 @@ const createEngine = (opts: EngineOptions) => {
     fg = "#35312c",
     bg = "rgba(250,243,226,0.95)",
   ) => {
+    const scale = 2;
     const cv = document.createElement("canvas");
-    cv.width = 1024;
-    cv.height = 224;
+    cv.width = 1024 * scale;
+    cv.height = 224 * scale;
     const g = cv.getContext("2d");
     if (!g) return new THREE.Sprite();
-    g.font = '800 118px -apple-system, Helvetica, Arial, sans-serif';
-    const w = Math.min(980, g.measureText(text).width + 90);
+    g.scale(scale, scale);
+    g.font = '800 112px "SF Pro Display", -apple-system, "Helvetica Neue", Helvetica, Arial, sans-serif';
+    const w = Math.min(980, g.measureText(text).width + 100);
+    g.shadowColor = "rgba(53,49,44,0.18)";
+    g.shadowBlur = 16;
+    g.shadowOffsetY = 6;
     g.fillStyle = bg;
     const x = (1024 - w) / 2;
-    const r = 48;
+    const r = 44;
     g.beginPath();
     (g as CanvasRenderingContext2D).roundRect(x, 24, w, 176, r);
     g.fill();
-    g.strokeStyle = fg;
-    g.lineWidth = 10;
+    g.shadowColor = "transparent";
+    g.strokeStyle = "rgba(53,49,44,0.2)";
+    g.lineWidth = 4;
     g.stroke();
     g.fillStyle = fg;
     g.textAlign = "center";
     g.textBaseline = "middle";
     g.fillText(text, 512, 118);
     const tex = new THREE.CanvasTexture(cv);
-    tex.anisotropy = 4;
+    tex.anisotropy = renderer.capabilities.getMaxAnisotropy();
     const sp = new THREE.Sprite(
       new THREE.SpriteMaterial({ map: tex, transparent: true }),
     );
@@ -177,6 +196,22 @@ const createEngine = (opts: EngineOptions) => {
   ground.receiveShadow = true;
   scene.add(ground);
 
+  const contactShadow = (x: number, z: number, radius: number) => {
+    const geo = new THREE.CircleGeometry(radius, 32);
+    const m = new THREE.Mesh(
+      geo,
+      new THREE.MeshBasicMaterial({
+        color: 0x000000,
+        transparent: true,
+        opacity: 0.1,
+        depthWrite: false,
+      }),
+    );
+    m.rotation.x = -Math.PI / 2;
+    m.position.set(x, 0.04, z);
+    scene.add(m);
+  };
+
   const flatShape = (
     geo: THREE.BufferGeometry,
     color: number,
@@ -184,7 +219,7 @@ const createEngine = (opts: EngineOptions) => {
     z: number,
     rotY = 0,
   ) => {
-    const m = new THREE.Mesh(geo, new THREE.MeshLambertMaterial({ color }));
+    const m = new THREE.Mesh(geo, mat(color));
     m.rotation.x = -Math.PI / 2;
     m.rotation.z = rotY;
     m.position.set(x, 0.02, z);
@@ -234,6 +269,7 @@ const createEngine = (opts: EngineOptions) => {
     scene.add(g);
     swapOnLoad({ key: "zone-work", parent: g, primitive: prim });
     solid(z.x, z.z, 8.5);
+    contactShadow(z.x, z.z, 9);
     addZoneLabel(z, 19.5);
   }
   // Play — striped big top + blocks
@@ -257,6 +293,7 @@ const createEngine = (opts: EngineOptions) => {
     scene.add(g);
     swapOnLoad({ key: "zone-play", parent: g, primitive: prim });
     solid(z.x, z.z, 8);
+    contactShadow(z.x, z.z, 8.5);
     addZoneLabel(z, 15.5);
   }
   // Flash Arcade — cabinet-shaped building with marquee
@@ -281,6 +318,7 @@ const createEngine = (opts: EngineOptions) => {
     scene.add(g);
     swapOnLoad({ key: "zone-flash", parent: g, primitive: prim });
     solid(z.x, z.z, 7.5);
+    contactShadow(z.x, z.z, 8);
     addZoneLabel(z, 12.8);
   }
   // Writing — giant pencil + stack of paper
@@ -316,6 +354,7 @@ const createEngine = (opts: EngineOptions) => {
     scene.add(g);
     swapOnLoad({ key: "zone-writing", parent: g, primitive: prim });
     solid(z.x, z.z, 6.5);
+    contactShadow(z.x, z.z, 7);
     addZoneLabel(z, 13);
   }
   // Archive — columned museum
@@ -342,6 +381,7 @@ const createEngine = (opts: EngineOptions) => {
     scene.add(g);
     swapOnLoad({ key: "zone-archive", parent: g, primitive: prim });
     solid(z.x, z.z, 9);
+    contactShadow(z.x, z.z, 10);
     addZoneLabel(z, 14.5);
   }
   // Post Office — mailbox on a post
@@ -373,6 +413,7 @@ const createEngine = (opts: EngineOptions) => {
     scene.add(g);
     swapOnLoad({ key: "zone-post", parent: g, primitive: prim });
     solid(z.x, z.z, 5);
+    contactShadow(z.x, z.z, 5.5);
     addZoneLabel(z, 13.5);
   }
   // Airfield — tower, helipad, wind sock
@@ -406,6 +447,7 @@ const createEngine = (opts: EngineOptions) => {
     scene.add(g);
     swapOnLoad({ key: "zone-airfield", parent: g, primitive: prim });
     solid(z.x - 8, z.z - 4, 2.4);
+    contactShadow(z.x, z.z, 8);
     addZoneLabel(z, 14);
   }
 
@@ -639,10 +681,12 @@ const createEngine = (opts: EngineOptions) => {
     arm.rotation.y = Math.atan2(ax, az);
     drone.add(arm);
     const rot = cyl(0.85, 0.85, 0.07, C.cream, 12);
-    rot.material = new THREE.MeshLambertMaterial({
+    rot.material = new THREE.MeshStandardMaterial({
       color: C.cream,
       transparent: true,
       opacity: 0.85,
+      roughness: 1,
+      metalness: 0,
     });
     rot.position.set(ax, 0.24, az);
     drone.add(rot);
@@ -860,14 +904,18 @@ const createEngine = (opts: EngineOptions) => {
     if (started) setZone(best);
 
     const wantPos = started
-      ? tmpV.set(D.pos.x - 10, 23, D.pos.z + 12)
-      : tmpV.set(Math.sin(t * 0.08) * 30, 24, Math.cos(t * 0.08) * 30 + 6);
-    camPos.lerp(wantPos, started ? 0.06 : 0.02);
+      ? tmpV.set(
+          D.pos.x - fx * 13,
+          16,
+          D.pos.z - fz * 13,
+        )
+      : tmpV.set(Math.sin(t * 0.06) * 34, 22, Math.cos(t * 0.06) * 34 + 6);
+    camPos.lerp(wantPos, started ? 0.04 : 0.015);
     camera.position.copy(camPos);
-    camAim.lerp(
-      started ? D.pos : new THREE.Vector3(0, 1, -12),
-      0.08,
-    );
+    const aimTarget = started
+      ? tmpV.set(D.pos.x + fx * 5, D.pos.y, D.pos.z + fz * 5)
+      : tmpV.set(0, 1, -12);
+    camAim.lerp(aimTarget, 0.06);
     camera.lookAt(camAim);
   };
 
@@ -1037,29 +1085,48 @@ export const Game = ({ spawn, autoStart }: GameProps) => {
         style={{ display: "block", width: "100%", height: "100%" }}
       />
 
+      <div
+        className="pointer-events-none fixed inset-0 z-[11]"
+        style={{
+          background: "radial-gradient(ellipse at 50% 50%, transparent 55%, rgba(53,49,44,0.08) 100%)",
+        }}
+      />
+
       {!started && (
         <div
           role="dialog"
           aria-label="Start screen"
           onClick={() => setStarted(true)}
-          className="fixed inset-0 z-40 flex cursor-pointer flex-col items-center justify-center gap-4 text-center"
+          className="fixed inset-0 z-40 flex cursor-pointer flex-col items-center justify-center gap-5 text-center"
           style={{
             background:
-              "radial-gradient(ellipse at 50% 40%, rgba(250,243,226,0), rgba(243,226,200,0.55))",
+              "radial-gradient(ellipse at 50% 40%, rgba(250,243,226,0.15) 0%, rgba(243,226,200,0.6) 100%)",
+            backdropFilter: "blur(1.5px)",
+            animation: "mf-fade-in 600ms ease-out both",
           }}
         >
+          <style>{`
+            @keyframes mf-fade-in { from { opacity: 0; } to { opacity: 1; } }
+            @keyframes mf-slide-up { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+            @keyframes mf-title-in { from { opacity: 0; transform: scale(0.92) translateY(12px); } to { opacity: 1; transform: scale(1) translateY(0); } }
+            @keyframes mf-pulse-glow { 0%, 100% { box-shadow: 0 0 0 0 rgba(205,95,56,0.3); } 50% { box-shadow: 0 0 20px 4px rgba(205,95,56,0.15); } }
+          `}</style>
           <div
-            className="text-xs font-medium uppercase tracking-[0.12em]"
-            style={{ color: "#1f6e66" }}
+            className="text-xs font-medium uppercase tracking-[0.18em]"
+            style={{
+              color: "#1f6e66",
+              animation: "mf-slide-up 500ms ease-out 200ms both",
+            }}
           >
             Developer · Designer · Drone Pilot
           </div>
           <h1
-            className="text-5xl font-extrabold leading-[0.95] sm:text-6xl md:text-8xl"
+            className="text-5xl font-extrabold leading-[0.92] sm:text-7xl md:text-9xl"
             style={{
-              letterSpacing: "0.04em",
+              letterSpacing: "0.03em",
               color: "#35312c",
-              textShadow: "0 3px 0 rgba(205,95,56,0.35)",
+              textShadow: "0 4px 0 rgba(205,95,56,0.3), 0 8px 24px rgba(53,49,44,0.08)",
+              animation: "mf-title-in 700ms ease-out 100ms both",
             }}
           >
             LACY
@@ -1068,18 +1135,28 @@ export const Game = ({ spawn, autoStart }: GameProps) => {
           </h1>
           <button
             type="button"
-            className="mt-3 rounded-full px-6 py-3 text-sm font-bold tracking-[0.08em]"
-            style={{ background: "#35312c", color: "#faf3e2" }}
+            className="mt-2 rounded-full px-7 py-3 text-sm font-bold uppercase tracking-[0.1em] transition-transform hover:scale-105 active:scale-95"
+            style={{
+              background: "#35312c",
+              color: "#faf3e2",
+              animation: "mf-slide-up 500ms ease-out 400ms both, mf-pulse-glow 3s ease-in-out 1.5s infinite",
+            }}
             onClick={(e) => {
               e.stopPropagation();
               setStarted(true);
             }}
           >
-            PRESS ENTER TO FLY
+            Press Enter to Fly
           </button>
-          <div className="text-xs opacity-70">
-            <b>W A S D</b> / arrows to fly · <b>E</b> to enter buildings ·{" "}
-            <b>R</b> reset · knock stuff over
+          <div
+            className="text-xs"
+            style={{
+              color: "rgba(53,49,44,0.6)",
+              animation: "mf-slide-up 500ms ease-out 550ms both",
+            }}
+          >
+            <b>W A S D</b> / arrows to fly · <b>E</b> enter buildings ·{" "}
+            <b>R</b> reset
           </div>
         </div>
       )}
@@ -1097,17 +1174,25 @@ export const Game = ({ spawn, autoStart }: GameProps) => {
         </small>
       </div>
 
-      <div
-        className="fixed right-4 top-4 z-20 hidden text-right text-xs leading-6 md:block"
-        style={{ color: "rgba(53,49,44,0.75)" }}
-      >
-        <span className="rounded border px-1.5 py-0.5 font-bold" style={{ background: "#faf3e2", borderColor: "rgba(53,49,44,0.25)" }}>WASD</span>{" "}
-        fly ·{" "}
-        <span className="rounded border px-1.5 py-0.5 font-bold" style={{ background: "#faf3e2", borderColor: "rgba(53,49,44,0.25)" }}>E</span>{" "}
-        enter ·{" "}
-        <span className="rounded border px-1.5 py-0.5 font-bold" style={{ background: "#faf3e2", borderColor: "rgba(53,49,44,0.25)" }}>R</span>{" "}
-        reset
-      </div>
+      {started && (
+        <div
+          className="fixed right-4 top-4 z-20 hidden items-center gap-3 text-right text-[11px] leading-6 md:flex"
+          style={{ color: "rgba(53,49,44,0.55)" }}
+        >
+          <span className="inline-flex items-center gap-1">
+            <kbd className="rounded border px-1.5 py-0.5 font-mono text-[10px] font-semibold" style={{ background: "rgba(250,243,226,0.8)", borderColor: "rgba(53,49,44,0.15)", boxShadow: "0 1px 2px rgba(53,49,44,0.06)" }}>WASD</kbd>
+            fly
+          </span>
+          <span className="inline-flex items-center gap-1">
+            <kbd className="rounded border px-1.5 py-0.5 font-mono text-[10px] font-semibold" style={{ background: "rgba(250,243,226,0.8)", borderColor: "rgba(53,49,44,0.15)", boxShadow: "0 1px 2px rgba(53,49,44,0.06)" }}>E</kbd>
+            enter
+          </span>
+          <span className="inline-flex items-center gap-1">
+            <kbd className="rounded border px-1.5 py-0.5 font-mono text-[10px] font-semibold" style={{ background: "rgba(250,243,226,0.8)", borderColor: "rgba(53,49,44,0.15)", boxShadow: "0 1px 2px rgba(53,49,44,0.06)" }}>R</kbd>
+            reset
+          </span>
+        </div>
+      )}
 
       {gateHud && (
         <div
@@ -1121,25 +1206,32 @@ export const Game = ({ spawn, autoStart }: GameProps) => {
       {zone && (
         <div
           role="status"
-          className="fixed bottom-24 left-1/2 z-25 w-[min(430px,calc(100vw-32px))] -translate-x-1/2 rounded-2xl border-2 p-4 shadow-[0_10px_0_rgba(53,49,44,0.18)]"
-          style={{ background: "#faf3e2", borderColor: "#35312c", color: "#35312c" }}
+          className="fixed bottom-24 left-1/2 z-25 w-[min(420px,calc(100vw-32px))] -translate-x-1/2 rounded-2xl border p-4"
+          style={{
+            background: "rgba(250,243,226,0.96)",
+            borderColor: "rgba(53,49,44,0.2)",
+            color: "#35312c",
+            backdropFilter: "blur(12px)",
+            boxShadow: "0 8px 32px rgba(53,49,44,0.12), 0 2px 4px rgba(53,49,44,0.06)",
+            animation: "mf-slide-up 280ms ease-out both",
+          }}
         >
           <h3 className="text-lg font-extrabold tracking-[0.02em]">{zone.name}</h3>
-          <p className="mt-1 text-xs leading-6" style={{ color: "rgba(53,49,44,0.8)" }}>
+          <p className="mt-1 text-xs leading-relaxed" style={{ color: "rgba(53,49,44,0.7)" }}>
             {zone.desc}
           </p>
-          <div className="mt-2 flex items-center justify-between gap-2">
+          <div className="mt-3 flex items-center justify-between gap-2">
             <span
-              className="rounded-md px-2 py-1 font-mono text-xs"
-              style={{ background: "#35312c", color: "#faf3e2" }}
+              className="rounded-md px-2 py-1 font-mono text-[11px]"
+              style={{ background: "rgba(53,49,44,0.08)", color: "rgba(53,49,44,0.6)" }}
             >
-              router.push(&apos;{zone.route}&apos;)
+              {zone.route}
             </span>
             <button
               type="button"
               onClick={enterActive}
-              className="whitespace-nowrap rounded-full border-2 px-3 py-1 text-xs font-bold"
-              style={{ borderColor: "#cd5f38", color: "#cd5f38" }}
+              className="whitespace-nowrap rounded-full px-4 py-1.5 text-xs font-bold tracking-wide transition-transform hover:scale-105 active:scale-95"
+              style={{ background: "#cd5f38", color: "#faf3e2" }}
             >
               Enter ⏎
             </button>
@@ -1149,8 +1241,15 @@ export const Game = ({ spawn, autoStart }: GameProps) => {
 
       {toast && (
         <div
-          className="fixed left-1/2 top-[84px] z-26 -translate-x-1/2 rounded-full px-5 py-2 text-sm font-bold"
-          style={{ background: "#35312c", color: "#faf3e2", letterSpacing: "0.04em" }}
+          className="fixed left-1/2 top-20 z-26 -translate-x-1/2 rounded-full px-5 py-2 text-sm font-bold"
+          style={{
+            background: "rgba(53,49,44,0.92)",
+            color: "#faf3e2",
+            letterSpacing: "0.04em",
+            backdropFilter: "blur(8px)",
+            boxShadow: "0 4px 16px rgba(53,49,44,0.2)",
+            animation: "mf-slide-up 200ms ease-out both",
+          }}
         >
           {toast}
         </div>
@@ -1158,8 +1257,13 @@ export const Game = ({ spawn, autoStart }: GameProps) => {
 
       <nav
         aria-label="Site navigation (always available)"
-        className="fixed bottom-4 left-1/2 z-40 flex max-w-[calc(100vw-24px)] -translate-x-1/2 flex-wrap justify-center gap-1 rounded-full border px-2 py-1 backdrop-blur"
-        style={{ background: "rgba(250,243,226,0.92)", borderColor: "rgba(53,49,44,0.35)" }}
+        className="fixed bottom-4 left-1/2 z-40 flex max-w-[calc(100vw-24px)] -translate-x-1/2 flex-wrap justify-center gap-0.5 rounded-full border px-2 py-1"
+        style={{
+          background: "rgba(250,243,226,0.88)",
+          borderColor: "rgba(53,49,44,0.15)",
+          backdropFilter: "blur(16px) saturate(1.4)",
+          boxShadow: "0 2px 12px rgba(53,49,44,0.08)",
+        }}
       >
         {NAV_LINKS.map((n) => (
           <a
@@ -1169,7 +1273,7 @@ export const Game = ({ spawn, autoStart }: GameProps) => {
               e.preventDefault();
               router.push(n.href);
             }}
-            className="rounded-full px-3 py-1 text-xs font-semibold hover:bg-[#35312c] hover:text-[#faf3e2]"
+            className="rounded-full px-3 py-1.5 text-xs font-semibold transition-colors duration-150 hover:bg-[#35312c] hover:text-[#faf3e2]"
             style={{ color: "#35312c" }}
           >
             {n.label}
