@@ -99,12 +99,15 @@ const WorldSection = ({ module, tier, pointer }: SectionProps) => {
   useEffect(() => {
     const el = sectionRef.current;
     if (!el || tier === null || tier === "off") return;
+    // One viewport of warm-up on each side, no more: a wider margin mounts
+    // the first world (and three) the moment the letter hydrates, which is
+    // work nobody scrolling has asked for yet.
     const mountObserver = new IntersectionObserver(
       ([entry]) => {
         setMounted(entry.isIntersecting);
         if (!entry.isIntersecting) setReady(false);
       },
-      { rootMargin: "100% 0px 200% 0px" },
+      { rootMargin: "100% 0px 100% 0px" },
     );
     const activeObserver = new IntersectionObserver(
       ([entry]) => setActive(entry.isIntersecting),
