@@ -90,18 +90,31 @@ export const createProps = () => {
   const lampBase = new Vector3(-0.95, 0.765, -0.5);
   pieces.push(paint(at(new CylinderGeometry(0.12, 0.14, 0.03, 12), lampBase.x, lampBase.y, lampBase.z), palette.frame));
   pieces.push(rod(lampBase, LAMP_SHADE.clone().add(new Vector3(0, 0.05, 0)), 0.012, palette.frame));
-  pieces.push(paint(at(new ConeGeometry(0.11, 0.14, 12, 1, true), LAMP_SHADE.x, LAMP_SHADE.y, LAMP_SHADE.z), palette.surface));
 
   // Cover rack, turned to face the crane camera.
   const rack = new BoxGeometry(RACK_SIZE[0], RACK_SIZE[1], RACK_DEPTH);
   rack.rotateY(RACK_YAW);
   pieces.push(paint(at(rack, RACK_POSITION.x, RACK_POSITION.y, RACK_POSITION.z), palette.frame));
 
-  // The bulb: the only unlit surface in the props, so the lamp reads as on
-  // rather than as a black triangle. One extra draw call, twelve triangles.
-  const bulbGeometry = new CircleGeometry(0.085, 12).rotateX(Math.PI / 2);
-  bulbGeometry.translate(LAMP_SHADE.x, LAMP_SHADE.y - 0.062, LAMP_SHADE.z);
-  const bulbMaterial = new MeshBasicMaterial({ color: palette.lamp });
+  // The lamp head is the one thing in the scene lit from inside, so it is
+  // unlit geometry rather than Lambert: against a field of lights a shaded
+  // cone renders as a black wedge with no way to read it as a lamp. The
+  // shade carries a dim warm color, the bulb disc the bright one.
+  const shadeGeometry = paint(
+    at(new ConeGeometry(0.11, 0.14, 12, 1, true), LAMP_SHADE.x, LAMP_SHADE.y, LAMP_SHADE.z),
+    palette.lampShade,
+  );
+  const bulbDisc = paint(
+    new CircleGeometry(0.085, 12)
+      .rotateX(Math.PI / 2)
+      .translate(LAMP_SHADE.x, LAMP_SHADE.y - 0.062, LAMP_SHADE.z),
+    palette.lamp,
+  );
+  const bulbGeometry = mergeGeometries([shadeGeometry, bulbDisc], false);
+  shadeGeometry.dispose();
+  bulbDisc.dispose();
+  if (!bulbGeometry) throw new Error("[workshop] lamp head did not merge");
+  const bulbMaterial = new MeshBasicMaterial({ vertexColors: true, side: DoubleSide });
   const bulb = new Mesh(bulbGeometry, bulbMaterial);
 
   const geometry = mergeGeometries(pieces, false);

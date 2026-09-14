@@ -9,6 +9,8 @@ export const palette = {
   dot: "#a78bfa",
   accents: ["#4ade80", "#d946ef", "#60a5fa"],
   lamp: "#f5e6c8",
+  /** The shade around the bulb. Warm, and dark enough to stay a silhouette. */
+  lampShade: "#3a2f24",
   mark: "#a1a1aa",
 } as const;
 
