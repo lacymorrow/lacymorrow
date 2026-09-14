@@ -127,7 +127,24 @@ const WorldSection = ({ module, tier, pointer }: SectionProps) => {
     return () => window.clearTimeout(t);
   }, [mounted]);
 
-  const overlayOpacity = useTransform(progress, [0, 0.08, 0.92, 1], [0, 1, 1, 0]);
+  // Overlay fades. These are MotionValues, so with JavaScript off they would
+  // serialize at their progress-0 value, which is 0 for any world that asks
+  // for a late fade-in. That would cost the Poster its title, line and link,
+  // and the contract says the page tells the whole story with JavaScript off.
+  // So the styles only attach after hydration; the server renders them plain.
+  const [hydrated, setHydrated] = useState(false);
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setHydrated(true);
+  }, []);
+  // A world that does not ask for a late fade gets its overlay from the
+  // first frame of the cut: the range ends before progress 0, so the value
+  // is already 1 there.
+  const [t0, t1] = meta.overlay?.title ?? [-0.02, -0.01];
+  const [b0, b1] = meta.overlay?.body ?? [t0, t1];
+  const titleOpacity = useTransform(progress, [t0, t1, 0.94, 1], [0, 1, 1, 0]);
+  const bodyOpacity = useTransform(progress, [b0, b1, 0.94, 1], [0, 1, 1, 0]);
+  const atTop = meta.overlay?.position === "top";
   const runs = tier !== null && tier !== "off";
 
   return (
@@ -136,7 +153,7 @@ const WorldSection = ({ module, tier, pointer }: SectionProps) => {
       data-world={meta.id}
       style={{ height: `${meta.lengthVh}vh`, background: meta.background }}
     >
-      <div className="sticky top-0 h-screen w-full overflow-hidden">
+      <div className="sticky top-0 h-screen w-full overflow-hidden supports-[height:100svh]:h-svh">
         <div className="absolute inset-0" aria-hidden={runs ? true : undefined}>
           <Poster />
         </div>
@@ -164,25 +181,35 @@ const WorldSection = ({ module, tier, pointer }: SectionProps) => {
           </div>
         )}
 
-        <motion.div
-          className="pointer-events-none absolute inset-x-0 bottom-0 flex justify-center px-6 pb-12 sm:pb-16"
-          style={{ opacity: overlayOpacity, color: meta.foreground }}
+        <div
+          className={`pointer-events-none absolute inset-x-0 flex justify-center px-6 ${
+            atTop ? "top-0 pt-10 sm:pt-14" : "bottom-0 pb-12 sm:pb-16"
+          }`}
+          style={{ color: meta.foreground }}
         >
-          <div className="pointer-events-auto flex w-full max-w-[680px] flex-col gap-3">
-            <h2 className="world-title m-0 text-4xl leading-none sm:text-5xl">
-              {meta.title}
-            </h2>
-            <p className="m-0 max-w-[48ch] text-base leading-relaxed opacity-80">
-              {meta.line}
-            </p>
-            <Link
-              href={meta.href}
-              className="decoration-current/40 mt-1 inline-flex w-fit items-center gap-2 text-sm font-medium underline underline-offset-4 transition-opacity hover:opacity-70"
+          <div className="flex w-full max-w-[680px] flex-col gap-3">
+            <motion.h2
+              className="world-title m-0 text-4xl leading-none sm:text-5xl"
+              style={hydrated ? { opacity: titleOpacity } : undefined}
             >
-              {meta.cta} &rarr;
-            </Link>
+              {meta.title}
+            </motion.h2>
+            <motion.div
+              className="flex flex-col gap-3"
+              style={hydrated ? { opacity: bodyOpacity } : undefined}
+            >
+              <p className="m-0 max-w-[48ch] text-base leading-relaxed opacity-80">
+                {meta.line}
+              </p>
+              <Link
+                href={meta.href}
+                className="decoration-current/40 pointer-events-auto mt-1 inline-flex w-fit items-center gap-2 text-sm font-medium underline underline-offset-4 transition-opacity hover:opacity-70"
+              >
+                {meta.cta} &rarr;
+              </Link>
+            </motion.div>
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

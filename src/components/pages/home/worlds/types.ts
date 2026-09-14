@@ -23,6 +23,17 @@ export interface WorldMeta {
   /** How long the world pins, in viewport heights. 250 to 350. */
   lengthVh: number;
   budget: { assetsKb: number; triangles: number };
+  /**
+   * Where the overlay sits and when its parts arrive, as progress ranges.
+   * Defaults: bottom, title and body present from the first frame.
+   */
+  overlay?: {
+    position?: "top" | "bottom";
+    /** [start, end] progress over which the title fades in. */
+    title?: [number, number];
+    /** [start, end] progress over which the line and link fade in. */
+    body?: [number, number];
+  };
 }
 
 export interface Pointer {

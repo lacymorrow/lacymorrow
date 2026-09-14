@@ -220,7 +220,7 @@ export const Home = () => {
     </div>
       {worlds.length > 0 && <WorldsStage worlds={worlds} />}
       <div className="text-foreground mx-auto w-full max-w-[680px] px-6 pb-16">
-      <section className="pt-12">
+      <section className="pt-16">
         <p className={`${serif.className} text-2xl italic`}>{CREED_LINE}.</p>
         <p className="text-muted-foreground mt-2 text-sm">
           <Link href="/creed" className="hover:text-foreground transition-colors">
@@ -233,6 +233,16 @@ export const Home = () => {
             or fly the 3D world &rarr;
           </a>
         </p>
+        {worlds.length > 0 && (
+          <p className="mt-8">
+            <Link
+              href="/contact"
+              className="bg-foreground text-background inline-flex h-10 items-center rounded-md px-4 text-sm font-medium transition-opacity hover:opacity-80"
+            >
+              Say hi
+            </Link>
+          </p>
+        )}
       </section>
     </div>
     </>

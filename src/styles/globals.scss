@@ -167,8 +167,10 @@ html {
 }
 .worlds {
   width: 100vw;
+  margin-top: 4rem;
   margin-left: calc(50% - 50vw);
   margin-right: calc(50% - 50vw);
+  border-top: 1px solid hsl(var(--border));
 }
 .world-title {
   font-family: var(--font-world-title, Georgia, "Times New Roman", serif);
