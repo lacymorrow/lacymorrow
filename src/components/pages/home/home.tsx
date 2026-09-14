@@ -16,47 +16,55 @@ const NAV = [
   { name: "About", href: "/about" },
 ];
 
-// Things that shipped and are still up. Oldest first. Every link stays on
-// this domain so a dead sub-domain never breaks the list.
-const STILL_RUNNING = [
+// Numbers a stranger can check. Keep them current or cut them.
+const RECEIPTS = [
+  { value: "24M", label: "downloads of CrossOver" },
+  { value: "8K/mo", label: "installs of album-art, since 2014" },
+  { value: "17", label: "AI agents running my projects" },
+];
+
+// Things that shipped and are still in use, oldest first. The left column
+// is the receipt, not the year. Every link stays on this domain so a dead
+// sub-domain never breaks the list.
+const STILL_IN_USE = [
   {
-    year: "2000s",
+    receipt: "still plays",
     name: "Flash art and a Flash music player",
-    note: "Built in ActionScript back when that was the web. Preserved with Ruffle, still playable.",
+    note: "Built in ActionScript back when that was the web. Preserved with Ruffle.",
     href: "/play/flash",
   },
   {
-    year: "2010",
+    receipt: "still online",
     name: "This site, every version",
-    note: "Each version since 2010 is still online. Open one and you get the site as it shipped that day.",
+    note: "Each version since the first is still up. Open one and you get the site as it shipped that day.",
     href: "/about/versions",
   },
   {
-    year: "2014",
+    receipt: "8K/mo",
     name: "album-art",
-    note: "An npm package that finds the cover for any album or artist. Twelve years on, about 8,000 people a month still install it.",
+    note: "An npm package that finds the cover for any album or artist. About 8,000 people a month install it.",
     href: "/play/js/album-art",
   },
   {
-    year: "2017",
+    receipt: "24 kids",
     name: "Flymore Drone Academy",
     note: "My brother, my cousin and I taught 24 kids to build and race their own drones. Charlotte Today came out to film it.",
     href: "/work/drones/flymore",
   },
   {
-    year: "2018",
+    receipt: "on stage",
     name: "Hackpack",
     note: "A Raspberry Pi badge for Twilio SIGNAL. I wrote the software and helped design the hardware.",
     href: "/work/companies/twilio",
   },
   {
-    year: "2019",
+    receipt: "24M",
     name: "CrossOver",
     note: "A crosshair overlay for gamers on Windows, Mac and Linux. Free, and past 24 million downloads.",
     href: "/play/crossover",
   },
   {
-    year: "2026",
+    receipt: "2,400 issues",
     name: "The fleet",
     note: "Seventeen Claude agents that run my projects on a timer. I wrote up what actually happens.",
     href: "/writing/running-infrastructure-on-ai-agents",
@@ -99,9 +107,24 @@ export const Home = () => {
         <h1
           className={`${serif.className} mb-6 max-w-[20ch] text-balance text-4xl leading-[1.08] sm:text-5xl md:text-[3.5rem]`}
         >
-          Hi, I&rsquo;m Lacy. I&rsquo;ve been making things on the internet
-          since 1999. <em>Most of them still run.</em>
+          Hi, I&rsquo;m Lacy.{" "}
+          <em className="block">I build software people keep using.</em>
         </h1>
+        <dl className="mb-8 grid max-w-[58ch] grid-cols-3 gap-6">
+          {RECEIPTS.map((r) => (
+            <div key={r.label}>
+              <dt className="sr-only">{r.label}</dt>
+              <dd className="m-0">
+                <span className="block text-2xl font-medium tracking-tight sm:text-3xl">
+                  {r.value}
+                </span>
+                <span className="text-muted-foreground mt-1 block text-xs leading-snug">
+                  {r.label}
+                </span>
+              </dd>
+            </div>
+          ))}
+        </dl>
         <p className="text-muted-foreground mb-4 max-w-[58ch] text-base leading-relaxed">
           I&rsquo;m a software engineer in Charlotte, North Carolina. For work
           I build software inside companies that mostly don&rsquo;t build
@@ -164,16 +187,16 @@ export const Home = () => {
       </section>
 
       <section className="border-border border-t pt-10">
-        <h2 className="mb-6 text-sm font-medium">Still running</h2>
+        <h2 className="mb-6 text-sm font-medium">Still in use</h2>
         <ol className="m-0 list-none p-0">
-          {STILL_RUNNING.map((item) => (
+          {STILL_IN_USE.map((item) => (
             <li key={item.href} className="border-border border-b">
               <Link
                 href={item.href}
-                className="group grid grid-cols-[4.5rem_1fr] gap-x-4 py-4 sm:grid-cols-[5rem_1fr]"
+                className="group grid grid-cols-[5.5rem_1fr] gap-x-4 py-4 sm:grid-cols-[6.5rem_1fr]"
               >
                 <span className="text-muted-foreground pt-px font-mono text-xs">
-                  {item.year}
+                  {item.receipt}
                 </span>
                 <span>
                   <span className="group-hover:text-splash block text-base font-medium transition-colors">
