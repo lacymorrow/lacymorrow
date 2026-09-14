@@ -13,10 +13,10 @@ const navigation = [
 
 export const Nav = () => {
   return (
-    <div className="nav flex items-center">
+    <div className="nav flex flex-wrap items-center justify-end">
       {navigation.map((item) => (
         <Link
-          key={crypto.randomUUID()}
+          key={item.href}
           href={item.href}
           className="hover:text-splash duration-400 h-full p-1 px-2 transition-colors"
           {...(item.href.startsWith("http") ? { target: "_blank", rel: "noopener noreferrer" } : {})}
