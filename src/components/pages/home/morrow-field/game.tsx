@@ -1121,7 +1121,7 @@ export const Game = ({ spawn, autoStart }: GameProps) => {
       {zone && (
         <div
           role="status"
-          className="fixed bottom-24 left-1/2 z-25 w-[min(430px,calc(100vw-32px))] -translate-x-1/2 rounded-2xl border-2 p-4 shadow-[0_10px_0_rgba(53,49,44,0.18)]"
+          className="z-25 fixed bottom-24 left-1/2 w-[min(430px,calc(100vw-32px))] -translate-x-1/2 rounded-2xl border-2 p-4 shadow-[0_10px_0_rgba(53,49,44,0.18)]"
           style={{ background: "#faf3e2", borderColor: "#35312c", color: "#35312c" }}
         >
           <h3 className="text-lg font-extrabold tracking-[0.02em]">{zone.name}</h3>
@@ -1149,7 +1149,7 @@ export const Game = ({ spawn, autoStart }: GameProps) => {
 
       {toast && (
         <div
-          className="fixed left-1/2 top-[84px] z-26 -translate-x-1/2 rounded-full px-5 py-2 text-sm font-bold"
+          className="z-26 fixed left-1/2 top-[84px] -translate-x-1/2 rounded-full px-5 py-2 text-sm font-bold"
           style={{ background: "#35312c", color: "#faf3e2", letterSpacing: "0.04em" }}
         >
           {toast}
@@ -1179,7 +1179,7 @@ export const Game = ({ spawn, autoStart }: GameProps) => {
 
       <div
         ref={stickRef}
-        className="fixed bottom-24 left-6 z-30 h-32 w-32 rounded-full border-2 md:hidden"
+        className="fixed bottom-24 left-6 z-30 size-32 rounded-full border-2 md:hidden"
         style={{
           borderColor: "rgba(53,49,44,0.35)",
           background: "rgba(250,243,226,0.55)",
@@ -1188,7 +1188,7 @@ export const Game = ({ spawn, autoStart }: GameProps) => {
       >
         <div
           ref={knobRef}
-          className="absolute left-1/2 top-1/2 h-14 w-14 -translate-x-1/2 -translate-y-1/2 rounded-full"
+          className="absolute left-1/2 top-1/2 size-14 -translate-x-1/2 -translate-y-1/2 rounded-full"
           style={{ background: "#35312c" }}
         />
       </div>

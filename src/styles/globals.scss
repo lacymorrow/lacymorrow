@@ -157,3 +157,20 @@
     }
   }
 }
+/* Worlds below the letter (docs/worlds/README.md). The stage breaks out of
+   Nextra's content column to the full viewport; `overflow-x: clip` on the
+   root absorbs the scrollbar-gutter overflow that 100vw causes on Windows
+   without turning html into a scroll container, so `position: sticky`
+   inside the stage keeps working. */
+html {
+  overflow-x: clip;
+}
+.worlds {
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+}
+.world-title {
+  font-family: var(--font-world-title, Georgia, "Times New Roman", serif);
+  font-weight: 400;
+}

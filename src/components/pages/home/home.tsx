@@ -2,11 +2,15 @@ import Image from "next/image";
 import Link from "next/link";
 import { Instrument_Serif } from "next/font/google";
 
+import { WorldsStage } from "@/components/pages/home/worlds/stage";
+import { worlds } from "@/components/pages/home/worlds/registry";
+
 const serif = Instrument_Serif({
   weight: "400",
   style: ["normal", "italic"],
   subsets: ["latin"],
   display: "swap",
+  variable: "--font-world-title",
 });
 
 const NAV = [
@@ -77,7 +81,8 @@ const CREED_LINE = "Wear a helmet";
 
 export const Home = () => {
   return (
-    <div className="text-foreground mx-auto w-full max-w-[680px] px-6 pb-16">
+    <>
+    <div className={`${serif.variable} text-foreground mx-auto w-full max-w-[680px] px-6`}>
       <header className="flex items-center justify-between py-6">
         <Link href="/" className="text-sm font-medium tracking-tight">
           Lacy Morrow
@@ -212,6 +217,9 @@ export const Home = () => {
         </ol>
       </section>
 
+    </div>
+      {worlds.length > 0 && <WorldsStage worlds={worlds} />}
+      <div className="text-foreground mx-auto w-full max-w-[680px] px-6 pb-16">
       <section className="pt-12">
         <p className={`${serif.className} text-2xl italic`}>{CREED_LINE}.</p>
         <p className="text-muted-foreground mt-2 text-sm">
@@ -227,6 +235,7 @@ export const Home = () => {
         </p>
       </section>
     </div>
+    </>
   );
 };
 
