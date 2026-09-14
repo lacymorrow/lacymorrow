@@ -18,6 +18,10 @@ export const flash: WorldModule = {
     background: "#06070f",
     foreground: "#fafafa",
     lengthVh: 340,
+    // The scene keeps its top left clear of ribbons on purpose, and the
+    // filmstrip sweeps through the bottom left, so the copy sits up top.
+    // docs/worlds/flash.md section 2.
+    overlay: { position: "top" },
     budget: { assetsKb: 1000, triangles: 5000 },
   },
   World: lazy(() => import("./world")),
