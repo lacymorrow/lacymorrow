@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "scripts": {
     "dev": "next dev --webpack",
+    "prebuild": "node scripts/fetch-workshop-data.mjs",
     "build": "next build --webpack",
     "postbuild": "next-sitemap",
     "start": "next start",
