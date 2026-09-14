@@ -1,0 +1,778 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+<title>LACY MORROW — drivable portfolio (LAC-3400 3D prototype)</title>
+<style>
+  :root {
+    --terracotta: #cd5f38;
+    --teal: #1f6e66;
+    --mustard: #e3a44f;
+    --cream: #faf3e2;
+    --sand: #f3e2c8;
+    --ink: #35312c;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { height: 100%; overflow: hidden; background: var(--sand); }
+  body {
+    font-family: -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+    color: var(--ink);
+    -webkit-font-smoothing: antialiased;
+  }
+  canvas { display: block; }
+  .overlay { position: fixed; inset: 0; pointer-events: none; }
+
+  /* ---- title screen ---- */
+  #boot {
+    position: fixed; inset: 0; z-index: 40;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    gap: 18px; text-align: center;
+    background: radial-gradient(ellipse at 50% 40%, rgba(250,243,226,0.0), rgba(243,226,200,0.55));
+    transition: opacity .6s ease; cursor: pointer;
+  }
+  #boot.gone { opacity: 0; pointer-events: none; }
+  #boot h1 {
+    font-size: clamp(44px, 9vw, 110px);
+    letter-spacing: 0.04em; line-height: 0.95;
+    font-weight: 800; color: var(--ink);
+    text-shadow: 0 3px 0 rgba(205,95,56,0.35);
+  }
+  #boot .tag {
+    font-size: clamp(14px, 2vw, 19px); font-weight: 500;
+    color: var(--teal); letter-spacing: 0.12em; text-transform: uppercase;
+  }
+  #boot .press {
+    margin-top: 14px; padding: 12px 26px; border-radius: 999px;
+    background: var(--ink); color: var(--cream); font-weight: 700;
+    font-size: 15px; letter-spacing: 0.08em;
+    animation: pulse 1.6s ease-in-out infinite;
+  }
+  #boot .controls {
+    font-size: 13px; color: rgba(53,49,44,0.72); letter-spacing: 0.03em;
+  }
+  #boot .controls b { color: var(--ink); }
+  @keyframes pulse { 0%,100% { transform: scale(1); } 50% { transform: scale(1.05); } }
+
+  /* ---- HUD ---- */
+  #brand {
+    position: fixed; top: 16px; left: 18px; z-index: 20;
+    font-weight: 800; font-size: 15px; letter-spacing: 0.06em;
+  }
+  #brand small { display: block; font-weight: 500; font-size: 11px; color: var(--teal); letter-spacing: 0.14em; }
+  #hint {
+    position: fixed; top: 16px; right: 18px; z-index: 20; text-align: right;
+    font-size: 12px; color: rgba(53,49,44,0.75); line-height: 1.6;
+  }
+  #hint b { background: var(--cream); border: 1px solid rgba(53,49,44,0.25); border-radius: 5px; padding: 1px 6px; font-weight: 700; }
+  #gates {
+    position: fixed; top: 74px; right: 18px; z-index: 20; display: none;
+    background: var(--cream); border: 2px solid var(--teal); border-radius: 10px;
+    padding: 6px 12px; font-size: 13px; font-weight: 700; color: var(--teal);
+  }
+
+  /* ---- route card ---- */
+  #card {
+    position: fixed; left: 50%; bottom: 92px; transform: translateX(-50%) translateY(16px);
+    z-index: 25; width: min(430px, calc(100vw - 32px));
+    background: var(--cream); border: 2px solid var(--ink); border-radius: 16px;
+    box-shadow: 0 10px 0 rgba(53,49,44,0.18);
+    padding: 16px 18px 14px; opacity: 0; pointer-events: none;
+    transition: opacity .18s ease, transform .18s ease;
+  }
+  #card.show { opacity: 1; transform: translateX(-50%) translateY(0); pointer-events: auto; }
+  #card h3 { font-size: 18px; font-weight: 800; letter-spacing: 0.02em; }
+  #card p { font-size: 13px; color: rgba(53,49,44,0.8); margin-top: 4px; line-height: 1.5; }
+  #card .row { display: flex; align-items: center; justify-content: space-between; margin-top: 10px; gap: 10px; }
+  #card .chip {
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 12px; background: var(--ink); color: var(--cream);
+    padding: 4px 10px; border-radius: 7px;
+  }
+  #card a.visit {
+    font-size: 13px; font-weight: 700; color: var(--terracotta); text-decoration: none;
+    border: 2px solid var(--terracotta); border-radius: 999px; padding: 5px 14px;
+    white-space: nowrap;
+  }
+  #card a.visit:hover { background: var(--terracotta); color: var(--cream); }
+
+  /* ---- toast ---- */
+  #toast {
+    position: fixed; left: 50%; top: 84px; transform: translateX(-50%);
+    z-index: 26; background: var(--ink); color: var(--cream);
+    font-size: 14px; font-weight: 700; letter-spacing: 0.04em;
+    padding: 9px 20px; border-radius: 999px; opacity: 0; transition: opacity .25s ease;
+  }
+  #toast.show { opacity: 1; }
+
+  /* ---- persistent fallback nav (a11y / SEO stand-in) ---- */
+  #navbar {
+    position: fixed; left: 50%; bottom: 16px; transform: translateX(-50%);
+    z-index: 30; display: flex; gap: 4px; flex-wrap: wrap; justify-content: center;
+    background: rgba(250,243,226,0.92); border: 1.5px solid rgba(53,49,44,0.35);
+    border-radius: 999px; padding: 5px 8px; backdrop-filter: blur(6px);
+    max-width: calc(100vw - 24px);
+  }
+  #navbar a {
+    font-size: 12.5px; font-weight: 600; color: var(--ink); text-decoration: none;
+    padding: 5px 11px; border-radius: 999px;
+  }
+  #navbar a:hover, #navbar a:focus-visible { background: var(--ink); color: var(--cream); }
+
+  /* ---- touch joystick ---- */
+  #stick {
+    position: fixed; left: 26px; bottom: 84px; z-index: 28;
+    width: 118px; height: 118px; border-radius: 50%;
+    border: 2px solid rgba(53,49,44,0.35); background: rgba(250,243,226,0.55);
+    display: none; touch-action: none;
+  }
+  #knob {
+    position: absolute; left: 50%; top: 50%; width: 52px; height: 52px;
+    border-radius: 50%; background: var(--ink); transform: translate(-50%,-50%);
+  }
+  @media (pointer: coarse) { #stick { display: block; } #hint { display: none; } }
+
+  /* ---- fallback / error ---- */
+  #fallback {
+    position: fixed; inset: 0; z-index: 50; display: none;
+    flex-direction: column; align-items: center; justify-content: center;
+    gap: 14px; background: var(--sand); text-align: center; padding: 24px;
+  }
+  #fallback h1 { font-size: 40px; font-weight: 800; }
+  #fallback p { max-width: 460px; font-size: 15px; line-height: 1.6; color: rgba(53,49,44,0.85); }
+  #fallback nav { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-top: 8px; }
+  #fallback nav a {
+    font-weight: 700; color: var(--cream); background: var(--teal);
+    text-decoration: none; padding: 10px 20px; border-radius: 999px;
+  }
+  #fallback nav a:nth-child(2n) { background: var(--terracotta); }
+  #err { font-family: ui-monospace, Menlo, monospace; font-size: 12px; color: var(--terracotta); max-width: 600px; word-break: break-all; }
+</style>
+</head>
+<body>
+
+<div id="boot" role="dialog" aria-label="Start screen">
+  <div class="tag">Developer · Designer · Drone Pilot</div>
+  <h1>LACY<br/>MORROW</h1>
+  <div class="press" id="pressBtn">PRESS ENTER TO FLY</div>
+  <div class="controls"><b>W A S D</b> / arrows to fly &nbsp;·&nbsp; <b>E</b> to enter buildings &nbsp;·&nbsp; <b>R</b> reset &nbsp;·&nbsp; knock stuff over</div>
+</div>
+
+<div id="brand">LACY MORROW<small>PORTFOLIO · PROTOTYPE</small></div>
+<div id="hint"><b>WASD</b> fly · <b>E</b> enter · <b>R</b> reset</div>
+<div id="gates">⬡ Gates 0 / 5</div>
+
+<div id="card" role="status">
+  <h3 id="cardTitle"></h3>
+  <p id="cardDesc"></p>
+  <div class="row">
+    <span class="chip" id="cardChip"></span>
+    <a class="visit" id="cardLink" href="#" target="_blank" rel="noopener">Enter ⏎</a>
+  </div>
+</div>
+
+<div id="toast"></div>
+
+<nav id="navbar" aria-label="Site navigation (always available)">
+  <a href="https://lacymorrow.com/">Home</a>
+  <a href="https://lacymorrow.com/work">Work</a>
+  <a href="https://lacymorrow.com/play">Play</a>
+  <a href="https://lacymorrow.com/writing">Writing</a>
+  <a href="https://lacymorrow.com/about">About</a>
+  <a href="https://lacymorrow.com/contact">Contact</a>
+</nav>
+
+<div id="stick"><div id="knob"></div></div>
+
+<div id="fallback">
+  <h1>LACY MORROW</h1>
+  <p id="fallbackMsg">This prototype needs WebGL and a network connection (it loads three.js from a CDN). Here's everything the world links to:</p>
+  <nav>
+    <a href="https://lacymorrow.com/work">Work</a>
+    <a href="https://lacymorrow.com/play">Play</a>
+    <a href="https://lacymorrow.com/writing">Writing</a>
+    <a href="https://lacymorrow.com/about">About</a>
+    <a href="https://lacymorrow.com/contact">Contact</a>
+  </nav>
+  <div id="err"></div>
+</div>
+
+<script type="module">
+const fallbackEl = document.getElementById('fallback');
+const errEl = document.getElementById('err');
+function showFallback(msg) {
+  fallbackEl.style.display = 'flex';
+  document.getElementById('boot').classList.add('gone');
+  if (msg) errEl.textContent = msg;
+}
+window.addEventListener('error', (e) => { errEl.textContent = 'JS error: ' + e.message; });
+
+let THREE;
+try {
+  THREE = await import('https://cdn.jsdelivr.net/npm/three@0.177.0/build/three.module.js');
+} catch (e) {
+  showFallback('Could not load three.js (offline?): ' + e.message);
+  throw e;
+}
+
+// ---------- palette ----------
+const C = {
+  sand: 0xead9b4, sky: 0xf3e2c8, road: 0xf6ecd6,
+  terracotta: 0xcd5f38, teal: 0x1f6e66, mustard: 0xe3a44f,
+  cream: 0xfaf3e2, ink: 0x35312c, blush: 0xe2937b, pine: 0x175048,
+};
+
+// ---------- renderer / scene ----------
+const renderer = new THREE.WebGLRenderer({ antialias: true });
+if (!renderer.getContext()) { showFallback('WebGL unavailable.'); throw new Error('no webgl'); }
+renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+renderer.setSize(window.innerWidth, window.innerHeight);
+renderer.shadowMap.enabled = true;
+renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+document.body.prepend(renderer.domElement);
+
+const scene = new THREE.Scene();
+scene.background = new THREE.Color(C.sky);
+scene.fog = new THREE.Fog(C.sky, 70, 170);
+
+const camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 0.1, 400);
+
+const hemi = new THREE.HemisphereLight(0xfff2e0, 0xd8bd92, 0.95);
+scene.add(hemi);
+const sun = new THREE.DirectionalLight(0xffe3b0, 1.35);
+sun.position.set(60, 80, 20);
+sun.castShadow = true;
+sun.shadow.mapSize.set(2048, 2048);
+sun.shadow.camera.left = -110; sun.shadow.camera.right = 110;
+sun.shadow.camera.top = 110; sun.shadow.camera.bottom = -110;
+sun.shadow.camera.far = 260;
+sun.shadow.bias = -0.0004;
+scene.add(sun);
+
+// ---------- helpers ----------
+const mats = new Map();
+function mat(color) {
+  if (!mats.has(color)) mats.set(color, new THREE.MeshLambertMaterial({ color, flatShading: true }));
+  return mats.get(color);
+}
+function box(w, h, d, color) {
+  const m = new THREE.Mesh(new THREE.BoxGeometry(w, h, d), mat(color));
+  m.castShadow = true; m.receiveShadow = true; return m;
+}
+function cyl(rT, rB, h, color, seg = 10) {
+  const m = new THREE.Mesh(new THREE.CylinderGeometry(rT, rB, h, seg), mat(color));
+  m.castShadow = true; m.receiveShadow = true; return m;
+}
+function cone(r, h, color, seg = 8) {
+  const m = new THREE.Mesh(new THREE.ConeGeometry(r, h, seg), mat(color));
+  m.castShadow = true; m.receiveShadow = true; return m;
+}
+function labelSprite(text, fg = '#35312c', bg = 'rgba(250,243,226,0.95)') {
+  const cv = document.createElement('canvas');
+  cv.width = 1024; cv.height = 224;
+  const g = cv.getContext('2d');
+  g.font = '800 118px -apple-system, Helvetica, Arial, sans-serif';
+  const w = Math.min(980, g.measureText(text).width + 90);
+  g.fillStyle = bg;
+  const x = (1024 - w) / 2, r = 48;
+  g.beginPath(); g.roundRect(x, 24, w, 176, r); g.fill();
+  g.strokeStyle = fg; g.lineWidth = 10; g.stroke();
+  g.fillStyle = fg; g.textAlign = 'center'; g.textBaseline = 'middle';
+  g.fillText(text, 512, 118);
+  const tex = new THREE.CanvasTexture(cv);
+  tex.anisotropy = 4;
+  const sp = new THREE.Sprite(new THREE.SpriteMaterial({ map: tex, transparent: true }));
+  sp.scale.set(11, 2.4, 1);
+  return sp;
+}
+
+// ---------- ground ----------
+const WORLD_R = 100;
+const ground = new THREE.Mesh(new THREE.CircleGeometry(WORLD_R + 40, 64), mat(C.sand));
+ground.rotation.x = -Math.PI / 2;
+ground.receiveShadow = true;
+scene.add(ground);
+
+// plaza + roads
+function flatShape(geo, color, x, z, rotY = 0) {
+  const m = new THREE.Mesh(geo, new THREE.MeshLambertMaterial({ color }));
+  m.rotation.x = -Math.PI / 2; m.rotation.z = rotY;
+  m.position.set(x, 0.02, z);
+  m.receiveShadow = true;
+  scene.add(m); return m;
+}
+flatShape(new THREE.CircleGeometry(14, 48), C.road, 0, 0);
+
+// ---------- world data ----------
+const ZONES = [
+  { name: 'Work',        desc: 'Companies, clients & professional history — GoDaddy, Twilio, startups and more.', route: '/work',    url: 'https://lacymorrow.com/work',    x: -52, z: -24 },
+  { name: 'Play',        desc: 'Open-source packages, experiments, art — the fun stuff.',                          route: '/play',    url: 'https://lacymorrow.com/play',    x: 52,  z: -24 },
+  { name: 'Flash Arcade',desc: 'The legacy Flash collection, resurrected via Ruffle. Insert coin.',                route: '/play/flash', url: 'https://lacymorrow.com/play', x: 46,  z: 34 },
+  { name: 'Writing',     desc: 'Blog posts and essays on building software.',                                      route: '/writing', url: 'https://lacymorrow.com/writing', x: -46, z: 34 },
+  { name: 'Archive',     desc: 'About, mentions, and the deep archive.',                                           route: '/about',   url: 'https://lacymorrow.com/about',   x: 0,   z: -60 },
+  { name: 'Post Office', desc: 'Say hello — the contact form delivers straight to Lacy.',                          route: '/contact', url: 'https://lacymorrow.com/contact', x: 0,   z: 56 },
+  { name: 'Airfield',    desc: 'FPV drones & flying. Thread all 5 gates for a surprise.',                          route: '/work/drones', url: 'https://lacymorrow.com/work', x: 76,  z: 6 },
+];
+for (const zz of ZONES) {
+  const len = Math.hypot(zz.x, zz.z);
+  const geo = new THREE.PlaneGeometry(3.4, len);
+  flatShape(geo, C.road, zz.x / 2, zz.z / 2, Math.atan2(zz.x, zz.z));
+}
+
+// ---------- static colliders ----------
+const solids = []; // {x, z, r}
+function solid(x, z, r) { solids.push({ x, z, r }); }
+
+// ---------- buildings ----------
+function addZoneLabel(zone, y) {
+  const sp = labelSprite(zone.name.toUpperCase());
+  sp.position.set(zone.x, y, zone.z);
+  scene.add(sp);
+}
+
+// Work — stepped office tower with mustard sign
+{
+  const g = new THREE.Group(); const z = ZONES[0];
+  const a = box(10, 7, 10, C.teal); a.position.y = 3.5; g.add(a);
+  const b = box(7.5, 5.5, 7.5, C.pine); b.position.y = 9.7; g.add(b);
+  const c = box(5, 4.5, 5, C.teal); c.position.y = 14.6; g.add(c);
+  const sign = box(6.4, 2.2, 0.5, C.mustard); sign.position.set(0, 8.2, 5.2); g.add(sign);
+  for (let i = 0; i < 3; i++) {
+    const win = box(0.9, 0.9, 0.2, C.cream);
+    win.position.set(-2.8 + i * 2.8, 4.2, 5.05); g.add(win);
+  }
+  g.position.set(z.x, 0, z.z); scene.add(g);
+  solid(z.x, z.z, 8.5); addZoneLabel(z, 19.5);
+}
+// Play — striped big top + blocks
+{
+  const g = new THREE.Group(); const z = ZONES[1];
+  const base = cyl(6.5, 7, 5.5, C.cream, 12); base.position.y = 2.75; g.add(base);
+  const top = cone(7.4, 5.5, C.terracotta, 12); top.position.y = 8.2; g.add(top);
+  const flagPole = cyl(0.12, 0.12, 3, C.ink, 6); flagPole.position.y = 12; g.add(flagPole);
+  const flag = box(1.8, 1, 0.1, C.mustard); flag.position.set(1, 12.8, 0); g.add(flag);
+  g.position.set(z.x, 0, z.z); scene.add(g);
+  solid(z.x, z.z, 8); addZoneLabel(z, 15.5);
+}
+// Flash Arcade — cabinet-shaped building with marquee
+{
+  const g = new THREE.Group(); const z = ZONES[2];
+  const body = box(9, 8, 7, C.ink); body.position.y = 4; g.add(body);
+  const marquee = box(9.6, 2, 7.4, C.terracotta); marquee.position.y = 8.9; g.add(marquee);
+  const screen = box(6.5, 4, 0.3, C.mustard); screen.position.set(0, 5, 3.6); g.add(screen);
+  const joy = cyl(0.3, 0.3, 1.6, C.cream, 8); joy.position.set(-1.5, 2, 3.8); joy.rotation.x = 0.5; g.add(joy);
+  g.position.set(z.x, 0, z.z); scene.add(g);
+  solid(z.x, z.z, 7.5); addZoneLabel(z, 12.8);
+}
+// Writing — giant pencil + stack of paper
+{
+  const g = new THREE.Group(); const z = ZONES[3];
+  for (let i = 0; i < 4; i++) {
+    const sheet = box(8 - i * 0.6, 0.8, 6 - i * 0.4, C.cream);
+    sheet.position.y = 0.4 + i * 0.8;
+    sheet.rotation.y = (i % 2 ? 1 : -1) * 0.12;
+    g.add(sheet);
+  }
+  const pencil = new THREE.Group();
+  const shaft = cyl(0.55, 0.55, 9, C.mustard, 6); shaft.position.y = 4.5; pencil.add(shaft);
+  const tip = cone(0.55, 1.6, C.sand, 6); tip.position.y = -0.8; tip.rotation.x = Math.PI; pencil.add(tip);
+  const lead = cone(0.2, 0.55, C.ink, 6); lead.position.y = -1.35; lead.rotation.x = Math.PI; pencil.add(lead);
+  const eraser = cyl(0.55, 0.55, 0.9, C.blush, 6); eraser.position.y = 9.4; pencil.add(eraser);
+  pencil.position.set(2.4, 3.4, 0); pencil.rotation.z = -0.45;
+  g.add(pencil);
+  g.position.set(z.x, 0, z.z); scene.add(g);
+  solid(z.x, z.z, 6.5); addZoneLabel(z, 13);
+}
+// Archive — columned museum
+{
+  const g = new THREE.Group(); const z = ZONES[4];
+  const steps = box(14, 1, 10, C.cream); steps.position.y = 0.5; g.add(steps);
+  for (let i = 0; i < 5; i++) {
+    const col = cyl(0.7, 0.8, 6, C.cream, 10);
+    col.position.set(-5.2 + i * 2.6, 4, 3.4); g.add(col);
+  }
+  const attic = box(14.5, 1.4, 10.4, C.sand); attic.position.y = 7.6; g.add(attic);
+  const ped = cone(8.2, 3, C.terracotta, 4); ped.position.y = 9.6; ped.rotation.y = Math.PI / 4; g.add(ped);
+  g.position.set(z.x, 0, z.z); scene.add(g);
+  solid(z.x, z.z, 9); addZoneLabel(z, 14.5);
+}
+// Post Office — mailbox on a post
+{
+  const g = new THREE.Group(); const z = ZONES[5];
+  const post = cyl(0.5, 0.6, 5, C.ink, 8); post.position.y = 2.5; g.add(post);
+  const bodyB = box(6, 4, 4.4, C.terracotta); bodyB.position.y = 7; g.add(bodyB);
+  const roof = new THREE.Mesh(new THREE.CylinderGeometry(2.2, 2.2, 6, 16, 1, false, 0, Math.PI), mat(C.terracotta));
+  roof.rotation.z = Math.PI / 2; roof.position.y = 9; roof.castShadow = true; g.add(roof);
+  const slot = box(3.4, 0.5, 0.3, C.ink); slot.position.set(0, 7.4, 2.3); g.add(slot);
+  const flagM = box(0.4, 2, 0.25, C.mustard); flagM.position.set(3.2, 9.4, 0); g.add(flagM);
+  g.position.set(z.x, 0, z.z); scene.add(g);
+  solid(z.x, z.z, 5); addZoneLabel(z, 13.5);
+}
+// Airfield — tower, helipad, wind sock
+{
+  const g = new THREE.Group(); const z = ZONES[6];
+  const pad = cyl(6, 6, 0.4, C.ink, 24); pad.position.y = 0.2; g.add(pad);
+  const hRing = cyl(5.2, 5.2, 0.42, C.mustard, 24); hRing.position.y = 0.21; g.add(hRing);
+  const hPad = cyl(4.4, 4.4, 0.44, C.ink, 24); hPad.position.y = 0.22; g.add(hPad);
+  const tower = cyl(1, 1.3, 9, C.cream, 8); tower.position.set(-8, 4.5, -4); g.add(tower);
+  const cab = box(3.4, 2.2, 3.4, C.teal); cab.position.set(-8, 10, -4); g.add(cab);
+  const sockPole = cyl(0.12, 0.12, 5, C.ink, 6); sockPole.position.set(7, 2.5, -6); g.add(sockPole);
+  const sock = cone(0.7, 2.4, C.terracotta, 8); sock.position.set(8.2, 4.6, -6); sock.rotation.z = Math.PI / 2; g.add(sock);
+  g.position.set(z.x, 0, z.z); scene.add(g);
+  solid(z.x - 8, z.z - 4, 2.4); addZoneLabel(z, 14);
+}
+
+// ---------- trees / rocks (scatter, deterministic) ----------
+let seed = 7;
+function rnd() { seed = (seed * 16807) % 2147483647; return seed / 2147483647; }
+for (let i = 0; i < 46; i++) {
+  const a = rnd() * Math.PI * 2, d = 22 + rnd() * (WORLD_R - 26);
+  const x = Math.cos(a) * d, z = Math.sin(a) * d;
+  if (ZONES.some((zz) => Math.hypot(zz.x - x, zz.z - z) < 14)) continue;
+  if (rnd() < 0.7) {
+    const t = new THREE.Group();
+    const trunk = cyl(0.3, 0.4, 1.6 + rnd(), 0x8a5a3b ,6); trunk.position.y = 0.9; t.add(trunk);
+    const h = 2.2 + rnd() * 2.4;
+    const crown = cone(1.4 + rnd() * 0.9, h, rnd() < 0.5 ? C.teal : C.pine, 7);
+    crown.position.y = 1.6 + h / 2; t.add(crown);
+    t.position.set(x, 0, z); t.rotation.y = rnd() * 6.28;
+    scene.add(t); solid(x, z, 1.1);
+  } else {
+    const r = new THREE.Mesh(new THREE.DodecahedronGeometry(0.7 + rnd() * 1.1, 0), mat(C.cream));
+    r.castShadow = true; r.receiveShadow = true;
+    r.position.set(x, 0.4, z); r.rotation.set(rnd(), rnd(), rnd());
+    scene.add(r); solid(x, z, 1.2);
+  }
+}
+
+// ---------- dynamic props (physics toys) ----------
+const props = []; // {g, v, w(angular), r, restY, upH}
+function addProp(group, x, z, upH, r) {
+  group.position.set(x, upH, z);
+  scene.add(group);
+  props.push({ g: group, v: new THREE.Vector3(), w: new THREE.Vector3(), r, restY: Math.min(upH, r * 0.8), upH, asleep: true });
+}
+
+// giant letters from a 5-row pixel font
+const FONT = {
+  L: ['#..','#..','#..','#..','###'],
+  A: ['.#.','#.#','###','#.#','#.#'],
+  C: ['.##','#..','#..','#..','.##'],
+  Y: ['#.#','#.#','.#.','.#.','.#.'],
+  M: ['#...#','##.##','#.#.#','#...#','#...#'],
+  O: ['.###.','#...#','#...#','#...#','.###.'],
+  R: ['##.','#.#','##.','#.#','#.#'],
+  W: ['#...#','#...#','#.#.#','##.##','#...#'],
+};
+function letterGroup(ch, color) {
+  const rows = FONT[ch], s = 0.62;
+  const g = new THREE.Group();
+  const wCells = rows[0].length;
+  for (let r = 0; r < 5; r++) for (let c = 0; c < wCells; c++) {
+    if (rows[r][c] !== '#') continue;
+    const b = box(s, s, s, color);
+    b.position.set((c - (wCells - 1) / 2) * s, ((4 - r) - 2) * s, 0);
+    g.add(b);
+  }
+  return { g, w: wCells * s };
+}
+function spellRow(word, zPos, colors) {
+  const parts = word.split('').map((ch, i) => letterGroup(ch, colors[i % colors.length]));
+  const gap = 0.75;
+  const total = parts.reduce((s2, p) => s2 + p.w, 0) + gap * (parts.length - 1);
+  let cx = -total / 2;
+  for (const p of parts) {
+    addProp(p.g, cx + p.w / 2, zPos, 1.65, 1.6);
+    cx += p.w + gap;
+  }
+}
+spellRow('LACY', -12, [C.terracotta, C.teal, C.mustard, C.terracotta]);
+spellRow('MORROW', -18, [C.teal, C.mustard, C.terracotta, C.teal, C.mustard, C.terracotta]);
+
+// cones along the roads + balls in the park
+for (let i = 0; i < 8; i++) {
+  const k = cone(0.55, 1.5, i % 2 ? C.terracotta : C.mustard, 8);
+  const g = new THREE.Group(); g.add(k);
+  addProp(g, -6 + i * 1.9, 12 + (i % 2) * 2.2, 0.75, 0.75);
+}
+for (let i = 0; i < 5; i++) {
+  const b = new THREE.Mesh(new THREE.IcosahedronGeometry(0.9, 1), mat([C.terracotta, C.teal, C.mustard, C.blush, C.cream][i]));
+  b.castShadow = true;
+  const g = new THREE.Group(); g.add(b);
+  addProp(g, 42 + (i % 3) * 2.4, -14 + Math.floor(i / 3) * 2.6, 0.9, 0.95);
+}
+// dominoes by the archive
+for (let i = 0; i < 6; i++) {
+  const d = box(1.6, 3, 0.4, i % 2 ? C.cream : C.blush);
+  const g = new THREE.Group(); g.add(d);
+  addProp(g, -5 + i * 2, -44 + i * 1.2, 1.5, 1.3);
+}
+
+// ---------- race gates ----------
+const gates = [];
+{
+  const zA = ZONES[6];
+  const pts = [[-22, 18], [-12, 8], [0, 2], [12, 8], [22, 18]];
+  pts.forEach(([dx, dz], i) => {
+    const g = new THREE.Group();
+    const ring = new THREE.Mesh(new THREE.TorusGeometry(2.6, 0.32, 10, 24), mat(i % 2 ? C.terracotta : C.mustard));
+    ring.castShadow = true; ring.position.y = 3.4; g.add(ring);
+    const leg1 = cyl(0.16, 0.16, 3.4, C.ink, 6); leg1.position.set(-2.6, 1.7, 0); g.add(leg1);
+    const leg2 = cyl(0.16, 0.16, 3.4, C.ink, 6); leg2.position.set(2.6, 1.7, 0); g.add(leg2);
+    const yaw = Math.atan2(-(dz - (i ? pts[i - 1][1] : dz - 8)), (dx - (i ? pts[i - 1][0] : dx)) || 1) + Math.PI / 2;
+    g.rotation.y = yaw;
+    g.position.set(zA.x + dx, 0, zA.z + dz);
+    scene.add(g);
+    gates.push({ x: zA.x + dx, z: zA.z + dz, yaw, passed: false, lastSide: 0, ring });
+  });
+}
+
+// ---------- the drone ----------
+const drone = new THREE.Group();
+{
+  const body = box(1.5, 0.55, 1.9, C.teal); drone.add(body);
+  const canopy = box(0.9, 0.4, 0.8, C.pine); canopy.position.set(0, 0.45, -0.15); drone.add(canopy);
+  const lens = cyl(0.22, 0.22, 0.3, C.terracotta, 8); lens.rotation.x = Math.PI / 2; lens.position.set(0, 0.15, -1.05); drone.add(lens);
+  const batt = box(0.7, 0.3, 1.1, C.ink); batt.position.y = -0.42; drone.add(batt);
+}
+const rotors = [];
+[[-1.05, -1.05], [1.05, -1.05], [-1.05, 1.05], [1.05, 1.05]].forEach(([ax, az]) => {
+  const arm = box(0.22, 0.14, 1.15, C.ink);
+  arm.position.set(ax * 0.72, 0.05, az * 0.72);
+  arm.rotation.y = Math.atan2(ax, az);
+  drone.add(arm);
+  const rot = cyl(0.85, 0.85, 0.07, C.cream, 12);
+  rot.material = new THREE.MeshLambertMaterial({ color: C.cream, transparent: true, opacity: 0.85 });
+  rot.position.set(ax, 0.24, az);
+  drone.add(rot);
+  rotors.push(rot);
+});
+drone.position.set(0, 1.7, 8);
+scene.add(drone);
+
+const D = {
+  pos: drone.position, vel: new THREE.Vector3(), yaw: Math.PI, // facing the letters (-z)
+  r: 1.35, hover: 1.7,
+  accel: 30, maxSp: 19, drag: 2.0, yawRate: 2.7,
+};
+
+// ---------- input ----------
+const keys = {};
+window.addEventListener('keydown', (e) => {
+  keys[e.code] = true;
+  if (e.code === 'Enter' && !started) startGame();
+  if (e.code === 'Enter' && started && activeZone) document.getElementById('cardLink').click();
+  if (e.code === 'KeyE' && started && activeZone) document.getElementById('cardLink').click();
+  if (e.code === 'KeyR') resetDrone();
+});
+window.addEventListener('keyup', (e) => { keys[e.code] = false; });
+
+const stick = document.getElementById('stick'), knob = document.getElementById('knob');
+let joy = { x: 0, y: 0, active: false };
+function joyHandle(e) {
+  const t = e.touches[0];
+  const rect = stick.getBoundingClientRect();
+  const cx = rect.left + rect.width / 2, cy = rect.top + rect.height / 2;
+  let dx = (t.clientX - cx) / (rect.width / 2), dy = (t.clientY - cy) / (rect.height / 2);
+  const len = Math.hypot(dx, dy); if (len > 1) { dx /= len; dy /= len; }
+  joy.x = dx; joy.y = dy; joy.active = true;
+  knob.style.transform = `translate(calc(-50% + ${dx * 33}px), calc(-50% + ${dy * 33}px))`;
+  e.preventDefault();
+}
+stick.addEventListener('touchstart', joyHandle, { passive: false });
+stick.addEventListener('touchmove', joyHandle, { passive: false });
+stick.addEventListener('touchend', () => { joy = { x: 0, y: 0, active: false }; knob.style.transform = 'translate(-50%,-50%)'; });
+
+function resetDrone() {
+  D.pos.set(0, D.hover, 8); D.vel.set(0, 0, 0); D.yaw = Math.PI;
+}
+
+// ---------- boot ----------
+let started = false;
+const params = new URLSearchParams(location.search);
+function startGame() {
+  started = true;
+  document.getElementById('boot').classList.add('gone');
+}
+document.getElementById('boot').addEventListener('click', startGame);
+if (params.has('nointro')) startGame();
+if (params.has('spawn')) {
+  const [sx, sz] = params.get('spawn').split(',').map(Number);
+  if (isFinite(sx) && isFinite(sz)) { D.pos.x = sx; D.pos.z = sz; }
+}
+
+// ---------- toast ----------
+const toastEl = document.getElementById('toast');
+let toastT = 0;
+function toast(msg, ms = 1800) {
+  toastEl.textContent = msg; toastEl.classList.add('show');
+  clearTimeout(toastT); toastT = setTimeout(() => toastEl.classList.remove('show'), ms);
+}
+
+// ---------- route card ----------
+const cardEl = document.getElementById('card');
+let activeZone = null;
+function setZone(zz) {
+  if (zz === activeZone) return;
+  activeZone = zz;
+  if (!zz) { cardEl.classList.remove('show'); return; }
+  document.getElementById('cardTitle').textContent = zz.name;
+  document.getElementById('cardDesc').textContent = zz.desc;
+  document.getElementById('cardChip').textContent = `router.push('${zz.route}')`;
+  document.getElementById('cardLink').href = zz.url;
+  cardEl.classList.add('show');
+}
+
+// ---------- gates HUD ----------
+const gatesEl = document.getElementById('gates');
+let gateCount = 0;
+
+// ---------- resize ----------
+window.addEventListener('resize', () => {
+  camera.aspect = window.innerWidth / window.innerHeight;
+  camera.updateProjectionMatrix();
+  renderer.setSize(window.innerWidth, window.innerHeight);
+});
+
+// ---------- reduced motion note ----------
+if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  toast('Reduced-motion detected — production build would show the static site instead.', 4200);
+}
+
+// ---------- main loop ----------
+const clock = new THREE.Clock();
+const camPos = new THREE.Vector3(-16, 20, 26);
+const camAim = new THREE.Vector3(0, 0, 0);
+const tmpV = new THREE.Vector3();
+
+function update(dt) {
+  // --- input → forces ---
+  let thrust = 0, steer = 0;
+  if (started) {
+    if (keys['KeyW'] || keys['ArrowUp']) thrust += 1;
+    if (keys['KeyS'] || keys['ArrowDown']) thrust -= 0.7;
+    if (keys['KeyA'] || keys['ArrowLeft']) steer += 1;
+    if (keys['KeyD'] || keys['ArrowRight']) steer -= 1;
+    if (joy.active) { thrust += -joy.y; steer += -joy.x; }
+  }
+  D.yaw += steer * D.yawRate * dt * (thrust < 0 ? -1 : 1);
+  const fx = Math.sin(D.yaw), fz = Math.cos(D.yaw);
+  D.vel.x += fx * thrust * D.accel * dt;
+  D.vel.z += fz * thrust * D.accel * dt;
+  const damp = Math.exp(-D.drag * dt);
+  D.vel.x *= damp; D.vel.z *= damp;
+  const sp = Math.hypot(D.vel.x, D.vel.z);
+  if (sp > D.maxSp) { D.vel.x *= D.maxSp / sp; D.vel.z *= D.maxSp / sp; }
+  D.pos.x += D.vel.x * dt;
+  D.pos.z += D.vel.z * dt;
+
+  // world bounds
+  const dC = Math.hypot(D.pos.x, D.pos.z);
+  if (dC > WORLD_R) {
+    D.pos.x *= WORLD_R / dC; D.pos.z *= WORLD_R / dC;
+    const nx = D.pos.x / WORLD_R, nz = D.pos.z / WORLD_R;
+    const dot = D.vel.x * nx + D.vel.z * nz;
+    if (dot > 0) { D.vel.x -= nx * dot; D.vel.z -= nz * dot; }
+  }
+  // static colliders
+  for (const s of solids) {
+    const dx = D.pos.x - s.x, dz = D.pos.z - s.z;
+    const d = Math.hypot(dx, dz), minD = s.r + D.r;
+    if (d < minD && d > 0.001) {
+      const nx = dx / d, nz = dz / d;
+      D.pos.x = s.x + nx * minD; D.pos.z = s.z + nz * minD;
+      const dot = D.vel.x * nx + D.vel.z * nz;
+      if (dot < 0) { D.vel.x -= nx * dot * 1.4; D.vel.z -= nz * dot * 1.4; }
+    }
+  }
+
+  // hover + attitude
+  const t = clock.elapsedTime;
+  D.pos.y = D.hover + Math.sin(t * 2.2) * 0.08;
+  drone.rotation.y = D.yaw;
+  const fwdSp = D.vel.x * fx + D.vel.z * fz;
+  drone.rotation.x = THREE.MathUtils.lerp(drone.rotation.x, THREE.MathUtils.clamp(fwdSp * 0.028, -0.5, 0.5), 0.12);
+  drone.rotation.z = THREE.MathUtils.lerp(drone.rotation.z, THREE.MathUtils.clamp(steer * Math.min(1, sp / 6) * 0.45, -0.6, 0.6), 0.1);
+  for (const r of rotors) r.rotation.y += dt * (26 + sp * 2);
+
+  // --- props physics ---
+  for (const p of props) {
+    // hit by drone?
+    const dx = p.g.position.x - D.pos.x, dz = p.g.position.z - D.pos.z;
+    const d = Math.hypot(dx, dz);
+    if (d < p.r + D.r && sp > 2.5) {
+      const nx = dx / (d || 1), nz = dz / (d || 1);
+      const kick = 0.55 * sp;
+      p.v.x += nx * kick + D.vel.x * 0.45;
+      p.v.z += nz * kick + D.vel.z * 0.45;
+      p.v.y += kick * 0.42;
+      p.w.set((rnd() - 0.5) * kick * 1.6, (rnd() - 0.5) * kick, (rnd() - 0.5) * kick * 1.6);
+      p.asleep = false;
+      D.vel.x *= 0.82; D.vel.z *= 0.82;
+    }
+    if (p.asleep) continue;
+    p.v.y -= 26 * dt;
+    p.g.position.addScaledVector(p.v, dt);
+    if (p.w.lengthSq() > 0.0001) {
+      const ax = tmpV.copy(p.w).normalize();
+      p.g.rotateOnWorldAxis(ax, p.w.length() * dt);
+    }
+    if (p.g.position.y < p.restY) {
+      p.g.position.y = p.restY;
+      if (Math.abs(p.v.y) > 1.6) p.v.y = -p.v.y * 0.32;
+      else p.v.y = 0;
+      p.v.x *= 0.86; p.v.z *= 0.86;
+      p.w.multiplyScalar(0.82);
+      if (p.v.lengthSq() < 0.02 && p.w.lengthSq() < 0.02) { p.asleep = true; p.v.set(0,0,0); p.w.set(0,0,0); }
+    }
+    const pd = Math.hypot(p.g.position.x, p.g.position.z);
+    if (pd > WORLD_R) { p.g.position.x *= WORLD_R / pd; p.g.position.z *= WORLD_R / pd; p.v.x *= -0.4; p.v.z *= -0.4; }
+  }
+
+  // --- gates ---
+  for (const gGate of gates) {
+    const relX = D.pos.x - gGate.x, relZ = D.pos.z - gGate.z;
+    const nx = Math.sin(gGate.yaw), nz = Math.cos(gGate.yaw);
+    const side = Math.sign(relX * nx + relZ * nz);
+    const lat = Math.abs(relX * nz - relZ * nx);
+    const dist = Math.hypot(relX, relZ);
+    if (gGate.lastSide !== 0 && side !== 0 && side !== gGate.lastSide && lat < 2.4 && dist < 3.4 && !gGate.passed) {
+      gGate.passed = true;
+      gateCount++;
+      gGate.ring.material = mat(C.teal);
+      gatesEl.style.display = 'block';
+      gatesEl.textContent = `⬡ Gates ${gateCount} / 5`;
+      if (gateCount >= 5) toast('🏁 CLEAN RUN! Unlocked: the drone reel on /work — nice flying.', 4000);
+      else toast(`Gate ${gateCount} / 5`);
+    }
+    if (dist > 3.6) gGate.lastSide = side;
+    else if (gGate.lastSide === 0) gGate.lastSide = side;
+  }
+
+  // --- zone proximity ---
+  let best = null, bestD = 1e9;
+  for (const zz of ZONES) {
+    const d = Math.hypot(zz.x - D.pos.x, zz.z - D.pos.z);
+    if (d < 13 && d < bestD) { best = zz; bestD = d; }
+  }
+  if (started) setZone(best);
+
+  // --- camera ---
+  const wantPos = started
+    ? tmpV.set(D.pos.x - 10, 23, D.pos.z + 12)
+    : tmpV.set(Math.sin(t * 0.08) * 30, 24, Math.cos(t * 0.08) * 30 + 6);
+  camPos.lerp(wantPos, started ? 0.06 : 0.02);
+  camera.position.copy(camPos);
+  camAim.lerp(started ? D.pos : new THREE.Vector3(0, 1, -12), 0.08);
+  camera.lookAt(camAim);
+}
+
+renderer.setAnimationLoop(() => {
+  const dt = Math.min(clock.getDelta(), 0.05);
+  update(dt);
+  renderer.render(scene, camera);
+});
+window.__WORLD_READY = true;
+</script>
+</body>
+</html>
