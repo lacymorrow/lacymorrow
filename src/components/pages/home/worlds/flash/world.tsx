@@ -35,7 +35,7 @@ const RUFFLE_TIMEOUT_MS = 45_000;
 const startingOffset = () => Math.floor(Math.random() * pieces.length) % pieces.length;
 
 const FlashWorld = ({ progress, active, quality, onReady, hold }: WorldProps) => {
-  const [offset] = useState(startingOffset);
+  const [offset, setOffset] = useState(startingOffset);
   const [current, setCurrent] = useState(offset);
   const [frame, setFrame] = useState(3);
   const [preview, setPreview] = useState<number | null>(null);
@@ -164,6 +164,20 @@ const FlashWorld = ({ progress, active, quality, onReady, hold }: WorldProps) =>
     [loadInto],
   );
 
+  /** Deal a different piece without making anyone reload the page. */
+  const reshuffle = useCallback(() => {
+    const next = (offset + 1 + Math.floor(Math.random() * (pieces.length - 1))) % pieces.length;
+    setOffset(next);
+    setPreview(null);
+    setCurrent(next);
+    const player = playerRef.current;
+    if (player) {
+      void loadInto(player, next).catch((error: unknown) => {
+        console.error("[worlds] flash: that piece would not load", error);
+      });
+    }
+  }, [offset, loadInto]);
+
   const stop = useCallback(() => {
     playerRef.current?.remove();
     playerRef.current = null;
@@ -206,6 +220,7 @@ const FlashWorld = ({ progress, active, quality, onReady, hold }: WorldProps) =>
         onPlay={start}
         onPick={pick}
         onStop={stop}
+        onReshuffle={reshuffle}
       />
     </div>
   );

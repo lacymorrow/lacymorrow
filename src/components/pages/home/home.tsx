@@ -1,6 +1,9 @@
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Instrument_Serif } from "next/font/google";
+
+import { creed } from "@/data/creed";
 
 import { WorldsStage } from "@/components/pages/home/worlds/stage";
 import { worlds } from "@/components/pages/home/worlds/registry";
@@ -32,16 +35,10 @@ const RECEIPTS = [
 // sub-domain never breaks the list.
 const STILL_IN_USE = [
   {
-    receipt: "still plays",
+    receipt: "21 pieces",
     name: "Flash art and a Flash music player",
-    note: "Built in ActionScript back when that was the web. Preserved with Ruffle.",
+    note: "Drawn in ActionScript when that was how you drew on the web. They run in the browser, right now, on the real files.",
     href: "/play/flash",
-  },
-  {
-    receipt: "still online",
-    name: "This site, every version",
-    note: "Each version since the first is still up. Open one and you get the site as it shipped that day.",
-    href: "/about/versions",
   },
   {
     receipt: "8K/mo",
@@ -56,7 +53,7 @@ const STILL_IN_USE = [
     href: "/work/drones/flymore",
   },
   {
-    receipt: "on stage",
+    receipt: "SIGNAL 2018",
     name: "Hackpack",
     note: "A Raspberry Pi badge for Twilio SIGNAL. I wrote the software and helped design the hardware.",
     href: "/work/companies/twilio",
@@ -75,11 +72,23 @@ const STILL_IN_USE = [
   },
 ];
 
-// One line from /creed. Static on purpose: rotation on reload is a trick nobody
-// sees twice.
-const CREED_LINE = "Wear a helmet";
+/**
+ * The creed comes from the same file /creed reads, so there is one list and
+ * not two. The server renders the first line, and a different one arrives on
+ * mount: a static page cannot pick at request time, and baking a random line
+ * into the build would mean everybody sees the same one until the next
+ * deploy. See the note by the render for why this cannot be picked earlier.
+ */
+const FIRST_CREED = creed[0] ?? "Wear a helmet";
 
 export const Home = () => {
+  const [creedLine, setCreedLine] = useState(FIRST_CREED);
+
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setCreedLine(creed[Math.floor(Math.random() * creed.length)] ?? FIRST_CREED);
+  }, []);
+
   return (
     <>
     <div className={`${serif.variable} text-foreground mx-auto w-full max-w-[680px] px-6`}>
@@ -221,10 +230,21 @@ export const Home = () => {
       {worlds.length > 0 && <WorldsStage worlds={worlds} />}
       <div className="text-foreground mx-auto w-full max-w-[680px] px-6 pb-16">
       <section className="pt-16">
-        <p className={`${serif.className} text-2xl italic`}>{CREED_LINE}.</p>
+        <p className={`${serif.className} text-2xl italic`}>{creedLine}.</p>
         <p className="text-muted-foreground mt-2 text-sm">
           <Link href="/creed" className="hover:text-foreground transition-colors">
             from the creed &rarr;
+          </Link>
+          <span className="mx-2" aria-hidden="true">
+            ·
+          </span>
+          {/* The archive used to sit in the list above, which was wrong: it
+              is not something in use, it is somewhere to go. */}
+          <Link
+            href="/about/versions"
+            className="hover:text-foreground transition-colors"
+          >
+            every version of this site since 2010 &rarr;
           </Link>
           <span className="mx-2" aria-hidden="true">
             ·

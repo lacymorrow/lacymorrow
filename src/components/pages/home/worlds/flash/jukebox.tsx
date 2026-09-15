@@ -50,6 +50,8 @@ interface JukeboxProps {
   onPick?: (index: number) => void;
   /** Back to the captured frames. */
   onStop?: () => void;
+  /** Deal a different piece. The Poster passes nothing. */
+  onReshuffle?: () => void;
 }
 
 /** Cmd, ctrl, shift and middle click still open the page in a new tab. */
@@ -114,6 +116,7 @@ export const Jukebox = ({
   onPlay,
   onPick,
   onStop,
+  onReshuffle,
 }: JukeboxProps) => {
   const piece = pieces[current] ?? pieces[0];
   if (!piece) return null;
@@ -142,8 +145,23 @@ export const Jukebox = ({
             boxShadow: "0 1px 0 rgba(255,255,255,0.08) inset",
           }}
         >
-          <span style={{ fontSize: 11, letterSpacing: "0.08em", color: INK }}>
-            flashart.swf
+          <span className="flex items-baseline gap-3">
+            <span style={{ fontSize: 11, letterSpacing: "0.08em", color: INK }}>
+              flashart.swf
+            </span>
+            {/* The player opens on a different piece every visit. Without
+                this, the only way to ask for another one is to guess that
+                reloading does something. */}
+            {onReshuffle && (
+              <button
+                type="button"
+                onClick={onReshuffle}
+                className="cursor-pointer border-0 bg-transparent p-0 underline underline-offset-2 transition-opacity hover:opacity-70"
+                style={{ fontSize: 10, letterSpacing: "0.06em", color: DIM, fontFamily: "inherit" }}
+              >
+                &#8635; click to shuffle
+              </button>
+            )}
           </span>
           <span className="flex gap-[5px]" aria-hidden="true">
             {["#7a8088", "#7a8088", "#7a8088"].map((c, i) => (
