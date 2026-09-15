@@ -11,11 +11,11 @@
  * so it is not a dependency of the site. `sharp` already is one.
  *
  * Outputs (all under public/static/play/art unless --out is given):
- *   ribbon.webp              21 tiles of 256x192 in a 7 by 3 grid
  *   easel/<name>.webp        2 by 2 atlas of 360x270 frames at 0.5, 1.5, 3, 6 s
  *   easel-low/<name>.webp    same at 266x200
- *   thumbs/<name>.webp       the 6 s frame at 533x400
- *   thumbs-sm/<name>.webp    the 6 s frame at 320x240
+ *
+ * The ribbon sheet and the thumbnails this used to write are gone with the
+ * flying-frames reel it fed. The player shows one atlas at a time.
  *
  * The sizes are smaller than the spec's first estimate on purpose: the pieces
  * are fine lines on flat color, which WebP compresses badly, and 533x400

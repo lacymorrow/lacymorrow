@@ -1,126 +1,86 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { useRouter } from "next/router";
-import { Canvas } from "@react-three/fiber";
-import { Color } from "three";
+import { useCallback, useEffect, useRef, useState } from "react";
 
-import { Scene } from "./scene";
-import { BACKGROUND, FOV } from "./layout";
-import { captionCount, pieces } from "./pieces";
+import { Jukebox } from "./jukebox";
+import { atlasUrl, pieces } from "./pieces";
 import type { WorldProps } from "../types";
 
 /**
- * The live scene, plus the one HTML element this world is allowed: the caption
- * under the easel ledge. A list of art pieces without names is not a list.
- * docs/worlds/flash.md, 2.
+ * The live player. The timeline walks the playlist; each piece draws itself
+ * through its four captured frames and then holds. Pointing at a row previews
+ * that piece and stops the walk, which is safe because nothing in here moves.
+ * docs/worlds/flash.md.
  */
 
-const STILL_MS = 400;
+/** The four frames were captured at 0.5, 1.5, 3 and 6 seconds. */
+const frameFor = (local: number): number => {
+  if (local < 0.14) return 0;
+  if (local < 0.3) return 1;
+  if (local < 0.52) return 2;
+  return 3;
+};
 
-const FlashWorld = ({ progress, active, quality, pointer, onReady, hold }: WorldProps) => {
-  const router = useRouter();
-  const captionRef = useRef<HTMLDivElement>(null);
+const FlashWorld = ({ progress, active, quality, onReady, hold }: WorldProps) => {
   const [current, setCurrent] = useState(0);
-  const [picked, setPicked] = useState<number | null>(null);
-  const [still, setStill] = useState(false);
-  const stillRef = useRef(false);
+  const [frame, setFrame] = useState(3);
+  const [preview, setPreview] = useState<number | null>(null);
+  const readyRef = useRef(false);
 
-  const coarse = useMemo(
-    () => typeof window !== "undefined" && window.matchMedia("(pointer: coarse)").matches,
-    [],
-  );
-
-  // The tail appears once the frame at the gate has been still for 400 ms.
+  // The timeline walks the playlist. React state changes at most once a piece
+  // and once a frame, not once a tick.
   useEffect(() => {
-    let timer = 0;
-    const settle = () => {
-      if (stillRef.current) {
-        stillRef.current = false;
-        setStill(false);
-      }
-      window.clearTimeout(timer);
-      timer = window.setTimeout(() => {
-        stillRef.current = true;
-        setStill(true);
-      }, STILL_MS);
+    if (!active) return;
+    let raf = 0;
+    const tick = () => {
+      const at = progress.get() * pieces.length;
+      const index = Math.min(pieces.length - 1, Math.max(0, Math.floor(at)));
+      setCurrent((was) => (was === index ? was : index));
+      const next = frameFor(at - Math.floor(at));
+      setFrame((was) => (was === next ? was : next));
+      raf = window.requestAnimationFrame(tick);
     };
-    settle();
-    const unsubscribe = progress.on("change", settle);
-    return () => {
-      unsubscribe();
-      window.clearTimeout(timer);
-    };
-  }, [progress]);
+    raf = window.requestAnimationFrame(tick);
+    return () => window.cancelAnimationFrame(raf);
+  }, [active, progress]);
 
-  const onOpen = useCallback(
-    (index: number) => {
-      const piece = pieces[index];
-      if (piece) void router.push(piece.href);
+  const shown = preview ?? current;
+
+  // The screen is a background image, so the browser has it before it paints.
+  // The next piece is fetched during the current one, and the world only
+  // declares itself ready once the first piece is actually decodable.
+  useEffect(() => {
+    const piece = pieces[shown];
+    if (!piece) return;
+    const image = new Image();
+    image.src = atlasUrl(piece.name, quality);
+    const done = () => {
+      if (readyRef.current) return;
+      readyRef.current = true;
+      onReady();
+    };
+    if (image.complete) done();
+    else image.addEventListener("load", done, { once: true });
+    const after = pieces[(shown + 1) % pieces.length];
+    if (after) new Image().src = atlasUrl(after.name, quality);
+  }, [shown, quality, onReady]);
+
+  const onPreview = useCallback(
+    (index: number | null) => {
+      setPreview(index);
+      hold(index !== null);
     },
-    [router],
+    [hold],
   );
 
-  const onPiece = useCallback((index: number) => setCurrent(index), []);
-  const onPick = useCallback((index: number | null) => setPicked(index), []);
-
-  const piece = pieces[current];
+  useEffect(() => () => hold(false), [hold]);
 
   return (
-    <div className="size-full">
-      <Canvas
-        dpr={quality === "high" ? [1, 1.5] : 1}
-        frameloop={active ? "always" : "never"}
-        camera={{ fov: FOV, near: 0.1, far: 200, position: [0.4, 2.8, 15] }}
-        gl={{ antialias: true, alpha: false, powerPreference: "high-performance" }}
-        onCreated={({ gl, scene }) => {
-          const color = new Color(BACKGROUND);
-          gl.setClearColor(color, 1);
-          scene.background = color;
-        }}
-      >
-        <Scene
-          progress={progress}
-          active={active}
-          quality={quality}
-          pointer={pointer}
-          onReady={onReady}
-          hold={hold}
-          captionRef={captionRef}
-          onPiece={onPiece}
-          onPick={onPick}
-          onOpen={onOpen}
-        />
-      </Canvas>
-
-      <div
-        ref={captionRef}
-        className="pointer-events-none absolute left-0 top-0 whitespace-nowrap font-mono text-[12px] tracking-[0.06em] text-[#a1a1aa]"
-        style={{
-          opacity: 0,
-          transition: "opacity 300ms ease-out",
-          willChange: "transform",
-          // The caption can land over a bright piece, so it carries its own
-          // ground rather than a plate behind it.
-          textShadow: "0 1px 3px rgba(6, 7, 15, 0.95)",
-        }}
-      >
-        {captionCount(current)}
-        <span className="pl-4 text-[#fafafa]">{piece?.name}</span>
-        <span
-          className="pl-4"
-          style={{
-            opacity: picked !== null || still ? 1 : 0,
-            transition: "opacity 200ms ease-out",
-          }}
-        >
-          {picked !== null
-            ? coarse
-              ? "tap again to open"
-              : "click to open"
-            : coarse
-              ? "tap a piece to hold it"
-              : "point at a piece to hold it"}
-        </span>
-      </div>
+    <div className="size-full" onMouseLeave={() => onPreview(null)}>
+      <Jukebox
+        current={shown}
+        frame={preview === null ? frame : 3}
+        quality={quality}
+        onPreview={onPreview}
+      />
     </div>
   );
 };

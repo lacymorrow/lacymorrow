@@ -183,6 +183,20 @@ const WorldSection = ({ module, tier, pointer }: SectionProps) => {
   // The world fades in after its first frame, or after a timeout so a world
   // that forgets to call onReady still appears.
   const onReady = useCallback(() => setReady(true), []);
+
+  // Once the world has faded in, the Poster underneath it goes away. A world
+  // like the flash player has real links in its Poster, and links stacked
+  // under a live copy stay in the tab order even when they cannot be seen.
+  const [posterGone, setPosterGone] = useState(false);
+  useEffect(() => {
+    if (!ready) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
+      setPosterGone(false);
+      return;
+    }
+    const t = window.setTimeout(() => setPosterGone(true), FADE_MS + 50);
+    return () => window.clearTimeout(t);
+  }, [ready]);
   useEffect(() => {
     if (!mounted) return;
     const t = window.setTimeout(() => setReady(true), READY_TIMEOUT_MS);
@@ -231,9 +245,16 @@ const WorldSection = ({ module, tier, pointer }: SectionProps) => {
         ref={panelRef}
         className="sticky top-0 h-screen w-full overflow-hidden supports-[height:100svh]:h-svh"
       >
-        <div className="absolute inset-0" aria-hidden={runs ? true : undefined}>
-          <Poster />
-        </div>
+        {!(runs && posterGone) && (
+          <div
+            className="absolute inset-0"
+            aria-hidden={runs ? true : undefined}
+            // The live world owns the interaction while it is up.
+            {...(runs ? ({ inert: "" } as Record<string, string>) : {})}
+          >
+            <Poster />
+          </div>
+        )}
 
         {runs && mounted && (
           <div
