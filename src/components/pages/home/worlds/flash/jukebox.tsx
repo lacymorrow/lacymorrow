@@ -161,7 +161,7 @@ export const Jukebox = ({
             className="relative w-full self-start overflow-hidden sm:w-[58%]"
             style={{
               aspectRatio: "4 / 3",
-              background: WELL,
+              backgroundColor: WELL,
               border: "1px solid #14171c",
               boxShadow: "0 0 0 1px rgba(255,255,255,0.06) inset",
             }}
@@ -170,8 +170,15 @@ export const Jukebox = ({
                 piece that fails to run leaves a picture rather than a hole. */}
             <div
               className="absolute inset-0"
+              // Longhands, never the `background` shorthand. React only
+              // re-applies the style keys that changed, and re-setting a
+              // shorthand resets background-size and background-repeat to
+              // their initial values. Walking to the next piece changes only
+              // the URL, so the shorthand would quietly drop the zoom and
+              // paint the atlas at its natural size from there on.
               style={{
-                background: `url(${atlasUrl(piece.name, quality)}) no-repeat`,
+                backgroundImage: `url(${atlasUrl(piece.name, quality)})`,
+                backgroundRepeat: "no-repeat",
                 backgroundSize: FRAME_ZOOM,
                 backgroundPosition: FRAME_POSITION[Math.min(3, Math.max(0, frame))],
                 opacity: live ? 0 : 1,
