@@ -30,6 +30,8 @@ const smoothstep = (a: number, b: number, n: number): number => {
 };
 
 interface EaselProps extends Pick<WorldProps, "progress" | "active"> {
+  /** The piece picked out of the reel, if any. It wins over the gate. */
+  pickedRef: { current: number | null };
   layout: Layout;
   cache: TextureCache;
   ribbonTexture: { current: Texture | null };
@@ -47,7 +49,15 @@ interface EaselState {
   pressed: boolean;
 }
 
-export const Easel = ({ layout, cache, ribbonTexture, progress, active, onOpen }: EaselProps) => {
+export const Easel = ({
+  layout,
+  cache,
+  ribbonTexture,
+  progress,
+  active,
+  pickedRef,
+  onOpen,
+}: EaselProps) => {
   const store = useRef<EaselState | null>(null);
   const panelRef = useRef<Mesh>(null);
 
@@ -80,7 +90,7 @@ export const Easel = ({ layout, cache, ribbonTexture, progress, active, onOpen }
     const p = progress.get();
     const dt = Math.min(delta, 0.1);
     const k = (p - GALLERY_START) / GALLERY_STEP;
-    const current = clamp(Math.round(k), 0, pieces.length - 1);
+    const current = pickedRef.current ?? clamp(Math.round(k), 0, pieces.length - 1);
 
     if (current !== state.to) {
       state.from = state.to;

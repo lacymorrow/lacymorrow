@@ -16,10 +16,11 @@ import type { WorldProps } from "../types";
 
 const STILL_MS = 400;
 
-const FlashWorld = ({ progress, active, quality, pointer, onReady }: WorldProps) => {
+const FlashWorld = ({ progress, active, quality, pointer, onReady, hold }: WorldProps) => {
   const router = useRouter();
   const captionRef = useRef<HTMLDivElement>(null);
   const [current, setCurrent] = useState(0);
+  const [picked, setPicked] = useState<number | null>(null);
   const [still, setStill] = useState(false);
   const stillRef = useRef(false);
 
@@ -59,6 +60,7 @@ const FlashWorld = ({ progress, active, quality, pointer, onReady }: WorldProps)
   );
 
   const onPiece = useCallback((index: number) => setCurrent(index), []);
+  const onPick = useCallback((index: number | null) => setPicked(index), []);
 
   const piece = pieces[current];
 
@@ -81,8 +83,10 @@ const FlashWorld = ({ progress, active, quality, pointer, onReady }: WorldProps)
           quality={quality}
           pointer={pointer}
           onReady={onReady}
+          hold={hold}
           captionRef={captionRef}
           onPiece={onPiece}
+          onPick={onPick}
           onOpen={onOpen}
         />
       </Canvas>
@@ -103,9 +107,18 @@ const FlashWorld = ({ progress, active, quality, pointer, onReady }: WorldProps)
         <span className="pl-4 text-[#fafafa]">{piece?.name}</span>
         <span
           className="pl-4"
-          style={{ opacity: still ? 1 : 0, transition: "opacity 200ms ease-out" }}
+          style={{
+            opacity: picked !== null || still ? 1 : 0,
+            transition: "opacity 200ms ease-out",
+          }}
         >
-          {coarse ? "tap to open" : "click to open"}
+          {picked !== null
+            ? coarse
+              ? "tap again to open"
+              : "click to open"
+            : coarse
+              ? "tap a piece to hold it"
+              : "point at a piece to hold it"}
         </span>
       </div>
     </div>

@@ -87,6 +87,10 @@ const WorldSection = ({ module, tier, pointer }: SectionProps) => {
   const panelRef = useRef<HTMLDivElement | null>(null);
   const progress = useMotionValue(0);
   const cut = useMotionValue(0);
+  const held = useRef(false);
+  const hold = useCallback((next: boolean) => {
+    held.current = next;
+  }, []);
   const [mounted, setMounted] = useState(false);
   const [active, setActive] = useState(false);
   const [ready, setReady] = useState(false);
@@ -102,15 +106,24 @@ const WorldSection = ({ module, tier, pointer }: SectionProps) => {
   useEffect(() => {
     if (!active) return;
     const play = meta.playSeconds ?? DEFAULT_PLAY_SECONDS;
-    const hold = meta.holdSeconds ?? DEFAULT_HOLD_SECONDS;
+    const holdSeconds = meta.holdSeconds ?? DEFAULT_HOLD_SECONDS;
     const loops = meta.loop !== false;
     // play, hold the last frame, cut out through the world's own colour,
     // start over, cut back in.
-    const cycle = play + hold + CUT_SECONDS * 2;
-    const startedAt = performance.now();
+    const cycle = play + holdSeconds + CUT_SECONDS * 2;
+    let startedAt = performance.now();
+    let heldAt = 0;
     let raf = 0;
     const tick = (now: number) => {
-      const t = (now - startedAt) / 1000;
+      // Time spent held is time the timeline never sees, so letting go
+      // continues the scene rather than skipping it forward.
+      if (held.current) {
+        if (!heldAt) heldAt = now;
+      } else if (heldAt) {
+        startedAt += now - heldAt;
+        heldAt = 0;
+      }
+      const t = ((heldAt || now) - startedAt) / 1000;
       if (!loops) {
         progress.set(ease(Math.min(t, play) / play));
       } else {
@@ -118,15 +131,15 @@ const WorldSection = ({ module, tier, pointer }: SectionProps) => {
         if (at < play) {
           progress.set(ease(at / play));
           cut.set(0);
-        } else if (at < play + hold) {
+        } else if (at < play + holdSeconds) {
           progress.set(1);
           cut.set(0);
-        } else if (at < play + hold + CUT_SECONDS) {
+        } else if (at < play + holdSeconds + CUT_SECONDS) {
           progress.set(1);
-          cut.set((at - play - hold) / CUT_SECONDS);
+          cut.set((at - play - holdSeconds) / CUT_SECONDS);
         } else {
           progress.set(0);
-          cut.set(1 - (at - play - hold - CUT_SECONDS) / CUT_SECONDS);
+          cut.set(1 - (at - play - holdSeconds - CUT_SECONDS) / CUT_SECONDS);
         }
       }
       raf = window.requestAnimationFrame(tick);
@@ -180,6 +193,7 @@ const WorldSection = ({ module, tier, pointer }: SectionProps) => {
   // Leaving and coming back is a new arrival, not a resumed video.
   useEffect(() => {
     if (active) return;
+    held.current = false;
     progress.set(0);
     cut.set(0);
   }, [active, progress, cut]);
@@ -238,6 +252,7 @@ const WorldSection = ({ module, tier, pointer }: SectionProps) => {
                   quality={tier === "high" ? "high" : "low"}
                   pointer={pointer}
                   onReady={onReady}
+                  hold={hold}
                 />
               </Suspense>
             </WorldBoundary>

@@ -20,7 +20,7 @@ const SCREEN_COUNT = Math.round(data.crossoverDownloads / 1000);
 const YAW = (1.5 * Math.PI) / 180;
 const PITCH = (1 * Math.PI) / 180;
 
-type SceneProps = Omit<WorldProps, "active">;
+type SceneProps = Omit<WorldProps, "active" | "hold">;
 
 const Scene = ({ progress, quality, pointer, onReady }: SceneProps) => {
   const high = quality === "high";

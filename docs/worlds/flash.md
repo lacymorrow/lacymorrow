@@ -144,6 +144,33 @@ Run once, commit the outputs, rerun only when a piece changes. Playwright (chrom
 
 Expect `rtext.swf` (543 bytes) and `tree.swf` (693 bytes) to need a look. Files that small are usually a stub that loads something else, and the capture will show whether they render alone.
 
+## 5a. Picking a piece out of the reel
+
+The reel is a show until someone reaches into it. Pointing at any frame
+holds the world's timeline (`hold(true)` on the stage) and picks that
+piece: the frame leaves the ribbon, turns to the camera, the easel
+paints it, and the caption reads its name and `click to open`.
+
+The hold lasts until the pointer leaves the canvas or Escape is
+pressed, not until the pointer leaves that one frame. Releasing on the
+frame would be useless, because the frame is the thing that was moving.
+While held the strip is still, so every piece is a static target and
+moving between them re-picks whichever is under the pointer. Letting go
+continues the reel from where it stopped rather than skipping ahead.
+
+On a coarse pointer the first tap picks and the second tap on the same
+frame opens it, so a tap while scrolling past never navigates. A tap
+that misses every frame lets go.
+
+Two things this depends on, both easy to break:
+
+- `InstancedMesh.raycast` caches a bounding sphere on first use. Every
+  instance here moves every frame, so the scene clears
+  `mesh.boundingSphere` after writing the instance matrices. Without
+  that, pointing at a frame hits nothing at all.
+- The picked index wins over the gate index everywhere: the frame
+  lift, the easel's `current`, the caption, and what a click opens.
+
 ## 6. Technique
 
 `@react-three/fiber` 8 with `three` 0.177, plus `@react-three/drei` (add it, import only `Html`). Everything below the stage's `Canvas`.

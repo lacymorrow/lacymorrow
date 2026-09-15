@@ -81,6 +81,13 @@ export interface WorldProps {
    * fades in anyway after 1.5 s.
    */
   onReady: () => void;
+  /**
+   * Freeze the timeline while someone is using the scene, and let it go when
+   * they are done. A scene that plays itself has to stop when a visitor
+   * reaches into it, or the thing they are reaching for has already gone.
+   * Held time is not counted, so releasing continues rather than skips.
+   */
+  hold: (held: boolean) => void;
 }
 
 export interface WorldModule {

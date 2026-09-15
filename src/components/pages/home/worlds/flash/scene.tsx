@@ -4,8 +4,8 @@
    viewport orientation or the quality tier changes, and never on scroll. A ref
    is where React says such values belong, and reading one to attach a mesh is
    the whole point of that. */
-import { useEffect, useRef, type RefObject } from "react";
-import { useFrame, useThree } from "@react-three/fiber";
+import { useCallback, useEffect, useRef, type RefObject } from "react";
+import { useFrame, useThree, type ThreeEvent } from "@react-three/fiber";
 import { type BufferAttribute, type InstancedMesh, type LineSegments, type Vector3 } from "three";
 
 import { buildScene, disposeScene, type BuiltScene } from "./build";
@@ -29,12 +29,14 @@ const smoothstep = (a: number, b: number, n: number): number => {
 };
 
 interface SceneProps
-  extends Pick<WorldProps, "progress" | "active" | "quality" | "pointer" | "onReady"> {
+  extends Pick<WorldProps, "progress" | "active" | "quality" | "pointer" | "onReady" | "hold"> {
   /** The caption, positioned under the easel ledge every frame. */
   captionRef: RefObject<HTMLDivElement>;
-  /** Called when the piece at the gate changes, so at most 21 times a scroll. */
+  /** Called when the piece the easel is painting changes. */
   onPiece: (index: number) => void;
-  /** Called when the easel is clicked. */
+  /** Called when a piece is picked out of the reel, or let go. */
+  onPick: (index: number | null) => void;
+  /** Called when the easel or a picked frame is clicked. */
   onOpen: (index: number) => void;
 }
 
@@ -44,11 +46,13 @@ export const Scene = ({
   quality,
   pointer,
   onReady,
+  hold,
   captionRef,
   onPiece,
+  onPick,
   onOpen,
 }: SceneProps) => {
-  const { size } = useThree();
+  const { size, gl } = useThree();
   const high = quality === "high";
   const portrait = size.height > size.width;
 
@@ -85,6 +89,76 @@ export const Scene = ({
   const readyRef = useRef(false);
   const currentRef = useRef(-1);
   const swayRef = useRef(0);
+
+  // The reel is a show until someone reaches into it. Pointing at a frame
+  // stops the timeline and picks that piece, so choosing one is not a test of
+  // reflexes. Letting go starts the reel again where it stopped.
+  const pickedRef = useRef<number | null>(null);
+  const coarse = useRef(false);
+  useEffect(() => {
+    coarse.current = window.matchMedia("(pointer: coarse)").matches;
+  }, []);
+
+  const pick = useCallback(
+    (index: number | null) => {
+      if (pickedRef.current === index) return;
+      pickedRef.current = index;
+      hold(index !== null);
+      onPick(index);
+      if (index !== null) built.request(index);
+      document.body.style.cursor = index === null ? "" : "pointer";
+    },
+    [built, hold, onPick],
+  );
+
+  useEffect(
+    () => () => {
+      hold(false);
+      document.body.style.cursor = "";
+    },
+    [hold],
+  );
+
+  const onFrameMove = useCallback(
+    (event: ThreeEvent<PointerEvent>) => {
+      if (coarse.current) return; // a finger picks on tap, not on move
+      event.stopPropagation();
+      if (typeof event.instanceId === "number") pick(event.instanceId);
+    },
+    [pick],
+  );
+
+  // Touching one frame holds the whole reel, and it stays held until the
+  // pointer leaves the scene or Escape is pressed. Releasing when the pointer
+  // left a single frame would be useless: the frame is what was moving.
+  useEffect(() => {
+    const canvas = gl.domElement;
+    const release = () => pick(null);
+    const onKey = (event: KeyboardEvent) => {
+      if (event.key === "Escape") release();
+    };
+    canvas.addEventListener("pointerleave", release);
+    window.addEventListener("keydown", onKey);
+    return () => {
+      canvas.removeEventListener("pointerleave", release);
+      window.removeEventListener("keydown", onKey);
+    };
+  }, [gl, pick]);
+
+  const onFrameDown = useCallback(
+    (event: ThreeEvent<PointerEvent>) => {
+      if (typeof event.instanceId !== "number") return;
+      event.stopPropagation();
+      // A finger picks the piece first and opens it on a second tap, so a
+      // stray tap on the way past a frame never navigates.
+      if (coarse.current && pickedRef.current !== event.instanceId) {
+        pick(event.instanceId);
+        return;
+      }
+      onOpen(event.instanceId);
+    },
+    [onOpen, pick],
+  );
 
   useFrame((state) => {
     if (!active) return;
@@ -162,7 +236,12 @@ export const Scene = ({
         s.tangent.crossVectors(s.normal, s.side).normalize();
 
         // Nearer the gate: lifts off the ribbon, grows, turns to the camera.
-        const w = 1 - smoothstep(0, 1, Math.abs(t - built.gallery.gateAt) / spacing);
+        // A picked frame does all of that at once, so it reads as the one in
+        // your hand rather than one more going past.
+        const w =
+          pickedRef.current === i
+            ? 1
+            : 1 - smoothstep(0, 1, Math.abs(t - built.gallery.gateAt) / spacing);
         s.position.addScaledVector(s.normal, 0.35 + 0.5 * w);
         // Frames hang like a filmstrip: the picture's width runs along the
         // ribbon, its top across it.
@@ -178,6 +257,11 @@ export const Scene = ({
         mesh.setMatrixAt(i, s.matrix);
       }
       mesh.instanceMatrix.needsUpdate = true;
+      // Every instance moves every frame, so the cached bounding sphere three
+      // builds on the first raycast is stale by the next one, and pointing at
+      // a frame would hit nothing. Clearing it costs nothing until a raycast
+      // actually happens, and then it is 21 instances.
+      mesh.boundingSphere = null;
     }
 
     // Speed lines, only during the flight, and never on low.
@@ -204,8 +288,10 @@ export const Scene = ({
       }
     }
 
-    // The piece at the gate. The only thing in here that renders React.
-    const current = Math.min(pieces.length - 1, Math.max(0, Math.round(k)));
+    // The piece the easel paints: the one picked out of the reel if there is
+    // one, otherwise whichever is at the gate.
+    const current =
+      pickedRef.current ?? Math.min(pieces.length - 1, Math.max(0, Math.round(k)));
     if (current !== currentRef.current) {
       currentRef.current = current;
       onPiece(current);
@@ -265,6 +351,9 @@ export const Scene = ({
         ref={framesRef}
         args={[built.frames.geometry, built.frames.material, pieces.length]}
         frustumCulled={false}
+        onPointerMove={onFrameMove}
+        onPointerDown={onFrameDown}
+        onPointerMissed={() => pick(null)}
       />
       <lineSegments
         ref={linesRef}
@@ -277,6 +366,7 @@ export const Scene = ({
         ribbonTexture={built.ribbon}
         progress={progress}
         active={active}
+        pickedRef={pickedRef}
         onOpen={onOpen}
       />
     </>
