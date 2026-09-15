@@ -539,3 +539,53 @@ Evidence due with the PR: a 20 second screen recording of one scroll
 from 0 to 1.0 on the M1 Air, a frame time readout from the same run,
 one iPhone 12 recording, and the Poster rendered with JavaScript off.
 A description of the recording does not count.
+
+## 13. Built, and where the build departs from this spec
+
+Built 2026-09-15 on branch `home/worlds`. Steps 1 through 6 of section 12
+are in; step 7's measurement and step 8's post pass are not. Everything
+below is a deliberate change, not drift, and the reason is given.
+
+**The timeline is a clock, not the scrollbar.** This spec was written when
+scroll position drove progress, which is why section 3 talks about the
+viewer scrubbing a sheet along the chute. The contract changed after
+Lacy's note that animation must not require scrolling: `progress` now runs
+0 to 1 over `playSeconds` on a wall clock, and scroll only chooses which
+world has the screen. Nothing else in the beat sheet had to move, because
+every hero object was already a pure function of progress. The paragraph
+on scrubbing backward no longer applies; the two time based effects still
+work as described.
+
+| Spec | Built | Why |
+|------|-------|-----|
+| `lengthVh: 300` | 200 | The README caps a world at 180 to 220, and every shipped world is 200. |
+| no `playSeconds` | 26 | The beat sheet needs about that long to read. It puts the refusal flick at 440 ms and the signature at 1.6 s. |
+| Overlay bottom left, its own placement | The stage's shared overlay, bottom, plus a bottom left scrim inside the world | The stage owns the overlay for every world. A per world placement would be the first seam between them. |
+| Hemisphere 0.35, directional 0.6, spot 18 | 1.7, 2.4, 18 | three moved to physical light units after this spec was written. At 0.35 and 0.6 the hall renders black. The spot's 18 was already in the new units. |
+| Platen 1.0 by 0.06 by 0.8, opens 62 degrees | 1.0 by 0.06 by 0.62, opens 54 | At 0.8 and 62 the platen swung past its own body and read as a slab, and from the aisle it covered the status lamp. |
+| Lamp on a collar above the feed table | On the front face at 0.68 m | The collar sat above the body with nothing holding it up. The face is where a machine's own indicator goes, and the aisle can see it from either end. |
+| Lamp decal a 0.28 square plane | A 0.15 disc | Square plane seen at a glancing angle down the row reads as a bar, not a pool. |
+| Chute at the row's inner edge | `ROW_X - 0.78` | At the inner edge the trough and the sheets on it cut into the press bodies. |
+| Hero sheet reaches the in-tray at 0.40 | Leaves the chute at 0.37 and lands at 0.46 | The beat sheet leaves 0.03 for the last 12 m, which at 26 s is a blur. The camera turns to the plate at 0.40, so the glide finishes unwatched and the sheet is in the tray before the lamp comes on. |
+| Presses wake every 0.012 | Every 0.01 | Seventeen presses is sixteen gaps. At 0.012 the last one wakes at 0.232, past the 0.20 the spec sets for the end of the stretch. |
+| Back wall and two side walls | One wall, at the door end | The crane shot ends behind the desk at z = 27. A wall there would be between the camera and the hall. The far end is fog, which is what the fog curve is for. |
+
+Open question 1 in section 11 is still open: the six unnamed agents run on
+the derived defaults of 53 runs and 55M tokens, so the quiet end of row B
+is a guess. Everything else on the floor is the essay's.
+
+### Changes made once it was on screen
+
+Nothing below is taste. Each one is something the build could not show
+until it rendered.
+
+| Spec | Built | Why |
+|------|-------|-----|
+| 3 real lights | 6: hemisphere, key, fill, and three point lights in shades over the aisle | The rails sit at 2.4 m and the only light in the room was at deck level, so the refusal played in the dark. A press room has light over the work. The shades are visible geometry, cold, so the desk lamp is still the only warm light. |
+| Plates in the rail colour `#1c1d21` | Their own mesh at `#5d646f` | A card stopping against something nobody can see is not a boundary, it is a bug. |
+| Status lamp on the press face | On the deck, top front corner | From the crane shot a press hides its own face, and the ending of this world is counting seventeen lamps. |
+| Job cards 0.12 by 0.18 | 0.17 by 0.23 | At rail height and 3 m away the smaller card was a speck. |
+| Refusal camera across the row, 1.6 m from the plate | 40 degrees off the row, 3.1 m back | The plate is thin along z so it can stop a card on the rail, and the cards hang facing across the aisle. The two are perpendicular, so any square camera shows one of them edge on. At 1.6 m the plate also filled a third of the frame, and an open platen sat on the lens. |
+| Crane straight back down the hall axis | Hall runs bottom right to top left | On the axis the two nearest presses sat under the overlay copy, so the count came up fifteen. |
+| "the one warm lamp in the foreground" in the final frame | Not in frame | The desk is 2 m from the crane camera and 7 m below it, the far end is 25 m away and level. No single 46 degree frame holds both. Counting seventeen won. |
+| Work lights over the plates | Offset 1.1 m along the row | A lamp directly above a vertical face leaves that face unlit, and the plate is the point of the beat. |
