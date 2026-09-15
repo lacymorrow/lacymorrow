@@ -130,14 +130,25 @@ const nextConfig = {
  * the machine. Scoped to fetch and XHR only, so nothing else on the page
  * changes, and to the pages that actually run a SWF.
  */
+const CONNECT_SRC = [
+  "connect-src 'self'",
+  // Umami, loaded in _document.jsx. It posts to /api/send.
+  "https://analytics.lacy.sh",
+  // The art pages render through the `react-ruffle` package, which fetches
+  // its WebAssembly from unpkg rather than from the copy already sitting in
+  // public/ruffle. Worth moving those pages onto the self-hosted player, at
+  // which point this entry goes away.
+  "https://unpkg.com",
+].join(" ");
+
 nextConfig.headers = async () => [
   {
     source: "/",
-    headers: [{ key: "Content-Security-Policy", value: "connect-src 'self'" }],
+    headers: [{ key: "Content-Security-Policy", value: CONNECT_SRC }],
   },
   {
     source: "/play/art/:path*",
-    headers: [{ key: "Content-Security-Policy", value: "connect-src 'self'" }],
+    headers: [{ key: "Content-Security-Policy", value: CONNECT_SRC }],
   },
 ];
 
