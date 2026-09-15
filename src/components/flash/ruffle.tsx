@@ -12,6 +12,9 @@ import Link from "next/link";
  * nothing to fall back to, because there is nothing left to go down.
  *
  * Ruffle's script replaces the `<object>` below with its own player element.
+ * This is the polyfill path, used by the XSPF jukebox, which waits for a
+ * click because it plays music. The art pages use `player.tsx` instead, so
+ * they can autoplay without an unmute badge on every silent drawing.
  */
 
 interface Props {
