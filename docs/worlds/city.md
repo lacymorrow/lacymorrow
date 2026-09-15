@@ -479,3 +479,40 @@ phone.
 9. Evidence: not yet, this is a spec. Required on the build issue,
    section 12.
 10. DRI: section 12.
+
+## Read this before building: what fleet cost
+
+Added 2026-09-15, after `fleet` was built from a spec written the same
+way this one was. Four things in that spec were wrong in ways nobody
+could see until it rendered. Three of them apply here too.
+
+**The light values are in the wrong units.** These specs were written
+against the old three.js light model. three moved to physical units,
+where the numbers here render a black room. `fleet` asked for a
+hemisphere at 0.35 and a directional at 0.6 and needed 2.2 and 3.0 to
+be visible at all. Treat every intensity in this document as a ratio
+between lights, not a value, and tune against a render on the first
+day rather than the last.
+
+**One key light lights half a scene.** Two rows of anything facing each
+other means one row faces away from the key and is lit only by the
+hemisphere ground colour. If that colour is near black, half the scene
+is too. `fleet` needed a fill from the opposite side and a ground
+colour that was not black.
+
+**Anything small has to survive its widest shot.** `fleet` ends by
+counting seventeen status lamps. At the spec's 0.035 m they were a pixel
+and a half from the crane camera, and mounted where the spec put them,
+the machines hid their own lamps from above. Check the smallest thing
+that carries meaning at the furthest the camera ever gets, before
+building anything around it.
+
+**The timeline is a clock, not the scrollbar.** If this spec still
+talks about the viewer scrubbing anything, that changed: `progress`
+runs 0 to 1 over `playSeconds` on a wall clock and scroll only chooses
+which world has the screen. Beat sheets survive this unchanged, because
+they were already written as functions of progress. Prose about
+scrubbing does not.
+
+Also: `lengthVh` here is above the 180 to 220 the contract allows. Every
+shipped world uses 200.
