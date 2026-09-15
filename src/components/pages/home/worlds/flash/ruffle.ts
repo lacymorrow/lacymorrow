@@ -98,6 +98,11 @@ export const PLAY_OPTIONS = {
   scale: "showAll",
   wmode: "opaque",
   allowScriptAccess: false,
-  // Same-domain only. These are drawings, not applications.
-  allowNetworking: "internal",
+  /**
+   * Belt, not braces. In this Ruffle build this option governs navigation
+   * inside the movie rather than the fetches a movie makes, so it does not
+   * on its own stop the four pieces that still call Adobe Kuler. The
+   * connect-src header in next.config.js is what actually stops those.
+   */
+  allowNetworking: "none",
 } as const;

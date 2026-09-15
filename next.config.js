@@ -118,6 +118,29 @@ const nextConfig = {
   ],
 };
 
+/**
+ * Four of the Flash pieces under /play/art were drawn when Flash could pull
+ * a colour theme off Adobe Kuler, and two of them still carry Lacy's email
+ * address in that request URL. Kuler has not existed since 2014, so the
+ * request only ever fails, but the browser still sends it.
+ *
+ * Ruffle's own `allowNetworking` does not stop it: in this build that option
+ * governs navigation inside the movie, not URLLoader fetches. This does stop
+ * it, because a connect-src violation is refused before any request leaves
+ * the machine. Scoped to fetch and XHR only, so nothing else on the page
+ * changes, and to the pages that actually run a SWF.
+ */
+nextConfig.headers = async () => [
+  {
+    source: "/",
+    headers: [{ key: "Content-Security-Policy", value: "connect-src 'self'" }],
+  },
+  {
+    source: "/play/art/:path*",
+    headers: [{ key: "Content-Security-Policy", value: "connect-src 'self'" }],
+  },
+];
+
 const withNextra = require("nextra")({
   theme: "nextra-theme-docs",
   themeConfig: "./theme.config.jsx",
