@@ -259,7 +259,10 @@ const WorldSection = ({ module, tier, pointer }: SectionProps) => {
         {runs && mounted && (
           <div
             className="absolute inset-0"
-            aria-hidden="true"
+            // A canvas has nothing in it to read, so it is hidden. A world
+            // built out of buttons and links is the section itself, and
+            // hiding it would leave those controls focusable but nameless.
+            aria-hidden={meta.interactive ? undefined : "true"}
             style={{
               opacity: ready ? 1 : 0,
               transition: `opacity ${FADE_MS}ms ease-out`,

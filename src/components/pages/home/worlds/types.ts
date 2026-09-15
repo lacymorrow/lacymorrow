@@ -43,6 +43,12 @@ export interface WorldMeta {
   holdSeconds?: number;
   budget: { assetsKb: number; triangles: number };
   /**
+   * The live world's DOM is real content, not a decorative canvas: it has
+   * controls and links of its own, so the stage leaves it visible to screen
+   * readers instead of marking it `aria-hidden`. Default false.
+   */
+  interactive?: boolean;
+  /**
    * Where the overlay sits and when its parts arrive, as progress ranges.
    * Defaults: bottom, title and body present from the first frame.
    */

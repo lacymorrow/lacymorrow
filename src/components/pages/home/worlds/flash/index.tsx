@@ -18,7 +18,10 @@ export const flash: WorldModule = {
     playSeconds: 63,
     holdSeconds: 2,
     // No WebGL in this world at all: one 37 KB atlas on screen at a time.
+    // Ruffle is 13 MB and is never fetched until someone presses play.
     budget: { assetsKb: 80, triangles: 0 },
+    // The window is a player, not a picture: it has a button and 21 links.
+    interactive: true,
   },
   World: lazy(() => import("./world")),
   Poster,

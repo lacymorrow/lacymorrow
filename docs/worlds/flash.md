@@ -30,6 +30,7 @@ believe the line, and be able to open any of the other twenty.
 | playSeconds | 63 (21 pieces, three seconds each) |
 | holdSeconds | 2 |
 | budget | `{ assetsKb: 80, triangles: 0 }` |
+| interactive | true |
 
 The overlay sits at the bottom of the panel, which is why the player
 carries asymmetric padding: it lives in the top two thirds and leaves
@@ -50,10 +51,11 @@ Nothing in the window ever moves except the art on the screen.
 - **The playlist.** All 21 pieces, numbered, in two columns, every row
   an ordinary link to that piece's page. The one playing carries a
   green bar and green text. Rows never move, reorder, or scroll.
-- **The status bar.** The piece's name, `ActionScript`, and
+- **The status bar.** The piece's name, what it is doing, and
   `open this piece` pointing at the same page as its row.
+- **One button**, centred on the screen: `Run them for real`.
 
-## 4. How it plays, and how you take over
+## 4. How it plays, how you take over, and how you run it
 
 The timeline walks the playlist: piece `floor(progress * 21)`, three
 seconds each, then the world's own loop starts it over at the top.
@@ -69,6 +71,41 @@ Keyboard focus previews the same way, because the rows are links and
 
 A click, a tap, or Enter opens that piece's page. There is no second
 tap, no click target that moves, and nothing to aim at.
+
+### Pressing play
+
+The captured frames are a picture of the piece. The button under them
+runs the piece.
+
+Pressing it fetches Ruffle, about 13 MB of WebAssembly, which is the
+whole reason it is a button and not the default. While that is in
+flight the screen keeps the captured frame and says
+`Fetching the Flash player, 13 MB`. When the first movie reports its
+metadata the real player cross fades in over 240 ms.
+
+That press is the only one. The same player element serves all 21
+pieces: `load()` replaces the movie and keeps the instance, so picking
+a track after that costs one SWF, about 10 KB. From then on a row
+click plays its piece in the window instead of leaving the page, the
+playlist header reads `click a track`, and `open this piece` in the
+status bar is how you go to the piece's own page. Cmd, ctrl, shift and
+middle click still open the page in a new tab, because a link that
+eats those is not a link.
+
+The timeline stops at the press and does not start again. A playlist
+that walks itself while someone is choosing tracks is fighting them,
+and there is nothing left to walk: the screen is showing the real
+thing.
+
+`stop` in the status bar removes the player and gives back the
+captured frames and the timeline. Scrolling away pauses the movie and
+scrolling back resumes it, no second press. Two viewports away the
+stage unmounts the world and the next arrival starts still again, with
+the 13 MB already in the browser cache.
+
+If Ruffle does not load, or no movie reports itself within 45 seconds,
+the screen goes back to the captured frame and the status bar says
+`the player would not load`. The link out is untouched.
 
 ## 5. Look
 
@@ -91,9 +128,9 @@ player blue, and there is no drop shadow with a colour in it.
 
 ## 6. Assets and technique
 
-No WebGL. This world is DOM and CSS, which is why it is the cheapest
-of the three and the only one whose Poster is the same thing as the
-live version.
+No WebGL, and no WebAssembly until someone asks for it. This world is
+DOM and CSS, which is why it is the cheapest of the three and the only
+one whose Poster is the same thing as the live version.
 
 - 21 atlases under `public/static/play/art/easel/` (about 30 KB each)
   and the same again at `easel-low/` for the low quality tier. One is
@@ -104,18 +141,30 @@ live version.
   from showing a sliver of the frame next door along the seam.
 - `scripts/capture-flash-art.mjs` writes the atlases through Ruffle.
   Its ribbon sheet and thumbnails are gone with the reel.
+- The live player is the self-hosted Ruffle already in
+  `public/ruffle/`, the same build the art pages use. `worlds/flash/
+  ruffle.ts` loads that script once and hands back the newest source.
+  It sets no global config: `/play/art/*` needs Ruffle's `<object>`
+  polyfill, and a client-side navigation from here to one of those
+  pages shares this window, so every option is passed per movie
+  instead.
+- The SWFs are the originals under `public/flash/art/`, 543 bytes to
+  15 KB each.
 
 ## 7. Quality low vs high
 
 `low` swaps the atlas folder for `easel-low` (266x200 frames). That is
-the whole difference: there is nothing else in here to turn down.
+the whole difference: there is nothing else in here to turn down. The
+button is the same on both, because whether 13 MB is worth it is the
+visitor's call, not the tier's.
 
 ## 8. The Poster
 
 The same player, holding piece 01 on its finished frame, with all 21
-rows as links. With JavaScript off this is the entire section and
-every piece is still reachable, which is the strongest version of the
-fallback rule in the contract. The stage retires the Poster once the
+rows as links, and no button: nothing here can run a SWF without
+JavaScript, so nothing offers to. With JavaScript off this is the
+entire section and every piece is still reachable, which is the
+strongest version of the fallback rule in the contract. The stage retires the Poster once the
 live copy has faded in, so those 21 links do not sit in the tab order
 underneath it.
 
@@ -125,6 +174,7 @@ underneath it.
 |---------|-------|
 | over the wire on arrival | one atlas, about 30 KB |
 | over the wire, full pass | about 630 KB high, 380 KB low |
+| after pressing play | 13 MB of Ruffle, once, plus 10 KB a piece |
 | world chunk | about 3 KB gzipped |
 | triangles | 0 |
 | render targets | 0 |
@@ -146,7 +196,6 @@ that needs no WebGL.
 
 ## 11. Open questions
 
-None blocking. Two worth a look: the pieces play from four still
-frames rather than live Ruffle, which is a compromise the old spec
-made for a 12.7 MB wasm payload and this one keeps; and `shapes.swf`
-has no page of its own, so its row links to `/play/art`.
+None. Both of the ones this spec used to carry are closed: the pieces
+now run for real behind one press, and `shapes.swf` has its own page
+at `/play/art/shapes`, so all 21 rows point at a piece.

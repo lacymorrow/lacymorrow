@@ -76,6 +76,8 @@ export interface WorldMeta {
   loop?: boolean;        // default true. See "How a world is timed".
   holdSeconds?: number;  // last frame hold before it starts over. Default 3.
   budget: { assetsKb: number; triangles: number };
+  interactive?: boolean;  // the live world is real content, not a canvas:
+                          // the stage leaves it visible to screen readers
 }
 
 export interface WorldProps {
@@ -155,11 +157,20 @@ chosen per world for contrast against that world's background.
 - The clock drives the timeline. Pointer position drives at most a few
   degrees of parallax. That is the entire input model. Scroll is not an
   input to a scene, only a way of choosing one.
-- Clicking the scene does nothing unless the spec says what and why
-  (the Flash easel is the one known exception: clicking it plays the
-  piece, because that is how Flash worked).
-- Keyboard users tab to the overlay link. The canvas is
-  `aria-hidden`; the Poster's alt text carries the description.
+- Clicking the scene does nothing unless the spec says what and why.
+  The Flash player is the one world that says so: its window is a
+  player, with a button and 21 links, because that is what the section
+  is about.
+- Keyboard users tab to the overlay link. A canvas has nothing in it
+  to read, so it is `aria-hidden` and the Poster's alt text carries
+  the description. A world that sets `interactive` is the exception:
+  its controls are the section, so the stage leaves them readable and
+  retires the Poster underneath rather than stacking two copies of the
+  same links in the tab order.
+- A world may ask for something expensive (the Flash player's 13 MB of
+  Ruffle) behind a button it draws itself. Never on arrival, never on
+  scroll, and the section still has to work for anyone who does not
+  press it.
 
 ## What a world spec has to contain
 
