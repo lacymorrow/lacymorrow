@@ -61,39 +61,79 @@ interface SectionProps {
 
 const READY_TIMEOUT_MS = 1500;
 const FADE_MS = 300;
+const DEFAULT_PLAY_SECONDS = 16;
+const DEFAULT_HOLD_SECONDS = 3;
+/** The cut between one run of a timeline and the next. */
+const CUT_SECONDS = 0.45;
+
+/**
+ * Soften only the ends. A beat sheet is written at an even pace, so a strong
+ * ease would crawl through the opening beats and race the middle ones; this
+ * eases over the first and last tenth and runs linear between them.
+ */
+const EASE_EDGE = 0.1;
+const EASE_RATE = 1 / (1 - EASE_EDGE); // so the eased ends still cover 0 to 1
+const ease = (t: number) => {
+  if (t <= 0) return 0;
+  if (t >= 1) return 1;
+  if (t < EASE_EDGE) return (EASE_RATE * t * t) / (2 * EASE_EDGE);
+  if (t > 1 - EASE_EDGE) return 1 - (EASE_RATE * (1 - t) ** 2) / (2 * EASE_EDGE);
+  return EASE_RATE * (t - EASE_EDGE / 2);
+};
 
 const WorldSection = ({ module, tier, pointer }: SectionProps) => {
   const { meta, Poster, World } = module;
   const sectionRef = useRef<HTMLElement | null>(null);
+  const panelRef = useRef<HTMLDivElement | null>(null);
   const progress = useMotionValue(0);
+  const cut = useMotionValue(0);
   const [mounted, setMounted] = useState(false);
   const [active, setActive] = useState(false);
   const [ready, setReady] = useState(false);
 
-  // Scroll math writes a MotionValue; React never re-renders on scroll.
+  // The world plays on a clock, not on the scrollbar. Scroll decides which
+  // world has the screen; the timeline runs whether or not anyone is moving.
+  // React never re-renders on it: the value goes straight into a MotionValue
+  // the world reads inside useFrame.
+  //
+  // Elapsed comes from wall time rather than by adding up frame deltas, so a
+  // machine that renders at eight frames a second still plays the scene at
+  // its real pace and simply drops frames, instead of running in slow motion.
   useEffect(() => {
-    const el = sectionRef.current;
-    if (!el) return;
-    let frame = 0;
-    const measure = () => {
-      frame = 0;
-      const rect = el.getBoundingClientRect();
-      const travel = rect.height - window.innerHeight;
-      const p = travel > 0 ? -rect.top / travel : 0;
-      progress.set(Math.min(1, Math.max(0, p)));
+    if (!active) return;
+    const play = meta.playSeconds ?? DEFAULT_PLAY_SECONDS;
+    const hold = meta.holdSeconds ?? DEFAULT_HOLD_SECONDS;
+    const loops = meta.loop !== false;
+    // play, hold the last frame, cut out through the world's own colour,
+    // start over, cut back in.
+    const cycle = play + hold + CUT_SECONDS * 2;
+    const startedAt = performance.now();
+    let raf = 0;
+    const tick = (now: number) => {
+      const t = (now - startedAt) / 1000;
+      if (!loops) {
+        progress.set(ease(Math.min(t, play) / play));
+      } else {
+        const at = t % cycle;
+        if (at < play) {
+          progress.set(ease(at / play));
+          cut.set(0);
+        } else if (at < play + hold) {
+          progress.set(1);
+          cut.set(0);
+        } else if (at < play + hold + CUT_SECONDS) {
+          progress.set(1);
+          cut.set((at - play - hold) / CUT_SECONDS);
+        } else {
+          progress.set(0);
+          cut.set(1 - (at - play - hold - CUT_SECONDS) / CUT_SECONDS);
+        }
+      }
+      raf = window.requestAnimationFrame(tick);
     };
-    const onScroll = () => {
-      if (!frame) frame = window.requestAnimationFrame(measure);
-    };
-    measure();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("resize", onScroll);
-    return () => {
-      window.removeEventListener("scroll", onScroll);
-      window.removeEventListener("resize", onScroll);
-      if (frame) window.cancelAnimationFrame(frame);
-    };
-  }, [progress]);
+    raf = window.requestAnimationFrame(tick);
+    return () => window.cancelAnimationFrame(raf);
+  }, [active, meta.playSeconds, meta.holdSeconds, meta.loop, progress, cut]);
 
   // Mount one viewport early, unmount two viewports past. Active = on screen.
   useEffect(() => {
@@ -109,12 +149,18 @@ const WorldSection = ({ module, tier, pointer }: SectionProps) => {
       },
       { rootMargin: "100% 0px 100% 0px" },
     );
+    // A world "has the screen" once half of its panel is in view. This
+    // watches the panel, not the section: a section three viewports tall can
+    // never cover half a one viewport root. It is the moment the timeline
+    // starts, and the moment the world before it stops, so two worlds never
+    // run their clocks at once.
+    const panel = panelRef.current;
     const activeObserver = new IntersectionObserver(
-      ([entry]) => setActive(entry.isIntersecting),
-      { rootMargin: "0px" },
+      ([entry]) => setActive(entry.intersectionRatio >= 0.5),
+      { threshold: [0, 0.25, 0.5, 0.75, 1] },
     );
     mountObserver.observe(el);
-    activeObserver.observe(el);
+    if (panel) activeObserver.observe(panel);
     return () => {
       mountObserver.disconnect();
       activeObserver.disconnect();
@@ -130,6 +176,14 @@ const WorldSection = ({ module, tier, pointer }: SectionProps) => {
     return () => window.clearTimeout(t);
   }, [mounted]);
 
+  // Arriving at a world plays it from the top, the way opening a page does.
+  // Leaving and coming back is a new arrival, not a resumed video.
+  useEffect(() => {
+    if (active) return;
+    progress.set(0);
+    cut.set(0);
+  }, [active, progress, cut]);
+
   // Overlay fades. These are MotionValues, so with JavaScript off they would
   // serialize at their progress-0 value, which is 0 for any world that asks
   // for a late fade-in. That would cost the Poster its title, line and link,
@@ -140,13 +194,16 @@ const WorldSection = ({ module, tier, pointer }: SectionProps) => {
     // eslint-disable-next-line react-hooks/set-state-in-effect
     setHydrated(true);
   }, []);
-  // A world that does not ask for a late fade gets its overlay from the
-  // first frame of the cut: the range ends before progress 0, so the value
-  // is already 1 there.
+  // Overlay timings are points on the world's timeline, same as the scene's
+  // beats. A world that does not ask for a late fade gets its overlay from
+  // the first frame: the range ends before 0, so the value is already 1.
   const [t0, t1] = meta.overlay?.title ?? [-0.02, -0.01];
   const [b0, b1] = meta.overlay?.body ?? [t0, t1];
-  const titleOpacity = useTransform(progress, [t0, t1, 0.94, 1], [0, 1, 1, 0]);
-  const bodyOpacity = useTransform(progress, [b0, b1, 0.94, 1], [0, 1, 1, 0]);
+  // No fade out at the end of the timeline. The scene finishes while the
+  // visitor is still standing in it, and the link has to still be there.
+  // A world leaves when its panel scrolls away, not when its clock runs out.
+  const titleOpacity = useTransform(progress, [t0, t1], [0, 1]);
+  const bodyOpacity = useTransform(progress, [b0, b1], [0, 1]);
   const atTop = meta.overlay?.position === "top";
   const runs = tier !== null && tier !== "off";
 
@@ -156,7 +213,10 @@ const WorldSection = ({ module, tier, pointer }: SectionProps) => {
       data-world={meta.id}
       style={{ height: `${meta.lengthVh}vh`, background: meta.background }}
     >
-      <div className="sticky top-0 h-screen w-full overflow-hidden supports-[height:100svh]:h-svh">
+      <div
+        ref={panelRef}
+        className="sticky top-0 h-screen w-full overflow-hidden supports-[height:100svh]:h-svh"
+      >
         <div className="absolute inset-0" aria-hidden={runs ? true : undefined}>
           <Poster />
         </div>
@@ -183,6 +243,12 @@ const WorldSection = ({ module, tier, pointer }: SectionProps) => {
             </WorldBoundary>
           </div>
         )}
+
+        <motion.div
+          className="pointer-events-none absolute inset-0"
+          style={{ background: meta.background, opacity: cut }}
+          aria-hidden="true"
+        />
 
         <div
           className={`pointer-events-none absolute inset-x-0 flex justify-center px-6 ${

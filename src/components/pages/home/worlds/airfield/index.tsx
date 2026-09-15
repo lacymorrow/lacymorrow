@@ -14,7 +14,8 @@ export const meta: WorldMeta = {
   cta: "See the flying",
   background: "#5f7290",
   foreground: "#faf3e2",
-  lengthVh: 300,
+  lengthVh: 200,
+  playSeconds: 18,
   budget: { assetsKb: 10, triangles: 12000 },
 };
 

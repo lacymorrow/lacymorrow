@@ -1,12 +1,13 @@
-# Worlds: the scroll below the letter
+# Worlds: what happens below the letter
 
 The home page has two halves. The top is the letter: photo, one line,
 three numbers, one button. It is static, server rendered, and paints
 in under a second. Below "Still in use" the page stops being a page.
 Each world is a full-viewport scene with its own look, its own
 technology, and one link out to the part of the site it stands for.
-Scrolling through a world plays it. Leaving a world is a hard cut into
-the next one, like walking through a door into a different building.
+Scrolling takes you into a world; the world plays itself once you are
+there. Leaving one is a hard cut into the next, like walking through a
+door into a different building.
 
 This document is the contract. A world that does not fit it does not
 ship, however good it looks.
@@ -18,20 +19,44 @@ ship, however good it looks.
 2. "Still in use" list. The last paper section.
 3. A single hairline and the first world's background color bleeds in
    as the stage pins. No "scroll down" arrow, no tutorial.
-4. Worlds, each pinned for `lengthVh` of scrolling. Scroll position
-   inside the world is `progress` (0 at the top edge, 1 at the bottom).
-   The scene's whole timeline is a function of `progress`: camera,
-   reveals, particles. Time-based motion (idle drift, rotor spin) is
-   allowed on top, scroll never fights it.
+4. Worlds. **Scroll chooses the scene. The scene plays itself.** A
+   world starts its timeline the moment it takes the screen and runs
+   it on a clock, so standing still is how you watch it, not how you
+   stop it. Scrolling moves you to the next world the way a door moves
+   you into the next room; it never scrubs a scene frame by frame.
 5. Each world has one overlay: a title, one sentence, one link. The
-   link is the primary action of that screen. Nothing else is
-   clickable unless the spec says so and says why.
+   link is the primary action of that screen, and it stays on screen
+   for as long as the world does. Nothing else is clickable unless the
+   spec says so and says why.
 6. After the last world the paper comes back: the creed line, "from
    the creed", "Say hi" again, the footer.
 
 Native scrolling only. No scroll hijacking, no wheel capture, no
 smooth-scroll library, no horizontal scroll, no `overflow: hidden` on
 body. Touch scrolls the way touch scrolls.
+
+## How a world is timed
+
+`progress` runs 0 to 1 over `meta.playSeconds`, eased at both ends and
+linear in between so a beat sheet written at an even pace plays at an
+even pace. Elapsed time comes from the wall clock, not from adding up
+frame deltas, so a slow machine drops frames instead of playing the
+scene in slow motion.
+
+When the timeline ends the world holds its last frame for
+`meta.holdSeconds`, cuts out through its own `background` colour over
+450 ms, starts over, and cuts back in. That is a reel, or a lap. A
+world whose last frame is alive on its own sets `loop: false` and
+simply holds.
+
+A world takes the screen when half its panel is in view, and gives it
+up the same way, so two worlds never run their clocks at once.
+Arriving plays from the top: leaving and coming back is a new arrival,
+not a resumed video.
+
+Nothing about this is tied to scroll offset, so the beat sheet in a
+spec is a list of times, not a list of scroll positions. Read the
+numbers 0.0 to 1.0 as fractions of the timeline.
 
 ## The contract
 
@@ -45,14 +70,17 @@ export interface WorldMeta {
   cta: string;           // link text, e.g. "See the art"
   background: string;    // CSS color painted behind the stage before
                          // the world renders; the cut color
-  lengthVh: number;      // how long the world pins, in viewport
-                         // heights. 250 to 350. Longer is not better.
+  lengthVh: number;      // how much scroll the world holds the screen
+                         // for, in viewport heights. 180 to 220.
+  playSeconds?: number;  // how long its timeline takes. Default 16.
+  loop?: boolean;        // default true. See "How a world is timed".
+  holdSeconds?: number;  // last frame hold before it starts over. Default 3.
   budget: { assetsKb: number; triangles: number };
 }
 
 export interface WorldProps {
-  progress: MotionValue<number>; // read in useFrame, never re-render on it
-  active: boolean;               // stage is on screen; pause work when false
+  progress: MotionValue<number>; // the timeline; read in useFrame, never re-render on it
+  active: boolean;               // this world has the screen; pause work when false
   quality: "low" | "high";       // low: DPR 1, no post, halve counts
   pointer: MotionValue<{ x: number; y: number }>; // -1..1, for parallax only
 }
@@ -124,8 +152,9 @@ chosen per world for contrast against that world's background.
 
 ## Interaction
 
-- `progress` drives the timeline. Pointer position drives at most a
-  few degrees of parallax. That is the entire input model.
+- The clock drives the timeline. Pointer position drives at most a few
+  degrees of parallax. That is the entire input model. Scroll is not an
+  input to a scene, only a way of choosing one.
 - Clicking the scene does nothing unless the spec says what and why
   (the Flash easel is the one known exception: clicking it plays the
   piece, because that is how Flash worked).
@@ -139,8 +168,10 @@ asking a question. Sections, in this order:
 
 1. The person and the moment. One sentence.
 2. The one link and the overlay copy (title, line, cta), final.
-3. The beat sheet: what is on screen at progress 0, 0.2, 0.4, 0.6,
-   0.8, 1.0, and what the camera does between beats.
+3. The beat sheet: what is on screen at 0, 0.2, 0.4, 0.6, 0.8 and 1.0
+   of the timeline, and what the camera does between beats. Say what
+   the last frame does once the timeline ends: hold and loop, or stay
+   alive on its own.
 4. The look: palette (hex), light, materials, fog, post. Named
    references a builder can search for.
 5. Assets: every mesh, texture and data source, where it comes from

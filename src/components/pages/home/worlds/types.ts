@@ -20,8 +20,27 @@ export interface WorldMeta {
   background: string;
   /** Overlay text color, chosen for contrast against `background`. */
   foreground: string;
-  /** How long the world pins, in viewport heights. 250 to 350. */
+  /**
+   * How much scroll the world holds the screen for, in viewport heights.
+   * Scroll no longer scrubs the scene, so this is only how long the world
+   * keeps the screen before the next one slides up. 180 to 220.
+   */
   lengthVh: number;
+  /**
+   * How long the world's timeline takes to play, in seconds, once the world
+   * takes the screen. The scene plays on its own clock whether or not anyone
+   * is scrolling. Default 16.
+   */
+  playSeconds?: number;
+  /**
+   * Whether the timeline runs again after it ends. Default true: a world
+   * holds its last frame, cuts through its own background colour, and starts
+   * over, the way a reel or a lap does. Set false for a scene whose end
+   * state is alive on its own.
+   */
+  loop?: boolean;
+  /** How long the last frame holds before the world starts over. Default 3. */
+  holdSeconds?: number;
   budget: { assetsKb: number; triangles: number };
   /**
    * Where the overlay sits and when its parts arrive, as progress ranges.
@@ -42,9 +61,15 @@ export interface Pointer {
 }
 
 export interface WorldProps {
-  /** 0 at the top edge of the section, 1 at the bottom. Read it in useFrame. */
+  /**
+   * The world's own timeline, 0 to 1, driven by a clock and not by the
+   * scrollbar: it starts when the world takes the screen, plays over
+   * `meta.playSeconds`, and holds at 1. Read it in useFrame, never render
+   * on it. A world that wants life after its timeline ends animates on
+   * `state.clock` like any other idle motion.
+   */
   progress: MotionValue<number>;
-  /** The stage is on screen. Stop the frame loop when false. */
+  /** The world has the screen. Stop the frame loop and the clock when false. */
   active: boolean;
   /** low: DPR 1, no post-processing, halve counts. */
   quality: "low" | "high";

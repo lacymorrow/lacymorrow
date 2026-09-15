@@ -17,7 +17,11 @@ export const workshop: WorldModule = {
     cta: "See CrossOver",
     background: "#09090b",
     foreground: "#fafafa",
-    lengthVh: 300,
+    lengthVh: 200,
+    playSeconds: 14,
+    // The field keeps blinking and drifting after the wave finishes, so this
+    // one stays on its last frame instead of starting over.
+    loop: false,
     budget: { assetsKb: 12, triangles: 52000 },
   },
   World: lazy(() => import("./world")),

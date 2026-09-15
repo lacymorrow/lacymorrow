@@ -17,7 +17,8 @@ export const flash: WorldModule = {
     cta: "See the art",
     background: "#06070f",
     foreground: "#fafafa",
-    lengthVh: 340,
+    lengthVh: 200,
+    playSeconds: 22,
     // The scene keeps its top left clear of ribbons on purpose, and the
     // filmstrip sweeps through the bottom left, so the copy sits up top.
     // docs/worlds/flash.md section 2.
