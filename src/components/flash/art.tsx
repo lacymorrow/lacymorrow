@@ -1,4 +1,4 @@
-import { Ruffle } from "react-ruffle";
+import { Ruffle } from "./ruffle";
 import capitalize from "@/utils/capitalize";
 
 type Props = {

@@ -134,11 +134,6 @@ const CONNECT_SRC = [
   "connect-src 'self'",
   // Umami, loaded in _document.jsx. It posts to /api/send.
   "https://analytics.lacy.sh",
-  // The art pages render through the `react-ruffle` package, which fetches
-  // its WebAssembly from unpkg rather than from the copy already sitting in
-  // public/ruffle. Worth moving those pages onto the self-hosted player, at
-  // which point this entry goes away.
-  "https://unpkg.com",
 ].join(" ");
 
 nextConfig.headers = async () => [
