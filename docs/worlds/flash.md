@@ -57,8 +57,13 @@ Nothing in the window ever moves except the art on the screen.
 
 ## 4. How it plays, how you take over, and how you run it
 
-The timeline walks the playlist: piece `floor(progress * 21)`, three
-seconds each, then the world's own loop starts it over at the top.
+The timeline walks the playlist: piece `floor(progress * 21)` plus a
+starting offset, modulo 21, three seconds each, then the world's own loop
+starts it over at the same offset. That offset is rolled once when the live
+world mounts, so two visits open on different pieces and every piece still
+gets its turn in Lacy's order. It is rolled on the client only: the Poster
+is server rendered, and a server that guessed a different piece would warn
+on hydration and swap the screen under the visitor.
 
 Pointing at any row previews that piece on the screen and holds the
 world's timeline, through `hold(true)` on the stage. That is safe here
@@ -160,13 +165,24 @@ visitor's call, not the tier's.
 
 ## 8. The Poster
 
-The same player, holding piece 01 on its finished frame, with all 21
+The same player, holding `stix` on its finished frame, with all 21
 rows as links, and no button: nothing here can run a SWF without
 JavaScript, so nothing offers to. With JavaScript off this is the
 entire section and every piece is still reachable, which is the
 strongest version of the fallback rule in the contract. The stage retires the Poster once the
 live copy has faded in, so those 21 links do not sit in the tab order
 underneath it.
+
+`stix` is the constant, and a constant is the point: this is the whole
+section for anyone on reduced motion, saveData, a small machine, or no
+JavaScript, so it cannot be a roll of the dice. It was picked by looking at
+the finished frames at the size the screen actually shows them, about
+430 by 323: a full width of hand-drawn coloured strokes on the red ground,
+dense enough to read as a picture rather than as a paused animation. The
+first piece in the playlist, `isometrics`, used to hold this slot and is the
+weakest still in the set, a white field with a small red logo in the middle.
+`coverage` in `pieces.json` is a hint here and no more: `theme` scores
+highest at 0.87 and is flat machine-ruled stripes.
 
 ## 9. Budget
 

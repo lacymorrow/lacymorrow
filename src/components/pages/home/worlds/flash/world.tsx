@@ -23,8 +23,20 @@ const frameFor = (local: number): number => {
 /** Long enough for 13 MB on a slow connection, short enough to admit defeat. */
 const RUFFLE_TIMEOUT_MS = 45_000;
 
+/**
+ * Where in the playlist this visit starts. Twenty one pieces and one opener
+ * meant twenty of them were only ever seen by someone who stayed, so the walk
+ * starts somewhere at random and wraps: the same three seconds each, the same
+ * order, a different door in. Safe to roll during render because this module
+ * is lazy and the stage only mounts it on the client, so there is no server
+ * copy of this screen to disagree with. The Poster, which the server does
+ * render, stays on its constant piece.
+ */
+const startingOffset = () => Math.floor(Math.random() * pieces.length) % pieces.length;
+
 const FlashWorld = ({ progress, active, quality, onReady, hold }: WorldProps) => {
-  const [current, setCurrent] = useState(0);
+  const [offset] = useState(startingOffset);
+  const [current, setCurrent] = useState(offset);
   const [frame, setFrame] = useState(3);
   const [preview, setPreview] = useState<number | null>(null);
   const [mode, setMode] = useState<PlayerMode>("still");
@@ -39,7 +51,8 @@ const FlashWorld = ({ progress, active, quality, onReady, hold }: WorldProps) =>
     let raf = 0;
     const tick = () => {
       const at = progress.get() * pieces.length;
-      const index = Math.min(pieces.length - 1, Math.max(0, Math.floor(at)));
+      const step = Math.min(pieces.length - 1, Math.max(0, Math.floor(at)));
+      const index = (step + offset) % pieces.length;
       setCurrent((was) => (was === index ? was : index));
       const next = frameFor(at - Math.floor(at));
       setFrame((was) => (was === next ? was : next));
@@ -47,13 +60,15 @@ const FlashWorld = ({ progress, active, quality, onReady, hold }: WorldProps) =>
     };
     raf = window.requestAnimationFrame(tick);
     return () => window.cancelAnimationFrame(raf);
-  }, [active, mode, progress]);
+  }, [active, mode, offset, progress]);
 
   const shown = preview ?? current;
 
   // The screen is a background image, so the browser has it before it paints.
   // The next piece is fetched during the current one, and the world only
-  // declares itself ready once the first piece is actually decodable.
+  // declares itself ready once the first piece is actually decodable. The
+  // starting offset moves where the walk begins, not its direction, so the
+  // piece after this one is still the next row down, wrapping at the end.
   useEffect(() => {
     const piece = pieces[shown];
     if (!piece) return;

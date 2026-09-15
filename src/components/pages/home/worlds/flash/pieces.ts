@@ -25,3 +25,18 @@ export const ART_BASE = "/static/play/art";
 
 export const atlasUrl = (name: string, quality: "low" | "high"): string =>
   `${ART_BASE}/${quality === "high" ? "easel" : "easel-low"}/${name}.webp`;
+
+/**
+ * The piece the Poster holds. It has to read as a picture rather than as a
+ * frame of an animation, because it is also the whole section for anyone on
+ * reduced motion, saveData, a small machine, or no JavaScript at all. `stix`
+ * is the densest, most obviously hand-drawn finished frame in the set; the
+ * first piece in Lacy's order is a white field with a small logo in it, which
+ * is the weakest still here. Looked up by name so a recapture that reorders
+ * the playlist still opens on the same picture.
+ */
+const POSTER_NAME = "stix";
+export const POSTER_INDEX = Math.max(
+  0,
+  pieces.findIndex((piece) => piece.name === POSTER_NAME),
+);
