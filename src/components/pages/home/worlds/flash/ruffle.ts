@@ -4,7 +4,7 @@
  * mean two of them.
  */
 
-export { loadRuffle, type RufflePlayerElement } from "@/lib/ruffle";
+export { loadRuffle, nudge, type RufflePlayerElement } from "@/lib/ruffle";
 
 /** The original files, still where they were put. */
 export const swfUrl = (name: string): string => `/flash/art/${name}.swf`;

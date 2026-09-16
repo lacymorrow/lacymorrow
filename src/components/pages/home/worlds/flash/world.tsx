@@ -2,7 +2,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 
 import { Jukebox, type PlayerMode } from "./jukebox";
 import { atlasUrl, pieces } from "./pieces";
-import { loadRuffle, swfUrl, PLAY_OPTIONS, type RufflePlayerElement } from "./ruffle";
+import { loadRuffle, nudge, swfUrl, PLAY_OPTIONS, type RufflePlayerElement } from "./ruffle";
 import type { WorldProps } from "../types";
 
 /**
@@ -97,6 +97,11 @@ const FlashWorld = ({ progress, active, quality, onReady, hold }: WorldProps) =>
   const loadInto = useCallback((player: RufflePlayerElement, index: number) => {
     const piece = pieces[index];
     if (!piece) return Promise.resolve();
+    // scribe and theme draw nothing until the stage is clicked. Every piece
+    // gets the same one click, the way the capture script does it.
+    player.addEventListener("loadedmetadata", () => window.setTimeout(() => nudge(player), 400), {
+      once: true,
+    });
     return player.load({
       ...PLAY_OPTIONS,
       url: swfUrl(piece.name),

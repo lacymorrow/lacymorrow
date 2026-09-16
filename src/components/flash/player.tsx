@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 
-import { loadRuffle, type RufflePlayerElement } from "@/lib/ruffle";
+import { loadRuffle, nudge, type RufflePlayerElement } from "@/lib/ruffle";
 
 /**
  * One Flash piece, playing on its own.
@@ -44,6 +44,17 @@ export const FlashPlayer = ({ src, width = 533, height = 400, className }: Props
         player.style.height = "100%";
         player.style.display = "block";
         host.current.appendChild(player);
+        // The mouse-reactive pieces need the stage poked once before they
+        // draw anything. Wait for the movie to report itself first: there is
+        // no stage to click until then.
+        player.addEventListener(
+          "loadedmetadata",
+          () => {
+            const el = player;
+            if (el) window.setTimeout(() => nudge(el), 400);
+          },
+          { once: true },
+        );
         return player.load({
           url: src,
           autoplay: "on",
