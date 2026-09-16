@@ -1,7 +1,6 @@
 import Logo from '@/components/images/logo';
 import Footer from '@/components/layout/footer';
 import { EnvelopeClosedIcon } from '@radix-ui/react-icons';
-import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useConfig } from 'nextra-theme-docs';
 
@@ -39,13 +38,6 @@ const themeConfig = {
 	navigation: { prev: true, next: true },
 	toc: { backToTop: true, float: true },
 	search: { placeholder: 'Search lacymorrow.com…' },
-	banner: {
-		text: (
-			<Link href="https://shipkit.io" target="_blank" rel="noopener noreferrer">
-				🚀  Launch your app today with Shipkit →
-			</Link>
-		)
-	},
 	sidebar: {
 		toggleButton: true,
 		defaultMenuCollapseLevel: 1,

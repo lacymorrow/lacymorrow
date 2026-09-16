@@ -25,7 +25,7 @@ This is a **Pages Router** site using [Nextra v2](https://nextra.site) (`nextra`
 ### Content Structure
 
 Pages are mostly `.mdx` files organized by section:
-- `src/pages/index.mdx` — Home (raw layout, no navbar/sidebar/footer)
+- `src/pages/index.mdx` — Home (raw layout, owns its own header; `src/components/pages/home/home.tsx`)
 - `src/pages/work/` — Professional experience (companies, clients, drones)
 - `src/pages/play/` — Projects & experiments (art, flash, JS/React/PHP/Python packages, VS Code extensions)
 - `src/pages/about/` — Archive, mentions, donate
