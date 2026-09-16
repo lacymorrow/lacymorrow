@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 340">
+  <g transform="translate(100, 16) scale(0.39)">
+    <polygon points="224,48 336,48 208,464 96,464" fill="#7F00FF"/>
+    <polygon points="304,48 416,48 288,464 176,464" fill="#00D4FF" opacity="0.85"/>
+  </g>
+  <text x="200" y="265" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="40" font-weight="700" fill="#0f172a" letter-spacing="-0.02em">Lacy Morrow</text>
+  <text x="200" y="305" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="16" fill="#64748b" letter-spacing="0.12em">SOFTWARE ENGINEER</text>
+</svg>
