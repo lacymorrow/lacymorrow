@@ -66,37 +66,3 @@ export const loadRuffle = (): Promise<RuffleSource> => {
   return pending;
 };
 
-/**
- * Give the stage one click, the way a visitor would.
- *
- * Several of the pieces are mouse-reactive: `scribe` and `theme` draw
- * nothing at all until the stage receives a mouse event, so they sit as a
- * flat red rectangle until someone thinks to click them. That is what they
- * were written to do in 2008, when a Flash movie had the page to itself and
- * clicking it was the obvious move. On a page of its own, with a title above
- * it, it just looks broken.
- *
- * `scripts/capture-flash-art.mjs` already clicks every piece before it grabs
- * a frame, for the same reason, so doing it here keeps the live pieces and
- * the captured stills telling the same story.
- *
- * Only the first click is synthetic. Everything after it is the visitor's
- * own mouse, which is the point of these pieces.
- */
-export const nudge = (player: RufflePlayerElement): void => {
-  const canvas = player.shadowRoot?.querySelector("canvas");
-  if (!canvas) return;
-  const box = canvas.getBoundingClientRect();
-  if (box.width < 1 || box.height < 1) return;
-  const at = {
-    clientX: box.left + box.width / 2,
-    clientY: box.top + box.height / 2,
-    bubbles: true,
-    cancelable: true,
-    pointerType: "mouse",
-    isPrimary: true,
-    button: 0,
-  };
-  canvas.dispatchEvent(new PointerEvent("pointerdown", { ...at, buttons: 1 }));
-  canvas.dispatchEvent(new PointerEvent("pointerup", { ...at, buttons: 0 }));
-};
