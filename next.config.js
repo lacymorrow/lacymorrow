@@ -36,22 +36,22 @@ const nextConfig = {
     {
       source: "/v2",
       destination: "/v2/index.html",
-      permanent: false,
+      permanent: true,
     },
     {
       source: "/v2/",
       destination: "/v2/index.html",
-      permanent: false,
+      permanent: true,
     },
     {
       source: "/v3",
       destination: "/v3/index.html",
-      permanent: false,
+      permanent: true,
     },
     {
       source: "/v3/",
       destination: "/v3/index.html",
-      permanent: false,
+      permanent: true,
     },
     {
       source: "/about/contact",
@@ -77,43 +77,43 @@ const nextConfig = {
     {
       source: "/casper",
       destination: "https://casper.lacymorrow.com",
-      permanent: false,
+      permanent: true,
     },
     {
       source: "/crossover",
       destination: "/play/crossover",
-      permanent: false,
+      permanent: true,
     },
     {
       source: "/drones",
       destination: "/work/drones/flymore",
-      permanent: false,
+      permanent: true,
     },
     {
       source: "/donate",
       destination: "/about/donate",
-      permanent: false,
+      permanent: true,
     },
     // Redirects for play
     {
       source: "/3d",
       destination: "/play/3d",
-      permanent: false,
+      permanent: true,
     },
     {
       source: "/projects/xspf",
       destination: "/play/flash/xspf",
-      permanent: false,
+      permanent: true,
     },
     {
       source: "/xspf",
       destination: "/play/flash/xspf",
-      permanent: false,
+      permanent: true,
     },
     {
       source: "/projects/:path*",
       destination: "/play/:path*",
-      permanent: false,
+      permanent: true,
     },
   ],
 };
