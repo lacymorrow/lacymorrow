@@ -101,11 +101,6 @@ const nextConfig = {
       permanent: true,
     },
     {
-      source: "/play",
-      destination: "/play/crossover",
-      permanent: true,
-    },
-    {
       source: "/projects/xspf",
       destination: "/play/flash/xspf",
       permanent: true,

@@ -28,6 +28,13 @@
       "typesetting": "article"
     }
   },
+  "cards": {
+    "title": "Business Cards",
+    "theme": {
+      "pagination": false,
+      "typesetting": "article"
+    }
+  },
   "mentions": {
     "theme": {
       "pagination": false

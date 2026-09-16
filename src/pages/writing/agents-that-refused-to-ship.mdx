@@ -1,0 +1,43 @@
+---
+title: "My AI Agents Built an Entire Feature, Then Refused to Ship It"
+description: "I asked AI agents to build a sewer payment portal for a small town. They built the whole thing in 48 hours, set DISABLE_SEWER=true, and walked away. That was the right call."
+date: 2026-08-25
+tags:
+  - ai-agents
+  - feature-flags
+  - shipping
+---
+
+# My AI Agents Built an Entire Feature, Then Refused to Ship It
+
+The Town of Harmony needed residents to test a sewer payment portal. Their town clerk sent four requests by email. My agents picked it up, filed seven issues, and started building within 48 hours.
+
+They put together the full checkout flow. Stripe integration, test accounts for residents and businesses, placeholder billing rates, the whole UI. All working. All testable in staging.
+
+Then they set `DISABLE_SEWER=true` and stopped.
+
+## The context they were working with
+
+Six months ago I set a rule: production sewer billing stays behind a feature flag. The Town Council doesn't vote on final billing rates until September 14th. Nothing goes live until two things happen: the council confirms rates, and a human flips the switch.
+
+A client asking to test the portal isn't the same as permission to deploy it. The agents got that. They built everything the client needed for testing, pushed it to staging where people could actually use it, and left the production flag alone.
+
+## The part that actually matters
+
+Building a Stripe checkout flow isn't hard. It's a well-documented API with plenty of examples. Any agent can do it.
+
+What's interesting is what they didn't do. They had a client request, working code, and the ability to flip that flag to `false` and ship. If you're just trying to close tickets, you ship it. The client asked for it. It works. Done.
+
+But they understood that my directive from six months ago outranks a client request from this week. "Build and test" is different from "build and ship." The flag exists for a reason, and the reason hasn't gone away.
+
+## How I think about this
+
+The priority order I want my agents to follow:
+
+1. **Owner directives.** Feature flags, environment guards, "don't ship this" rules.
+2. **Business gates.** Council votes, contract signatures, regulatory approvals.
+3. **Client requests.** What someone asked for.
+
+A client request can kick off building. But shipping only happens when 1 and 2 are clear. The agents figured that out from the existing project state without me telling them in the moment.
+
+The sewer portal ships when the council confirms rates and I flip the flag. Until then it sits in staging, ready to go, and deliberately not live.

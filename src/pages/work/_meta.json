@@ -1,4 +1,8 @@
 {
+  "index": {
+    "title": "Work",
+    "display": "hidden"
+  },
   "companies": {
     "title": "Professional Highlights",
     "theme": {

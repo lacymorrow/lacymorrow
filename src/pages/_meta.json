@@ -3,13 +3,11 @@
     "title": "Home",
     "display": "hidden",
     "theme": {
-      "navbar": false,
       "breadcrumb": false,
-      "footer": false,
       "sidebar": false,
       "toc": false,
       "pagination": false,
-      "layout": "raw"
+      "layout": "full"
     }
   },
   "company": {
@@ -35,9 +33,23 @@
     "title": "Work",
     "type": "page"
   },
+  "services": {
+    "title": "Services",
+    "type": "page",
+    "theme": {
+      "typesetting": "article"
+    }
+  },
   "play": {
     "title": "Play",
     "type": "page"
+  },
+  "writing": {
+    "title": "Writing",
+    "type": "page",
+    "theme": {
+      "typesetting": "article"
+    }
   },
   "about": {
     "title": "About",
@@ -50,13 +62,13 @@
     "type": "separator"
   },
   "fly5": {
-    "title": "Fly5 ↗",
+    "title": "Fly5 \u2197",
     "type": "page",
     "href": "https://fly5.live",
     "newWindow": true
   },
   "contact": {
-    "title": "Contact ↗",
+    "title": "Contact \u2197",
     "type": "page",
     "newWindow": true,
     "display": "hidden",

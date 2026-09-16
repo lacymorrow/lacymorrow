@@ -2,7 +2,23 @@
   "redirects": [
     {
       "source": "/(.*)",
-      "has": [{ "type": "host", "value": "resume.lacymorrow.com" }],
+      "has": [
+        {
+          "type": "host",
+          "value": "cal.lacymorrow.com"
+        }
+      ],
+      "destination": "https://cal.com/lacymorrow/30min",
+      "permanent": true
+    },
+    {
+      "source": "/(.*)",
+      "has": [
+        {
+          "type": "host",
+          "value": "resume.lacymorrow.com"
+        }
+      ],
       "destination": "https://lacymorrow.com/about/resume",
       "permanent": true
     },

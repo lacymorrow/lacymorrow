@@ -4,7 +4,7 @@ description: Get in touch with Lacy Morrow. Schedule a meeting, send an email, o
 ---
 
 import ContactForm from '@/components/pages/contact/contact-form';
-import { InlineWidget } from "react-calendly";
+import { CalEmbed } from "@/components/cal/cal-embed";
 
 # Contact Lacy Morrow
 
@@ -12,10 +12,10 @@ If you have any questions or comments, please feel free to contact me at [704-45
 
 <Accordion type="single" collapsible>
   <AccordionItem value="item-1" className="border-none">
-    <AccordionTrigger className="text-xl font-bold">📅  Schedule a meeting on Calendly</AccordionTrigger>
+    <AccordionTrigger className="text-xl font-bold">📅  Schedule a meeting</AccordionTrigger>
     <AccordionContent>
-		<InlineWidget url="https://calendly.com/lacymorrow" />
-		<Thick className="my-4">Or book on the [Calendly website ↗](https://calendly.com/lacymorrow/30min).</Thick>
+		<CalEmbed event="30min" />
+		<Thick className="my-4">Or book directly at [cal.com/lacymorrow ↗](https://cal.com/lacymorrow/30min).</Thick>
     </AccordionContent>
   </AccordionItem>
 </Accordion>
@@ -23,12 +23,6 @@ If you have any questions or comments, please feel free to contact me at [704-45
 --- 
 
 ## _or_ get in touch the old-fashioned way:
-
-{/* <PopupButton
-url="https://calendly.com/lacymorrow"
-rootElement={document.getElementById("__next")}
-text="Click here to schedule!"
-/> */}
 
 <ContactForm />
 

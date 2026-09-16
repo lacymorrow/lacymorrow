@@ -10,4 +10,11 @@ export const creed: string[] = [
 	'Stretching promotes life longevity',
 	'Build things that matter',
 	'Ship it, then improve it',
+	'Life is a competition',
+	'Wear a helmet',
+	'Only break one law at a time',
+	'Good drivers occasionally miss their exit. Bad drivers never miss their exit.',
+	'Life is a game but not a competition',
+	'Stay grounded',
+	'The universe is grand, but life is grander.',
 ];
