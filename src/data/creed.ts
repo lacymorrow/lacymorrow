@@ -16,4 +16,5 @@ export const creed: string[] = [
 	'Good drivers occasionally miss their exit. Bad drivers never miss their exit.',
 	'Life is a game but not a competition',
 	'Stay grounded',
+	'The universe is grand, but life is grander.',
 ];
