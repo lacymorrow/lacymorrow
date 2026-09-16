@@ -1,0 +1,149 @@
+[
+  {
+    "order": 0,
+    "name": "isometrics",
+    "href": "/play/art/isometrics",
+    "background": "#ffffff",
+    "coverage": 0.1031
+  },
+  {
+    "order": 1,
+    "name": "stix",
+    "href": "/play/art/stix",
+    "background": "#ff1313",
+    "coverage": 0.7823
+  },
+  {
+    "order": 2,
+    "name": "rtext",
+    "href": "/play/art/rtext",
+    "background": "#ffffff",
+    "coverage": 0.0065
+  },
+  {
+    "order": 3,
+    "name": "offset",
+    "href": "/play/art/offset",
+    "background": "#ff1313",
+    "coverage": 0.6153
+  },
+  {
+    "order": 4,
+    "name": "sprout",
+    "href": "/play/art/sprout",
+    "background": "#ff1212",
+    "coverage": 0.6581
+  },
+  {
+    "order": 5,
+    "name": "continual",
+    "href": "/play/art/continual",
+    "background": "#ff1313",
+    "coverage": 0.652
+  },
+  {
+    "order": 6,
+    "name": "tree",
+    "href": "/play/art/tree",
+    "background": "#ffffff",
+    "coverage": 0.1649
+  },
+  {
+    "order": 7,
+    "name": "scribe",
+    "href": "/play/art/scribe",
+    "background": "#ff1212",
+    "coverage": 0.6493
+  },
+  {
+    "order": 8,
+    "name": "shine",
+    "href": "/play/art/shine",
+    "background": "#ff1313",
+    "coverage": 0.6666
+  },
+  {
+    "order": 9,
+    "name": "shinier",
+    "href": "/play/art/shinier",
+    "background": "#ff1213",
+    "coverage": 0.6315
+  },
+  {
+    "order": 10,
+    "name": "shinierier",
+    "href": "/play/art/shinierier",
+    "background": "#fd3333",
+    "coverage": 0.6915
+  },
+  {
+    "order": 11,
+    "name": "shapes",
+    "href": "/play/art/shapes",
+    "background": "#ffffff",
+    "coverage": 0.0166
+  },
+  {
+    "order": 12,
+    "name": "lines",
+    "href": "/play/art/lines",
+    "background": "#ff1212",
+    "coverage": 0.6517
+  },
+  {
+    "order": 13,
+    "name": "scribble",
+    "href": "/play/art/scribble",
+    "background": "#ff1212",
+    "coverage": 0.6025
+  },
+  {
+    "order": 14,
+    "name": "multi",
+    "href": "/play/art/multi",
+    "background": "#ff1313",
+    "coverage": 0.6299
+  },
+  {
+    "order": 15,
+    "name": "orbit",
+    "href": "/play/art/orbit",
+    "background": "#ff1313",
+    "coverage": 0.6259
+  },
+  {
+    "order": 16,
+    "name": "expand",
+    "href": "/play/art/expand",
+    "background": "#ffffff",
+    "coverage": 0.061
+  },
+  {
+    "order": 17,
+    "name": "theme",
+    "href": "/play/art/theme",
+    "background": "#ff1313",
+    "coverage": 0.8706
+  },
+  {
+    "order": 18,
+    "name": "converge",
+    "href": "/play/art/converge",
+    "background": "#ff1313",
+    "coverage": 0.6524
+  },
+  {
+    "order": 19,
+    "name": "blank",
+    "href": "/play/art/blank",
+    "background": "#ff1212",
+    "coverage": 0.6537
+  },
+  {
+    "order": 20,
+    "name": "weave",
+    "href": "/play/art/weave",
+    "background": "#ff1212",
+    "coverage": 0.7404
+  }
+]

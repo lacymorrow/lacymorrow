@@ -1,3 +1,5 @@
+import dynamic from "next/dynamic";
+
 import { AirtableBase, AirtableForm } from "mdx-embed/dist/components/airtable";
 import { Buzzsprout } from "mdx-embed/dist/components/buzzsprout";
 import { Cinnamon } from "mdx-embed/dist/components/cinnamon";
@@ -28,12 +30,19 @@ import { YouTube } from "mdx-embed/dist/components/youtube";
 import { Bleed } from 'nextra-theme-docs';
 import { Callout, Card, Cards, FileTree, Steps, Tabs } from 'nextra/components';
 
-import { Sandpack } from "@codesandbox/sandpack-react";
+// Sandpack carries CodeMirror and a bundler client, about 180 KB gzipped, and
+// exactly one page uses it (/about/colophon). Same for the Flash players,
+// which pull the Ruffle loader. Both load on demand instead of riding in
+// _app with every page on the site.
+const Sandpack = dynamic(
+	() => import("@codesandbox/sandpack-react").then((m) => m.Sandpack),
+	{ ssr: false },
+);
 
 import Zoom from 'react-medium-image-zoom';
 
-import FlashArt from '@/components/flash/art';
-import Flash from '@/components/flash/flash';
+const FlashArt = dynamic(() => import('@/components/flash/art'), { ssr: false });
+const Flash = dynamic(() => import('@/components/flash/flash'), { ssr: false });
 import Readme from '@/components/github/readme';
 import Center from "@/components/mdx/center";
 import DownloadLink from "@/components/mdx/download-link";

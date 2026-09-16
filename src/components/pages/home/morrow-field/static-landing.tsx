@@ -20,19 +20,19 @@ export const StaticLanding = ({ reason }: StaticLandingProps) => {
       aria-label="Lacy Morrow portfolio"
       className="mx-auto flex min-h-[70vh] w-full max-w-[860px] flex-col justify-center px-6 py-16"
     >
-      <p className="mb-3 font-mono text-[11px] uppercase tracking-[0.18em] text-muted-foreground">
+      <p className="text-muted-foreground mb-3 font-mono text-[11px] uppercase tracking-[0.18em]">
         Developer · Designer · Drone Pilot
       </p>
-      <h1 className="mb-6 text-balance text-4xl font-semibold leading-tight tracking-tight text-foreground sm:text-5xl md:text-6xl">
+      <h1 className="text-foreground mb-6 text-balance text-4xl font-semibold leading-tight tracking-tight sm:text-5xl md:text-6xl">
         Lacy Morrow
       </h1>
-      <p className="mb-8 max-w-[52ch] text-base leading-relaxed text-muted-foreground">
+      <p className="text-muted-foreground mb-8 max-w-[52ch] text-base leading-relaxed">
         Two decades shipping software. Creator of CrossOver and Shipkit. I build
         AI agents that control computers, and I fly FPV drones.
       </p>
 
       {reason && noticeMap[reason] && (
-        <p className="mb-8 rounded-md border border-border bg-muted/40 px-3 py-2 text-xs text-muted-foreground">
+        <p className="border-border bg-muted/40 text-muted-foreground mb-8 rounded-md border px-3 py-2 text-xs">
           {noticeMap[reason]}
         </p>
       )}
@@ -43,7 +43,7 @@ export const StaticLanding = ({ reason }: StaticLandingProps) => {
             <li key={n.href}>
               <Link
                 href={n.href}
-                className="inline-block rounded-full border border-border px-4 py-1.5 text-sm font-medium text-foreground hover:bg-foreground hover:text-background"
+                className="border-border text-foreground hover:bg-foreground hover:text-background inline-block rounded-full border px-4 py-1.5 text-sm font-medium"
               >
                 {n.label}
               </Link>
@@ -53,7 +53,7 @@ export const StaticLanding = ({ reason }: StaticLandingProps) => {
       </nav>
 
       <div>
-        <h2 className="mb-3 text-sm font-medium uppercase tracking-wider text-muted-foreground">
+        <h2 className="text-muted-foreground mb-3 text-sm font-medium uppercase tracking-wider">
           Places to visit
         </h2>
         <ul className="grid grid-cols-1 gap-3 sm:grid-cols-2">
@@ -61,12 +61,12 @@ export const StaticLanding = ({ reason }: StaticLandingProps) => {
             <li key={z.route}>
               <Link
                 href={z.route}
-                className="block rounded-lg border border-border p-4 hover:border-foreground"
+                className="border-border hover:border-foreground block rounded-lg border p-4"
               >
-                <div className="text-base font-semibold text-foreground">
+                <div className="text-foreground text-base font-semibold">
                   {z.name}
                 </div>
-                <div className="mt-1 text-sm text-muted-foreground">
+                <div className="text-muted-foreground mt-1 text-sm">
                   {z.desc}
                 </div>
               </Link>
