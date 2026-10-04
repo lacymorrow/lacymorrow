@@ -1,9 +1,9 @@
 ---
-title: Town of Harmony — Municipal Website
-description: Lacy Morrow rebuilt townofharmony.org for the Town of Harmony, North Carolina — a Next.js and Payload CMS municipal site that town staff run themselves.
+title: Town of Harmony, Municipal Website
+description: Lacy Morrow rebuilt townofharmony.org for the Town of Harmony, North Carolina, on Next.js and Payload CMS so town staff can run it without a developer.
 ---
 
-# Town of Harmony (2025&ndash;2026)
+# Town of Harmony (2025-2026)
 <Thick>[townofharmony.org](https://townofharmony.org/)</Thick>
 
 <Center>
@@ -12,25 +12,21 @@ description: Lacy Morrow rebuilt townofharmony.org for the Town of Harmony, Nort
 
 ## About
 
-> Full rebuild of the municipal website for a North Carolina town of roughly 500 people, on a stack the town staff can run without a developer.
+> A full rebuild of the municipal site for a town of about 500 people in Iredell County, on a stack the staff can run themselves.
 
-Harmony is an incorporated town in Iredell County with no IT department. The old site was a static page that only changed when somebody paid to have it changed, so it mostly didn't change. Meeting agendas went up late or not at all.
+Harmony has no IT department. The old site was a static page that only changed when somebody paid to have it changed, so it mostly didn't change, and meeting agendas went up late or not at all.
 
-The rebuild put every piece of content the town actually updates behind a CMS: notices, events, meeting agendas, council member listings, and resident resources. Town staff post their own agendas now. The emergency notice bar at the top of the page can be published in under a minute, which is the entire reason it exists.
+Everything the town actually updates now sits behind a CMS: notices, events, agendas, council listings, resident resources. Staff post their own agendas. The emergency bar across the top of the page can be live in under a minute, which is the whole reason it's there.
 
-## What it had to get right
+Most municipal sites are laid out like the org chart. This one is laid out around what people arrive wanting, so the first four cards are report an issue, find an agenda, see what's happening, and reach somebody.
 
-**The audience is residents, not the town.** Most municipal sites are organized around the org chart. This one is organized around the four things people actually arrive wanting: report an issue, find an agenda, see what's happening, reach somebody. Those are the first four cards on the page.
+The other constraint was that nobody would be around to babysit it. Every editable surface is a Payload collection with a form written in plain language, no markdown and no shortcodes to remember. It runs on Postgres behind a CDN with transactional mail through Resend, and it has stayed up without incident.
 
-**Staff have to be able to use it unsupervised.** Every editable surface is a Payload collection with a form that reads in plain language. No markdown, no shortcodes, no "just paste this embed code."
-
-**It has to stay up without attention.** Postgres over Drizzle, deployed behind a CDN, with transactional mail through Resend. Hosting is ongoing and the site has run without incident.
-
-**Tech stack:** Next.js 16 · React 19 · Payload CMS 3 · Drizzle · Postgres · Tailwind · Resend
+**Tech stack:** Next.js 16 &middot; React 19 &middot; Payload CMS 3 &middot; Drizzle &middot; Postgres &middot; Tailwind &middot; Resend
 
 ---
 
 ## More client work
 
-- [All client work &rarr;](/work/clients)
-- [Professional roles &rarr;](/work/companies)
+- [All client work](/work/clients)
+- [Professional roles](/work/companies)
