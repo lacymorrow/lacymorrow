@@ -1,7 +1,6 @@
 {
 	"index": {
-		"title": "Play",
-		"display": "hidden"
+		"title": "Overview"
 	},
 	"juno": "Juno — AI Desktop",
 	"lacy": "lacy — AI Shell",

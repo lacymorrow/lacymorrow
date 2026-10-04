@@ -29,9 +29,9 @@ export const ZONES: Zone[] = [
     z: 34,
   },
   {
-    name: "Writing",
+    name: "Blog",
     desc: "Blog posts and essays on building software.",
-    route: "/writing",
+    route: "/blog",
     x: -46,
     z: 34,
   },
@@ -62,7 +62,7 @@ export const NAV_LINKS: Array<{ label: string; href: string }> = [
   { label: "Home", href: "/" },
   { label: "Work", href: "/work" },
   { label: "Play", href: "/play" },
-  { label: "Writing", href: "/writing" },
+  { label: "Blog", href: "/blog" },
   { label: "About", href: "/about" },
   { label: "Contact", href: "/contact" },
 ];

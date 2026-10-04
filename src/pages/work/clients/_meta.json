@@ -1,7 +1,6 @@
 {
   "index": {
-    "title": "Web Development",
-    "display": "hidden",
+    "title": "Overview",
     "theme": {
       "breadcrumb": false,
       "toc": false,
@@ -14,76 +13,22 @@
   "space-monkey-films": "Space Monkey Films",
   "susan-morrow": "Susan Morrow",
   "archive": "Earlier Work (2010–2013)",
-  "invision": {
-    "title": "InVision",
-    "display": "hidden"
-  },
-  "innovation-works": {
-    "title": "Innovation Works",
-    "display": "hidden"
-  },
-  "cosmic-cart": {
-    "title": "Cosmic Cart",
-    "display": "hidden"
-  },
-  "mission-film-works": {
-    "title": "Mission Film Works",
-    "display": "hidden"
-  },
-  "charlies-vision": {
-    "title": "Charlie's Vision",
-    "display": "hidden"
-  },
-  "nancy-nicholson": {
-    "title": "Nancy Nicholson",
-    "display": "hidden"
-  },
-  "rae-images": {
-    "title": "Rae Images",
-    "display": "hidden"
-  },
-  "right-hand-editing": {
-    "title": "Right Hand Editing",
-    "display": "hidden"
-  },
-  "effective-media-solutions": {
-    "title": "Effective Media Solutions",
-    "display": "hidden"
-  },
-  "college-career-advisors": {
-    "title": "College Career Advisors",
-    "display": "hidden"
-  },
-  "boone-community-network": {
-    "title": "Boone Community Network",
-    "display": "hidden"
-  },
-  "all-seasons": {
-    "title": "All Seasons",
-    "display": "hidden"
-  },
-  "american-comfort": {
-    "title": "American Comfort",
-    "display": "hidden"
-  },
-  "blue-ribbon-recipes": {
-    "title": "Blue Ribbon Recipes",
-    "display": "hidden"
-  },
-  "hinson-mechanical": {
-    "title": "Hinson Mechanical",
-    "display": "hidden"
-  },
-  "iac-music": {
-    "title": "IAC Music",
-    "display": "hidden"
-  },
-  "phase2-productions": {
-    "title": "Phase2 Productions",
-    "display": "hidden"
-  },
-  "patterson-heating-air": {
-    "title": "Patterson Heating & Air",
-    "display": "hidden"
-  }
+  "rae-images": "Rae Images",
+  "boone-community-network": "Boone Community Network",
+  "invision": "InVision",
+  "innovation-works": "Innovation Works",
+  "cosmic-cart": "Cosmic Cart",
+  "mission-film-works": "Mission Film Works",
+  "charlies-vision": "Charlie's Vision",
+  "nancy-nicholson": "Nancy Nicholson",
+  "all-seasons": "All Seasons",
+  "blue-ribbon-recipes": "Blue Ribbon Recipes",
+  "iac-music": "IAC Music",
+  "phase2-productions": "Phase2 Productions",
+  "right-hand-editing": "Right Hand Editing",
+  "effective-media-solutions": "Effective Media Solutions",
+  "college-career-advisors": "College Career Advisors",
+  "american-comfort": "American Comfort",
+  "hinson-mechanical": "Hinson Mechanical",
+  "patterson-heating-air": "Patterson Heating & Air"
 }

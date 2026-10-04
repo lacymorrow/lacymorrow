@@ -33,6 +33,17 @@ const nextConfig = {
     ],
   },
   redirects: async () => [
+    // Writing was renamed to Blog; keep the old URLs working.
+    {
+      source: "/writing",
+      destination: "/blog",
+      permanent: true,
+    },
+    {
+      source: "/writing/:slug*",
+      destination: "/blog/:slug*",
+      permanent: true,
+    },
     {
       source: "/v2",
       destination: "/v2/index.html",

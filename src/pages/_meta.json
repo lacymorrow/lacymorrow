@@ -33,6 +33,10 @@
     "title": "Work",
     "type": "page"
   },
+  "play": {
+    "title": "Play",
+    "type": "page"
+  },
   "services": {
     "title": "Services",
     "type": "page",
@@ -40,12 +44,8 @@
       "typesetting": "article"
     }
   },
-  "play": {
-    "title": "Play",
-    "type": "page"
-  },
-  "writing": {
-    "title": "Writing",
+  "blog": {
+    "title": "Blog",
     "type": "page",
     "theme": {
       "typesetting": "article"
@@ -61,14 +61,8 @@
   "---": {
     "type": "separator"
   },
-  "fly5": {
-    "title": "Fly5 \u2197",
-    "type": "page",
-    "href": "https://fly5.live",
-    "newWindow": true
-  },
   "contact": {
-    "title": "Contact \u2197",
+    "title": "Contact ↗",
     "type": "page",
     "newWindow": true,
     "display": "hidden",
