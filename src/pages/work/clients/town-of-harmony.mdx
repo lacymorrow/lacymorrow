@@ -1,0 +1,36 @@
+---
+title: Town of Harmony — Municipal Website
+description: Lacy Morrow rebuilt townofharmony.org for the Town of Harmony, North Carolina — a Next.js and Payload CMS municipal site that town staff run themselves.
+---
+
+# Town of Harmony (2025&ndash;2026)
+<Thick>[townofharmony.org](https://townofharmony.org/)</Thick>
+
+<Center>
+	![Town of Harmony website homepage](/static/clients/img-town-of-harmony.png)
+</Center>
+
+## About
+
+> Full rebuild of the municipal website for a North Carolina town of roughly 500 people, on a stack the town staff can run without a developer.
+
+Harmony is an incorporated town in Iredell County with no IT department. The old site was a static page that only changed when somebody paid to have it changed, so it mostly didn't change. Meeting agendas went up late or not at all.
+
+The rebuild put every piece of content the town actually updates behind a CMS: notices, events, meeting agendas, council member listings, and resident resources. Town staff post their own agendas now. The emergency notice bar at the top of the page can be published in under a minute, which is the entire reason it exists.
+
+## What it had to get right
+
+**The audience is residents, not the town.** Most municipal sites are organized around the org chart. This one is organized around the four things people actually arrive wanting: report an issue, find an agenda, see what's happening, reach somebody. Those are the first four cards on the page.
+
+**Staff have to be able to use it unsupervised.** Every editable surface is a Payload collection with a form that reads in plain language. No markdown, no shortcodes, no "just paste this embed code."
+
+**It has to stay up without attention.** Postgres over Drizzle, deployed behind a CDN, with transactional mail through Resend. Hosting is ongoing and the site has run without incident.
+
+**Tech stack:** Next.js 16 · React 19 · Payload CMS 3 · Drizzle · Postgres · Tailwind · Resend
+
+---
+
+## More client work
+
+- [All client work &rarr;](/work/clients)
+- [Professional roles &rarr;](/work/companies)

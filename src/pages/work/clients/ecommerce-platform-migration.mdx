@@ -1,0 +1,48 @@
+---
+title: Ecommerce Platform Migration — Regulated Retail
+description: Lacy Morrow migrated a live, revenue-generating storefront off Shopify ahead of a deplatforming risk, with a parity-gated catalog pipeline and verified redirect map.
+---
+
+# Ecommerce Platform Migration (2026)
+<Thick>Regulated retail &middot; ongoing</Thick>
+
+<Callout type="info">
+	Client and brand withheld. Engineering detail only — no client business figures.
+</Callout>
+
+## About
+
+> A live storefront had to move platforms before its category got deplatformed, without losing a product, a URL, or a day of trading.
+
+The owner did not want new features. He wanted to stop being one policy update away from losing his business. His payment provider could drop his category at any time and take the storefront with it, so the job was to move a working, revenue-generating store onto ground he controlled.
+
+## The constraint nobody expects
+
+Most of the advice he had been given was about platforms: this one permits the category, that one doesn't. That advice is close to worthless, and finding out why was the most valuable hour of the engagement.
+
+**A merchant account is not a gateway.** A platform that permits your category is irrelevant if no processor will underwrite it, and a bank-issued merchant account is useless if it cannot reach a gateway the platform actually supports. Sign the wrong account and you own a payment method that cannot be connected to anything.
+
+So the brief that got written first was not a migration plan. It was a one-page constraint brief: what to ask an acquirer before signing, which bridges connect a high-risk account to a supported platform, and what reserve, hold, and chargeback terms to pin down in writing up front. Everything else depended on getting that right.
+
+## Moving a live store without breaking it
+
+137 products, 358 variants, 20 collections, 23 pages, and real order history. The pipeline was built around the assumption that it would be wrong at least once.
+
+**Read-only by construction.** The module that talks to the live store throws on any mutation. Not "we're careful" — the blast radius is zero because the code physically cannot write.
+
+**A parity gate that refuses to proceed.** A diff tool compares intended catalog state against what actually landed and exits non-zero while any discrepancy is unresolved. Import cannot run past an unanswered question.
+
+**Decisions are recorded, not remembered.** Every judgment call lives in a file with who approved it and when. Overrides can only resolve a flagged difference, never introduce a change of their own, which means the audit trail cannot be used to sneak something through.
+
+**Redirects verified before they apply.** The redirect builder checks that every target actually resolves, and refuses to apply while any of them 404s. It found links that were already broken on the original store.
+
+That last part is the recurring theme. A migration audit is the most thorough read anyone will ever do of a store, so it surfaces problems that predate the project: images dead at the source, a vendor name typo splitting one brand into two, duplicate collections, a redirect pointing at an unpublished product. Those findings went back to the client as their own list.
+
+**Tech stack:** Node · Shopify Admin GraphQL API · BigCommerce API · parity-gated migration pipeline
+
+---
+
+## More client work
+
+- [All client work &rarr;](/work/clients)
+- [Professional roles &rarr;](/work/companies)
