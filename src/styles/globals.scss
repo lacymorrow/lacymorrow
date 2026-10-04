@@ -157,3 +157,13 @@
     }
   }
 }
+/* Search results: Nextra renders whole paragraphs as the excerpt (its own
+   line-clamp rule is scoped to a media query and never applies on desktop).
+   Clamp to 2 lines; the highlighted match stays in the text flow. */
+.nextra-search ul .excerpt {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  overflow: hidden;
+}
