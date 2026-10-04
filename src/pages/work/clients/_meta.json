@@ -1,26 +1,34 @@
 {
   "index": {
-    "title": "Web Development",
-    "display": "hidden"
+    "title": "Overview",
+    "theme": {
+      "breadcrumb": false,
+      "toc": false,
+      "layout": "full"
+    }
   },
+  "town-of-harmony": "Town of Harmony",
+  "rcb-construction": "RCB Construction Management",
+  "ecommerce-platform-migration": "Ecommerce Platform Migration",
+  "space-monkey-films": "Space Monkey Films",
+  "susan-morrow": "Susan Morrow",
+  "archive": "Earlier Work, 2010 to 2013",
+  "rae-images": "Rae Images",
+  "boone-community-network": "Boone Community Network",
   "invision": "InVision",
   "innovation-works": "Innovation Works",
   "cosmic-cart": "Cosmic Cart",
-  "space-monkey-films": "Space Monkey Films",
   "mission-film-works": "Mission Film Works",
-  "phase2-productions": "Phase2 Productions",
   "charlies-vision": "Charlie's Vision",
-  "susan-morrow": "Susan Morrow",
   "nancy-nicholson": "Nancy Nicholson",
-  "rae-images": "Rae Images",
+  "all-seasons": "All Seasons",
+  "blue-ribbon-recipes": "Blue Ribbon Recipes",
+  "iac-music": "IAC Music",
+  "phase2-productions": "Phase2 Productions",
   "right-hand-editing": "Right Hand Editing",
   "effective-media-solutions": "Effective Media Solutions",
   "college-career-advisors": "College Career Advisors",
-  "boone-community-network": "Boone Community Network",
-  "all-seasons": "All Seasons",
   "american-comfort": "American Comfort",
-  "blue-ribbon-recipes": "Blue Ribbon Recipes",
   "hinson-mechanical": "Hinson Mechanical",
-  "iac-music": "IAC Music",
   "patterson-heating-air": "Patterson Heating & Air"
 }

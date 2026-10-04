@@ -9,14 +9,14 @@ export interface Zone {
 export const ZONES: Zone[] = [
   {
     name: "Work",
-    desc: "Companies, clients & professional history — GoDaddy, Twilio, startups and more.",
+    desc: "Companies, clients and professional history. Duke Energy, Twilio, Credit Karma and more.",
     route: "/work",
     x: -52,
     z: -24,
   },
   {
     name: "Play",
-    desc: "Open-source packages, experiments, art — the fun stuff.",
+    desc: "Open-source packages, experiments and art. The fun stuff.",
     route: "/play",
     x: 52,
     z: -24,
@@ -29,9 +29,9 @@ export const ZONES: Zone[] = [
     z: 34,
   },
   {
-    name: "Writing",
+    name: "Blog",
     desc: "Blog posts and essays on building software.",
-    route: "/writing",
+    route: "/blog",
     x: -46,
     z: 34,
   },
@@ -44,7 +44,7 @@ export const ZONES: Zone[] = [
   },
   {
     name: "Post Office",
-    desc: "Say hello — the contact form delivers straight to Lacy.",
+    desc: "Say hello. The contact form goes straight to Lacy.",
     route: "/contact",
     x: 0,
     z: 56,
@@ -62,7 +62,7 @@ export const NAV_LINKS: Array<{ label: string; href: string }> = [
   { label: "Home", href: "/" },
   { label: "Work", href: "/work" },
   { label: "Play", href: "/play" },
-  { label: "Writing", href: "/writing" },
+  { label: "Blog", href: "/blog" },
   { label: "About", href: "/about" },
   { label: "Contact", href: "/contact" },
 ];

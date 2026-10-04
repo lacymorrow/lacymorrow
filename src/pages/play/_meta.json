@@ -1,14 +1,13 @@
 {
 	"index": {
-		"title": "Play",
-		"display": "hidden"
+		"title": "Overview"
 	},
-	"juno": "Juno — AI Desktop",
-	"lacy": "lacy — AI Shell",
+	"juno": "Juno, AI Desktop",
+	"lacy": "lacy, AI Shell",
 	"crossover": "CrossOver",
 	"cinematic": "Cinematic",
 	"casper": "Casper WordPress theme",
-	"shipx": "shipx — Release CLI",
+	"shipx": "shipx, Release CLI",
 	"paperclip-hub": "Paperclip Hub",
 	"hitchhikersgalaxy": "Hitchhiker's Guide",
 	"js": "JavaScript libraries",

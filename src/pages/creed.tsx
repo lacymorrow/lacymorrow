@@ -6,10 +6,10 @@ export default function Creed() {
 	return (
 		<>
 			<Head>
-				<title>Creed — Lacy Morrow</title>
+				<title>Creed | Lacy Morrow</title>
 				<meta
 					name="description"
-					content="Words to live by — a quiet stream of aphorisms."
+					content="Words to live by, a quiet stream of aphorisms."
 				/>
 			</Head>
 			<CreedPage />

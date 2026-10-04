@@ -8,9 +8,9 @@ interface StaticLandingProps {
 export const StaticLanding = ({ reason }: StaticLandingProps) => {
   const noticeMap: Record<NonNullable<StaticLandingProps["reason"]>, string> = {
     "reduced-motion":
-      "Reduced-motion preference detected — showing the static landing.",
+      "Reduced-motion preference detected, showing the static landing.",
     "no-webgl":
-      "WebGL isn't available in this browser — showing the static landing.",
+      "WebGL isn't available in this browser, showing the static landing.",
     loading: "Loading the 3D world…",
     "flag-fallback": "",
   };

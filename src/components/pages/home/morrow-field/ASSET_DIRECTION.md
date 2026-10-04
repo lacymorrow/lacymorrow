@@ -8,33 +8,33 @@ Design spec for upgrading Morrow Field from procedural primitives to professiona
 
 ### Reference Mood
 
-The current Morrow Field already has a strong identity: warm desert palette (sand, terracotta, teal, mustard, cream, ink), flat-shaded Lambert materials, playful scale, and a hand-placed "small town" layout. The site itself (lacymorrow.com) uses clean typography, generous whitespace, and a purple/magenta brand accent against neutral backgrounds. The 3D world is a deliberate contrast — warmer, more tactile, like a physical diorama you peer into.
+The current Morrow Field already has a strong identity: warm desert palette (sand, terracotta, teal, mustard, cream, ink), flat-shaded Lambert materials, playful scale, and a hand-placed "small town" layout. The site itself (lacymorrow.com) uses clean typography, generous whitespace, and a purple/magenta brand accent against neutral backgrounds. The 3D world is a deliberate contrast, warmer, more tactile, like a physical diorama you peer into.
 
 ### Direction: Stylized Low-Poly Flat-Shaded
 
-**One sentence:** Clean geometric low-poly with flat shading and the existing warm desert palette — think Monument Valley meets a Wes Anderson stop-motion set, not photorealistic and not voxel/pixel-art.
+**One sentence:** Clean geometric low-poly with flat shading and the existing warm desert palette, think Monument Valley meets a Wes Anderson stop-motion set, not photorealistic and not voxel/pixel-art.
 
 **What this means in practice:**
 
 - **Geometry:** Faceted, visible-polygon aesthetic. Models should have 200-1500 triangles each. No smooth shading, no subdivision surfaces. Chamfered edges are fine; curves come from 6-12 segment cylinders, not smooth meshes.
-- **Materials:** Solid color per face group, no textures. The existing `MeshLambertMaterial` with `flatShading: true` is the target. PBR roughness/metalness maps are out of scope — unlit or Lambert only. This means models should look correct without any texture files, keeping download size to geometry only.
-- **Palette:** Stick to the existing 10-color palette from `game.tsx` (sand, sky, road, terracotta, teal, mustard, cream, ink, blush, pine). Models should be recolored to these values during integration. Source models can have any colors — we remap vertex colors or face materials at load time.
-- **Scale:** Buildings are 6-12 units tall. The drone is ~2 units wide. Ground features are 0.5-3 units. Maintain the current toy-town proportions — the world is meant to feel like a desk-sized diorama, not an architectural rendering.
-- **Tone:** Playful, crafted, portfolio-appropriate. Each building should read as a recognizable metaphor for its section (the current designs — office tower, circus tent, pencil, arcade cabinet, museum, mailbox, control tower — are excellent metaphors and should be preserved).
+- **Materials:** Solid color per face group, no textures. The existing `MeshLambertMaterial` with `flatShading: true` is the target. PBR roughness/metalness maps are out of scope, unlit or Lambert only. This means models should look correct without any texture files, keeping download size to geometry only.
+- **Palette:** Stick to the existing 10-color palette from `game.tsx` (sand, sky, road, terracotta, teal, mustard, cream, ink, blush, pine). Models should be recolored to these values during integration. Source models can have any colors, we remap vertex colors or face materials at load time.
+- **Scale:** Buildings are 6-12 units tall. The drone is ~2 units wide. Ground features are 0.5-3 units. Maintain the current toy-town proportions, the world is meant to feel like a desk-sized diorama, not an architectural rendering.
+- **Tone:** Playful, crafted, portfolio-appropriate. Each building should read as a recognizable metaphor for its section (the current designs, office tower, circus tent, pencil, arcade cabinet, museum, mailbox, control tower, are excellent metaphors and should be preserved).
 
 ### What to avoid
 
 - **Photorealistic PBR:** Requires textures, increases download 10x, clashes with the flat-shaded world.
 - **Voxel/Minecraft aesthetic:** The board specifically called out "blocks and pixels" as the problem. Voxels would lean further into it.
 - **Anime/cel-shaded with outlines:** Requires custom shaders and post-processing, adds complexity without improving coherence.
-- **Hand-painted textures:** Beautiful but wrong register — implies a game, not a portfolio.
+- **Hand-painted textures:** Beautiful but wrong register, implies a game, not a portfolio.
 
 ### Reference images (search terms for board review)
 
-- "low poly flat shaded town" — Google Images / ArtStation
+- "low poly flat shaded town", Google Images / ArtStation
 - "Monument Valley game architecture"
 - "Poly Pizza medieval village" (representative of the asset quality level)
-- "Kenny Assets" — clean flat-shaded game-ready models
+- "Kenny Assets", clean flat-shaded game-ready models
 - "Quaternius low poly nature pack"
 
 ---
@@ -72,7 +72,7 @@ Every prop that currently exists as procedural geometry, mapped to a candidate r
 
 | Prop | Current Geometry | Candidate Source | Asset | License | Est. Tris | Notes |
 |------|-----------------|------------------|-------|---------|-----------|-------|
-| **Gate** (x5) | Torus + 2 cylinder legs | Poly Pizza | "Ring" / "Gate" / "Hoop" | CC0 | ~200 | Or keep procedural — torus is already clean geometry. Modeling adds little value here. **Recommend: keep procedural.** |
+| **Gate** (x5) | Torus + 2 cylinder legs | Poly Pizza | "Ring" / "Gate" / "Hoop" | CC0 | ~200 | Or keep procedural, torus is already clean geometry. Modeling adds little value here. **Recommend: keep procedural.** |
 
 ### Ground Props (dynamic/scenery)
 
@@ -80,19 +80,19 @@ Every prop that currently exists as procedural geometry, mapped to a candidate r
 |------|-------|-----------------|------------------|-------|---------|-----------|-------|
 | **Tree** | ~32 | Cylinder trunk + cone crown | Poly Pizza / Quaternius | "Tree" (low poly pine or deciduous) | CC0 | ~150 | Use 2-3 tree variants for visual variety |
 | **Rock** | ~14 | Dodecahedron | Poly Pizza / Quaternius | "Rock" (low poly) | CC0 | ~80 | Use 2-3 rock variants |
-| **Road cone** | 8 | Cone geometry | Keep procedural | — | — | ~30 | Too simple to justify a model file |
-| **Ball** | 5 | Icosahedron | Keep procedural | — | — | ~20 | Too simple |
-| **Domino** | 6 | Box | Keep procedural | — | — | ~12 | Too simple |
+| **Road cone** | 8 | Cone geometry | Keep procedural | n/a | n/a | ~30 | Too simple to justify a model file |
+| **Ball** | 5 | Icosahedron | Keep procedural | n/a | n/a | ~20 | Too simple |
+| **Domino** | 6 | Box | Keep procedural | n/a | n/a | ~12 | Too simple |
 
 ### Summary of sourcing strategy
 
-**Primary source: [Poly Pizza](https://poly.pizza)** — All assets CC0 (public domain), already optimized for low-poly use, consistent flat-shaded style, free for commercial use, no attribution required (though we should credit). GLB/glTF export available.
+**Primary source: [Poly Pizza](https://poly.pizza)**, All assets CC0 (public domain), already optimized for low-poly use, consistent flat-shaded style, free for commercial use, no attribution required (though we should credit). GLB/glTF export available.
 
-**Secondary: [Quaternius](https://quaternius.com)** — CC0 packs with consistent style. Good for nature props (trees, rocks) if Poly Pizza lacks variety.
+**Secondary: [Quaternius](https://quaternius.com)**, CC0 packs with consistent style. Good for nature props (trees, rocks) if Poly Pizza lacks variety.
 
-**Tertiary: [Kenney](https://kenney.nl)** — CC0 game assets, very clean but may read as "too gamey." Use only if primary sources lack a specific prop.
+**Tertiary: [Kenney](https://kenney.nl)**, CC0 game assets, very clean but may read as "too gamey." Use only if primary sources lack a specific prop.
 
-**Custom: Blender** — Only for the LACY/MORROW letter extrusions, which are brand-specific and can't be sourced.
+**Custom: Blender**, Only for the LACY/MORROW letter extrusions, which are brand-specific and can't be sourced.
 
 **Avoid:** Sketchfab (mixed licenses, often too high-poly), TurboSquid (paid, PBR-oriented), CGTrader (same). Only use Sketchfab as a fallback if a specific prop is unavailable elsewhere, and only CC-BY or CC0 licensed assets.
 
@@ -119,10 +119,10 @@ The current Morrow Field loads zero external model files. The entire geometry is
 
 ### Compression strategy
 
-1. **Draco compression** on all GLBs — typically 70-80% reduction on low-poly geometry. glTF-Transform or gltfpack CLI can batch-process.
-2. **Merge small assets** — pack all tree variants into one GLB, all rocks into one GLB. Reduces HTTP requests and exploits shared geometry compression.
-3. **No textures** — since the style bible mandates solid-color materials with no texture maps, there are zero texture bytes. This is the single biggest budget saver.
-4. **Lazy loading** — all GLBs loaded after first paint via `useEffect` / dynamic import. Three.js `GLTFLoader` + `DRACOLoader` handle this.
+1. **Draco compression** on all GLBs, typically 70-80% reduction on low-poly geometry. glTF-Transform or gltfpack CLI can batch-process.
+2. **Merge small assets**, pack all tree variants into one GLB, all rocks into one GLB. Reduces HTTP requests and exploits shared geometry compression.
+3. **No textures**, since the style bible mandates solid-color materials with no texture maps, there are zero texture bytes. This is the single biggest budget saver.
+4. **Lazy loading**, all GLBs loaded after first paint via `useEffect` / dynamic import. Three.js `GLTFLoader` + `DRACOLoader` handle this.
 
 ### Budget reconciliation
 
@@ -144,7 +144,7 @@ The current Morrow Field loads zero external model files. The entire geometry is
 
 ### Assets that MUST be Draco/Meshopt compressed
 
-All of them. Raw GLB for 200-1500 tri models is wasteful — Draco brings each under 5 KB. This is non-negotiable for the budget.
+All of them. Raw GLB for 200-1500 tri models is wasteful, Draco brings each under 5 KB. This is non-negotiable for the budget.
 
 ---
 
@@ -170,7 +170,7 @@ for each modelProp:
   4. On failure: keep primitive, log warning, do not retry
 ```
 
-This means the world is always complete and navigable — models are a progressive enhancement, not a requirement.
+This means the world is always complete and navigable, models are a progressive enhancement, not a requirement.
 
 ### Specific fallback shapes (preserved from M1)
 
@@ -196,7 +196,7 @@ This means the world is always complete and navigable — models are a progressi
 
 ## Attribution
 
-All 12 GLB models were procedurally generated using Three.js geometry primitives, matching the style bible above. No external assets were sourced — all geometry is original and public domain. Models were Draco-compressed via gltf-transform.
+All 12 GLB models were procedurally generated using Three.js geometry primitives, matching the style bible above. No external assets were sourced, all geometry is original and public domain. Models were Draco-compressed via gltf-transform.
 
 | Model | Source | License | Notes |
 |-------|--------|---------|-------|

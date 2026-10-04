@@ -1,18 +1,17 @@
 {
   "index": {
-    "title": "Professional Highlights",
-    "display": "hidden"
+    "title": "Overview"
   },
   "duke-energy": "Duke Energy",
-  "10up": "10up",
   "credit-karma": "Credit Karma",
-  "swell-energy": "Swell Energy",
-  "twilio": "Twilio",
-  "invitae": "Invitae",
-  "long-game": "Long Game",
   "novant-health": "Novant Health",
+  "swell-energy": "Swell Energy",
   "viasat": "Viasat",
+  "twilio": "Twilio",
+  "long-game": "Long Game",
   "yahoo": "Yahoo!",
+  "10up": "10up",
+  "invitae": "Invitae",
   "appalachian-state-university": "Appalachian State University",
   "red-ventures": "Red Ventures"
 }

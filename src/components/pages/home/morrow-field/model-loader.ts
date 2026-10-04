@@ -69,10 +69,12 @@ const applyFlatShading = (group: THREE.Group): void => {
     mesh.receiveShadow = true;
     const materials = Array.isArray(mesh.material) ? mesh.material : [mesh.material];
     for (const m of materials) {
-      const anyMat = m as THREE.MeshStandardMaterial | THREE.MeshLambertMaterial;
-      if ("flatShading" in anyMat) {
-        (anyMat as { flatShading: boolean }).flatShading = true;
-        (anyMat as { needsUpdate: boolean }).needsUpdate = true;
+      const stdMat = m as THREE.MeshStandardMaterial;
+      if ("flatShading" in stdMat) {
+        stdMat.flatShading = true;
+        stdMat.roughness = Math.max(stdMat.roughness ?? 0.88, 0.82);
+        stdMat.metalness = Math.min(stdMat.metalness ?? 0, 0.05);
+        stdMat.needsUpdate = true;
       }
     }
   });
@@ -146,16 +148,18 @@ export const swapOnLoad = ({
       if (!source) return;
       if (!parent.parent) return;
       const model = source.clone(true) as THREE.Group;
-      model.scale.setScalar(scale);
+      model.scale.setScalar(0);
       parent.add(model);
       primitive.visible = false;
       onLoaded?.(model);
       const startedAt = performance.now();
-      const durMs = 220;
+      const durMs = 400;
       const tick = () => {
         const t = Math.min(1, (performance.now() - startedAt) / durMs);
-        const eased = 1 - (1 - t) * (1 - t);
-        model.scale.setScalar(scale * (0.9 + 0.1 * eased));
+        const s = t < 1
+          ? 1 - Math.pow(1 - t, 3) * Math.cos(t * Math.PI * 0.8)
+          : 1;
+        model.scale.setScalar(scale * s);
         if (t < 1) requestAnimationFrame(tick);
       };
       requestAnimationFrame(tick);

@@ -1,7 +1,12 @@
 {
   "index": {
-    "title": "Work",
-    "display": "hidden"
+    "title": "Overview",
+    "theme": {
+      "breadcrumb": false,
+      "toc": false,
+      "pagination": false,
+      "layout": "full"
+    }
   },
   "companies": {
     "title": "Professional Highlights",

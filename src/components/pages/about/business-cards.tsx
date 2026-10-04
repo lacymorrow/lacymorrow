@@ -29,28 +29,28 @@ const cards: BusinessCard[] = [
     id: "invitae-connected",
     company: "Invitae",
     role: "Web Development",
-    era: "2015–2019",
+    era: "2015-2019",
     front: "/static/business-cards/invitae-back-connected.jpg",
     back: "/static/business-cards/invitae-front.jpg",
-    note: "Design №1 — “we are all connected”",
+    note: "Design №1: “we are all connected”",
   },
   {
     id: "invitae-humanity",
     company: "Invitae",
     role: "Web Development",
-    era: "2015–2019",
+    era: "2015-2019",
     front: "/static/business-cards/invitae-back-humanity.jpg",
     back: "/static/business-cards/invitae-front.jpg",
-    note: "Design №2 — “genetics unites humanity”",
+    note: "Design №2: “genetics unites humanity”",
   },
   {
     id: "invitae-path",
     company: "Invitae",
     role: "Web Development",
-    era: "2015–2019",
+    era: "2015-2019",
     front: "/static/business-cards/invitae-back-path.jpg",
     back: "/static/business-cards/invitae-front.jpg",
-    note: "Design №3 — “a new path on our genetic journey”",
+    note: "Design №3: “a new path on our genetic journey”",
   },
   {
     id: "freelance",
@@ -59,7 +59,7 @@ const cards: BusinessCard[] = [
     era: "Early 2010s",
     front: "/static/business-cards/web-developer.jpg",
     back: "/static/business-cards/computer-consultant.jpg",
-    note: "One card, two titles — Web Developer up front, Computer Consultant on the flip side",
+    note: "One card, two titles: Web Developer up front, Computer Consultant on the flip side",
   },
 ];
 
@@ -108,7 +108,7 @@ function FlipCard({ card, canHover }: { card: BusinessCard; canHover: boolean })
           >
             <Image
               src={card.front}
-              alt={`${card.company} — ${card.role}`}
+              alt={`${card.company}, ${card.role}`}
               fill
               className="object-cover"
               sizes="(max-width: 768px) 100vw, 50vw"
