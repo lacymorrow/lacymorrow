@@ -49,7 +49,7 @@ export const projects: Project[] = [
   {
     name: "shipx",
     description:
-      "Interactive release CLI — bump, tag, publish, and ship from one command.",
+      "Interactive release CLI. Bump, tag, publish, and ship from one command.",
     url: "https://github.com/lacymorrow/shipx",
     status: "active",
     section: "building",

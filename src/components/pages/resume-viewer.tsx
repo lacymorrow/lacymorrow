@@ -13,7 +13,7 @@ const DateRange = ({
   endDate?: string;
 }) => (
   <span className="text-muted-foreground whitespace-nowrap text-sm">
-    {formatDate(startDate)} &mdash; {endDate ? formatDate(endDate) : "Present"}
+    {formatDate(startDate)} to {endDate ? formatDate(endDate) : "Present"}
   </span>
 );
 
@@ -155,7 +155,7 @@ export const ResumeViewer = () => {
             >
               <p>{ref.reference}</p>
               <footer className="text-muted-foreground mt-1 not-italic">
-                &mdash; {ref.name}
+                {ref.name}
               </footer>
             </blockquote>
           ))}

@@ -37,7 +37,7 @@ const CurrentlyWorking = () => {
     },
     {
       title: "shipx",
-      description: "Interactive release CLI — bump, tag, publish, and ship from one command.",
+      description: "Interactive release CLI. Bump, tag, publish, and ship from one command.",
       href: "https://github.com/lacymorrow/shipx",
     },
     {

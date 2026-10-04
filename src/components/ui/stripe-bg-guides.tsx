@@ -71,7 +71,7 @@ export function StripeBgGuides({
   // never have to sync state when `columns`/`randomize`/`animated` change.
   const [randomColumns, setRandomColumns] = useState<boolean[] | null>(null);
 
-  // Depend on the column count, not the `columns` array identity — the array
+  // Depend on the column count, not the `columns` array identity. The array
   // is rebuilt on every resize event, which would otherwise restart the
   // randomize interval continuously while resizing.
   const totalColumns = columns.length;

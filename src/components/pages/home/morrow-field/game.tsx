@@ -208,7 +208,7 @@ const createEngine = (opts: EngineOptions) => {
     scene.add(sp);
   };
 
-  // Work — stepped office tower with mustard sign
+  // Work: stepped office tower with mustard sign
   {
     const g = new THREE.Group();
     const prim = new THREE.Group();
@@ -236,7 +236,7 @@ const createEngine = (opts: EngineOptions) => {
     solid(z.x, z.z, 8.5);
     addZoneLabel(z, 19.5);
   }
-  // Play — striped big top + blocks
+  // Play: striped big top + blocks
   {
     const g = new THREE.Group();
     const prim = new THREE.Group();
@@ -259,7 +259,7 @@ const createEngine = (opts: EngineOptions) => {
     solid(z.x, z.z, 8);
     addZoneLabel(z, 15.5);
   }
-  // Flash Arcade — cabinet-shaped building with marquee
+  // Flash Arcade: cabinet-shaped building with marquee
   {
     const g = new THREE.Group();
     const prim = new THREE.Group();
@@ -283,7 +283,7 @@ const createEngine = (opts: EngineOptions) => {
     solid(z.x, z.z, 7.5);
     addZoneLabel(z, 12.8);
   }
-  // Writing — giant pencil + stack of paper
+  // Writing: giant pencil + stack of paper
   {
     const g = new THREE.Group();
     const prim = new THREE.Group();
@@ -318,7 +318,7 @@ const createEngine = (opts: EngineOptions) => {
     solid(z.x, z.z, 6.5);
     addZoneLabel(z, 13);
   }
-  // Archive — columned museum
+  // Archive: columned museum
   {
     const g = new THREE.Group();
     const prim = new THREE.Group();
@@ -344,7 +344,7 @@ const createEngine = (opts: EngineOptions) => {
     solid(z.x, z.z, 9);
     addZoneLabel(z, 14.5);
   }
-  // Post Office — mailbox on a post
+  // Post Office: mailbox on a post
   {
     const g = new THREE.Group();
     const prim = new THREE.Group();
@@ -375,7 +375,7 @@ const createEngine = (opts: EngineOptions) => {
     solid(z.x, z.z, 5);
     addZoneLabel(z, 13.5);
   }
-  // Airfield — tower, helipad, wind sock
+  // Airfield: tower, helipad, wind sock
   {
     const g = new THREE.Group();
     const prim = new THREE.Group();
@@ -837,7 +837,7 @@ const createEngine = (opts: EngineOptions) => {
         onGateCount(gateCount, gates.length);
         if (gateCount >= gates.length) {
           onToast(
-            "🏁 CLEAN RUN! Unlocked: the drone reel on /work — nice flying.",
+            "🏁 CLEAN RUN! Unlocked: the drone reel on /work. Nice flying.",
             4000,
           );
         } else {

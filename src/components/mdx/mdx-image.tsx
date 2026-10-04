@@ -34,7 +34,7 @@ export function MdxImage({ src: rawSrc, alt = "", title, className, ...props }: 
   const src = resolveSrc(rawSrc);
   if (!src) return null;
 
-  // Webpack-bundled and external images: render as plain <img> — no WebP rewrite
+  // Webpack-bundled and external images: render as plain <img>, no WebP rewrite
   if (isExternal(src) || isBundled(src)) {
     return (
       // eslint-disable-next-line @next/next/no-img-element

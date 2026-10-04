@@ -7,7 +7,7 @@ import Silk from '@/components/ui/react-bits/silk';
 import { creed } from '@/data/creed';
 import { CreedLine } from './creed-line';
 
-// Variable font — weight 200 is applied via the .creed-line CSS rule.
+// Variable font: weight 200 is applied via the .creed-line CSS rule.
 const inter = Inter({
 	subsets: ['latin'],
 	display: 'swap',
@@ -30,7 +30,7 @@ const useIsMobile = () => {
 	return isMobile;
 };
 
-// False during SSR and hydration, true after — so markup that depends on
+// False during SSR and hydration, true after, so markup that depends on
 // client-only values stays identical between server and client.
 const useMounted = () =>
 	useSyncExternalStore(
