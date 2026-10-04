@@ -111,8 +111,8 @@ const PROJECTS: Project[] = [
 	},
 ];
 
-const NAV = ["Work", "Play", "Writing", "Contact"];
-const FOOTER_NAV = ["Work", "Play", "Writing", "About", "Contact"];
+const NAV = ["Work", "Play", "Blog", "Contact"];
+const FOOTER_NAV = ["Work", "Play", "Blog", "About", "Contact"];
 
 export function WorkshopHome() {
 	const [roleIndex, setRoleIndex] = useState(0);

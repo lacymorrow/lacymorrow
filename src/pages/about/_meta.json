@@ -22,10 +22,11 @@
     }
   },
   "versions": {
-    "title": "Time Machine",
+    "title": "Previous Versions",
     "theme": {
       "pagination": false,
-      "typesetting": "article"
+      "toc": false,
+      "layout": "full"
     }
   },
   "cards": {
