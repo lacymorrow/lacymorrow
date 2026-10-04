@@ -29,7 +29,7 @@ const themeConfig = {
 		const { frontMatter } = useConfig()
 		const pageDescription = frontMatter?.description || description
 		if (asPath === '/') return { titleTemplate: title, description: pageDescription }
-		return { titleTemplate: `%s – ${title}`, description: pageDescription }
+		return { titleTemplate: `%s · ${title}`, description: pageDescription }
 	},
 	project: { link: githubUrl },
 	chat: {
@@ -97,7 +97,7 @@ const themeConfig = {
 				<meta name="twitter:image" content={socialCard} />
 				<meta name="twitter:site:domain" content={ogUrl.replace('https://', '')} />
 				<meta name="twitter:url" content={canonicalUrl} />
-				<meta property="og:title" content={pageTitle ? `${pageTitle} – ${title}` : title} />
+				<meta property="og:title" content={pageTitle ? `${pageTitle} · ${title}` : title} />
 				<meta property="og:image" content={socialCard} />
 				<meta property="og:url" content={canonicalUrl} />
 				<meta property="og:type" content="website" />
