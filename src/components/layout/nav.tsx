@@ -3,7 +3,7 @@ import Link from "next/link";
 const navigation = [
   { name: "Work", href: "/work" },
   { name: "Play", href: "/play" },
-  { name: "Writing", href: "/writing" },
+  { name: "Blog", href: "/blog" },
   { name: "About", href: "/about" },
   { name: "Contact", href: "/contact" },
   { name: "Colophon", href: "/about/colophon" },
@@ -13,7 +13,7 @@ const navigation = [
 
 export const Nav = () => {
   return (
-    <div className="nav flex items-center">
+    <div className="nav flex flex-wrap items-center justify-center">
       {navigation.map((item) => (
         <Link
           key={crypto.randomUUID()}
