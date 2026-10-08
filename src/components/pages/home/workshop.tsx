@@ -16,6 +16,7 @@ interface Project {
 	href: string;
 	featured?: boolean;
 	accent?: string;
+	tag?: string;
 }
 
 const PROJECTS: Project[] = [
@@ -44,6 +45,7 @@ const PROJECTS: Project[] = [
 		href: "https://junebug.ai",
 		featured: true,
 		accent: "#F59E0B",
+		tag: "MCP",
 	},
 	{
 		title: "Vibe Rehab",
@@ -202,13 +204,18 @@ export function WorkshopHome() {
 								target={isExternal ? "_blank" : undefined}
 								rel={isExternal ? "noopener noreferrer" : undefined}
 								className={[
-									"group rounded-lg border border-zinc-800/60 bg-zinc-900/40 transition-all duration-200",
+									"group relative rounded-lg border border-zinc-800/60 bg-zinc-900/40 transition-all duration-200",
 									"hover:border-zinc-700 hover:bg-zinc-900/80",
 									p.featured
 										? "col-span-1 p-5 sm:col-span-2 sm:p-6"
 										: "p-4",
 								].join(" ")}
 							>
+								{p.tag && (
+									<span className="absolute right-3 top-3 rounded-full border border-zinc-700/70 px-2 py-0.5 font-mono text-[9px] uppercase tracking-[0.15em] text-zinc-400">
+										{p.tag}
+									</span>
+								)}
 								{p.featured && p.accent && (
 									<div
 										className="mb-3 h-px w-8 rounded-full opacity-80"
