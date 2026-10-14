@@ -25,11 +25,11 @@ void main(){
   vec3 col=BG;
   for(int i=0;i<4;i++){
     float fi=float(i);float y=p.y;
-    float cx=asp*(.60+.07*fi)+(1.-y)*asp*.30+.06*sin(y*2.4+t*.30+fi*1.9);
-    float w=.16+.12*(1.-y)+.03*sin(t*.25+fi*2.3);
+    float cx=asp*(.50+.07*fi)+(1.-y)*asp*.32+.06*sin(y*2.4+t*.30+fi*1.9);
+    float w=.22+.16*(1.-y)+.03*sin(t*.25+fi*2.3);
     float s=(p.x-cx)/w;
     float m=smoothstep(1.,.15,abs(s))*(.55+.12*fi);
-    float str=.93+.07*sin(s*90.+y*9.+fi*3.1+t*.5);
+    float str=.82+.18*sin(s*70.+y*9.+fi*3.1+t*.5);
     col=mix(col,pal(s*.5+.5+fi*.1-.15)*str,m);
   }
   col+=grain(gl_FragCoord.xy)*.035;

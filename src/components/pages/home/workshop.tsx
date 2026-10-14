@@ -147,7 +147,7 @@ export function WorkshopHome() {
 			<section className="relative left-1/2 isolate flex min-h-[85vh] w-screen -translate-x-1/2 items-center overflow-hidden">
 				<RibbonShader />
 				<div className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(70%_60%_at_15%_50%,rgba(9,9,11,0.7),transparent)] md:hidden" />
-				<div className="pointer-events-none absolute inset-x-0 bottom-0 -z-10 h-48 bg-gradient-to-t from-[#09090b] to-transparent" />
+				<div className="pointer-events-none absolute inset-x-0 bottom-0 -z-10 h-16 bg-gradient-to-t from-[#09090b] to-transparent" />
 
 				<nav className="absolute right-4 top-5 z-10 flex gap-5 sm:right-8 sm:top-8 sm:gap-7">
 					{NAV.map((name) => (
