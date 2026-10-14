@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import Silk from "@/components/ui/react-bits/silk";
+import { RibbonShader, SunriseShader } from "@/components/ui/shaders";
 import { FleetSubscribe } from "@/components/pages/home/aurora/fleet-subscribe";
 import Socials from "@/components/layout/socials";
 
@@ -139,43 +139,36 @@ export function WorkshopHome() {
 	return (
 		<div className="dark">
 			<style>{`
-				body { background: #09090b !important; }
+				body { background: #09090b !important; overflow-x: clip; }
+				.nextra-content .nx-mt-16:last-child { display: none; }
 			`}</style>
 
 			{/* Hero */}
-			<section className="relative flex min-h-[85vh] items-center justify-center overflow-hidden">
-				<div className="absolute inset-0 opacity-25">
-					<Silk
-						speed={2}
-						scale={1}
-						colors={["#4C3A5E", "#8B4580", "#A03050"]}
-						colorMix={0.8}
-						noiseIntensity={1.2}
-						rotation={0}
-					/>
-				</div>
-				<div className="pointer-events-none absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-[#09090b] to-transparent" />
+			<section className="relative left-1/2 isolate flex min-h-[85vh] w-screen -translate-x-1/2 items-center overflow-hidden">
+				<RibbonShader />
+				<div className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(70%_60%_at_15%_50%,rgba(9,9,11,0.7),transparent)] md:hidden" />
+				<div className="pointer-events-none absolute inset-x-0 bottom-0 -z-10 h-16 bg-gradient-to-t from-[#09090b] to-transparent" />
 
 				<nav className="absolute right-4 top-5 z-10 flex gap-5 sm:right-8 sm:top-8 sm:gap-7">
 					{NAV.map((name) => (
 						<a
 							key={name}
 							href={`/${name.toLowerCase()}`}
-							className="font-mono text-[11px] uppercase tracking-[0.15em] text-zinc-600 transition-colors hover:text-zinc-300"
+							className="font-mono text-[11px] uppercase tracking-[0.15em] text-white/75 transition-colors hover:text-white"
 						>
 							{name}
 						</a>
 					))}
 				</nav>
 
-				<div className="relative z-10 px-6 text-center">
+				<div className="relative z-10 mx-auto w-full max-w-6xl px-6 sm:px-10">
 					<h1 className="text-5xl font-bold tracking-[-0.04em] text-white sm:text-6xl md:text-7xl lg:text-8xl xl:text-[7rem]">
 						Lacy Morrow
 					</h1>
-					<div className="mx-auto mt-5 h-6 overflow-hidden">
+					<div className="mt-5 h-6 overflow-hidden">
 						<p
 							className={[
-								"font-mono text-sm tracking-wide text-zinc-500 transition-all duration-300",
+								"font-mono text-sm tracking-wide text-zinc-400 transition-all duration-300",
 								phase === "exit" && "-translate-y-full opacity-0",
 								phase === "enter" && "translate-y-full opacity-0 !duration-0",
 								phase === "idle" && "translate-y-0 opacity-100",
@@ -246,16 +239,9 @@ export function WorkshopHome() {
 				</div>
 			</section>
 
-			{/* Fleet Log + Footer */}
-			<footer className="px-6 pb-12">
-				<div className="mx-auto max-w-md text-center">
-					<p className="mb-4 font-mono text-xs text-zinc-600">
-						Thirteen agents run the ops behind everything here.
-					</p>
-					<FleetSubscribe source="home-workshop" />
-				</div>
-
-				<div className="mx-auto mt-16 flex max-w-6xl flex-wrap items-center justify-between gap-4 border-t border-zinc-800/40 pt-6">
+			{/* Footer + Fleet Log sunrise */}
+			<footer>
+				<div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-4 border-t border-zinc-800/40 px-6 pt-6">
 					<nav className="flex flex-wrap gap-4 sm:gap-5">
 						{FOOTER_NAV.map((name) => (
 							<a
@@ -270,14 +256,21 @@ export function WorkshopHome() {
 					<Socials />
 				</div>
 
-				<div className="mt-8 text-center">
-					<a
-						href="/?grove=1"
-						className="font-mono text-[11px] uppercase tracking-[0.12em] text-zinc-700 transition-colors hover:text-zinc-400"
-					>
-						&#9992; fly the 3d world
-					</a>
-				</div>
+				<section className="relative left-1/2 isolate mt-16 w-screen -translate-x-1/2 overflow-hidden px-6 pb-56 pt-24 sm:pb-72">
+					<SunriseShader />
+					<div className="mx-auto flex max-w-md flex-col items-center text-center">
+						<p className="mb-4 font-mono text-xs text-zinc-300">
+							Thirteen agents run the ops behind everything here.
+						</p>
+						<FleetSubscribe source="home-workshop" />
+						<a
+							href="/?grove=1"
+							className="mt-8 font-mono text-[11px] uppercase tracking-[0.12em] text-zinc-400 transition-colors hover:text-white"
+						>
+							&#9992; fly the 3d world
+						</a>
+					</div>
+				</section>
 			</footer>
 		</div>
 	);
