@@ -65,6 +65,11 @@ const PROJECTS: Project[] = [
 		accent: "#3B82F6",
 	},
 	{
+		title: "Prescription Finder",
+		description: "Calls nearby pharmacies to find your meds in stock.",
+		href: "https://prescriptionfinder.app",
+	},
+	{
 		title: "Paperclip Hub",
 		description: "Plugin hub for Paperclip AI agents.",
 		href: "https://cliphub.fyi",
