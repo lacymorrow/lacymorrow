@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { RibbonShader, SunriseShader } from "@/components/ui/shaders";
 import { FleetSubscribe } from "@/components/pages/home/aurora/fleet-subscribe";
 import Socials from "@/components/layout/socials";
+import MoreByLacy from "@/components/layout/more-by-lacy";
 
 const ROLES = [
 	"software engineer",
@@ -259,6 +260,7 @@ export function WorkshopHome() {
 						))}
 					</nav>
 					<Socials />
+					<MoreByLacy className="basis-full font-mono text-[11px] text-zinc-600" />
 				</div>
 
 				<section className="relative left-1/2 isolate mt-16 w-screen -translate-x-1/2 overflow-hidden px-6 pb-56 pt-24 sm:pb-72">
