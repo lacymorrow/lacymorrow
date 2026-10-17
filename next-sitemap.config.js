@@ -10,6 +10,8 @@ module.exports = {
     '/sink',
     '/lacy',
     '/404',
+    // Prototype sheet, not linked from the nav yet
+    '/blueprint',
     // Archive pages: kept for permalinks but not part of the active site
     '/about/archive',
     '/about/archive/*',
