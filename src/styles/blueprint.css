@@ -1,0 +1,442 @@
+/* /blueprint — a drafting sheet whose subject is a person, not a house. */
+
+.bp-root {
+	--bp-ink: rgba(214, 238, 255, 0.74);
+	--bp-ink-soft: rgba(214, 238, 255, 0.34);
+	--bp-ink-faint: rgba(214, 238, 255, 0.14);
+	--bp-accent: #7ee3ff;
+	--bp-mono: ui-monospace, "SFMono-Regular", "SF Mono", Menlo, Consolas,
+		monospace;
+
+	position: relative;
+	min-height: 100vh;
+	padding: 4rem 1.5rem 5rem;
+	background-color: #052338;
+	background-image:
+		linear-gradient(var(--bp-ink-faint) 1px, transparent 1px),
+		linear-gradient(90deg, var(--bp-ink-faint) 1px, transparent 1px),
+		radial-gradient(ellipse at 50% 0%, #0a3c5c 0%, transparent 70%);
+	background-size:
+		56px 56px,
+		56px 56px,
+		100% 100%;
+	color: var(--bp-ink);
+	font-family: var(--bp-mono);
+}
+
+.bp-escape {
+	position: absolute;
+	top: 1.25rem;
+	left: 1.5rem;
+	font-size: 0.6875rem;
+	letter-spacing: 0.14em;
+	text-transform: uppercase;
+	color: var(--bp-ink);
+	opacity: 0.45;
+	text-decoration: none;
+	transition: opacity 300ms ease;
+}
+
+.bp-escape:hover,
+.bp-escape:focus-visible {
+	opacity: 0.9;
+}
+
+/* The sheet itself: a bordered plate with a second rule inside it. */
+.bp-sheet {
+	position: relative;
+	max-width: 1120px;
+	margin: 0 auto;
+	padding: clamp(1.5rem, 4vw, 3rem);
+	border: 1px solid var(--bp-ink-soft);
+	outline: 1px solid var(--bp-ink-faint);
+	outline-offset: 7px;
+}
+
+.bp-head {
+	text-align: center;
+}
+
+.bp-stamp,
+.bp-keynote-mark,
+.bp-dimension-label,
+.bp-field dt {
+	font-size: 0.625rem;
+	letter-spacing: 0.22em;
+	text-transform: uppercase;
+	color: var(--bp-ink-soft);
+}
+
+.bp-title {
+	margin: 0.75rem 0 0;
+	font-size: clamp(1.5rem, 4.5vw, 2.25rem);
+	font-weight: 400;
+	letter-spacing: 0.06em;
+	text-transform: uppercase;
+	color: rgba(235, 248, 255, 0.95);
+}
+
+.bp-premise {
+	margin: 0.75rem auto 0;
+	max-width: 34rem;
+	font-size: 0.875rem;
+	line-height: 1.7;
+	color: var(--bp-ink);
+	opacity: 0.8;
+}
+
+/* Drawing, with the overall dimension label running up its left edge, beside
+ * the dimension line the drawing puts there. */
+.bp-figure {
+	display: flex;
+	flex-direction: row-reverse;
+	align-items: stretch;
+	gap: 0.5rem;
+	margin: clamp(2rem, 5vw, 3.5rem) 0 0;
+}
+
+.bp-drawing {
+	display: block;
+	flex: 1 1 auto;
+	width: 100%;
+	max-width: 720px;
+	height: auto;
+	margin: 0 auto;
+}
+
+.bp-dimension-label {
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+	align-items: center;
+	justify-content: center;
+	writing-mode: vertical-rl;
+	transform: rotate(180deg);
+	white-space: nowrap;
+}
+
+.bp-dimension-measure {
+	color: var(--bp-accent);
+	opacity: 0.8;
+}
+
+/* Every stroke stays a hairline, whatever size the drawing renders at. Fill is
+ * set per class rather than blanket-cleared here, because a blanket rule would
+ * outrank both the shape classes and the `fill` attribute carrying the hatch. */
+.bp-drawing line,
+.bp-drawing path,
+.bp-drawing ellipse,
+.bp-drawing polygon,
+.bp-drawing rect,
+.bp-drawing circle {
+	vector-effect: non-scaling-stroke;
+}
+
+.bp-line,
+.bp-line-soft,
+.bp-ghost,
+.bp-cut,
+.bp-plate,
+.bp-accent,
+.bp-sightline,
+.bp-sightline-soft,
+.bp-dimension,
+.bp-dimension-tick,
+.bp-leader,
+.bp-bubble,
+.bp-hatch-line {
+	fill: none;
+}
+
+.bp-line,
+.bp-plate {
+	stroke: var(--bp-ink);
+	stroke-width: 1.25;
+}
+
+.bp-line-soft {
+	stroke: var(--bp-ink-soft);
+	stroke-width: 1;
+}
+
+.bp-ghost {
+	stroke: var(--bp-ink-faint);
+	stroke-width: 1;
+	stroke-dasharray: 2 9;
+}
+
+.bp-cut {
+	stroke: rgba(235, 248, 255, 0.92);
+	stroke-width: 2.25;
+}
+
+.bp-cut-fill {
+	stroke: none;
+}
+
+.bp-hatch-line {
+	stroke: rgba(214, 238, 255, 0.45);
+	stroke-width: 1;
+}
+
+.bp-accent,
+.bp-sightline {
+	stroke: var(--bp-accent);
+	stroke-width: 1.5;
+}
+
+.bp-sightline,
+.bp-sightline-soft {
+	stroke-dasharray: 5 6;
+}
+
+.bp-sightline-soft {
+	stroke: var(--bp-ink-soft);
+	stroke-width: 1.25;
+}
+
+.bp-pupil,
+.bp-pupil-accent {
+	stroke: none;
+}
+
+.bp-pupil {
+	fill: var(--bp-ink);
+}
+
+.bp-pupil-accent {
+	fill: var(--bp-accent);
+}
+
+.bp-joint {
+	stroke: var(--bp-ink);
+	stroke-width: 1.25;
+	fill: #052338;
+}
+
+.bp-arrowhead {
+	fill: var(--bp-accent);
+	stroke: none;
+}
+
+.bp-dimension,
+.bp-dimension-tick {
+	stroke: var(--bp-ink-soft);
+	stroke-width: 1;
+}
+
+.bp-node {
+	fill: var(--bp-accent);
+	stroke: none;
+}
+
+.bp-leader {
+	stroke: var(--bp-ink-soft);
+	stroke-width: 1;
+}
+
+.bp-leader-dot,
+.bp-bubble {
+	stroke: var(--bp-ink);
+	stroke-width: 1.25;
+}
+
+.bp-leader-dot {
+	fill: var(--bp-ink);
+}
+
+.bp-bubble-number {
+	fill: rgba(235, 248, 255, 0.95);
+	font-family: var(--bp-mono);
+	font-size: 26px;
+	text-anchor: middle;
+	dominant-baseline: central;
+}
+
+/* Keynotes carry the content, so they stay readable at any width. */
+.bp-keynotes {
+	margin-top: clamp(2.5rem, 6vw, 4rem);
+	padding-top: 2rem;
+	border-top: 1px solid var(--bp-ink-faint);
+}
+
+.bp-keynotes-heading {
+	margin: 0 0 2rem;
+	font-size: 0.625rem;
+	font-weight: 400;
+	letter-spacing: 0.22em;
+	text-transform: uppercase;
+	color: var(--bp-ink-soft);
+}
+
+.bp-keynote-list {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: 2.5rem 3rem;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.bp-keynote-mark {
+	display: flex;
+	align-items: center;
+	gap: 0.75rem;
+	margin: 0;
+}
+
+.bp-keynote-number {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 1.625rem;
+	height: 1.625rem;
+	border: 1px solid var(--bp-ink);
+	border-radius: 50%;
+	font-size: 0.75rem;
+	color: rgba(235, 248, 255, 0.95);
+}
+
+.bp-keynote-system {
+	color: var(--bp-accent);
+	opacity: 0.8;
+}
+
+.bp-keynote-title {
+	margin: 0.875rem 0 0.75rem;
+	font-size: 1.0625rem;
+	font-weight: 400;
+	letter-spacing: 0.02em;
+	color: rgba(235, 248, 255, 0.95);
+}
+
+.bp-keynote-items {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	font-size: 0.8125rem;
+	line-height: 1.75;
+	opacity: 0.8;
+}
+
+.bp-keynote-items li {
+	padding-left: 1.125rem;
+	text-indent: -1.125rem;
+}
+
+.bp-keynote-items li::before {
+	content: "— ";
+	color: var(--bp-ink-soft);
+}
+
+/* One action on the sheet. */
+.bp-action {
+	margin-top: clamp(2.5rem, 6vw, 4rem);
+	text-align: center;
+}
+
+.bp-button {
+	display: inline-block;
+	padding: 0.875rem 2rem;
+	border: 1px solid var(--bp-accent);
+	font-size: 0.6875rem;
+	letter-spacing: 0.22em;
+	text-transform: uppercase;
+	color: var(--bp-accent);
+	text-decoration: none;
+	transition:
+		background-color 250ms ease,
+		color 250ms ease;
+}
+
+.bp-button:hover,
+.bp-button:focus-visible {
+	background-color: var(--bp-accent);
+	color: #052338;
+}
+
+.bp-title-block {
+	margin-top: clamp(2.5rem, 6vw, 4rem);
+	margin-left: auto;
+	max-width: 24rem;
+	border: 1px solid var(--bp-ink-soft);
+}
+
+.bp-title-block dl {
+	margin: 0;
+}
+
+.bp-field {
+	display: flex;
+	justify-content: space-between;
+	gap: 1rem;
+	padding: 0.5rem 0.875rem;
+	border-bottom: 1px solid var(--bp-ink-faint);
+}
+
+.bp-field:last-child {
+	border-bottom: none;
+}
+
+.bp-field dd {
+	margin: 0;
+	font-size: 0.6875rem;
+	letter-spacing: 0.04em;
+	text-align: right;
+	color: rgba(235, 248, 255, 0.9);
+}
+
+/* The sheet assembles itself once, bottom plate last. */
+.bp-layer {
+	opacity: 0;
+	animation: bp-settle 700ms ease forwards;
+}
+
+@keyframes bp-settle {
+	from {
+		opacity: 0;
+		transform: translateY(-14px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+@media (max-width: 900px) {
+	.bp-keynote-list {
+		grid-template-columns: minmax(0, 1fr);
+		gap: 2rem;
+	}
+
+	.bp-title-block {
+		margin-left: 0;
+		max-width: none;
+	}
+}
+
+@media (max-width: 640px) {
+	.bp-root {
+		padding: 3.5rem 1rem 3rem;
+	}
+
+	/* Vertical type is too cramped to read on a phone. */
+	.bp-figure {
+		flex-direction: column;
+		gap: 1.25rem;
+	}
+
+	.bp-dimension-label {
+		flex-direction: row;
+		gap: 0.75rem;
+		writing-mode: horizontal-tb;
+		transform: none;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.bp-layer {
+		opacity: 1;
+		animation: none;
+	}
+}
