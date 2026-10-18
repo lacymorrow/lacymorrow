@@ -1,8 +1,14 @@
 /**
  * The creed: words to live by, rendered one at a time at /creed.
  *
- * Phase 1 authoring flow: add a line to this array, commit, ship.
  * Order matters. Lines appear top to bottom in the order listed here.
+ *
+ * To add one:
+ *   At a keyboard, add a line below, commit, ship.
+ *   Away from one, comment the line on LAC-2636 and the Founding Engineer
+ *   appends it here, opens a PR, merges, and verifies it live.
+ *
+ * Both paths are git-tracked and reviewed. No CLI, no database (LAC-2636).
  */
 export const creed: string[] = [
 	'Listen to your body',
