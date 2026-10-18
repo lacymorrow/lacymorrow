@@ -16,10 +16,8 @@
   },
   "resume": {
     "title": "Resume",
-    "theme": {
-      "pagination": false,
-      "typesetting": "article"
-    }
+    "href": "https://resume.lacy.sh",
+    "newWindow": true
   },
   "versions": {
     "title": "Previous Versions",
