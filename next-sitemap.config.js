@@ -10,6 +10,9 @@ module.exports = {
     '/sink',
     '/lacy',
     '/404',
+    // Redirects off-site to resume.lacy.sh (LAC-758), so it must not be a
+    // sitemap entry -- a sitemap URL that 3XXes is a crawl error.
+    '/about/resume',
     // Prototype sheet, not linked from the nav yet
     '/blueprint',
     // Archive pages: kept for permalinks but not part of the active site

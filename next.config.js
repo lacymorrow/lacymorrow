@@ -14,6 +14,19 @@ const nextConfig = {
   // Turbopack is default in Next.js 16+
   turbopack: {},
 
+  // Legacy static snapshots of the old site live in public/v2, public/v3 and
+  // public/admin. They are plain HTML, so the Nextra head never runs and they
+  // ship no canonical tag -- Google sees them as duplicates of the live pages
+  // and reports "Duplicate without user-selected canonical" (LAC-3927).
+  // noindex instead of a robots.txt Disallow: Google has to be able to crawl
+  // the page to act on the header. Permalinks keep working either way.
+  headers: async () => [
+    {
+      source: "/:path(v2|v3|admin)/:rest*",
+      headers: [{ key: "X-Robots-Tag", value: "noindex, nofollow" }],
+    },
+  ],
+
   images: {
     // For Static Site Generation
     // unoptimized: true,
@@ -93,7 +106,7 @@ const nextConfig = {
     },
     {
       source: "/casper",
-      destination: "https://casper.lacymorrow.com",
+      destination: "/play/casper",
       permanent: true,
     },
     {
