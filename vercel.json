@@ -19,12 +19,17 @@
           "value": "resume.lacymorrow.com"
         }
       ],
-      "destination": "https://lacymorrow.com/about/resume",
+      "destination": "https://resume.lacy.sh",
+      "permanent": true
+    },
+    {
+      "source": "/about/resume",
+      "destination": "https://resume.lacy.sh",
       "permanent": true
     },
     {
       "source": "/resume",
-      "destination": "/about/resume",
+      "destination": "https://resume.lacy.sh",
       "permanent": true
     }
   ]
