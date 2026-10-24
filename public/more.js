@@ -22,7 +22,7 @@
 		{ name: "Uibrary", line: "600+ open-source UI components", url: "https://uibrary.com" },
 		{ name: "CrossOver", line: "a crosshair for any game", url: "https://crossover.lacy.sh" },
 		{ name: "Paperclip Hub", line: "plugins for Paperclip", url: "https://cliphub.fyi" },
-		{ name: "Prescription Finder", line: "find who has your meds in stock", url: "https://rx.lacy.sh" },
+		{ name: "Prescription Finder", line: "find who has your meds in stock", url: "https://prescriptionfinder.app" },
 		{ name: "FPV Bible", line: "everything about flying FPV", url: "https://fpv-bible.lacy.sh" },
 		{ name: "The Hitchhiker's Guide", line: "the Guide, as a website", url: "https://hitchhikersgalaxy.guide" },
 		{ name: "Thneed", line: "a drawer of small AI tools", url: "https://thneed.ai" },
