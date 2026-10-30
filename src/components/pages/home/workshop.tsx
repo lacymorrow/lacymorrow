@@ -3,6 +3,7 @@ import { RibbonShader, SunriseShader } from "@/components/ui/shaders";
 import { FleetSubscribe } from "@/components/pages/home/aurora/fleet-subscribe";
 import Socials from "@/components/layout/socials";
 import MoreByLacy from "@/components/layout/more-by-lacy";
+import { TeardownWorkbench } from "@/components/pages/home/teardown-workbench";
 
 const ROLES = [
 	"software engineer",
@@ -244,6 +245,8 @@ export function WorkshopHome() {
 					})}
 				</div>
 			</section>
+
+			<TeardownWorkbench />
 
 			{/* Footer + Fleet Log sunrise */}
 			<footer>
