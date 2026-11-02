@@ -40,6 +40,8 @@ import DownloadLink from "@/components/mdx/download-link";
 import GithubLink from "@/components/mdx/github-link";
 import Thick from "@/components/mdx/thick";
 import { View3d } from "@/components/mdx/view-3d";
+import { ModelCard } from "@/components/mdx/model-card";
+import { FordSwitchCovers } from "@/components/mdx/ford-switch-covers";
 import {
 	Accordion,
 	AccordionContent,
@@ -82,6 +84,8 @@ export const componentMap = {
 	Button,
 	Center,
 	View3d,
+	ModelCard,
+	FordSwitchCovers,
 
 	// ShadCN
 	Accordion,
