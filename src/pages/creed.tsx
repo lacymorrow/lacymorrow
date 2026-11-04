@@ -9,7 +9,7 @@ export default function Creed() {
 				<title>Creed | Lacy Morrow</title>
 				<meta
 					name="description"
-					content="Words to live by, a quiet stream of aphorisms."
+					content="A running list of aphorisms Lacy Morrow collects and tries to live by. One line at a time, added to whenever a good one turns up."
 				/>
 			</Head>
 			<CreedPage />

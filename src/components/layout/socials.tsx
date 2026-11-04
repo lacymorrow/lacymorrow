@@ -17,7 +17,7 @@ const socials = [
   },
   {
     name: "Twitter",
-    href: "https://twitter.com/lacybuilds",
+    href: "https://x.com/lacybuilds",
     icon: <TwitterLogoIcon />,
   },
   {
