@@ -13,16 +13,19 @@ One of my favorite books is *The Hitchhiker's Guide to the Galaxy*, so I made th
 | Project | What it does | |
 |---------|--------------|---|
 | **[Juno](https://junebug.ai)** · [@junebug_ai](https://x.com/junebug_ai) | AI computer use desktop app | [repo](https://github.com/lacymorrow/juno) |
-| **[Lacy Shell](https://lacy.sh)** | AI Shell. Type naturally. Commands execute. | [repo](https://github.com/lacymorrow/lacy) |
-| **[Lash](https://lash.lacy.sh)** · [@lashterm](https://x.com/lashterm) | AI coding agent terminal. cd around, run shell commands, no agent calls needed. | [repo](https://github.com/lacymorrow/lash) |
-| **[Shipkit](https://shipkit.io)** · [@shipkit_io](https://x.com/shipkit_io) | Next.js starter with auth, CMS, payments, AI. Ship in 30 seconds. | [repo](https://github.com/shipkit-io/bones) |
-| **[Vibe Rehab](https://vibe.rehab)** · [@vibe_rehab](https://x.com/vibe_rehab) | Fix your vibe code. We finish broken MVPs in 2-4 weeks. | [repo](https://github.com/lacymorrow/vibe.rehab) |
 | **[CrossOver](https://lacymorrow.github.io/crossover)** | Gaming crosshair overlay for any screen | [repo](https://github.com/lacymorrow/crossover) |
+| **[CamFetti](https://camfetti.lacy.sh)** | Free iPhone app for Thingino, ONVIF and RTSP cameras. No account, no subscription. | [repo](https://github.com/lacymorrow/camfetti) |
+| **[Prescription Finder](https://prescriptionfinder.app)** | Your pharmacy is out. Tell us the medication and your ZIP, and we call nearby pharmacies until one has it. | |
+| **[Lacy Shell](https://lacy.sh)** | AI Shell. Type naturally. Commands execute. | [repo](https://github.com/lacymorrow/lacy) |
+| **[Uibrary](https://uibrary.com)** | Production-ready UI components. Copy, paste, ship. | |
+| **[Linger](https://linger-nine.vercel.app)** | A video call with a real person near you. Stay as long as you both want. | |
+| **[Paperclip Hub](https://cliphub.fyi)** | Plugin hub & marketplace for Paperclip agents | [repo](https://github.com/lacymorrow/paperclip-hub) |
+| **[Shipkit](https://shipkit.io)** · [@shipkit_io](https://x.com/shipkit_io) | Next.js starter with auth, CMS, payments, AI. Ship in 30 seconds. | [repo](https://github.com/shipkit-io/bones) |
+| **[Lash](https://lash.lacy.sh)** · [@lashterm](https://x.com/lashterm) | AI coding agent terminal. cd around, run shell commands, no agent calls needed. | [repo](https://github.com/lacymorrow/lash) |
+| **[Vibe Rehab](https://vibe.rehab)** · [@vibe_rehab](https://x.com/vibe_rehab) | Fix your vibe code. We finish broken MVPs in 2-4 weeks. | [repo](https://github.com/lacymorrow/vibe.rehab) |
 | **[FPV Bible](https://fpvbible.com)** | Open-source guide to building and flying FPV drones | [repo](https://github.com/lacymorrow/fpv-bible) |
 | **[Fly5](https://fly5.live)** | Drone photography and cinematography | [repo](https://github.com/lacymorrow/fly5) |
-| **[Uibrary](https://uibrary.com)** | Production-ready UI components. Copy, paste, ship. | |
 | **[OpenClaw Alpaca](https://clawhub.ai/lacymorrow/alpaca-trading)** · [@Alpaca_yap](https://x.com/Alpaca_yap) | Autonomous AI trading agent | [repo](https://github.com/lacymorrow/alpaca-trading-skill) |
-| **[Paperclip Hub](https://cliphub.fyi)** | Plugin hub & marketplace for Paperclip agents | [repo](https://github.com/lacymorrow/paperclip-hub) |
 | **[Resume App](https://resume.lacy.sh)** | Variable resumes on the fly | [repo](https://github.com/lacymorrow/resume-app) |
 | **[ShipX](https://github.com/lacymorrow/shipx)** | Interactive release CLI — bump, tag, publish, ship | [repo](https://github.com/lacymorrow/shipx) |
 

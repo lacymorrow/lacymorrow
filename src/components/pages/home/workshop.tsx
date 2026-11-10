@@ -72,6 +72,16 @@ const PROJECTS: Project[] = [
 		href: "https://prescriptionfinder.app",
 	},
 	{
+		title: "CamFetti",
+		description: "Free iPhone viewer for Thingino, ONVIF and RTSP cameras.",
+		href: "https://camfetti.lacy.sh",
+	},
+	{
+		title: "Linger",
+		description: "A video call with a real person near you.",
+		href: "https://linger-nine.vercel.app",
+	},
+	{
 		title: "Paperclip Hub",
 		description: "Plugin hub for Paperclip AI agents.",
 		href: "https://cliphub.fyi",
