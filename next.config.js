@@ -82,12 +82,6 @@ const nextConfig = {
       destination: "/contact",
       permanent: true,
     },
-    {
-      source: "/:path*",
-      has: [{ type: "host", value: "resume.lacymorrow.com" }],
-      destination: "https://resume.lacy.sh",
-      permanent: true,
-    },
     // resume.lacy.sh is the one canonical resume; both old paths point straight at it.
     {
       source: "/about/resume",
