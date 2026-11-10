@@ -12,9 +12,9 @@ One of my favorite books is *The Hitchhiker's Guide to the Galaxy*, so I made th
 
 | Project | What it does | |
 |---------|--------------|---|
+| **[Juno](https://junebug.ai)** · [@junebug_ai](https://x.com/junebug_ai) | AI computer use desktop app | [repo](https://github.com/lacymorrow/juno) |
 | **[Lacy Shell](https://lacy.sh)** | AI Shell. Type naturally. Commands execute. | [repo](https://github.com/lacymorrow/lacy) |
 | **[Lash](https://lash.lacy.sh)** · [@lashterm](https://x.com/lashterm) | AI coding agent terminal. cd around, run shell commands, no agent calls needed. | [repo](https://github.com/lacymorrow/lash) |
-| **[Juno](https://junebug.ai)** · [@junebug_ai](https://x.com/junebug_ai) | AI computer use desktop app | [repo](https://github.com/lacymorrow/juno) |
 | **[Shipkit](https://shipkit.io)** · [@shipkit_io](https://x.com/shipkit_io) | Next.js starter with auth, CMS, payments, AI. Ship in 30 seconds. | [repo](https://github.com/shipkit-io/bones) |
 | **[Vibe Rehab](https://vibe.rehab)** · [@vibe_rehab](https://x.com/vibe_rehab) | Fix your vibe code. We finish broken MVPs in 2-4 weeks. | [repo](https://github.com/lacymorrow/vibe.rehab) |
 | **[CrossOver](https://lacymorrow.github.io/crossover)** | Gaming crosshair overlay for any screen | [repo](https://github.com/lacymorrow/crossover) |
