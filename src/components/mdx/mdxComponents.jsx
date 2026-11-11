@@ -49,6 +49,7 @@ import {
 import { Button } from '@/components/ui/button';
 import Link from "next/link";
 
+import { EmailLink } from "@/components/mdx/email-link";
 import Lead from "@/components/mdx/lead";
 import MdxImage from "@/components/mdx/mdx-image";
 import { GitHubLogoIcon } from "@radix-ui/react-icons";
@@ -70,6 +71,9 @@ export const componentMap = {
 
 	// Next
 	Link,
+
+	// mailto that Cloudflare's email obfuscation leaves alone (LAC-4934)
+	EmailLink,
 
 	// custom
 	Readme,
