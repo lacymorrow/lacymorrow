@@ -64,6 +64,15 @@ One of my favorite books is *The Hitchhiker's Guide to the Galaxy*, so I made th
 - [Electron Bones](https://github.com/shipkit-io/electron-bones) · [website](https://electron-bones.vercel.app) — Modern Electron boilerplate with Shadcn/ui
 - [Casper](https://github.com/lacymorrow/casper) · [casper.lacymorrow.com](https://casper.lacymorrow.com) — Ghost theme ported to WordPress
 
+**Apps & Sites**
+- [Build And Serve](https://github.com/lacymorrow/buildandserve) · [buildandserve.com](https://buildandserve.com) — Websites and AI systems for companies
+- [flit.my](https://flit.my) — AI profile picture generator
+- [Keepsake](https://keepsake-zeta-flax.vercel.app) — Wearable audio to diarized transcripts. Augment human memory
+- [Kinfolk](https://github.com/lacymorrow/kinfolk) · [kinfolk.lacy.sh](https://kinfolk.lacy.sh) — Shipkit-based app
+- [Lifeboard](https://lifeboard-henna.vercel.app) — Ambient life dashboard, an external memory on every screen
+- [Photopods](https://github.com/lacymorrow/photo-pods) · [photo-pods.vercel.app](https://photo-pods.vercel.app) — Photo pods
+- [Summit](https://github.com/lacymorrow/summit) — A calm Basecamp alternative
+
 **npm Libraries**
 - [album-art](https://github.com/lacymorrow/album-art) — Fetch cover art for any artist or album
 - [movie-trailer](https://github.com/lacymorrow/movie-trailer) — Fetch movie trailers by title
