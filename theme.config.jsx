@@ -7,7 +7,7 @@ import { useConfig } from 'nextra-theme-docs';
 
 const title = "Lacy Morrow";
 const description = "Lacy Morrow is a leading web and software engineer, UAV operator, and the creator of Crossover and other open-source projects.";
-const ogImage = "https://lacy.is/api/og";
+const ogImage = "https://www.lacymorrow.com/api/og";
 const homeOgImage = "https://www.lacymorrow.com/og.jpg";
 const ogUrl = "https://www.lacymorrow.com";
 const githubUrl = 'https://github.com/lacymorrow/';
@@ -57,7 +57,7 @@ const themeConfig = {
 	head: function useHead() {
 		const { title: pageTitle, frontMatter } = useConfig()
 		const { route } = useRouter()
-		const socialCard = route === '/' || !pageTitle ? homeOgImage : `${ogImage}?title=${pageTitle}`
+		const socialCard = route === '/' || !pageTitle ? homeOgImage : `${ogImage}?title=${encodeURIComponent(pageTitle)}`
 		const canonicalUrl = `${ogUrl}${route === '/' ? '' : route}`
 		const pageDescription = frontMatter?.description || description
 
@@ -92,13 +92,14 @@ const themeConfig = {
 				<meta name="theme-color" content="#09090b" />
 				<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 				<meta httpEquiv="Content-Language" content="en" />
-				<meta property="og:description" content={pageDescription} />
 				<meta name="twitter:card" content="summary_large_image" />
 				<meta name="twitter:image" content={socialCard} />
 				<meta name="twitter:site:domain" content={ogUrl.replace('https://', '')} />
 				<meta name="twitter:url" content={canonicalUrl} />
-				<meta property="og:title" content={pageTitle ? `${pageTitle} · ${title}` : title} />
 				<meta property="og:image" content={socialCard} />
+				<meta property="og:image:width" content="1200" />
+				<meta property="og:image:height" content="630" />
+				<meta property="og:image:alt" content={pageTitle && route !== '/' ? `${pageTitle} · ${title}` : `${title}, software and AI engineer`} />
 				<meta property="og:url" content={canonicalUrl} />
 				<meta property="og:type" content="website" />
 				<meta name="apple-mobile-web-app-title" content={title} />
