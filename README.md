@@ -71,7 +71,6 @@ One of my favorite books is *The Hitchhiker's Guide to the Galaxy*, so I made th
 - [Kinfolk](https://github.com/lacymorrow/kinfolk) · [kinfolk.lacy.sh](https://kinfolk.lacy.sh) — Shipkit-based app
 - [Lifeboard](https://lifeboard-henna.vercel.app) — Ambient life dashboard, an external memory on every screen
 - [Photopods](https://github.com/lacymorrow/photo-pods) · [photo-pods.vercel.app](https://photo-pods.vercel.app) — Photo pods
-- [Summit](https://github.com/lacymorrow/summit) — A calm Basecamp alternative
 
 **npm Libraries**
 - [album-art](https://github.com/lacymorrow/album-art) — Fetch cover art for any artist or album
