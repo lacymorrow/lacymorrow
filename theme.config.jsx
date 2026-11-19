@@ -8,6 +8,7 @@ import { useConfig } from 'nextra-theme-docs';
 const title = "Lacy Morrow";
 const description = "Lacy Morrow is a leading web and software engineer, UAV operator, and the creator of Crossover and other open-source projects.";
 const ogImage = "https://lacy.is/api/og";
+const homeOgImage = "https://www.lacymorrow.com/og.jpg";
 const ogUrl = "https://www.lacymorrow.com";
 const githubUrl = 'https://github.com/lacymorrow/';
 
@@ -16,7 +17,6 @@ const themeConfig = {
 	logo: Logo,
 	logoLink: '/',
 	primaryHue: 310,
-	faviconGlyph: '🧬',
 	feedback: {
 		content: 'Questions? Leave feedback →',
 		labels: 'feedback'
@@ -57,7 +57,7 @@ const themeConfig = {
 	head: function useHead() {
 		const { title: pageTitle, frontMatter } = useConfig()
 		const { route } = useRouter()
-		const socialCard = route === '/' || !pageTitle ? ogImage : `${ogImage}?title=${pageTitle}`
+		const socialCard = route === '/' || !pageTitle ? homeOgImage : `${ogImage}?title=${pageTitle}`
 		const canonicalUrl = `${ogUrl}${route === '/' ? '' : route}`
 		const pageDescription = frontMatter?.description || description
 
@@ -88,8 +88,8 @@ const themeConfig = {
 		return (
 			<>
 				<meta charSet="utf-8" />
-				<meta name="msapplication-TileColor" content="#fff" />
-				<meta name="theme-color" content="#fff" />
+				<meta name="msapplication-TileColor" content="#09090b" />
+				<meta name="theme-color" content="#09090b" />
 				<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 				<meta httpEquiv="Content-Language" content="en" />
 				<meta property="og:description" content={pageDescription} />
@@ -103,10 +103,10 @@ const themeConfig = {
 				<meta property="og:type" content="website" />
 				<meta name="apple-mobile-web-app-title" content={title} />
 				<link rel="canonical" href={canonicalUrl} />
+				<link rel="icon" href="/favicon.ico" sizes="48x48" />
 				<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-				<link rel="icon" href="/favicon.png" type="image/png" />
-				<link rel="icon" href="/favicon-dark.svg" type="image/svg+xml" media="(prefers-color-scheme: dark)" />
-				<link rel="icon" href="/favicon-dark.png" type="image/png" media="(prefers-color-scheme: dark)" />
+				<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+				<link rel="manifest" href="/site.webmanifest" />
 				{route === '/' && (
 					<>
 						<script
